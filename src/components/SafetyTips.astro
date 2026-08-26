@@ -1,0 +1,71 @@
+---
+interface Props {
+  /** Show only the first N rules (home page) — full list lives on /safety-tips. */
+  limit?: number;
+  showPrint?: boolean;
+}
+
+const { limit, showPrint = true } = Astro.props;
+
+const rules = [
+  "No bank, RBI officer or wallet app will ever ask for your OTP, PIN, CVV or password — on any channel.",
+  "You never scan a QR code or enter a UPI PIN to receive money. Scanning is only for paying.",
+  "Urgency is the tell. \u201CToday\u201D, \u201Cwithin 24 hours\u201D and \u201Cfinal warning\u201D exist to stop you from thinking.",
+  "Never pay to receive money — not for prizes, refunds, lottery winnings, parcels or job offers.",
+  "Verify every claim through the organisation's official app or the number printed on your card/statement.",
+  "Type URLs yourself instead of clicking links in messages; check the domain character by character.",
+  "A screenshot of a payment is not proof of payment — check that money actually arrived in your bank.",
+  "Real employers never charge registration, training or document-verification fees.",
+  "\u201CGuaranteed returns\u201D do not exist. No SEBI-registered adviser recruits via Telegram or WhatsApp groups.",
+  "Police and tax departments do not conduct \u201Cdigital arrest\u201D over video calls or demand online transfers.",
+  "Instant-loan apps that ask for contacts/photos access and upfront \u201Cprocessing fees\u201D are the trap itself.",
+  "Report within the golden hour: call 1930 and file at cybercrime.gov.in — fast reporting can freeze stolen funds.",
+  "Before transferring anything, say it out loud to a family member. Scammers isolate; families catch what you miss.",
+];
+
+const shown = typeof limit === "number" ? rules.slice(0, limit) : rules;
+const heading = typeof limit === "number" ? `${limit} rules that stop almost every scam` : "Thirteen rules that stop almost every scam";
+---
+
+<section id="safety-tips" class="border-t border-hairline px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-xl">
+        <p class="eyebrow">Safety tips</p>
+        <h2 class="display-section mt-4">{heading}</h2>
+      </div>
+      {showPrint && <button onclick="window.print()" class="btn btn-secondary">Print this checklist</button>}
+    </div>
+
+    <ol id="safety-rules" class="mt-12 grid gap-x-10 gap-y-0 lg:grid-cols-2 print:grid-cols-1">
+      {shown.map((r, i) => (
+        <li
+          data-reveal
+          style={`--reveal-delay: ${Math.min(i, 6) * 60}ms`}
+          class="flex gap-4 border-b border-hairline py-4 last:border-b-0 lg:[&:nth-last-child(2)]:border-b-0"
+        >
+          <span class="mt-0.5 font-mono text-[13px] text-primary-hover">{String(i + 1).padStart(2, "0")}</span>
+          <p class="text-body leading-relaxed text-ink-muted">{r}</p>
+        </li>
+      ))}
+    </ol>
+
+    {typeof limit === "number" && (
+      <div data-reveal class="mt-8">
+        <a href="/safety-tips" class="btn btn-secondary">All {rules.length} rules + print-friendly checklist →</a>
+      </div>
+    )}
+
+    <p class="mt-8 text-caption text-ink-tertiary" data-reveal>ScamLens · scamlens.in · Share freely, no attribution needed.</p>
+  </div>
+
+  <style>
+    @media print {
+      header, footer, #checker, .eyebrow { display: none !important; }
+      body { background: white !important; color: black !important; }
+      section#safety-tips { border: none !important; padding: 0 !important; }
+      li p { color: black !important; }
+      button[onclick] { display: none !important; }
+    }
+  </style>
+</section>

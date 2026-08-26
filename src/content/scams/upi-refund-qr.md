@@ -1,0 +1,27 @@
+---
+title: "UPI refund / scan-to-receive scam"
+longTitle: "Can someone scam you by asking you to scan a QR code for a refund? Yes — here's how"
+description: "The UPI scan-to-receive and fake-refund scam explained: why scanning a QR never receives money, the exact warning signs, and safe verification steps."
+tag: "Payments"
+intro: "A \u201Ccustomer support\u201D agent calls about a refund — an extra payment you received, a failed order, cashback pending. To \u201Cprocess\u201D it they ask you to scan a QR code, approve a \u201Ccollect request\u201D, or enter your UPI PIN \u201Cto receive\u201D money. The moment you authorise, money leaves your account. There is no mechanism in UPI to receive funds via PIN — PIN always means pay."
+looksLike:
+  - "\u201CSir, we accidentally credited Rs 5,000 to your account. Scan this QR to return it\u201D (the credit is a screenshot or a reversible trick)"
+  - "\u201CTo receive your refund of Rs 1,200, enter your UPI PIN when the request pops up\u201D"
+  - A payment request appearing on your phone mid-call, framed as \u201Cjust accept to get your refund\u201D"
+warningSigns:
+  - "Any mention of entering a UPI PIN to RECEIVE money — that's technically impossible."
+  - "Caller knows partial details (name, last order) to sound official but pressures you to stay on the line."
+  - "\u201CCustomer care\u201D numbers found via Google search results or YouTube comments."
+  - "Urgency: refund expires today, account will be charged if you don't act now."
+whyItWorks:
+  "UPI's collect-request feature legitimately pops up on your screen, so the fraud hides inside a real interface. The caller keeps you busy and emotionally charged while the request sits there looking routine. Most victims have used UPI hundreds of times on autopilot — muscle memory does the rest."
+whatToDo:
+  - "Hang up. Refunds are processed inside the merchant app automatically — no agent action needed."
+  - "Never share OTP/PIN with anyone claiming to be support; end the call and call back via the app's official help section."
+  - "If you authorised a payment, immediately report on 1930 and raise it in your UPI app's dispute flow."
+verify:
+  "Open the merchant app (Amazon, Flipkart, IRCTC etc.) and check Orders → Refunds. Genuine refunds appear there without any action from you. Bank credits can be checked directly in your bank statement."
+similar:
+  - "/scams/fake-kyc-suspended"
+  - "/scams/job-offer-fee-499"
+---

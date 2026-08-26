@@ -1,0 +1,30 @@
+---
+title: "'Hi Mum' WhatsApp family emergency"
+longTitle: "Is the 'Hi Mum, I lost my phone' WhatsApp message a scam? How family-emergency fraud works"
+description: "The 'Hi Mum/Dad' family-impersonation scam explained: a new number, a broken phone, an urgent payment — plus the verification habit that defeats it in one question."
+tag: "Impersonation"
+intro: "\u201CHi Mum, my phone broke — this is my new number.\u201D Hours later: \u201CI'm stuck, can you pay for something urgent? I'll explain later.\u201D The message impersonates a child or relative from an unknown number, banking on love outpacing suspicion. Police forces worldwide report this pattern surging since 2023, with Indian families increasingly targeted as forwards travel between countries."
+looksLike:
+  - "\u201CHi mum, my phone is damaged and this is my new number. Please save it.\u201D"
+  - "\u201CI'm in trouble — I have to pay a deposit right now, I'll call you tonight, please don't tell Dad.\u201D"
+  - "\u201CMy UPI isn't working, can you send it to my friend's number instead?\u201D"
+  - "Poor punctuation, generic greetings and refusal to talk on a voice or video call."
+warningSigns:
+  - "A \u201Cnew number\u201D for someone whose real phone still rings when you dial the old one."
+  - "Urgency plus secrecy (\u201Cdon't tell anyone yet\u201D) — isolation is the scammer's tool."
+  - "Requests to pay a third party's UPI handle or account \u201Cbecause my wallet is blocked\u201D."
+  - "Dodges every attempt at a live call, or claims the microphone/camera is \u201Cbroken\u201D."
+whyItWorks:
+  "It hijacks the strongest reflex there is — helping your child. The story explains every red flag in advance: no calls because the phone is broken, secrecy to avoid \u201Cworrying\u201D others, third-party accounts because \u201Cmy own apps don't work\u201D. Emotional pressure plus a small-seeming amount short-circuits verification exactly once, which is all they need."
+whatToDo:
+  - "Call the person's old/known number before replying — even if you think you know the answer."
+  - "Ask a question only the real person knows (a shared memory, not their birthday)."
+  - "Never pay before a live voice or video confirmation through known channels."
+  - "If money was sent, call 1930 immediately — golden-hour reporting can freeze the transfer."
+verify:
+  "Contact the relative directly on their existing number, or through another family member who can physically reach them. No genuine emergency survives a callback."
+similar:
+  - "/scams/digital-arrest-video-call"
+  - "/scams/upi-refund-qr"
+updated: 2026-08-26
+---

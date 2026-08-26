@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const links = [
+  { href: "/", label: "Home & scam checker" },
+  { href: "/scams", label: "Scam Library" },
+  { href: "/safety-tips", label: "Safety tips" },
+  { href: "/how-it-works", label: "How it works" },
+];
+---
+
+<Layout
+  title="Page not found (404) | ScamLens"
+  description="This page doesn't exist. Check a suspicious message or browse the Scam Library instead."
+  noindex={true}
+>
+  <section class="mx-auto max-w-xl px-4 py-28 text-center sm:px-6">
+    <p class="eyebrow hero-in">404 — page not found</p>
+    <h1 class="display-section mt-4 hero-in" style="--hero-delay: 80ms">
+      This link went nowhere.<br /><span class="text-ink-subtle">Suspicious? Good instinct.</span>
+    </h1>
+    <p class="mx-auto mt-5 max-w-md text-body-lg leading-relaxed text-ink-muted hero-in" style="--hero-delay: 160ms">
+      A broken link is harmless; a link that asks you to pay isn't. Paste any suspicious
+      message into the checker, or pick a destination below.
+    </p>
+    <div class="hero-in mt-10 flex flex-col gap-3" style="--hero-delay: 240ms">
+      <a href="/#checker" class="btn btn-primary mx-auto px-6">Check a suspicious message</a>
+      <nav class="mt-2 flex flex-wrap justify-center gap-2" aria-label="Popular pages">
+        {links.map((l) => (
+          <a href={l.href} class="rounded-full border border-hairline bg-surface-1 px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-strong hover:text-ink">{l.label}</a>
+        ))}
+      </nav>
+    </div>
+  </section>
+</Layout>

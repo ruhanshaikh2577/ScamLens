@@ -1,0 +1,154 @@
+---
+interface Props {
+  /** Extended variant adds the newer pattern cards + signal checklist (used on /what-we-detect). */
+  extended?: boolean;
+}
+
+const { extended = false } = Astro.props;
+
+const cards = [
+  {
+    title: "WhatsApp & SMS forwards",
+    body: "Urgency, fear and reward patterns in forwarded messages — including digital-arrest threats and 'KYC expired' notices.",
+    icon: "M8 2h8a6 6 0 016 6v5a6 6 0 01-6 6H9l-5 3v-3.5A6 6 0 012 13V8a6 6 0 016-6z",
+    href: "/scams/fake-kyc-suspended",
+  },
+  {
+    title: "Fake websites & links",
+    body: "Shorteners that hide destinations, look-alike bank domains (hdfc-secure-login.xyz), raw IPs and spoofed characters.",
+    icon: "M10 14a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07L11.5 5.4 M14 10a5 5 0 00-7.07 0l-3 3A5 5 0 0011 19.6l1.5-1.47",
+    href: "/scams/upi-refund-qr",
+  },
+  {
+    title: "Payment screenshots",
+    body: "The classic 'payment done' screenshot trick — font mismatches, edited timestamps and reused templates.",
+    icon: "M4 4h16v12H4z M8 20h8 M12 16v4",
+    href: "/scams/delivery-rs99-reschedule",
+  },
+  {
+    title: "UPI IDs & QR codes",
+    body: "Handles that ask you to 'scan to receive' — you never enter a PIN to receive money, only to pay it away.",
+    icon: "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h2v2h-2z M18 18h2v2h-2z M14 18h2 M18 14h2",
+    href: "/scams/upi-refund-qr",
+  },
+  {
+    title: "Job offer letters",
+    body: "Work-from-home offers with registration fees, Telegram task pay and offer letters that look real but aren't.",
+    icon: "M4 8h16v12H4z M9 8V6a3 3 0 016 0v2",
+    href: "/scams/job-offer-fee-499",
+  },
+  {
+    title: "Indian scam patterns",
+    body: "FASTag recharge traps, traffic challan phishing, courier Rs 99 fees, Aadhaar-PAN KYC expiry — the patterns global tools miss.",
+    icon: "M12 3l9 16H3l9-16z M12 10v4 M12 16.5v.5",
+    href: "/scams/fastag-kyc-scam",
+  },
+];
+
+const extendedCards = [
+  {
+    title: "Investment & trading apps",
+    body: "\u201CGuaranteed returns\u201D, Telegram trading groups and fake dashboards showing profits you can never withdraw.",
+    icon: "M3 20h18 M6 16l4-6 4 3 5-8",
+    href: "/scams/trading-app-guaranteed-returns",
+  },
+  {
+    title: "Family-emergency impersonation",
+    body: "\u201CHi Mum, my phone is broken — this is my new number.\u201D Then an urgent request for money \u201Cjust for today\u201D.",
+    icon: "M12 21s-7-4.35-9.33-8.11C.9 9.75 2.58 6 6 6c1.9 0 3.13 1 4 2.09C10.87 7 12.1 6 14 6c3.42 0 5.1 3.75 3.33 6.89C15 16.65 12 21 12 21z",
+    href: "/scams/whatsapp-family-emergency",
+  },
+  {
+    title: "Loan & electricity threats",
+    body: "Instant-loan app fees and \u201Cpower will be cut tonight\u201D notices that rush you into paying a stranger's UPI handle.",
+    icon: "M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z",
+    href: "/scams/electricity-bill-disconnection",
+  },
+];
+
+const shown = extended ? [...cards, ...extendedCards] : cards;
+
+const messageSignals = [
+  "Urgency windows (\u201Cwithin 24 hours\u201D, \u201Ctoday only\u201D)",
+  "Payment requests with odd amounts (Rs 99, Rs 499)",
+  "OTP / PIN / CVV / password asks",
+  "Bank, courier and government impersonation",
+  "Prize, refund and lottery bait",
+  "UPI handles and scan-to-pay QR references",
+  "Legal-threat language (\u201Cpolice case\u201D, \u201Cdigital arrest\u201D)",
+  "Job offers that start with a fee",
+];
+const urlSignals = [
+  "Link shorteners hiding the destination",
+  "Look-alike brand domains (hdfcbank-secure-login.xyz)",
+  "Punycode / look-alike characters (xn--)",
+  "Raw IP addresses instead of domains",
+  "Insecure http:// on login or payment pages",
+  "Hidden credentials (\u201C@\u201D tricks, password= in query)",
+  "Direct .apk downloads from chat links",
+  "High-abuse TLDs (.zip, .top, .icu, .click…)",
+];
+---
+
+<section id="what-we-detect" class="border-t border-hairline px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div data-reveal>
+      <p class="eyebrow">What we detect</p>
+      <h2 class="display-section mt-4 max-w-xl">Built for the scams that actually reach Indian phones</h2>
+      {extended && (
+        <p class="mt-4 max-w-2xl text-body-lg leading-relaxed text-ink-muted">
+          The checker runs dozens of pattern checks locally in your browser — here are the
+          categories they map to, each backed by a library breakdown.
+        </p>
+      )}
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {shown.map((c, i) => (
+        <a
+          href={c.href}
+          data-reveal
+          style={`--reveal-delay: ${(i % 3) * 80}ms`}
+          class="card card-lift group p-6"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary-hover transition-transform duration-300 group-hover:-translate-y-0.5" aria-hidden="true">
+            <path d={c.icon} />
+          </svg>
+          <h3 class="card-title mt-4">{c.title}</h3>
+          <p class="mt-2 text-body-sm leading-relaxed text-ink-muted">{c.body}</p>
+        </a>
+      ))}
+    </div>
+
+    {!extended && (
+      <div data-reveal class="mt-10 text-center">
+        <a href="/what-we-detect" class="btn btn-secondary">See everything we check →</a>
+      </div>
+    )}
+
+    {extended && (
+      <div class="mt-16 grid gap-4 md:grid-cols-2">
+        <div data-reveal class="card p-6">
+          <h3 class="card-title">Message signals</h3>
+          <ul class="mt-4 space-y-2.5 text-body-sm leading-relaxed text-ink-muted">
+            {messageSignals.map((s) => (
+              <li class="flex gap-2.5">
+                <span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{s}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div data-reveal style="--reveal-delay: 90ms" class="card p-6">
+          <h3 class="card-title">URL signals</h3>
+          <ul class="mt-4 space-y-2.5 text-body-sm leading-relaxed text-ink-muted">
+            {urlSignals.map((s) => (
+              <li class="flex gap-2.5">
+                <span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

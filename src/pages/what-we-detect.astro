@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WhatWeDetect from "../components/WhatWeDetect.astro";
+import CTA from "../components/CTA.astro";
+
+const title = "What ScamLens Detects — Scam Patterns, Phishing & Fraud Signals | ScamLens";
+const description = "Every signal the ScamLens checker looks for: urgency, payment asks, OTP theft, bank/courier/government impersonation, UPI tricks, shorteners, look-alike domains, punycode spoofs and more.";
+---
+
+<Layout title={title} description={description} ogType="article">
+  <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
+    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-ink">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-ink-muted">What we detect</span>
+    </nav>
+    <header class="mt-6" data-reveal>
+      <p class="eyebrow">What we detect</p>
+      <h1 class="display-section mt-4">Every signal, in plain language</h1>
+      <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">
+        ScamLens checks your input locally for the patterns behind today's most common
+        frauds — then quotes the exact evidence so you can verify each flag yourself.
+        Below: the categories, the raw signals behind them, and where to read a full breakdown.
+      </p>
+    </header>
+  </section>
+
+  <WhatWeDetect extended />
+
+  <section class="border-t border-hairline px-4 py-16 sm:px-6">
+    <div class="mx-auto max-w-3xl" data-reveal>
+      <h2 class="headline">Where the patterns come from</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        Signals are mapped to real fraud patterns documented by cybercrime authorities and
+        consumer-protection reporting — India-first (UPI, KYC, courier fees, digital arrest)
+        with global coverage (USPS, Royal Mail, HMRC, SSA). Each category links to a library
+        entry with example messages and verification steps.
+      </p>
+      <div class="mt-8 flex flex-col gap-2 sm:flex-row">
+        <a href="/scams" class="btn btn-primary flex-1">Browse the Scam Library</a>
+        <a href="/#checker" class="btn btn-secondary flex-1">Check a message now</a>
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</Layout>

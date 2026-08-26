@@ -1,0 +1,88 @@
+---
+const findings = [
+  {
+    label: "Payment request",
+    evidence: "Pay Rs 99 to reschedule delivery today",
+  },
+  {
+    label: "Artificial urgency",
+    evidence: "…parcel will be returned to the warehouse within 24 hours…",
+  },
+  {
+    label: "Impersonates a courier company",
+    evidence: "DTDC Courier: Your parcel ON HOLD [DT-99213]",
+  },
+  {
+    label: "Shortened link hides the real destination",
+    evidence: "bit.ly/dtdc-fee",
+  },
+];
+
+const steps = [
+  "Never pay a fee to receive a parcel — delivery charges are paid at booking or by the sender, never via UPI links.",
+  "Open the courier's official app or website and track the consignment number yourself.",
+  "Report the message, block the sender, and warn whoever forwarded it to you.",
+];
+---
+
+<section id="example" class="border-t border-hairline px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div data-reveal class="max-w-xl">
+      <p class="eyebrow">Example analysis</p>
+      <h2 class="display-section mt-4">Evidence quoted, not a mystery score</h2>
+      <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">
+        This is a real output pattern. Every flag points at the exact words that triggered it,
+        so you can judge for yourself — that's the whole point.
+      </p>
+    </div>
+
+    <div data-reveal style="--reveal-delay: 100ms" class="card panel-top-edge mx-auto mt-12 w-full max-w-2xl p-5 sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <span class="risk-badge risk-high"><span class="risk-dot"></span>HIGH RISK</span>
+        <span class="rounded-md border border-hairline bg-canvas px-2 py-1 font-mono text-xs text-ink-subtle">input: SMS</span>
+      </div>
+      <h3 class="card-title mt-4">Strong scam warning signs</h3>
+      <blockquote class="mt-4 rounded-lg border border-hairline bg-canvas p-4 font-mono text-[13px] leading-relaxed text-ink-muted">
+        DTDC Courier: Your parcel ON HOLD [DT-99213]. Pay Rs 99 to reschedule delivery today,
+        else parcel will be returned to the warehouse within 24 hours. bit.ly/dtdc-fee
+      </blockquote>
+
+      <section class="mt-6" aria-label="Why we flagged this">
+        <h4 class="eyebrow">Why we flagged it</h4>
+        <ul class="mt-3 space-y-4">
+          {findings.map((f) => (
+            <li class="flex gap-3">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-1 shrink-0 text-primary-hover" aria-hidden="true">
+                <path d="M8 1l7 13H1L8 1z" stroke="currentColor" stroke-width="1.3" />
+                <path d="M8 6v3.5M8 11.6v.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+              </svg>
+              <div class="min-w-0">
+                <p class="text-sm font-medium text-ink">{f.label}</p>
+                <code class="evidence-pill mt-1.5">{f.evidence}</code>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="What you should do">
+        <h4 class="eyebrow">What you should do</h4>
+        <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink-muted">
+          {steps.map((s) => <li>{s}</li>)}
+        </ol>
+      </section>
+
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="Similar scams">
+        <h4 class="eyebrow">Similar scams</h4>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <a href="/scams/delivery-rs99-reschedule" class="rounded-full border border-hairline bg-canvas px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-tertiary hover:text-ink">Courier fee scam (Rs 99 reschedule)</a>
+          <a href="/scams/fake-kyc-suspended" class="rounded-full border border-hairline bg-canvas px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-tertiary hover:text-ink">Fake KYC / account suspension</a>
+        </div>
+      </section>
+
+      <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
+        Decision support, not a guarantee. Language patterns alone never prove a scam — verify via official channels.
+      </p>
+    </div>
+  </div>
+</section>

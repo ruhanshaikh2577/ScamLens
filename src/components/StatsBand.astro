@@ -1,0 +1,108 @@
+---
+// The scale of the problem — count-up stats grounded in Government-of-India
+// NCRP/I4C figures reported for calendar year 2024.
+const stats = [
+  {
+    value: "22.7",
+    decimals: 1,
+    prefix: "",
+    suffix: " lakh+",
+    label: "complaints filed on the National Cyber Crime Reporting Portal in 2024",
+  },
+  {
+    value: "22845",
+    decimals: 0,
+    prefix: "₹",
+    suffix: " crore",
+    label: "reported lost by victims to cyber fraud in 2024",
+  },
+  {
+    value: "1935",
+    decimals: 0,
+    prefix: "₹",
+    suffix: " crore",
+    label: "lost to \u201Cdigital arrest\u201D impersonation scams alone in 2024",
+  },
+];
+---
+
+<section id="scale" class="border-b border-hairline px-4 py-16 sm:px-6" aria-label="The scale of cyber fraud in India">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-10 sm:grid-cols-3 sm:gap-6">
+      {stats.map((s, i) => (
+        <div
+          data-reveal
+          style={`--reveal-delay: ${i * 90}ms`}
+          class:list={["text-center sm:text-left", i > 0 ? "sm:border-l sm:border-hairline sm:pl-8" : ""]}
+        >
+          <p class="display-section tabular-nums text-primary-hover">
+            <span class="text-ink">{s.prefix}</span><span
+              data-count={s.value}
+              data-decimals={s.decimals}
+            >{s.value}</span><span class="text-ink">{s.suffix}</span>
+          </p>
+          <p class="mx-auto mt-2 max-w-xs text-body-sm leading-relaxed text-ink-muted sm:mx-0">{s.label}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-10 text-caption leading-relaxed text-ink-tertiary" data-reveal>
+      Figures per Indian Cyber Crime Coordination Centre (I4C) / NCRP data reported by the Government of India for 2024 — treat as scale, not precise live totals.
+      If you've been defrauded, call <a href="tel:1930" class="text-ink-muted hover:text-ink">1930</a> and file at
+      <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">cybercrime.gov.in</a>.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Count-up on first reveal — respects prefers-reduced-motion, survives view transitions.
+  function animateCount(el: HTMLElement) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = "1";
+    const target = parseFloat(el.dataset.count || "0");
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fmt = (v: number) =>
+      decimals > 0 ? v.toFixed(decimals) : Math.round(v).toLocaleString("en-IN");
+    if (reduce) {
+      el.textContent = fmt(target);
+      return;
+    }
+    const duration = 1200;
+    const start = performance.now();
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+    function frame(now: number) {
+      const t = Math.min(1, (now - start) / duration);
+      el.textContent = fmt(target * easeOutCubic(t));
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  const seen = new WeakSet<Element>();
+  function initCounts() {
+    const els = document.querySelectorAll<HTMLElement>("[data-count]:not([data-counted])");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(animateCount);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) {
+          if (en.isIntersecting) {
+            animateCount(en.target as HTMLElement);
+            io.unobserve(en.target);
+          }
+        }
+      },
+      { threshold: 0.4 }
+    );
+    els.forEach((el) => {
+      if (!seen.has(el)) {
+        seen.add(el);
+        io.observe(el);
+      }
+    });
+  }
+  document.addEventListener("astro:page-load", initCounts);
+  initCounts();
+</script>

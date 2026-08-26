@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ScamLibraryGrid from "../../components/ScamLibraryGrid.astro";
+---
+
+<Layout
+  title="Scam Library — every pattern explained with evidence | ScamLens"
+  description="Searchable library of scams targeting India: fake KYC, courier Rs 99 fees, UPI QR tricks, job-fee fraud, digital arrest, FASTag phishing, trading apps, loan apps. Warning signs and safe next steps for each."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div data-reveal>
+      <p class="eyebrow">Scam library</p>
+      <h1 class="display-section mt-4 max-w-2xl">Every pattern, explained with the evidence</h1>
+      <p class="mt-4 max-w-xl text-body-lg leading-relaxed text-ink-muted">
+        Each breakdown answers: what is it, what does it look like, why it works,
+        what to do, and how to verify things through official channels.
+      </p>
+    </div>
+
+    <ScamLibraryGrid heading={false} />
+
+    <aside data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-center" aria-label="Advertisement">
+      <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
+    </aside>
+
+    <div data-reveal class="card panel-top-edge mt-16 flex flex-col items-center gap-5 px-6 py-12 text-center">
+      <h2 class="headline max-w-md">Got a suspicious message right now?</h2>
+      <a href="/#checker" class="btn btn-primary px-6">Check it in 10 seconds</a>
+    </div>
+  </section>
+</Layout>

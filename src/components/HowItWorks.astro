@@ -1,0 +1,45 @@
+---
+const steps = [
+  {
+    n: "1",
+    title: "Pick your input",
+    body: "A message, a screenshot of the chat, or a suspicious link — one checker handles all three.",
+  },
+  {
+    n: "2",
+    title: "Paste or drop it in",
+    body: "Nothing is stored. OTPs, card numbers and phone numbers are redacted automatically before analysis.",
+  },
+  {
+    n: "3",
+    title: "Scan in seconds",
+    body: "We check urgency cues, payment requests, impersonation patterns, UPI handles and link safety signals.",
+  },
+  {
+    n: "4",
+    title: "Get reasons, not a score",
+    body: "Every flag shows the exact quote we matched, why it matters, and the safe next steps you can take.",
+  },
+];
+---
+
+<section id="how-it-works" class="border-t border-hairline px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div data-reveal>
+      <p class="eyebrow">How it works</p>
+      <h2 class="display-section mt-4 max-w-xl">Four steps between doubt and a decision</h2>
+    </div>
+    <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <li data-reveal style={`--reveal-delay: ${i * 80}ms`} class="card card-lift p-6">
+          <span class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-primary/40 bg-primary/10 font-mono text-[13px] text-primary-hover">{s.n}</span>
+          <h3 class="card-title mt-4">{s.title}</h3>
+          <p class="mt-2 text-body-sm leading-relaxed text-ink-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+    <div data-reveal class="mt-10">
+      <a href="/how-it-works" class="btn btn-secondary">How the analysis works in detail →</a>
+    </div>
+  </div>
+</section>

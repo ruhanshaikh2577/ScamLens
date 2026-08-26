@@ -1,0 +1,142 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const scams = await getCollection("scams");
+  const titleMap = new Map(scams.map((s) => [s.id, s.data.title]));
+  return scams.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry, titleMap },
+  }));
+}
+
+const { entry, titleMap } = Astro.props;
+const d = entry.data;
+const slug = entry.id;
+const canonical = `https://scamlens.in/scams/${slug}`;
+const updatedIso = (d.updated ?? new Date("2026-08-25")).toISOString();
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://scamlens.in/" },
+    { "@type": "ListItem", position: 2, name: "Scam Library", item: "https://scamlens.in/scams" },
+    { "@type": "ListItem", position: 3, name: d.title, item: canonical },
+  ],
+};
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: d.longTitle,
+  description: d.description,
+  image: "https://scamlens.in/og.png",
+  author: { "@type": "Organization", name: "ScamLens", url: "https://scamlens.in" },
+  publisher: { "@type": "Organization", name: "ScamLens", logo: { "@type": "ImageObject", url: "https://scamlens.in/favicon.svg" } },
+  datePublished: updatedIso,
+  dateModified: updatedIso,
+  mainEntityOfPage: canonical,
+  inLanguage: "en",
+};
+---
+
+<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
+      <a href="/scams" class="hover:text-ink">Scam Library</a>
+      <span class="mx-2">/</span>
+      <span class="text-ink-muted">{d.title}</span>
+    </nav>
+
+    <header class="mt-6">
+      <span class="status-badge rounded-full bg-surface-2 px-2 py-0.5 text-xs text-ink-muted">{d.tag}</span>
+      <h1 class="display-section mt-4">{d.longTitle}</h1>
+      <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">{d.intro}</p>
+    </header>
+
+    <aside class="mt-8 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-center" aria-label="Advertisement">
+      <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
+    </aside>
+
+    <section class="mt-12">
+      <h2 class="headline">What it looks like</h2>
+      <ul class="mt-4 space-y-3">
+        {d.looksLike.map((x) => (
+          <li class="rounded-lg border border-hairline bg-surface-1 p-4 font-mono text-[13px] leading-relaxed text-ink-muted">{x}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="headline">Warning signs</h2>
+      <ul class="mt-4 space-y-3">
+        {d.warningSigns.map((x) => (
+          <li class="flex gap-3 text-body leading-relaxed text-ink-muted">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-1.5 shrink-0 text-primary-hover" aria-hidden="true">
+              <path d="M8 1l7 13H1L8 1z" stroke="currentColor" stroke-width="1.3" />
+              <path d="M8 6v3.5M8 11.6v.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            </svg>
+            <span>{x}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <aside class="mt-8 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-center" aria-label="Advertisement">
+      <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
+    </aside>
+
+    <section class="mt-12">
+      <h2 class="headline">Why it works</h2>
+      <p class="mt-4 text-body leading-relaxed text-ink-muted">{d.whyItWorks}</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="headline">What to do</h2>
+      <ol class="mt-4 list-decimal space-y-2 pl-5 text-body leading-relaxed text-ink-muted">
+        {d.whatToDo.map((x) => <li>{x}</li>)}
+      </ol>
+    </section>
+
+    <section class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6">
+      <h2 class="headline">How to verify with the real organisation</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">{d.verify}</p>
+    </section>
+
+    <section class="mt-12 border-t border-hairline pt-8">
+      <p class="eyebrow">Been targeted?</p>
+      <div class="mt-3 flex flex-col gap-2 sm:flex-row">
+        <a href="tel:1930" class="btn btn-secondary flex-1">Call 1930 helpline</a>
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">File at cybercrime.gov.in</a>
+      </div>
+    </section>
+
+    {d.similar.length > 0 && (
+      <section class="mt-12 border-t border-hairline pt-8">
+        <h2 class="headline">Similar scams</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {d.similar.map((path) => {
+            const id = path.replace("/scams/", "");
+            return (
+              <a href={`/scams/${id}`} class="card card-lift p-4">
+                <p class="text-sm font-medium text-ink">{titleMap.get(id) ?? id.replaceAll("-", " ")}</p>
+                <span class="mt-1 block text-caption text-primary-hover">Read the breakdown <span class="arrow-nudge inline-block">→</span></span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <footer class="mt-12 border-t border-hairline pt-6 text-caption leading-relaxed text-ink-tertiary">
+      Decision support only — this page describes known fraud patterns, not a legal determination about any specific message.
+      Last reviewed August 2026.
+    </footer>
+
+    <div class="mt-10">
+      <a href="/#checker" class="btn btn-primary w-full sm:w-auto">Check your message now</a>
+    </div>
+  </article>
+</Layout>
