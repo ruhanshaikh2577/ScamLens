@@ -107,4 +107,12 @@ describe("analyze", () => {
     expect(r.nextSteps.length).toBeGreaterThan(0);
     expect(r.disclaimer).toMatch(/Decision support/);
   });
+
+  it("adds meta with version, timestamp, detectorIds", () => {
+    const r = analyze("Pay Rs 99 fee today", "message");
+    expect(r.meta.analyzerVersion).toMatch(/\d+\.\d+\.\d+/);
+    expect(new Date(r.meta.timestamp).toString()).not.toBe("Invalid Date");
+    expect(r.meta.detectorIds).toContain("payment-request");
+    expect(Array.isArray(r.meta.sources)).toBe(true);
+  });
 });

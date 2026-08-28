@@ -20,10 +20,20 @@ export interface AnalysisResult {
   nextSteps: string[];
   similarScams: SimilarScam[];
   disclaimer: string;
+  meta: AnalysisMeta;
 }
 
 const DISCLAIMER =
   "Decision support, not a guarantee. Language patterns alone never prove a scam — verify via official channels.";
+
+const VERSION = "0.1.1";
+
+export interface AnalysisMeta {
+  analyzerVersion: string;
+  timestamp: string;
+  detectorIds: string[];
+  sources: Array<{ label: string; href: string }>;
+}
 
 interface Detector {
   id: string;
@@ -418,6 +428,22 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
     if (d?.similar) similarSlugs.set(d.similar.slug, d.similar);
   }
 
+  const detectorIds = [...new Set(findings.map((f) => f.id))];
+  const sourceFor = (id: string) =>
+    id.startsWith("url-")
+      ? { label: "ScamLens URL checks", href: "/how-it-works#url-signals" }
+      : { label: "ScamLens detectors", href: "/how-it-works#detectors" };
+  let sources = [...new Map(detectorIds.map((id) => {
+    const s = sourceFor(id);
+    return [`${s.label}|${s.href}`, s] as const;
+  })).values()];
+  if (sources.length === 0) sources = [{ label: "ScamLens detectors", href: "/how-it-works#detectors" }];
+  if (risk === "critical") {
+    const cyber = { label: "Report at cybercrime.gov.in", href: "https://cybercrime.gov.in" };
+    if (!sources.some((s) => s.href === cyber.href)) sources.push(cyber);
+  }
+  sources = sources.slice(0, 3);
+
   return {
     risk,
     headline: HEADLINES[risk],
@@ -425,5 +451,6 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
     nextSteps: nextSteps.slice(0, 4),
     similarScams: [...similarSlugs.values()].slice(0, 3),
     disclaimer: DISCLAIMER,
+    meta: { analyzerVersion: VERSION, timestamp: new Date().toISOString(), detectorIds, sources },
   };
 }
