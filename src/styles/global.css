@@ -32,38 +32,65 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+
+  /* Text — custom utilities used as text-body, text-caption etc. (Tailwind v4 generates text-body from --text-body) */
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.5;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.5;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.4;
+  --text-headline: 28px;
+  --text-headline--line-height: 1.2;
+}
+
+:root {
+  --light-canvas: #ffffff;
+  --light-surface-1: #f7f8f8;
+  --light-surface-2: #eff0f1;
+  --light-surface-3: #e8e9eb;
+  --light-surface-4: #e2e4e6;
+  --light-hairline: #e4e5e7;
+  --light-hairline-strong: #d2d4d8;
+  --light-hairline-tertiary: #c8cacd;
+  --light-ink: #18191b;
+  --light-ink-muted: #3c4149;
+  --light-ink-subtle: #6f747d;
+  --light-ink-tertiary: #8a8f98;
 }
 
 /* Light/Dark auto — flip semantic vars under light preference (DESIGN.md inverse tokens) */
 @media (prefers-color-scheme: light) {
   :root {
-    --color-canvas: #ffffff;
-    --color-surface-1: #f7f8f8;
-    --color-surface-2: #eff0f1;
-    --color-surface-3: #e8e9eb;
-    --color-surface-4: #e2e4e6;
-    --color-hairline: #e4e5e7;
-    --color-hairline-strong: #d2d4d8;
-    --color-hairline-tertiary: #c8cacd;
-    --color-ink: #18191b;
-    --color-ink-muted: #3c4149;
-    --color-ink-subtle: #6f747d;
-    --color-ink-tertiary: #8a8f98;
+    --color-canvas: var(--light-canvas);
+    --color-surface-1: var(--light-surface-1);
+    --color-surface-2: var(--light-surface-2);
+    --color-surface-3: var(--light-surface-3);
+    --color-surface-4: var(--light-surface-4);
+    --color-hairline: var(--light-hairline);
+    --color-hairline-strong: var(--light-hairline-strong);
+    --color-hairline-tertiary: var(--light-hairline-tertiary);
+    --color-ink: var(--light-ink);
+    --color-ink-muted: var(--light-ink-muted);
+    --color-ink-subtle: var(--light-ink-subtle);
+    --color-ink-tertiary: var(--light-ink-tertiary);
   }
 }
 html.light {
-  --color-canvas: #ffffff;
-  --color-surface-1: #f7f8f8;
-  --color-surface-2: #eff0f1;
-  --color-surface-3: #e8e9eb;
-  --color-surface-4: #e2e4e6;
-  --color-hairline: #e4e5e7;
-  --color-hairline-strong: #d2d4d8;
-  --color-hairline-tertiary: #c8cacd;
-  --color-ink: #18191b;
-  --color-ink-muted: #3c4149;
-  --color-ink-subtle: #6f747d;
-  --color-ink-tertiary: #8a8f98;
+  --color-canvas: var(--light-canvas);
+  --color-surface-1: var(--light-surface-1);
+  --color-surface-2: var(--light-surface-2);
+  --color-surface-3: var(--light-surface-3);
+  --color-surface-4: var(--light-surface-4);
+  --color-hairline: var(--light-hairline);
+  --color-hairline-strong: var(--light-hairline-strong);
+  --color-hairline-tertiary: var(--light-hairline-tertiary);
+  --color-ink: var(--light-ink);
+  --color-ink-muted: var(--light-ink-muted);
+  --color-ink-subtle: var(--light-ink-subtle);
+  --color-ink-tertiary: var(--light-ink-tertiary);
 }
 html.dark {
   --color-canvas: #010102;
@@ -83,9 +110,12 @@ html.dark {
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
     /* Progressive: lets details/summary animate to auto height where supported */
     interpolate-size: allow-keywords;
   }
+  html.light { color-scheme: light; }
+  html.dark { color-scheme: dark; }
   body {
     background-color: var(--color-canvas);
     color: var(--color-ink);
@@ -143,7 +173,7 @@ html.dark {
     line-height: 1.2;
     border-radius: var(--radius-md);
     padding: 10px 16px;
-    min-height: 40px;
+    min-height: 44px;
     cursor: pointer;
     transition:
       background-color 120ms ease,
@@ -533,7 +563,7 @@ html.dark {
 /* Phone polish — meets DESIGN.md touch targets (≥44px on ≤480px) */
 @media (max-width: 480px) {
   .btn { min-height: 44px; }
-  #theme-toggle { width: 40px; height: 40px; }
+  #theme-toggle { width: 44px; height: 44px; }
   .evidence-pill { font-size: 11px; }
   .display-hero { letter-spacing: -1.2px; }
 }

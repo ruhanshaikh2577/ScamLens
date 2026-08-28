@@ -68,6 +68,14 @@ const isActive = (href: string) =>
     <meta name="apple-mobile-web-app-title" content="ScamLens" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#010102" />
+    <script is:inline>
+      try {
+        const tm = localStorage.getItem("theme");
+        const v = tm === "light" ? "light" : tm === "dark" ? "dark" : "system";
+        const sysLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        document.querySelector('meta[name="theme-color"]').content = v === "light" || (v === "system" && sysLight) ? "#ffffff" : "#010102";
+      } catch {}
+    </script>
     <meta name="application-name" content="ScamLens" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:type" content={ogType} />
@@ -120,7 +128,7 @@ const isActive = (href: string) =>
           ))}
         </div>
         <div class="flex items-center gap-2">
-          <button id="theme-toggle" type="button" aria-label="Theme: system" title="Theme: system (click to change)" class="inline-flex h-8 w-8 items-center justify-center rounded-md border border-hairline bg-surface-1 text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink active:border-hairline-tertiary active:text-ink">
+          <button id="theme-toggle" type="button" aria-label="Theme: system" title="Theme: system (click to change)" class="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink active:border-hairline-tertiary active:text-ink">
             <span id="theme-icon" aria-hidden="true"></span>
           </button>
           <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">Report a scam</a>
@@ -132,7 +140,7 @@ const isActive = (href: string) =>
           <a
             href={l.href}
             aria-current={isActive(l.href) ? "page" : undefined}
-            class:list={["shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors", isActive(l.href) ? "border-hairline-strong bg-surface-2 text-ink" : "border-hairline bg-surface-1 text-ink-subtle hover:text-ink"]}
+            class:list={["shrink-0 rounded-full border px-3 py-2.5 text-xs font-medium transition-colors min-h-[44px] inline-flex items-center", isActive(l.href) ? "border-hairline-strong bg-surface-2 text-ink" : "border-hairline bg-surface-1 text-ink-subtle hover:text-ink"]}
           >{l.label}</a>
         ))}
       </nav>
