@@ -225,6 +225,15 @@ const isActive = (href: string) =>
           if (h.classList.contains("dark")) return "dark";
           return "system";
         }
+        function applyStoredTheme(){
+          const h=document.documentElement;
+          h.classList.remove("light","dark");
+          try{
+            const t=localStorage.getItem("theme");
+            if(t==="light") h.classList.add("light");
+            else if(t==="dark") h.classList.add("dark");
+          }catch{}
+        }
         function sync() {
           const btn = document.getElementById("theme-toggle");
           const icon = document.getElementById("theme-icon");
@@ -256,14 +265,15 @@ const isActive = (href: string) =>
           if (t instanceof Element && t.closest("#theme-toggle")) cycle();
         });
         document.addEventListener("astro:after-swap", () => {
+          applyStoredTheme();
           sync();
-          const meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) {
-            const sysLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-            meta.content = current() === "light" || (current() === "system" && sysLight) ? "#ffffff" : "#010102";
-          }
+        });
+        document.addEventListener("astro:page-load", () => {
+          applyStoredTheme();
+          sync();
         });
         window.matchMedia("(prefers-color-scheme: light)").addEventListener?.("change", sync);
+        applyStoredTheme();
         sync();
       })();
 
