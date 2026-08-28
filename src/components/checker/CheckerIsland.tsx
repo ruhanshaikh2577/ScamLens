@@ -1,6 +1,18 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
 
+async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
+  try {
+    const res = await fetch("/api/analyze", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ input, kind }),
+    });
+    if (res.ok) return (await res.json()) as AnalysisResult;
+  } catch {}
+  return analyze(input, kind);
+}
+
 type Tab = "text" | "image" | "link";
 
 const MAX_BYTES = 10 * 1024 * 1024;
@@ -144,7 +156,7 @@ export default function CheckerIsland() {
       } catch {}
       clearInterval(crawl);
       const ok = !!extracted.trim();
-      setResult(analyze(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
+      setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
       setDemoNote(!ok);
       setProgress(100);
       setPhase("done");
@@ -158,13 +170,13 @@ export default function CheckerIsland() {
       () => setProgress((p) => Math.min(p + Math.round(88 / (delay / 250)), 94)),
       250
     );
-    setTimeout(() => {
+    setTimeout(async () => {
       clearInterval(tick);
       clearInterval(bar);
       setProgress(100);
       const input = tab === "text" ? text : url;
       const kind = tab === "link" || (tab === "text" && looksLikeUrl(text)) ? "url" : "message";
-      setResult(analyze(input, kind));
+      setResult(await analyzeWithFallback(input, kind));
       setPhase("done");
     }, delay);
   }
