@@ -234,8 +234,9 @@ const isActive = (href: string) =>
         }
         function cycle() {
           const h = document.documentElement;
+          const cur = current();
           h.classList.remove("light", "dark");
-          const next = order[(order.indexOf(current()) + 1) % 3];
+          const next = order[(order.indexOf(cur) + 1) % 3];
           try {
             if (next === "light") { h.classList.add("light"); localStorage.setItem("theme", "light"); }
             else if (next === "dark") { h.classList.add("dark"); localStorage.setItem("theme", "dark"); }
