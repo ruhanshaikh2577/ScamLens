@@ -9,13 +9,16 @@ import { analyze, type AnalysisResult } from "./lib/analyzer";
 // This helper is exported for the optional extension popup that may call the API directly.
 export async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
   try {
-    const res = await fetch("/api/analyze", {
+    const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
+    const res = await fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ input, kind }),
     });
     if (res.ok) return (await res.json()) as AnalysisResult;
-  } catch {}
+  } catch (e) {
+    if (import.meta.env.DEV) console.warn("[analyzeWithFallback]", e);
+  }
   return analyze(input, kind);
 }
 

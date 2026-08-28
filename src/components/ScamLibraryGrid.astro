@@ -28,12 +28,13 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
           id="library-search"
           type="search"
           placeholder="Search scams… e.g. UPI, courier, job"
+          aria-controls="library-grid"
           class="w-full rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-sm text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none min-h-[44px]"
         />
       </label>
     </div>
 
-    <div id="library-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div id="library-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
       {scams.map((s, i) => (
         <a
           href={`/scams/${s.id}`}
@@ -50,7 +51,7 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
       ))}
     </div>
 
-    <p id="library-empty" class="mt-10 hidden text-center text-body-sm text-ink-subtle">
+    <p id="library-empty" class="mt-10 hidden text-center text-body-sm text-ink-subtle" aria-live="polite" role="status">
       No matches yet — we're adding new patterns every week.
     </p>
 

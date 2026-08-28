@@ -4,13 +4,16 @@ import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDat
 
 async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
   try {
-    const res = await fetch("/api/analyze", {
+    const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
+    const res = await fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ input, kind }),
     });
     if (res.ok) return (await res.json()) as AnalysisResult;
-  } catch {}
+  } catch (e) {
+    if (import.meta.env.DEV) console.warn("[analyzeWithFallback]", e);
+  }
   return analyze(input, kind);
 }
 
@@ -103,6 +106,7 @@ export default function CheckerIsland() {
       return;
     }
     setFile(f);
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
     setPreviewUrl(URL.createObjectURL(f));
     setTab("image");
   }
@@ -154,7 +158,9 @@ export default function CheckerIsland() {
           setProgress(25 + Math.round(p * 70));
           setStatusLine(Math.min(1 + Math.floor(p * (SCAN_STEPS.length - 1)), SCAN_STEPS.length - 1));
         });
-      } catch {}
+      } catch (e) {
+        if (import.meta.env.DEV) console.warn("[ocr]", e);
+      }
       clearInterval(crawl);
       const ok = !!extracted.trim();
       setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
@@ -196,7 +202,7 @@ export default function CheckerIsland() {
   function onCheckerDragOver(e: DragEvent) {
     e.preventDefault();
     if (e.dataTransfer) e.dataTransfer.dropEffect = "copy";
-    setDragActive(true);
+    if (!dragActive) setDragActive(true);
   }
   function onCheckerDragLeave(e: DragEvent) {
     e.preventDefault();
@@ -220,7 +226,9 @@ export default function CheckerIsland() {
           const txt = await f.text();
           handleTextDrop(txt);
           return;
-        } catch {}
+        } catch (e) {
+          if (import.meta.env.DEV) console.warn("[drop txt]", e);
+        }
       }
       if (f.type === "application/pdf") {
         setFileError("PDFs coming soon — for now paste the text or screenshot the letter.");
@@ -231,7 +239,9 @@ export default function CheckerIsland() {
       try {
         const txt = await f.text();
         if (txt.trim()) { handleTextDrop(txt); return; }
-      } catch {}
+      } catch (e) {
+        if (import.meta.env.DEV) console.warn("[drop fallback]", e);
+      }
       setFileError("Only PNG, JPG or WEBP images are supported.");
       return;
     }
@@ -240,7 +250,7 @@ export default function CheckerIsland() {
   }
 
   function onPaste(e: ClipboardEvent) {
-    const items = (e as any).clipboardData?.items as DataTransferItemList | undefined;
+    const items = (e.clipboardData as DataTransfer | null)?.items as DataTransferItemList | undefined;
     if (!items) return;
     for (let i = 0; i < items.length; i++) {
       const it = items[i];
@@ -282,12 +292,17 @@ export default function CheckerIsland() {
                 setFileError("");
               }}
               onKeyDown={(e) => {
-                if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+                let next: typeof TABS[number] | null = null;
+                if (e.key === "ArrowRight") next = TABS[(idx + 1) % TABS.length];
+                else if (e.key === "ArrowLeft") next = TABS[(idx - 1 + TABS.length) % TABS.length];
+                else if (e.key === "Home") next = TABS[0];
+                else if (e.key === "End") next = TABS[TABS.length - 1];
+                else return;
                 e.preventDefault();
-                const dir = e.key === "ArrowRight" ? 1 : -1;
-                const next = TABS[(idx + dir + TABS.length) % TABS.length];
-                setTab(next.id);
-                document.getElementById(`tab-${next.id}`)?.focus();
+                if (next) {
+                  setTab(next.id);
+                  requestAnimationFrame(() => document.getElementById(`tab-${next!.id}`)?.focus());
+                }
               }}
               class={
                 "rounded-full px-4 py-2 text-sm font-medium transition-colors min-h-[44px] inline-flex items-center justify-center " +

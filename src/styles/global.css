@@ -58,7 +58,7 @@
   --light-ink: #18191b;
   --light-ink-muted: #3c4149;
   --light-ink-subtle: #6f747d;
-  --light-ink-tertiary: #8a8f98;
+  --light-ink-tertiary: #6f747d;
 }
 
 /* Light/Dark auto — flip semantic vars under light preference (DESIGN.md inverse tokens) */
@@ -104,7 +104,7 @@ html.dark {
   --color-ink: #f7f8f8;
   --color-ink-muted: #d0d6e0;
   --color-ink-subtle: #8a8f98;
-  --color-ink-tertiary: #62666d;
+  --color-ink-tertiary: #8a8f98;
 }
 
 @layer base {
@@ -271,6 +271,7 @@ html.dark {
     height: 7px;
     border-radius: 9999px;
     background: currentColor;
+    will-change: transform, opacity;
   }
   .risk-high .risk-dot,
   .risk-critical .risk-dot {
@@ -336,6 +337,7 @@ html.dark {
     filter: blur(110px);
     opacity: 0.32;
     background: radial-gradient(circle at center, var(--color-primary), transparent 65%);
+    will-change: transform;
   }
   .aurora::before {
     left: 12%;
@@ -488,12 +490,13 @@ html.dark {
   }
 }
 @keyframes risk-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 45%, transparent);
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
   }
   50% {
-    box-shadow: 0 0 0 5px color-mix(in srgb, currentColor 0%, transparent);
+    transform: scale(1.4);
+    opacity: 0.7;
   }
 }
 @keyframes aurora-a {
