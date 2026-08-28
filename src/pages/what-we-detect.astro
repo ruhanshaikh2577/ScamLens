@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import WhatWeDetect from "../components/WhatWeDetect.astro";
 import CTA from "../components/CTA.astro";
+import QuizIsland from "../components/QuizIsland.tsx";
+import SimulatorIsland from "../components/SimulatorIsland.tsx";
 
 const title = "What ScamLens Detects — Scam Patterns, Phishing & Fraud Signals | ScamLens";
 const description = "Every signal the ScamLens checker looks for: urgency, payment asks, OTP theft, bank/courier/government impersonation, UPI tricks, shorteners, look-alike domains, punycode spoofs and more.";
@@ -26,6 +28,13 @@ const description = "Every signal the ScamLens checker looks for: urgency, payme
   </section>
 
   <WhatWeDetect extended />
+
+  <section class="border-t border-hairline px-4 py-12 sm:px-6">
+    <div class="mx-auto max-w-3xl space-y-8">
+      <QuizIsland client:load />
+      <SimulatorIsland client:load />
+    </div>
+  </section>
 
   <section class="border-t border-hairline px-4 py-16 sm:px-6">
     <div class="mx-auto max-w-3xl" data-reveal>

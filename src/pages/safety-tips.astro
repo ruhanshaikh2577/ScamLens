@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import SafetyTips from "../components/SafetyTips.astro";
 import CTA from "../components/CTA.astro";
+import QuizIsland from "../components/QuizIsland.tsx";
+import SimulatorIsland from "../components/SimulatorIsland.tsx";
 
 const title = "Safety Tips — 13 Rules That Stop Almost Every Scam | ScamLens";
 const description = "A printable checklist of the rules that defeat most scams: OTP discipline, QR/UPI logic, urgency tells, verification habits, investment guarantees, loan-app traps and golden-hour reporting.";
@@ -25,6 +27,13 @@ const description = "A printable checklist of the rules that defeat most scams: 
   </section>
 
   <SafetyTips />
+
+  <section class="border-t border-hairline px-4 py-12 sm:px-6">
+    <div class="mx-auto max-w-3xl space-y-8">
+      <SimulatorIsland client:load />
+      <QuizIsland client:load />
+    </div>
+  </section>
 
   <section class="border-t border-hairline px-4 pb-8 sm:px-6">
     <div class="mx-auto max-w-3xl" data-reveal>
