@@ -26,7 +26,7 @@ export interface AnalysisResult {
 const DISCLAIMER =
   "Decision support, not a guarantee. Language patterns alone never prove a scam — verify via official channels.";
 
-const VERSION = "0.1.1";
+export const VERSION = "0.1.1";
 
 export interface AnalysisMeta {
   analyzerVersion: string;
