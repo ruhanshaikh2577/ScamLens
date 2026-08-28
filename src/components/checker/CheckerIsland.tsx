@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
+import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
 
 async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
   try {
@@ -421,10 +422,46 @@ export default function CheckerIsland() {
 
 function ResultView({ result, demo, onReset }: { result: AnalysisResult; demo: boolean; onReset: () => void }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "done">("idle");
+  const [historyCleared, setHistoryCleared] = useState(false);
   useEffect(() => {
-    // Move focus to the verdict for keyboard/screen-reader users after a scan.
     headingRef.current?.focus();
   }, []);
+  useEffect(() => {
+    saveHistory(result);
+    setHistory(loadHistory());
+  }, [result]);
+
+  async function doShare() {
+    setShareStatus("sharing");
+    try {
+      const dataUrl = generateShareCard(result);
+      if (!dataUrl) { setShareStatus("idle"); return; }
+      const filename = `scamlens-${result.risk}-${Date.now()}.png`;
+      const outcome = await shareCardDataUrl(dataUrl, filename, result.headline);
+      setShareStatus(outcome === "failed" ? "idle" : "done");
+      setTimeout(() => setShareStatus("idle"), 2200);
+    } catch {
+      setShareStatus("idle");
+    }
+  }
+  function doDownload() {
+    const dataUrl = generateShareCard(result);
+    if (!dataUrl) return;
+    const a = document.createElement("a");
+    a.href = dataUrl;
+    a.download = `scamlens-${result.risk}-${Date.now()}.png`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+  function handleClear() {
+    clearHistory();
+    setHistory([]);
+    setHistoryCleared(true);
+    setTimeout(() => setHistoryCleared(false), 2000);
+  }
   return (
     <div id="checker-result" class="card panel-top-edge scale-in mx-auto w-full max-w-2xl p-5 sm:p-8">
       <div class="flex flex-wrap items-center justify-between gap-3">
@@ -489,6 +526,43 @@ function ResultView({ result, demo, onReset }: { result: AnalysisResult; demo: b
           </div>
         </section>
       )}
+
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="Share">
+        <h4 class="eyebrow">Share this check</h4>
+        <p class="mt-2 text-sm leading-relaxed text-ink-muted">Card shows the verdict and evidence summary with a verify link — no private numbers or raw message included.</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button onClick={doShare} disabled={shareStatus === "sharing"} class="btn btn-secondary">
+            {shareStatus === "sharing" ? "Preparing…" : shareStatus === "done" ? "Shared ✓" : "Share card"}
+          </button>
+          <button onClick={doDownload} class="btn btn-secondary">Download PNG</button>
+        </div>
+        <p class="mt-2 text-caption text-ink-tertiary">Uses canvas → navigator.share with file, falls back to download. Verify link: scamlens.in/how-it-works · {result.meta.analyzerVersion}</p>
+      </section>
+
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="Local history">
+        <div class="flex items-center justify-between gap-3">
+          <h4 class="eyebrow">Recent checks</h4>
+          <span class="rounded-full border border-hairline bg-canvas px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-ink-tertiary">Stored locally on this device</span>
+        </div>
+        <p class="mt-2 text-caption leading-relaxed text-ink-tertiary">No cloud sync. History saves only the verdict and detector list — never your raw message — so you can revisit checks offline.</p>
+        {history.length > 0 ? (
+          <>
+            <ul class="mt-3 space-y-2">
+              {history.slice(0, 8).map((h) => (
+                <li key={h.id} class="flex items-center justify-between gap-3 rounded-md border border-hairline bg-canvas px-3 py-2">
+                  <div class="min-w-0">
+                    <p class="truncate text-sm font-medium text-ink">{h.headline} <span class={`ml-1.5 rounded-full border px-1.5 py-0.5 text-[10px] ${RISK_CLASS[h.risk] ?? "risk-low"}`}>{h.risk}</span></p>
+                    <p class="truncate font-mono text-[11px] text-ink-tertiary">{new Date(h.timestamp).toLocaleString()} · {h.detectorIds.join(", ") || "no detectors"} · {h.analyzerVersion}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <button onClick={handleClear} class="btn btn-secondary mt-3 !min-h-0 !px-3 !py-1.5 !text-xs">{historyCleared ? "Cleared ✓" : "Clear history"}</button>
+          </>
+        ) : (
+          <p class="mt-3 rounded-md border border-dashed border-hairline bg-canvas px-3 py-3 text-center text-sm text-ink-tertiary">No history yet — your next scan will appear here.</p>
+        )}
+      </section>
 
       <div class="mt-6 flex flex-col gap-2 rounded-lg border border-hairline bg-surface-2 p-4 sm:flex-row sm:items-center">
         <p class="flex-1 text-sm text-ink-muted">Lost money or shared details? Act within the golden hour.</p>
