@@ -1,11 +1,6 @@
 import { useMemo, useState } from "preact/hooks";
 import { analyze } from "../lib/analyzer";
-
-function looksLikeUrl(s: string): boolean {
-  const t = s.trim();
-  if (/^https?:\/\//i.test(t)) return true;
-  return /^[\w-]+(\.[\w-]+)*\.[a-z]{2,24}(\/\S*)?$/i.test(t);
-}
+import { looksLikeUrl } from "../lib/url";
 
 interface Preset {
   label: string;

@@ -1,8 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CTA from "../components/CTA.astro";
-
-const VERSION = "0.1.1";
+import { VERSION } from "../lib/version";
 const { lastUpdated } = Astro.props as { lastUpdated?: string | Date };
 const displayDate = lastUpdated
   ? new Date(lastUpdated).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })

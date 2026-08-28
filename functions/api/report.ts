@@ -1,5 +1,6 @@
 import { validateReportPayload } from "../_shared/validate";
-import { analyze, VERSION } from "../../src/lib/analyzer";
+import { analyze } from "../../src/lib/analyzer";
+import { VERSION } from "../../src/lib/version";
 
 export async function onRequestPost({ request, env }: any) {
   let body: any;

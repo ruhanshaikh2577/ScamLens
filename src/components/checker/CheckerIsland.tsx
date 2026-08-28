@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
+import { looksLikeUrl } from "../../lib/url";
 import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
 
 async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
@@ -64,13 +65,6 @@ const RISK_CLASS: Record<RiskLevel, string> = {
   high: "risk-high",
   critical: "risk-critical",
 };
-
-function looksLikeUrl(s: string): boolean {
-  const t = s.trim();
-  if (/^https?:\/\//i.test(t)) return true;
-  // host.tld[/path] with an alphabetic TLD — avoids treating “8.pm” in prose as a link
-  return /^[\w-]+(\.[\w-]+)*\.[a-z]{2,24}(\/\S*)?$/i.test(t);
-}
 
 export default function CheckerIsland() {
   const [tab, setTab] = useState<Tab>("text");
