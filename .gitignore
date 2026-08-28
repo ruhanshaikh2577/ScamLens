@@ -20,5 +20,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# scam template — reference only, not a real entry
+src/content/scams/_template.md
+
 # jetbrains setting folder
 .idea/
