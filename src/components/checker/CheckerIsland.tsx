@@ -315,6 +315,7 @@ export default function CheckerIsland() {
 
       <div id="panel-text" role="tabpanel" aria-labelledby="tab-text" hidden={tab !== "text"}>
         <textarea
+          aria-label="Paste message to check"
           value={text}
           onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
           onKeyDown={(e) => (e.key === "Enter" && (e.ctrlKey || e.metaKey)) && scan()}
@@ -329,6 +330,7 @@ export default function CheckerIsland() {
       <div id="panel-link" role="tabpanel" aria-labelledby="tab-link" hidden={tab !== "link"}>
         <input
           type="text"
+          aria-label="Paste link to check"
           value={url}
           onInput={(e) => setUrl((e.target as HTMLInputElement).value)}
           onKeyDown={(e) => e.key === "Enter" && scan()}
@@ -365,6 +367,7 @@ export default function CheckerIsland() {
               <span class="text-caption text-ink-tertiary">PNG, JPG, WEBP · up to 10 MB · analysed locally</span>
               <input
                 type="file"
+                aria-label="Upload screenshot"
                 accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
                 class="hidden"
                 onChange={(e) => pickFile((e.target as HTMLInputElement).files?.[0])}

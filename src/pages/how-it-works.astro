@@ -179,6 +179,16 @@ const urlSignals = [
       </p>
     </section>
 
+    <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="evaluation">
+      <h2 class="headline">Evaluation — synthetic 25+25 (internal)</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        Sprint 3 added a synthetic internal corpus: 25 scam + 25 legitimate messages (not real user reports) to estimate the rule-based engine’s behaviour. On this corpus the detector flags ≥80% of scam cases as <em>Medium</em> or higher and marks ≥85% of legitimate cases as <em>Low</em> (precision/recall for this tiny synthetic set, not a marketing claim). The corpus is versioned in <code class="evidence-pill">src/lib/corpus.test.ts</code> and is not exposed as a live counter.
+      </p>
+      <p class="mt-3 text-caption leading-relaxed text-ink-tertiary">
+        This is internal evaluation, not a guarantee. A “Low” result never means safe — always verify via official channels.
+      </p>
+    </section>
+
     <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="limitations">
       <h2 class="headline">Limitations</h2>
       <ul class="mt-4 space-y-2.5 text-body leading-relaxed text-ink-muted">

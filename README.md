@@ -1,4 +1,4 @@
-# ScamLens — AI Scam Detector
+# ScamLens — Rule-Based Scam Detector
 
 > Verify website safety. Check fake websites, phishing links, malicious URLs and scam screenshots with real-time fraud detection.
 
