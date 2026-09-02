@@ -64,6 +64,7 @@ export const SIMILAR: Record<string, SimilarScam> = {
 const SHORTENERS = [
   "bit.ly", "tinyurl.com", "t.co", "goo.gl", "cutt.ly", "rb.gy", "is.gd",
   "shorturl.at", "rebrand.ly", "tiny.cc", "ow.ly", "buff.ly", "lnkd.in", "s.id",
+  "t.ly", "bitly.com", "tiny.one", "short.gy", "lc.chat",
 ];
 
 const DETECTORS: Detector[] = [
@@ -352,12 +353,16 @@ function urlFindings(raw: string): Finding[] {
       evidence: url.search.slice(0, 60),
     });
   }
+  // Brand-mismatch: host + path both checked (bit.ly/hdfcbank-... should flag), hyphens stripped so hdfc-bank still hits.
+  // Legit article example.com/hdfcbank-review would also flag — acceptable false positive tradeoff for phishing; user can verify.
   for (const { brand, official } of BRANDS) {
-    if (full.includes(brand) && !official.some((d) => host === d || host.endsWith(`.${d}`))) {
+    const brandInUrl = full.includes(brand) || full.replace(/-/g, "").includes(brand);
+    const isOfficial = official.some((d) => host === d || host.endsWith(`.${d}`));
+    if (brandInUrl && !isOfficial) {
       findings.push({
         id: "url-brand-mismatch",
         label: `Domain pretends to be ${brand} but isn't the official site`,
-        evidence: full.replace(/\/$/, ""),
+        evidence: full.replace(/\/$/, "") || host,
       });
       break;
     }
@@ -394,12 +399,15 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
   weights["url-brand-mismatch"] = 3;
   weights["url-insecure-http"] = 1;
   weights["url-userinfo"] = 3;
-  weights["url-apk"] = 4;
+  weights["url-apk"] = 5;
   weights["url-tld"] = 1;
   weights["url-credentials"] = 2;
 
   const score = findings.reduce((sum, f) => sum + (weights[f.id] ?? 1), 0);
-  const risk = riskFor(score);
+  // APK alone should be at least high (malware vector)
+  const hasApk = findings.some((f) => f.id === "url-apk");
+  let risk = riskFor(score);
+  if (hasApk && risk === "medium") risk = "high";
 
   const stepsByWeight = new Map<string, string>();
   for (const f of findings) {
