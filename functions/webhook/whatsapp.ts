@@ -9,6 +9,13 @@ export async function hmacSHA256(message: string, secret: string): Promise<strin
     .join("");
 }
 
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let out = 0;
+  for (let i = 0; i < a.length; i++) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return out === 0;
+}
+
 export async function onRequestGet({ request, env }: any) {
   const u = new URL(request.url);
   const token = u.searchParams.get("hub.verify_token");
@@ -30,7 +37,7 @@ export async function onRequestPost({ request, env }: any) {
       return new Response("forbidden", { status: 401 });
     }
     const expected = "sha256=" + (await hmacSHA256(raw, env.WHATSAPP_APP_SECRET));
-    if (sig !== expected) return new Response("forbidden", { status: 401 });
+    if (!timingSafeEqual(sig, expected)) return new Response("forbidden", { status: 401 });
     try {
       body = raw ? JSON.parse(raw) : {};
     } catch {

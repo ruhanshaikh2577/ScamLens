@@ -8,11 +8,18 @@ export async function onRequestGet({ request, env }: any) {
   return new Response(challenge, { status: 200 });
 }
 
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let out = 0;
+  for (let i = 0; i < a.length; i++) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return out === 0;
+}
+
 export async function onRequestPost({ request, env }: any) {
   // Telegram secret token verify if TELEGRAM_SECRET_TOKEN is set (X-Telegram-Bot-Api-Secret-Token)
   if (env?.TELEGRAM_SECRET_TOKEN) {
     const secret = request.headers.get("x-telegram-bot-api-secret-token") ?? request.headers.get("X-Telegram-Bot-Api-Secret-Token") ?? "";
-    if (secret !== env.TELEGRAM_SECRET_TOKEN) return new Response("forbidden", { status: 401 });
+    if (!timingSafeEqual(secret, env.TELEGRAM_SECRET_TOKEN)) return new Response("forbidden", { status: 401 });
   }
   let body: any;
   try {

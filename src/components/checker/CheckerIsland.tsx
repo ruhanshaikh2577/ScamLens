@@ -99,7 +99,10 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [fileError, setFileError] = useState("");
-  useEffect(() => () => { if (previewUrl) URL.revokeObjectURL(previewUrl); }, [previewUrl]);
+  // Fix stale closure: use ref for cleanup so all callers revoke via same ref (final-review Important #7)
+  const previewUrlRef = useRef<string | null>(null);
+  useEffect(() => { previewUrlRef.current = previewUrl; }, [previewUrl]);
+  useEffect(() => () => { if (previewUrlRef.current) URL.revokeObjectURL(previewUrlRef.current); }, []);
   const [dragging, setDragging] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const dragCounter = useRef(0);

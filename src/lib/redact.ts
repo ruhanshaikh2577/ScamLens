@@ -7,7 +7,8 @@ const PATTERNS: Array<[RegExp, string]> = [
   [/(?:\+91[ -]?)?\b[6-9]\d{9}\b/g, "**********"],
   // UPI handle — mask local part
   [/\b[\w.-]{2,}@(?:ybl|paytm|oksbi|okhdfc|okaxis|axl|ibl|icl|upi)\b/gi, "***@***"],
-  // 6-digit OTP / PIN — only when near code keywords or standalone 6 digits on a short line; keep broad but after card/mobile so we don't double-mask
+  // 6-digit OTP / PIN — broad \b\d{6}\b also masks 6-digit prices (e.g. 123456→******); keeping broad intentional — OTP coverage wins, tests expect this (see final-review Important #4). Tighten to OTP-context regex if price masking proves noisy.
+  // ponytail: broad intentional, do not narrow without checking redact edge tests
   [/\b\d{6}\b/g, "******"],
 ];
 
