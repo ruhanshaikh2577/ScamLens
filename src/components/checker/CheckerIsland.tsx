@@ -2,6 +2,27 @@ import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
 import { looksLikeUrl } from "../../lib/url";
 import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
+import enDict from "../../i18n/translations/en";
+import type { Lang } from "../../i18n/ui";
+
+// ponytail: keep en bundled, lazy-load other locales to cut ~100KB from initial CheckerIsland chunk
+const dicts: Record<string, Record<string, string>> = {
+  en: enDict as unknown as Record<string,string>,
+};
+const loaders: Record<string, () => Promise<Record<string,string>>> = {
+  es: () => import("../../i18n/translations/es").then(m => m.default as unknown as Record<string,string>),
+  fr: () => import("../../i18n/translations/fr").then(m => m.default as unknown as Record<string,string>),
+  de: () => import("../../i18n/translations/de").then(m => m.default as unknown as Record<string,string>),
+  "pt-br": () => import("../../i18n/translations/pt-br").then(m => m.default as unknown as Record<string,string>),
+  it: () => import("../../i18n/translations/it").then(m => m.default as unknown as Record<string,string>),
+  ja: () => import("../../i18n/translations/ja").then(m => m.default as unknown as Record<string,string>),
+  ko: () => import("../../i18n/translations/ko").then(m => m.default as unknown as Record<string,string>),
+};
+function getT(lang: string) {
+  const d = (dicts[lang] ?? dicts.en) as Record<string,string>;
+  const fb = dicts.en as Record<string,string>;
+  return (key: string) => d[key] ?? fb[key] ?? key;
+}
 
 async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
   try {
@@ -41,23 +62,10 @@ async function ocrFile(file: File, onProgress: (p: number) => void): Promise<str
   }
 }
 
-const TABS: Array<{ id: Tab; label: string }> = [
-  { id: "text", label: "Message" },
-  { id: "image", label: "Screenshot" },
-  { id: "link", label: "Link" },
-];
-
 // Fallback when OCR can't run (offline, engine failed): analyze a representative
 // sample so the flow still teaches the pattern — clearly labelled as demo output.
 const SAMPLE_OCR_TEXT =
   "Dear customer, your KYC has expired. Update Aadhaar within 24 hours or your account will be closed today. Pay Rs 99 processing fee via UPI: fastagpay@ybl bit.ly/kyc-upd";
-
-const SCAN_STEPS = [
-  "Reading your input…",
-  "Redacting sensitive numbers…",
-  "Checking urgency & payment cues…",
-  "Matching known scam patterns…",
-];
 
 const RISK_CLASS: Record<RiskLevel, string> = {
   low: "risk-low",
@@ -66,13 +74,32 @@ const RISK_CLASS: Record<RiskLevel, string> = {
   critical: "risk-critical",
 };
 
-export default function CheckerIsland() {
+export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) {
+  const [, forceUpdate] = useState(0);
+  useEffect(() => {
+    if (lang !== "en" && !dicts[lang] && loaders[lang]) {
+      loaders[lang]().then(d => { dicts[lang] = d; forceUpdate(v => v + 1); });
+    }
+  }, [lang]);
+  const t = getT(lang);
+  const TABS: Array<{ id: Tab; label: string }> = [
+    { id: "text", label: t("checker.tab.message") },
+    { id: "image", label: t("checker.tab.screenshot") },
+    { id: "link", label: t("checker.tab.link") },
+  ];
+  const SCAN_STEPS = [
+    t("checker.scanSteps.1"),
+    t("checker.scanSteps.2"),
+    t("checker.scanSteps.3"),
+    t("checker.scanSteps.4"),
+  ];
   const [tab, setTab] = useState<Tab>("text");
   const [text, setText] = useState("");
   const [url, setUrl] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [fileError, setFileError] = useState("");
+  useEffect(() => () => { if (previewUrl) URL.revokeObjectURL(previewUrl); }, [previewUrl]);
   const [dragging, setDragging] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const dragCounter = useRef(0);
@@ -92,11 +119,11 @@ export default function CheckerIsland() {
     setFileError("");
     if (!f) return;
     if (!ACCEPTED.includes(f.type)) {
-      setFileError("Only PNG, JPG or WEBP images are supported.");
+      setFileError(t("checker.error.type"));
       return;
     }
     if (f.size > MAX_BYTES) {
-      setFileError("Image is over 10 MB. Please upload a smaller file.");
+      setFileError(t("checker.error.size"));
       return;
     }
     setFile(f);
@@ -156,7 +183,9 @@ export default function CheckerIsland() {
         if (import.meta.env.DEV) console.warn("[ocr]", e);
       }
       clearInterval(crawl);
-      const ok = !!extracted.trim();
+      const trimmed = extracted.trim();
+      const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
+      const ok = trimmed.length >= 24 && wordCount >= 4;
       setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
       setDemoNote(!ok);
       setProgress(100);
@@ -184,7 +213,7 @@ export default function CheckerIsland() {
 
   if (phase === "done" && result) {
     return (
-      <ResultView result={result} demo={demoNote} onReset={reset} />
+      <ResultView result={result} demo={demoNote} onReset={reset} lang={lang} />
     );
   }
 
@@ -225,7 +254,7 @@ export default function CheckerIsland() {
         }
       }
       if (f.type === "application/pdf") {
-        setFileError("PDFs coming soon — for now paste the text or screenshot the letter.");
+        setFileError(t("checker.error.pdf"));
         setTab("text");
         return;
       }
@@ -236,7 +265,7 @@ export default function CheckerIsland() {
       } catch (e) {
         if (import.meta.env.DEV) console.warn("[drop fallback]", e);
       }
-      setFileError("Only PNG, JPG or WEBP images are supported.");
+      setFileError(t("checker.error.type"));
       return;
     }
     const uri = e.dataTransfer?.getData("text/uri-list") || e.dataTransfer?.getData("text/plain") || "";
@@ -268,8 +297,8 @@ export default function CheckerIsland() {
       {dragActive && (
         <div class="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 rounded-lg bg-canvas/85 backdrop-blur border-2 border-dashed border-primary-hover">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5e6ad2" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4M8 8l4-4 4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
-          <p class="text-sm font-medium text-ink">Drop message, link, or screenshot to scan</p>
-          <p class="text-caption text-ink-muted">Text · URLs · PNG/JPG/WEBP · TXT</p>
+          <p class="text-sm font-medium text-ink">{t("checker.dropOverlay.title")}</p>
+          <p class="text-caption text-ink-muted">{t("checker.dropOverlay.subtitle")}</p>
         </div>
       )}
       <div class="flex items-center justify-center">
@@ -309,32 +338,41 @@ export default function CheckerIsland() {
         </div>
       </div>
 
+      <div class="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono tracking-wide text-ink-tertiary" aria-label="Trust signals">
+        <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" /> {t("checker.trust.clientSide")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span>
+        <span>{t("checker.trust.redacted")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span>
+        <span>{t("checker.trust.notStored")}</span>
+        <a href={`${lang==="en" ? "" : `/${lang}`}/how-it-works#redaction`.replace("//","/")} class="ml-1 underline decoration-hairline-strong underline-offset-4 hover:text-ink-muted">{t("checker.trust.howLink")}</a>
+      </div>
+
       <p class="mt-4 rounded-lg border border-hairline bg-surface-2 px-3 py-2 text-center text-[13px] leading-snug text-ink-muted">
-        Avoid pasting OTPs, PINs or passwords. We redact them automatically before analysis.
+        {t("checker.warn")}
       </p>
 
       <div id="panel-text" role="tabpanel" aria-labelledby="tab-text" hidden={tab !== "text"}>
         <textarea
-          aria-label="Paste message to check"
+          aria-label={t("checker.aria.message")}
           value={text}
           onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
           onKeyDown={(e) => (e.key === "Enter" && (e.ctrlKey || e.metaKey)) && scan()}
           rows={7}
           maxlength={10000}
-          placeholder="Paste the WhatsApp / SMS / email / Instagram message here…"
+          placeholder={t("checker.placeholder.message")}
           class="mt-4 w-full resize-y rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-body leading-relaxed text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none focus-visible:outline-2 focus-visible:outline-primary-focus/50"
         />
-        <p class="mt-1 text-caption text-ink-tertiary">Tip: press Ctrl + Enter to scan instantly.</p>
+        <p class="mt-1 text-caption text-ink-tertiary">{t("checker.tip")}</p>
       </div>
 
       <div id="panel-link" role="tabpanel" aria-labelledby="tab-link" hidden={tab !== "link"}>
         <input
           type="text"
-          aria-label="Paste link to check"
+          aria-label={t("checker.aria.link")}
           value={url}
           onInput={(e) => setUrl((e.target as HTMLInputElement).value)}
           onKeyDown={(e) => e.key === "Enter" && scan()}
-          placeholder="https://suspicious-link.example…"
+          placeholder={t("checker.placeholder.link")}
           class="mt-4 w-full rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-body text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none"
         />
       </div>
@@ -363,11 +401,11 @@ export default function CheckerIsland() {
                 <circle cx="9" cy="10" r="1.5" />
                 <path d="M21 16l-5-5-9 8" />
               </svg>
-              <span class="text-sm text-ink">Drop a screenshot or click to upload</span>
-              <span class="text-caption text-ink-tertiary">PNG, JPG, WEBP · up to 10 MB · analysed locally</span>
+              <span class="text-sm text-ink">{t("checker.placeholder.drop")}</span>
+              <span class="text-caption text-ink-tertiary">{t("checker.placeholder.dropHint")}</span>
               <input
                 type="file"
-                aria-label="Upload screenshot"
+                aria-label={t("checker.aria.upload")}
                 accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
                 class="hidden"
                 onChange={(e) => pickFile((e.target as HTMLInputElement).files?.[0])}
@@ -383,7 +421,7 @@ export default function CheckerIsland() {
                   <p class="truncate text-sm text-ink">{file.name}</p>
                   <p class="text-caption text-ink-tertiary">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                   <button onClick={clearFile} class="btn btn-secondary mt-2 !px-2.5 !py-1 !text-xs min-h-[44px]">
-                    Remove
+                    {t("checker.file.remove")}
                   </button>
                 </div>
               </div>
@@ -395,10 +433,10 @@ export default function CheckerIsland() {
 
       <div class="mt-5 flex items-center justify-between gap-3">
         <p class="hidden text-caption text-ink-tertiary sm:block">
-          One checker for every input · nothing is stored
+          {t("checker.dragHint")}
         </p>
         <button onClick={scan} disabled={!canScan} class="btn btn-primary ml-auto w-full sm:w-auto sm:min-w-32">
-          {phase === "scanning" ? "Scanning…" : "Scan"}
+          {phase === "scanning" ? t("checker.scanning") : t("checker.scan")}
         </button>
       </div>
 
@@ -432,11 +470,18 @@ export default function CheckerIsland() {
   );
 }
 
-function ResultView({ result, demo, onReset }: { result: AnalysisResult; demo: boolean; onReset: () => void }) {
+function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisResult; demo: boolean; onReset: () => void; lang?: string }) {
+  const t = getT(lang);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [shareStatus, setShareStatus] = useState<"idle" | "sharing" | "done">("idle");
   const [historyCleared, setHistoryCleared] = useState(false);
+  const RISK_LABEL: Record<RiskLevel, string> = {
+    low: t("checker.result.risk.low"),
+    medium: t("checker.result.risk.medium"),
+    high: t("checker.result.risk.high"),
+    critical: t("checker.result.risk.critical"),
+  };
   useEffect(() => {
     headingRef.current?.focus();
   }, []);
@@ -479,7 +524,7 @@ function ResultView({ result, demo, onReset }: { result: AnalysisResult; demo: b
       <div class="flex flex-wrap items-center justify-between gap-3">
         <span class={`risk-badge ${RISK_CLASS[result.risk]}`}>
           <span class="risk-dot" />
-          {result.risk.toUpperCase()} RISK
+          {RISK_LABEL[result.risk]}
         </span>
         <button onClick={onReset} class="btn btn-secondary !min-h-0 !px-3 !py-1.5 !text-xs">
           Scan something else
@@ -492,14 +537,13 @@ function ResultView({ result, demo, onReset }: { result: AnalysisResult; demo: b
 
       {demo && (
         <p class="mt-2 rounded-lg border border-hairline bg-surface-2 px-3 py-2 text-[13px] text-ink-muted">
-          OCR couldn't run for this image (offline, or the text engine was blocked), so this is a demo
-          analysis of a typical scam screenshot — reconnect and try again to scan your actual image.
+          {t("checker.result.demo")}
         </p>
       )}
 
       {result.findings.length > 0 && (
-        <section class="mt-6" aria-label="Why we flagged this">
-          <h4 class="eyebrow">Why we flagged it</h4>
+        <section class="mt-6" aria-label={t("checker.result.why")}>
+          <h4 class="eyebrow">{t("checker.result.why")}</h4>
           <ul class="mt-3 space-y-4">
             {result.findings.map((f) => (
               <li key={f.id} class="flex gap-3">

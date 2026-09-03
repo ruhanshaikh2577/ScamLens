@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const dist = "dist";
@@ -32,13 +32,22 @@ html = html.replace(
   /@font-face\{[^}]*?\/_astro\/inter-(?!latin-wght-normal)[^}]*?\}/g,
   ""
 );
-const latinFont = readFileSync(
-  join(dist, "_astro", "inter-latin-wght-normal.Dx4kXJAl.woff2")
-).toString("base64");
-html = html.replace(
-  /url\(\/_astro\/inter-latin-wght-normal\.Dx4kXJAl\.woff2\)/g,
-  `url(data:font/woff2;base64,${latinFont})`
-);
+// Dynamically resolve Inter latin woff2 (hash changes on rebuild) — ponytail: no hardcoded hash
+let latinFont = null;
+let latinName = null;
+try {
+  const astroFiles = existsSync(join(dist, "_astro")) ? readdirSync(join(dist, "_astro")) : [];
+  latinName = astroFiles.find((f) => /^inter-latin-wght-normal\..*\.woff2$/.test(f)) ?? astroFiles.find((f) => /inter-latin.*\.woff2$/.test(f));
+  if (latinName) latinFont = readFileSync(join(dist, "_astro", latinName)).toString("base64");
+} catch {}
+if (latinFont && latinName) {
+  html = html.replace(
+    new RegExp(`url\\(/_astro/${latinName.replaceAll(".", "\\.")}\\)`, "g"),
+    `url(data:font/woff2;base64,${latinFont})`
+  );
+} else {
+  console.warn("Latin font not found for inline; leaving external ref");
+}
 
 html = html.replace(
   /<astro-island[^>]*>([\s\S]*?)<\/astro-island>/,

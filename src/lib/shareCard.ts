@@ -13,7 +13,25 @@ export interface HistoryEntry {
 }
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
-  const words = text.split(" ");
+  // Split on space but also handle long tokens (URLs/UPI) by hard-breaking mid-token
+  const tokens = text.split(" ");
+  const words: string[] = [];
+  for (const tok of tokens) {
+    if (ctx.measureText(tok).width <= maxWidth) {
+      words.push(tok);
+    } else {
+      // hard-break long token char by char
+      let chunk = "";
+      for (const ch of tok) {
+        const test = chunk + ch;
+        if (ctx.measureText(test).width > maxWidth && chunk) {
+          words.push(chunk);
+          chunk = ch;
+        } else chunk = test;
+      }
+      if (chunk) words.push(chunk);
+    }
+  }
   const lines: string[] = [];
   let cur = "";
   for (const w of words) {
@@ -21,9 +39,7 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): st
     if (ctx.measureText(test).width > maxWidth && cur) {
       lines.push(cur);
       cur = w;
-    } else {
-      cur = test;
-    }
+    } else cur = test;
   }
   if (cur) lines.push(cur);
   return lines.slice(0, 4);
