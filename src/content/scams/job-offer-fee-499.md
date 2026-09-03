@@ -21,6 +21,13 @@ whatToDo:
   - "Report the number/UPI handle on 1930 and cybercrime.gov.in with transaction proof."
 verify:
   "Search the company on LinkedIn and its official careers page — genuine openings exist there without fees. Check the recruiter's email domain matches the company. MCA's website lets you verify company registration numbers."
+faqs:
+  - q: "Is a work-from-home job with Rs 499 registration fee legitimate?"
+    a: "No. Real employers never charge to apply, train or verify documents. Any fee to start is the scam itself — the job doesn’t exist."
+  - q: "What does the offer letter look like?"
+    a: "A PDF with logos and a signature, asking for Rs 499-2000 via UPI before onboarding. Real offers don’t ask for payment and are verifiable via the company’s official careers page or HR phone."
+  - q: "How can I verify the company?"
+    a: "Search the company name on its official website’s careers section and call HR via the number on the website, not the one in the message. Check MCA or LinkedIn for the company’s real presence."
 similar:
   - "/scams/digital-arrest-video-call"
   - "/scams/upi-refund-qr"

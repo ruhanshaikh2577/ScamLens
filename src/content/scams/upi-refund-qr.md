@@ -21,6 +21,13 @@ whatToDo:
   - "If you authorised a payment, immediately report on 1930 and raise it in your UPI app's dispute flow."
 verify:
   "Open the merchant app (Amazon, Flipkart, IRCTC etc.) and check Orders → Refunds. Genuine refunds appear there without any action from you. Bank credits can be checked directly in your bank statement."
+faqs:
+  - q: "Can I receive money by scanning a QR code or entering my UPI PIN?"
+    a: "No. You never scan or enter your PIN to receive money — only to pay. Any QR or PIN request to ‘receive’ a refund is a payment trick."
+  - q: "What does the refund QR scam look like?"
+    a: "A buyer says ‘I’ll refund extra, scan this QR’ or sends a UPI collect request. The QR contains a pay-request for your account, not a receive. The UPI handle often looks like fastagpay@ybl or similar."
+  - q: "How should I handle a real refund?"
+    a: "Refunds go to your original payment method automatically. For marketplace sales, never accept QR-based refunds — ask for bank transfer or official app refund flow and verify in your bank app that money actually arrived."
 similar:
   - "/scams/fake-kyc-suspended"
   - "/scams/job-offer-fee-499"

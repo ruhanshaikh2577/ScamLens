@@ -13,7 +13,7 @@ export async function onRequestPost({ request }: any) {
     const status = v.error === "input too long" ? 413 : 400;
     return new Response(JSON.stringify({ error: v.error }), { status, headers: { "content-type": "application/json" } });
   }
-  const inputForAnalyze = v.kind === "message" ? v.redacted : v.input;
-  const result = analyze(inputForAnalyze, v.kind);
+  // Pass raw input — analyzer does internal redact so evidence is consistent across client/API/report/webhooks.
+  const result = analyze(v.input, v.kind);
   return new Response(JSON.stringify(result), { status: 200, headers: { "content-type": "application/json" } });
 }

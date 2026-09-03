@@ -22,6 +22,13 @@ whatToDo:
   - "Report the number to reportfraud.ftc.gov and forward texts to 7726."
 verify:
   "Create or log into my.ssa.gov by typing ssa.gov yourself. SSA lists no “suspension” status — any real issue arrives by postal mail with a case number you can verify via the official helpline."
+faqs:
+  - q: "Does SSA suspend Social Security numbers over text or email?"
+    a: "No. SSA never suspends SSN over text/email and never threatens arrest over a call. Any ‘SSA account suspended’ message with a link is phishing."
+  - q: "How does the SSA scam work?"
+    a: "It creates fear of losing benefits, pushes you to a fake ssa.gov look-alike that asks for SSN, OTP or payment to ‘verify’ — the domain is not ssa.gov (e.g. ssa-verify.xyz)."
+  - q: "How do I verify a real SSA notice?"
+    a: "Log in only at ssa.gov typed yourself, or call SSA via the number on ssa.gov — never the number in the message."
 similar:
   - "/scams/digital-arrest-video-call"
   - "/scams/hmrc-tax-refund"

@@ -23,6 +23,15 @@ whatToDo:
   - "If money was sent, call 1930 immediately — golden-hour reporting can freeze the transfer."
 verify:
   "Contact the relative directly on their existing number, or through another family member who can physically reach them. No genuine emergency survives a callback."
+faqs:
+  - q: "Is ‘Hi Mum, new number’ always a scam?"
+    a: "Not always, but the pattern ‘Hi Mum/Dad, I lost my phone, this is my new number, need money urgently’ from an unknown number is almost always the family emergency scam — verify before sending."
+  - q: "How does the Hi Mum scam work?"
+    a: "A new number claims to be your child, says phone is broken, builds rapport, then invents an emergency (hospital, rent, phone bill) and asks for an urgent transfer — often via UPI."
+  - q: "How should I verify?"
+    a: "Call your child on their old number or via a known family group before replying. A real emergency survives a callback to a known number."
+  - q: "What if they sent a voice note?"
+    a: "Voice can be cloned. Still call the old number. Ask a question only your child would know — scammers fail personal questions."
 similar:
   - "/scams/digital-arrest-video-call"
   - "/scams/upi-refund-qr"

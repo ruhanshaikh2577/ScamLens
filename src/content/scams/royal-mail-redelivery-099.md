@@ -22,6 +22,13 @@ whatToDo:
   - "Report to actionfraud.police.uk and forward the text to 7726."
 verify:
   "Use royalmail.com Track & Trace and the official Royal Mail app. Any genuine fee appears there after you enter the exact parcel reference — not via a generic link."
+faqs:
+  - q: "Does Royal Mail text for £0.99 redelivery fee?"
+    a: "No. Royal Mail doesn’t text for redelivery fees on parcels you didn’t send. The link is a fake not royalmail.com that asks for card details."
+  - q: "How do I track a real Royal Mail parcel?"
+    a: "Track only with the tracking number on royalmail.com typed yourself, or call Royal Mail via the number on royalmail.com."
+  - q: "I paid the fee — what now?"
+    a: "Call your bank to block the card, report at actionfraud.police.uk and Royal Mail’s phishing report, and watch for follow-up HMRC/Royal Mail impersonations."
 similar:
   - "/scams/delivery-rs99-reschedule"
   - "/scams/usps-postage-due-199"

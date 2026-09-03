@@ -22,6 +22,13 @@ whatToDo:
   - "Forward the email to phishing@hmrc.gov.uk and report at actionfraud.police.uk."
 verify:
   "Sign in at gov.uk through a typed address, not a link. HMRC shows any refund under Self Assessment → Tax overview. You can also call the HMRC helpline listed on gov.uk."
+faqs:
+  - q: "Does HMRC really text about a tax refund?"
+    a: "HMRC rarely texts for refunds and never asks for card details via a link. The text with a link to hmrc-refund.xyz and asking for sort code is phishing — real refunds go via your Government Gateway account."
+  - q: "How do I check a real HMRC refund?"
+    a: "Log in only at gov.uk typed yourself or via the HMRC app, and check your Personal Tax Account. Call HMRC via the number on gov.uk, not the text."
+  - q: "I entered details — what now?"
+    a: "Call your bank to block the card, report at actionfraud.police.uk and HMRC phishing@hmrc.gov.uk, and monitor for HMRC impersonation follow-ups."
 similar:
   - "/scams/fake-kyc-suspended"
   - "/scams/royal-mail-redelivery-099"

@@ -1,11 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import { getCollection } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
+import { isScamReady } from "../../i18n/scamReadiness";
 
 export async function getStaticPaths() {
   const scams = await getCollection("scams");
+  const english = scams.filter((s) => !s.id.includes("/"));
   const titleMap = new Map(scams.map((s) => [s.id, s.data.title]));
-  return scams.map((entry) => ({
+  return english.map((entry) => ({
     params: { slug: entry.id },
     props: { entry, titleMap },
   }));
@@ -15,6 +19,8 @@ const { entry, titleMap } = Astro.props;
 const d = entry.data;
 const slug = entry.id;
 const canonical = `https://scamlens.in/scams/${slug}`;
+const lang = getLangFromUrl(Astro.url);
+const isReady = isScamReady(lang, slug);
 const updatedIso = (d.updated ?? new Date("2026-08-25")).toISOString();
 const breadcrumbLd = {
   "@context": "https://schema.org",
@@ -40,7 +46,7 @@ const articleLd = {
 };
 ---
 
-<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article">
+<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article" noindex={!isReady}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -104,6 +110,10 @@ const articleLd = {
       <h2 class="headline">How to verify with the real organisation</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">{d.verify}</p>
     </section>
+
+    {d.faqs && d.faqs.length > 0 && (
+      <FaqSection faqs={d.faqs} eyebrow="FAQ" title={`About this scam — FAQ`} id="faq-scam" />
+    )}
 
     <section class="mt-12 border-t border-hairline pt-8">
       <p class="eyebrow">Been targeted?</p>

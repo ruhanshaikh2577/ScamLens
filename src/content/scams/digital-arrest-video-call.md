@@ -21,6 +21,15 @@ whatToDo:
   - "If money left your account, call 1930 within the golden hour so accounts can be frozen."
 verify:
   "Real notices arrive physically with case numbers. Verify any claim by contacting the named agency through its official website phone numbers — never the ones given by the caller. RBI and state police have publicly stated digital arrest is always fraud."
+faqs:
+  - q: "Can police really do a ‘digital arrest’ over video call?"
+    a: "No. Police and tax departments never arrest or interrogate over WhatsApp video calls and never demand transfers to clear your name. Any video call claiming arrest is impersonation."
+  - q: "Why does the call feel so convincing?"
+    a: "Scammers use fake uniforms, case FIR numbers, and fear of immediate arrest. They keep you on continuous video to isolate you from family. A real investigation gives written notice and allows you to visit a station with a lawyer."
+  - q: "What if they showed my Aadhaar or bank details?"
+    a: "Data from leaks makes it feel real, but it doesn’t prove authority. Hang up, call the local police station via the number on their official website, and report at 1930."
+  - q: "They asked me to transfer money for verification — is that ever legitimate?"
+    a: "Never. No agency asks for money to verify innocence or to unfreeze accounts. Any payment request to ‘prove’ innocence is the scam."
 similar:
   - "/scams/fake-kyc-suspended"
   - "/scams/job-offer-fee-499"

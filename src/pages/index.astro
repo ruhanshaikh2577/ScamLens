@@ -11,10 +11,13 @@ import SafetyTips from "../components/SafetyTips.astro";
 import FAQ from "../components/FAQ.astro";
 import SEOContent from "../components/SEOContent.astro";
 import CTA from "../components/CTA.astro";
-
-const homepageTitle = "ScamLens — Rule-Based Scam & Fake Website Checker";
-const homepageDescription = "ScamLens is a rule-based scam detector to verify website safety. Check fake websites, phishing links, malicious URLs and scam screenshots with evidence-based analysis.";
-const homepageKeywords = "scam detector, scam checker, fake website checker, phishing link checker, verify website safety, how to check if a website is a scam";
+import { getLangFromUrl, useTranslations, getCanonicalUrl } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const homepageTitle = t("seo.home.title");
+const homepageDescription = t("seo.home.description");
+const homepageKeywords = t("seo.home.keywords");
+const canonicalSelf = getCanonicalUrl(Astro.url);
 const softwareLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -25,7 +28,7 @@ const softwareLd = {
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
   description: homepageDescription,
-  url: "https://scamlens.in/",
+  url: canonicalSelf,
   image: "https://scamlens.in/og.png",
   author: { "@type": "Organization", name: "ScamLens", url: "https://scamlens.in" },
   featureList: [

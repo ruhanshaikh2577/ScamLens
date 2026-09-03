@@ -1,0 +1,22 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const items = t("safety.top3.items").split("|");
+---
+
+<section class="mx-auto max-w-3xl px-4 sm:px-6" data-reveal>
+  <div class="card panel-top-edge p-6 sm:p-8 border border-primary/20 bg-primary/5">
+    <p class="eyebrow text-primary-hover">{t("safety.top3.eyebrow")}</p>
+    <h2 class="headline mt-2">{t("safety.top3.title")}</h2>
+    <p class="mt-3 text-body-sm leading-relaxed text-ink-muted">{t("safety.top3.subtitle")}</p>
+    <ol class="mt-6 space-y-4">
+      {items.slice(0,3).map((text, i) => (
+        <li class="flex gap-4">
+          <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-[13px] font-medium text-white">{i+1}</span>
+          <p class="text-body leading-relaxed text-ink-muted">{text.trim()}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

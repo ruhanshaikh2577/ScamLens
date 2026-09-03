@@ -21,6 +21,13 @@ whatToDo:
   - "If you entered card details, block the card via your bank app immediately and call 1930."
 verify:
   "Official channels only: NETC FASTag at netc.ac.in lists all member banks; e-challans live at parivahan.gov.in/ecr. Both show your actual status without any payment pressure."
+faqs:
+  - q: "Does FASTag really block for KYC via SMS link?"
+    a: "No. FASTag providers (Paytm, HDFC, ICICI) may notify, but they never block via an SMS link in 24 hours nor ask for card/OTP via a form. The link is a fake domain not the official bank."
+  - q: "How can I verify my FASTag status?"
+    a: "Open the provider’s official app (Paytm, HDFC Bank, ICICI) typed yourself and check FASTag section, or call the number on the FASTag sticker — not the SMS link."
+  - q: "What about traffic challan payment links?"
+    a: "Pay only at parivahan.gov.in or your state’s official challan portal typed yourself — not via SMS with a short link and UPI handle."
 similar:
   - "/scams/fake-kyc-suspended"
   - "/scams/delivery-rs99-reschedule"

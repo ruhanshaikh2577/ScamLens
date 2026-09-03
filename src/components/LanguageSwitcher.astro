@@ -1,0 +1,156 @@
+---
+import { getLangFromUrl, getHreflangUrls, useTranslations } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const urls = getHreflangUrls(Astro.url);
+const currentLabel = languages[lang];
+---
+
+<div class="relative" id="lang-switcher" data-lang-switcher>
+  <button
+    id="lang-trigger"
+    type="button"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="lang-menu"
+    aria-label={t("a11y.languageSwitcher")}
+    title={t("a11y.languageSwitcher")}
+    class="inline-flex h-9 sm:h-11 min-h-[36px] sm:min-h-[44px] items-center gap-1.5 rounded-md border border-hairline bg-surface-1 px-2.5 sm:px-3 text-xs sm:text-sm text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink"
+  >
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="8" cy="8" r="6" />
+      <path d="M2 8h12M8 2a7 7 0 010 12M8 2a7 7 0 000 12M3.5 4.5a10 10 0 009 0M3.5 11.5a10 10 0 009 0" />
+    </svg>
+    <span class="hidden sm:inline font-medium">{currentLabel}</span>
+    <span class="sm:hidden font-medium">{lang === "pt-br" ? "PT" : lang.toUpperCase()}</span>
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" class="chevron transition-transform">
+      <path d="M4 6l4 4 4-4" />
+    </svg>
+  </button>
+
+  <div
+    id="lang-menu"
+    role="menu"
+    aria-label={t("a11y.language")}
+    hidden
+    class="absolute right-0 top-full z-50 mt-2 w-44 rounded-lg border border-hairline bg-surface-1 p-1 shadow-lg backdrop-blur"
+  >
+    {urls.map(({ lang: code, hreflang, href }) => {
+      const label = languages[code];
+      const rel = href.replace("https://scamlens.in", "") || "/";
+      const active = code === lang;
+      return (
+        <a
+          role="menuitem"
+          href={rel}
+          hreflang={hreflang}
+          lang={hreflang}
+          aria-current={active ? "true" : undefined}
+          tabindex={active ? 0 : -1}
+          class:list={[
+            "flex items-center justify-between rounded-md px-2.5 py-2 text-sm transition-colors",
+            active ? "bg-surface-2 text-ink" : "text-ink-subtle hover:bg-surface-2 hover:text-ink",
+          ]}
+        >
+          <span>{label}</span>
+          {active && (
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 8l3 3 6-6" />
+            </svg>
+          )}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<noscript>
+  <div class="mt-2 flex flex-wrap gap-1 text-xs">
+    {urls.map(({ lang: code, hreflang, href }) => {
+      const label = languages[code];
+      const rel = href.replace("https://scamlens.in", "") || "/";
+      return (
+        <a href={rel} hreflang={hreflang} lang={hreflang} class="rounded border border-hairline bg-surface-1 px-2 py-1 text-ink-subtle hover:text-ink">{label}</a>
+      );
+    })}
+  </div>
+</noscript>
+
+<script is:inline>
+  (() => {
+    function initSwitcher() {
+      const root = document.querySelector("[data-lang-switcher]");
+      if (!root || root.dataset.bound) return;
+      root.dataset.bound = "1";
+      const btn = root.querySelector("#lang-trigger");
+      const menu = root.querySelector("#lang-menu");
+      const chevron = btn?.querySelector(".chevron");
+      if (!btn || !menu) return;
+
+      let open = false;
+      function setOpen(v) {
+        open = v;
+        btn.setAttribute("aria-expanded", String(v));
+        menu.hidden = !v;
+        if (chevron) chevron.style.transform = v ? "rotate(180deg)" : "";
+        if (v) {
+          const active = menu.querySelector('[aria-current="true"]');
+          (active || menu.querySelector('[role="menuitem"]'))?.focus();
+        }
+      }
+
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setOpen(!open);
+      });
+
+      // Select language via keyboard on trigger: ArrowDown opens
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          if (!open) setOpen(true);
+        }
+      });
+
+      menu.addEventListener("keydown", (e) => {
+        const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+        const idx = items.indexOf(document.activeElement);
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setOpen(false);
+          btn.focus();
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          const next = items[(idx + 1) % items.length];
+          next?.focus();
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          const prev = items[(idx - 1 + items.length) % items.length];
+          prev?.focus();
+        } else if (e.key === "Home") {
+          e.preventDefault();
+          items[0]?.focus();
+        } else if (e.key === "End") {
+          e.preventDefault();
+          items[items.length - 1]?.focus();
+        } else if (e.key === "Tab") {
+          setOpen(false);
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!open) return;
+        if (e.target instanceof Element && !root.contains(e.target)) setOpen(false);
+      });
+
+      // Close on navigation (View Transitions)
+      document.addEventListener("astro:before-swap", () => setOpen(false));
+    }
+
+    document.addEventListener("astro:page-load", initSwitcher);
+    document.addEventListener("astro:after-swap", initSwitcher);
+    initSwitcher();
+  })();
+</script>

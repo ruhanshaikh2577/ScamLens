@@ -23,6 +23,13 @@ whatToDo:
   - "Uninstall the app, then report it in the Play Store/App Store listing."
 verify:
   "Check the lender against RBI's published lists of licensed banks/NBFCs and the app's disclosed partner NBFC. Genuine lenders deduct fees from the loan amount at disbursal — they never ask for pre-payment via UPI."
+faqs:
+  - q: "Are instant loan apps with zero paperwork safe?"
+    a: "No. Many unregistered apps harvest contacts/photos on install and then demand upfront ‘processing fees’ to disburse a loan that never arrives, then harass with your contacts."
+  - q: "How can I tell a legitimate loan app?"
+    a: "Check RBI’s list of registered NBFCs/P2P lenders and the app’s listing on the lender’s official website. Real lenders deduct fees at disbursal, never ask for pre-payment via UPI."
+  - q: "What if I already gave contacts access?"
+    a: "Uninstall, revoke permissions, warn contacts, change passwords, and report the app at cybercrime.gov.in and to Google Play. Don’t pay harassment demands."
 similar:
   - "/scams/job-offer-fee-499"
   - "/scams/wedding-invite-apk"

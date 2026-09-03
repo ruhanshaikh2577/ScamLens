@@ -23,6 +23,15 @@ whatToDo:
   - "Report the sender in WhatsApp/SMS and block the number."
 verify:
   "Every state board (BSES, Adani Electricity, MSEB, TNEB, PSPCL and others) has an official app or portal showing live dues. Disconnection follows printed notices across billing cycles — never a single evening SMS."
+faqs:
+  - q: "Will my power really be cut tonight if I don’t pay via link?"
+    a: "No. Electricity boards (BSES, MSEDCL, TNEB etc.) never cut power based on a single SMS with a UPI link. They send written notices and allow payment only via official portals/apps."
+  - q: "Why does the message feel urgent?"
+    a: "It uses ‘tonight 9:30 PM’ and a fake officer number to stop you from checking. Real disconnection notices give days and reference your consumer number verifiable in the official app."
+  - q: "How should I pay a real electricity bill?"
+    a: "Open your state board’s official app or website typed yourself (e.g. bsesdelhi, msedcl), enter your consumer number, and pay there — never via a link with a personal UPI handle."
+  - q: "What if they threatened from an electricity call centre number?"
+    a: "Hang up and call the number on your last bill or the board’s official website — not the number in the SMS."
 similar:
   - "/scams/fastag-kyc-scam"
   - "/scams/fake-kyc-suspended"

@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout
+  title={t("seo.privacy.title")}
+  description={t("seo.privacy.description")}
+>
+  <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6">
+    <p class="eyebrow">{t("privacy.eyebrow")}</p>
+    <h1 class="display-section mt-4">{t("privacy.title")}</h1>
+
+    <div class="mt-10 space-y-10">
+      <div>
+        <h2 class="headline">{t("privacy.h2.1")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p1")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.2")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p2")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.3")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">
+          {t("privacy.p3")}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.4")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p4")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.5")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p5")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.6")}</h2>
+        <p class="mt-3 rounded-lg border border-hairline bg-surface-1 p-4 text-body leading-relaxed text-ink">
+          {t("privacy.p6")}
+        </p>
+      </div>
+
+      <div class="border-t border-hairline pt-8 text-caption leading-relaxed text-ink-tertiary">
+        {t("privacy.footer")}
+      </div>
+    </div>
+  </section>
+</Layout>

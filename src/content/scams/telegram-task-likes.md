@@ -23,6 +23,13 @@ whatToDo:
   - "Treat any similar offer that follows as the same operation re-contacting warm targets."
 verify:
   "No employer pays via random personal UPI handles, and no platform pays users to boost its own metrics. If payouts depend on deposits, it is fraud by definition — check the pattern against our job-offer fee breakdown."
+faqs:
+  - q: "Are paid Telegram ‘like and subscribe’ tasks real?"
+    a: "No. They start with tiny payouts to build trust, then ask for larger deposits to unlock tasks. The dashboard profits are fake and withdrawals are blocked."
+  - q: "Why did I get paid for the first two tasks?"
+    a: "That’s the bait. Small UPI credits make you believe the system works, so you deposit more for ‘VIP’ tasks that steal the larger amount."
+  - q: "Is there any legitimate job that pays for liking videos?"
+    a: "No real employer pays for liking videos or follows, and no real employer charges a registration fee. If a fee is required to start, it’s a scam."
 similar:
   - "/scams/job-offer-fee-499"
   - "/scams/trading-app-guaranteed-returns"

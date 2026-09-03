@@ -2,31 +2,40 @@
 import Layout from "../layouts/Layout.astro";
 import SafetyTips from "../components/SafetyTips.astro";
 import CTA from "../components/CTA.astro";
+import FaqSection from "../components/FaqSection.astro";
+import TopThreeCallout from "../components/TopThreeCallout.astro";
+import safetyFaqsMap from "../content/faqs/safety-tips";
 import QuizIsland from "../components/QuizIsland.tsx";
 import SimulatorIsland from "../components/SimulatorIsland.tsx";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
-const title = "Safety Tips — 13 Rules That Stop Almost Every Scam | ScamLens";
-const description = "A printable checklist of the rules that defeat most scams: OTP discipline, QR/UPI logic, urgency tells, verification habits, investment guarantees, loan-app traps and golden-hour reporting.";
+const title = t("seo.safety.title");
+const description = t("seo.safety.description");
+const safetyFaqs = (safetyFaqsMap as Record<string, typeof safetyFaqsMap.en>)[lang] ?? safetyFaqsMap.en;
 ---
 
 <Layout title={title} description={description} ogType="article">
   <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
-    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-ink">Home</a>
+    <nav class="text-caption text-ink-subtle" aria-label={t("a11y.breadcrumb")}>
+      <a href={translatePath("/")} class="hover:text-ink">{t("nav.breadcrumb.home")}</a>
       <span class="mx-2">/</span>
-      <span class="text-ink-muted">Safety tips</span>
+      <span class="text-ink-muted">{t("nav.safety")}</span>
     </nav>
     <header class="mt-6" data-reveal>
-      <p class="eyebrow">Safety tips</p>
-      <h1 class="display-section mt-4">The checklist that beats the tricks</h1>
+      <p class="eyebrow">{t("safety.eyebrow")}</p>
+      <h1 class="display-section mt-4">{t("safety.title")}</h1>
       <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">
-        Scammers rotate stories weekly, but the mechanics barely change. These rules target
-        the mechanics. Print them, share them in the family group — no attribution needed.
+        {t("safety.subtitle")}
       </p>
     </header>
   </section>
 
   <SafetyTips />
+
+  <TopThreeCallout />
 
   <section class="border-t border-hairline px-4 py-12 sm:px-6">
     <div class="mx-auto max-w-3xl space-y-8">
@@ -35,14 +44,16 @@ const description = "A printable checklist of the rules that defeat most scams: 
     </div>
   </section>
 
+  <FaqSection faqs={safetyFaqs} eyebrow="FAQ" title={lang==="es"?"Consejos — Preguntas frecuentes": lang==="fr"?"Conseils — FAQ": lang==="de"?"Tipps — FAQ": lang==="pt-br"?"Dicas — Perguntas": lang==="it"?"Consigli — FAQ": lang==="ja"?"安全のコツに関するFAQ": lang==="ko"?"안전 팁 FAQ": "Safety Tips — FAQ"} id="faq-safety" />
+
   <section class="border-t border-hairline px-4 pb-8 sm:px-6">
     <div class="mx-auto max-w-3xl" data-reveal>
       <div class="card panel-top-edge flex flex-col items-center gap-5 px-6 py-12 text-center">
-        <h2 class="headline max-w-md">Not sure about a specific message?</h2>
+        <h2 class="headline max-w-md">{t("safety.cta.title")}</h2>
         <p class="max-w-md text-body leading-relaxed text-ink-muted">
-          The checker quotes the exact words it flagged — so you learn the pattern while you verify.
+          {t("safety.cta.body")}
         </p>
-        <a href="/#checker" class="btn btn-primary px-6">Check it in 10 seconds</a>
+        <a href={`${translatePath("/")}#checker`} class="btn btn-primary px-6">{t("safety.cta.btn")}</a>
       </div>
     </div>
   </section>

@@ -24,6 +24,15 @@ whatToDo:
   - "Verify any adviser's registration on the SEBI website before investing a single rupee."
 verify:
   "Check adviser registration on sebi.gov.in and confirm the broker is listed on NSE/BSE exchange sites. Real brokers never take deposits into personal UPI handles — only into accounts matching their registered name."
+faqs:
+  - q: "Can a trading app guarantee daily returns?"
+    a: "No. Markets have no guaranteed returns. Any app promising 2-5% daily or double money is a Ponzi dashboard showing fake profits you can’t withdraw."
+  - q: "Why does the dashboard show profits increasing?"
+    a: "It’s a simulated number to make you deposit more. Withdrawals are blocked with excuses like ‘pay 10% release fee’ or ‘upgrade to VIP’ — that’s the theft."
+  - q: "How do I check if an adviser is legitimate?"
+    a: "Search the adviser’s name on sebi.gov.in registered intermediaries list. No SEBI-registered adviser recruits via Telegram/WhatsApp groups or guarantees returns."
+  - q: "They added me to a WhatsApp profit group — is that real?"
+    a: "Those groups are filled with fake accounts posting profit screenshots. Real trading never happens in closed chat groups."
 similar:
   - "/scams/job-offer-fee-499"
   - "/scams/upi-refund-qr"

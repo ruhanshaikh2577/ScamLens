@@ -15,6 +15,7 @@ const scams = defineCollection({
     whatToDo: z.array(z.string()),
     verify: z.string(),
     similar: z.array(z.string()).default([]),
+    faqs: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     updated: z.coerce.date().optional(),
     region: z.enum(["in", "global"]).default("in"),
     lastUpdated: z.coerce.date().optional(),

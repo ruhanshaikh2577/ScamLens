@@ -1,34 +1,20 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const faqs = [
-  {
-    q: "Does ScamLens store what I paste or upload?",
-    a: "No. Your input stays in your browser during the scan and nothing is written to our servers. Screenshots are processed locally and never uploaded in this version.",
-  },
-  {
-    q: "What exactly does the analysis see?",
-    a: "Only the text you provide — and even that is first redacted: OTPs, card numbers and phone numbers are masked before any pattern matching happens.",
-  },
-  {
-    q: "Is a Low Risk result a guarantee something is safe?",
-    a: "No. We show warning signs we can detect, not certainty. A clean scan means no common scam markers were found — always verify important requests via official channels.",
-  },
-  {
-    q: "Why do you show evidence quotes instead of a score?",
-    a: "Because a number like 87/100 tells you nothing. Seeing \u201CPay Rs 99 to reschedule\u201D flagged as a payment request lets you judge the message yourself — which is the skill that protects you next time.",
-  },
-  {
-    q: "Is it free?",
-    a: "Yes. The checker is free and shows at most one unobtrusive ad. The scam library keeps the lights on.",
-  },
-  {
-    q: "I already lost money. What now?",
-    a: "Call 1930 immediately — the first hour matters most. Then file a complaint at cybercrime.gov.in with screenshots and transaction IDs.",
-  },
+  { q: t("faq.q1"), a: t("faq.a1") },
+  { q: t("faq.q2"), a: t("faq.a2") },
+  { q: t("faq.q3"), a: t("faq.a3") },
+  { q: t("faq.q4"), a: t("faq.a4") },
+  { q: t("faq.q5"), a: t("faq.a5") },
+  { q: t("faq.q6"), a: t("faq.a6") },
 ];
 
 const ld = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  inLanguage: lang,
   mainEntity: faqs.map((f) => ({
     "@type": "Question",
     name: f.q,
@@ -40,8 +26,8 @@ const ld = JSON.stringify({
 <section id="faq" class="border-t border-hairline px-4 py-24 sm:px-6">
   <div class="mx-auto max-w-2xl">
     <div data-reveal>
-      <p class="eyebrow">FAQ</p>
-      <h2 class="display-section mt-4">Straight answers</h2>
+      <p class="eyebrow">{t("faq.eyebrow")}</p>
+      <h2 class="display-section mt-4">{t("faq.title")}</h2>
     </div>
     <div data-reveal style="--reveal-delay: 80ms" class="mt-10 divide-y divide-hairline border-y border-hairline">
       {faqs.map((f) => (

@@ -23,6 +23,13 @@ whatToDo:
   - "File at cybercrime.gov.in if money is gone; call 1930 within the golden hour."
 verify:
   "Genuine invitations come as PDFs/images or verified event links — never APKs. If unsure whether your phone is compromised, a factory reset after backing up data removes consumer-grade trojans; then restore apps only from the official store."
+faqs:
+  - q: "Is a WhatsApp wedding invitation APK file safe to open?"
+    a: "No. Real invites are images or PDFs, not .apk files. An APK is an app installer that can steal SMS, OTPs and contacts once installed."
+  - q: "What happens if I installed the APK?"
+    a: "Turn off mobile data/Wi-Fi, uninstall the app, change passwords from another device, call your bank to block vulnerable cards, and run a malware scan. Report at 1930."
+  - q: "How can I verify a wedding invite is real?"
+    a: "Call the sender on their old number (not the new one that sent the file) and ask them to confirm. Don’t tap .apk links — ask for a photo preview instead."
 similar:
   - "/scams/delivery-rs99-reschedule"
   - "/scams/instant-loan-app"

@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import { getLangFromUrl, getHreflang, getHreflangUrls, getCanonicalUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import { hreflangMap } from "../i18n/ui";
+import { ready } from "../i18n/readiness";
+import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 
 interface Props {
   title: string;
@@ -10,6 +14,7 @@ interface Props {
   showAnchorAd?: boolean;
   ogImage?: string;
   ogType?: string;
+  lang?: string;
 }
 
 const {
@@ -21,22 +26,33 @@ const {
   ogImage = "https://scamlens.in/og.png",
   ogType = "website",
 } = Astro.props;
-const canonical = `https://scamlens.in${Astro.url.pathname === "/" ? "/" : Astro.url.pathname}`;
+
+const detectedLang = getLangFromUrl(Astro.url);
+const lang = detectedLang;
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const isReady = ready[lang] ?? false;
+const effectiveNoindex = noindex || !isReady;
+const canonical = getCanonicalUrl(Astro.url);
+const hreflangUrls = getHreflangUrls(Astro.url);
+const xDefaultHref = hreflangUrls.find((h) => h.lang === "en")?.href ?? "https://scamlens.in/";
+const htmlLang = getHreflang(lang);
+const ogLocale = lang === "en" ? "en" : hreflangMap[lang].replace("-", "_");
 const path = Astro.url.pathname;
 
-// Real routes for every nav item — each page stands alone.
+// Real routes — labels and hrefs via translations/routes
 const navLinks = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/what-we-detect", label: "What we detect" },
-  { href: "/scams", label: "Scam Library" },
-  { href: "/safety-tips", label: "Safety tips" },
+  { href: translatePath("/how-it-works"), label: t("nav.how") },
+  { href: translatePath("/what-we-detect"), label: t("nav.what") },
+  { href: translatePath("/scams"), label: t("nav.scams") },
+  { href: translatePath("/safety-tips"), label: t("nav.safety") },
 ];
 const isActive = (href: string) =>
   href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <script is:inline>
       try {
@@ -53,13 +69,12 @@ const isActive = (href: string) =>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content="ScamLens" />
-    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="robots" content={effectiveNoindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={canonical} />
-    <link rel="alternate" hreflang="en-IN" href={canonical} />
-    <link rel="alternate" hreflang="en-US" href={canonical} />
-    <link rel="alternate" hreflang="en-GB" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    {hreflangUrls.map(({ hreflang, href }) => (
+      <link rel="alternate" hreflang={hreflang} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -76,7 +91,8 @@ const isActive = (href: string) =>
       } catch {}
     </script>
     <meta name="application-name" content="ScamLens" />
-    <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale" content={ogLocale} />
+    {hreflangUrls.filter(h=>h.lang!==lang).map(h=> <meta property="og:locale:alternate" content={h.hreflang.replace("-", "_")} />)}
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="ScamLens" />
     <meta property="og:title" content={title} />
@@ -85,7 +101,7 @@ const isActive = (href: string) =>
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ScamLens — Not sure if it's a scam? Check before you click." />
+    <meta property="og:image:alt" content={t("seo.home.title")} />
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@scamlens" />
@@ -93,31 +109,31 @@ const isActive = (href: string) =>
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="ScamLens — Not sure if it's a scam? Check before you click." />
+    <meta name="twitter:image:alt" content={t("seo.home.title")} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "ScamLens",
       alternateName: ["Scam Lens", "scamlens", "scam detector", "scam checker"],
       url: "https://scamlens.in",
-      description: "Not sure if it's a scam? Check before you click.",
-      inLanguage: "en-IN",
+      description: t("seo.home.description"),
+      inLanguage: htmlLang,
       publisher: { "@type": "Organization", name: "ScamLens", url: "https://scamlens.in", logo: { "@type": "ImageObject", url: "https://scamlens.in/og.png" }, sameAs: ["https://cybercrime.gov.in"] },
-      potentialAction: { "@type": "SearchAction", target: "https://scamlens.in/scams?q={search_term_string}", "query-input": "required name=search_term_string" }
+      potentialAction: { "@type": "SearchAction", target: `https://scamlens.in${lang==="en" ? "/scams" : translatePath("/scams")}?q={search_term_string}`, "query-input": "required name=search_term_string" }
     })} />
   </head>
   <body class="min-h-screen flex flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface-2 focus:px-3 focus:py-2 focus:text-sm focus:text-ink">Skip to content</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface-2 focus:px-3 focus:py-2 focus:text-sm focus:text-ink">{t("a11y.skip")}</a>
     <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/85 backdrop-blur">
-      <nav class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Main">
-        <a href="/" class="flex items-center gap-2 font-semibold tracking-tight text-[17px]">
+      <nav class="mx-auto flex h-14 w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8" aria-label={t("a11y.nav.main")}>
+        <a href={translatePath("/")} class="flex items-center gap-2 font-semibold tracking-tight text-[17px]">
           <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
             <circle cx="15" cy="15" r="9.5" fill="none" stroke="#5e6ad2" stroke-width="3"/>
             <line x1="22" y1="22" x2="29" y2="29" stroke="#5e6ad2" stroke-width="3" stroke-linecap="round"/>
           </svg>
           ScamLens
         </a>
-        <div class="hidden md:flex items-center gap-7 text-sm text-ink-subtle">
+        <div class="hidden md:flex items-center gap-4 lg:gap-6 text-[13px] lg:text-sm text-ink-subtle">
           {navLinks.map((l) => (
             <a
               href={l.href}
@@ -127,14 +143,15 @@ const isActive = (href: string) =>
           ))}
         </div>
         <div class="flex items-center gap-2">
-          <button id="theme-toggle" type="button" aria-label="Theme: system" title="Theme: system (click to change)" class="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink active:border-hairline-tertiary active:text-ink">
+          <LanguageSwitcher />
+          <button id="theme-toggle" type="button" aria-label={t("a11y.theme.system")} title={t("a11y.theme.system")} class="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink active:border-hairline-tertiary active:text-ink">
             <span id="theme-icon" aria-hidden="true"></span>
           </button>
-          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">Report a scam</a>
-          <a href="/#checker" class="btn btn-primary">Check now</a>
+          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">{t("nav.report")}</a>
+          <a href={`${translatePath("/")}#checker`} class="btn btn-primary">{t("nav.checkNow")}</a>
         </div>
       </nav>
-      <nav class="flex gap-2 overflow-x-auto border-t border-hairline px-4 py-2 scrollbar-none md:hidden" aria-label="Sections">
+      <nav class="flex gap-2 overflow-x-auto border-t border-hairline px-4 py-2 scrollbar-none md:hidden" aria-label={t("a11y.nav.sections")}>
         {navLinks.map((l) => (
           <a
             href={l.href}
@@ -160,39 +177,39 @@ const isActive = (href: string) =>
               </svg>
               ScamLens
             </div>
-            <p class="mt-3 leading-relaxed">Before you click. Check it.<br />Decision support — never a guarantee.</p>
+            <p class="mt-3 leading-relaxed">{t("footer.tagline").split("\n")[0]}<br />{t("footer.tagline").split("\n")[1] ?? ""}</p>
           </div>
           <div>
-            <p class="mb-3 font-medium text-ink-muted">Product</p>
+            <p class="mb-3 font-medium text-ink-muted">{t("footer.product")}</p>
             <ul class="space-y-2">
-              <li><a href="/#checker" class="hover:text-ink transition-colors">Scam Checker</a></li>
-              <li><a href="/how-it-works" class="hover:text-ink transition-colors">How it works</a></li>
-              <li><a href="/what-we-detect" class="hover:text-ink transition-colors">What we detect</a></li>
-              <li><a href="/scams" class="hover:text-ink transition-colors">Scam Library</a></li>
-              <li><a href="/safety-tips" class="hover:text-ink transition-colors">Safety Tips</a></li>
+              <li><a href={`${translatePath("/")}#checker`} class="hover:text-ink transition-colors">{t("footer.scamChecker")}</a></li>
+              <li><a href={translatePath("/how-it-works")} class="hover:text-ink transition-colors">{t("nav.how")}</a></li>
+              <li><a href={translatePath("/what-we-detect")} class="hover:text-ink transition-colors">{t("nav.what")}</a></li>
+              <li><a href={translatePath("/scams")} class="hover:text-ink transition-colors">{t("nav.scams")}</a></li>
+              <li><a href={translatePath("/safety-tips")} class="hover:text-ink transition-colors">{t("nav.safety")}</a></li>
             </ul>
           </div>
           <div>
-            <p class="mb-3 font-medium text-ink-muted">Company</p>
+            <p class="mb-3 font-medium text-ink-muted">{t("footer.company")}</p>
             <ul class="space-y-2">
-              <li><a href="/about" class="hover:text-ink transition-colors">About</a></li>
-              <li><a href="/privacy" class="hover:text-ink transition-colors">Privacy</a></li>
-              <li><a href="/terms" class="hover:text-ink transition-colors">Terms</a></li>
+              <li><a href={translatePath("/about")} class="hover:text-ink transition-colors">{t("footer.about")}</a></li>
+              <li><a href={translatePath("/privacy")} class="hover:text-ink transition-colors">{t("footer.privacy")}</a></li>
+              <li><a href={translatePath("/terms")} class="hover:text-ink transition-colors">{t("footer.terms")}</a></li>
             </ul>
           </div>
-          <div>
-            <p class="mb-3 font-medium text-ink-muted">Get help</p>
+          <div id="footer-help">
+            <p class="mb-3 font-medium text-ink-muted">{t("footer.help")}</p>
             <ul class="space-y-2">
-              <li>India: <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">cybercrime.gov.in</a> · <a href="tel:1930" class="text-ink-muted hover:text-ink">1930</a></li>
-              <li>US: <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">reportfraud.ftc.gov</a> · <a href="https://www.ssa.gov/scam/" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">ssa.gov/scam</a></li>
-              <li>UK: <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">actionfraud.police.uk</a> · <a href="https://www.gov.uk/report-suspicious-emails-websites-phishing" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">gov.uk/phishing</a></li>
-              <li class="pt-1 text-ink-tertiary">Forward texts to 7726 (SPAM) worldwide.</li>
+              <li>{t("footer.help.india")} <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">cybercrime.gov.in</a> · <a href="tel:1930" class="text-ink-muted hover:text-ink">1930</a></li>
+              <li>{t("footer.help.us")} <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">reportfraud.ftc.gov</a> · <a href="https://www.ssa.gov/scam/" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">ssa.gov/scam</a></li>
+              <li>{t("footer.help.uk")} <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">actionfraud.police.uk</a> · <a href="https://www.gov.uk/report-suspicious-emails-websites-phishing" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">gov.uk/phishing</a></li>
+              <li class="pt-1 text-ink-tertiary">{t("footer.forward")}</li>
             </ul>
           </div>
         </div>
         <div class="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} ScamLens · scamlens.in</p>
-          <p>Verify via official channels. In an emergency, call 1930.</p>
+          <p>{t("footer.copyright", { year: String(new Date().getFullYear()) })}</p>
+          <p>{t("footer.verify")}</p>
         </div>
       </div>
     </footer>

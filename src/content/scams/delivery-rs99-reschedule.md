@@ -21,6 +21,13 @@ whatToDo:
   - "Report to 1930 and to the real courier's official support with screenshots."
 verify:
   "Every major courier (DTDC, Delhivery, India Post, Blue Dart) has tracking on their official website. Enter the consignment number there — if the parcel shows normal movement, the fee demand was fake."
+faqs:
+  - q: "Is ‘Pay Rs 99 to reschedule delivery’ ever a real courier request?"
+    a: "No. Couriers like DTDC, Delhivery or India Post never ask for a small UPI fee to reschedule. Delivery charges are paid at booking by the sender, not via a link after dispatch."
+  - q: "What does the fake link look like?"
+    a: "It’s usually a short link (bit.ly, tinyurl) hiding a look-alike domain like dtdc-fee.xyz or delhivery-reschedule.top — not dtdc.in or delhivery.com. The page asks for UPI PIN to receive the parcel, which always means paying."
+  - q: "How do I track my real parcel?"
+    a: "Copy the consignment number and track it only in the courier’s official app or website typed yourself — not via the link in the SMS. Call the official customer care number from the website if unsure."
 similar:
   - "/scams/fastag-kyc-scam"
   - "/scams/fake-kyc-suspended"

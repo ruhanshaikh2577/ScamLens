@@ -21,6 +21,13 @@ whatToDo:
   - "If you already entered details, call your bank's helpline immediately to block the card and then call 1930."
 verify:
   "Log in to your bank's official app and check the KYC/pending-actions section, or visit the nearest branch. Banks list their only official websites on the back of your debit card and passbook."
+faqs:
+  - q: "Is any KYC update link sent by SMS ever legitimate?"
+    a: "No. Real banks never send a clickable link to update KYC. They ask you to visit the official app or branch and give weeks, not 24 hours. Any link demanding CVV or OTP is a scam."
+  - q: "How can I check my real KYC status safely?"
+    a: "Open your bank's official app or type its official website yourself and check the KYC or profile section. The only official domains are printed on your card and passbook — not the link in the SMS."
+  - q: "I entered my card details and OTP — what should I do immediately?"
+    a: "Call your bank's helpline to block the card, then call 1930 and file at cybercrime.gov.in with screenshots. Change passwords and monitor for loans taken in your name."
 similar:
   - "/scams/fastag-kyc-scam"
   - "/scams/upi-refund-qr"

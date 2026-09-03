@@ -22,6 +22,13 @@ whatToDo:
   - "Report the smish to reportfraud.ftc.gov and forward the text to 7726 (SPAM)."
 verify:
   "Go to usps.com → Tracking, enter your tracking number there. USPS lists any postage due inside your informed delivery account — never via a texted link."
+faqs:
+  - q: "Does USPS really text about $1.99 postage due?"
+    a: "No. USPS doesn’t text for postage due on a parcel you didn’t send. The link is a shortener hiding a fake domain not usps.com that asks for card details."
+  - q: "How can I verify a USPS delivery?"
+    a: "Track only with the tracking number on usps.com typed yourself, or call USPS via the number on usps.com — not the number in the text."
+  - q: "I entered my card — what now?"
+    a: "Call your bank to block the card, monitor for small test charges, and report at reportfraud.ftc.gov and your bank. Change passwords if you reused them."
 similar:
   - "/scams/delivery-rs99-reschedule"
   - "/scams/royal-mail-redelivery-099"

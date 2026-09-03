@@ -1,54 +1,55 @@
 ---
-// The scale of the problem — count-up stats grounded in Government-of-India
-// NCRP/I4C figures reported for calendar year 2024.
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+// Global scale — FBI IC3 2023 + APWG, same for all locales (ponytail: one source, no per-language branching)
 const stats = [
   {
-    value: "22.7",
+    value: "880",
+    decimals: 0,
+    prefix: "",
+    suffix: "k+",
+    label: t("stats.label.complaints"),
+  },
+  {
+    value: "12.5",
+    decimals: 1,
+    prefix: "$",
+    suffix: "B+",
+    label: t("stats.label.losses"),
+  },
+  {
+    value: "3.4",
     decimals: 1,
     prefix: "",
-    suffix: " lakh+",
-    label: "complaints filed on the National Cyber Crime Reporting Portal in 2024",
-  },
-  {
-    value: "22845",
-    decimals: 0,
-    prefix: "₹",
-    suffix: " crore",
-    label: "reported lost by victims to cyber fraud in 2024",
-  },
-  {
-    value: "1935",
-    decimals: 0,
-    prefix: "₹",
-    suffix: " crore",
-    label: "lost to \u201Cdigital arrest\u201D impersonation scams alone in 2024",
+    suffix: "B+",
+    label: t("stats.label.phishing"),
   },
 ];
 ---
 
-<section id="scale" class="border-b border-hairline px-4 py-16 sm:px-6" aria-label="The scale of cyber fraud in India">
+<section id="scale" class="border-b border-hairline px-4 py-20 sm:px-6 sm:py-24" aria-label={t("stats.aria")}>
   <div class="mx-auto max-w-6xl">
-    <div class="grid gap-10 sm:grid-cols-3 sm:gap-6">
+    <p class="eyebrow" data-reveal>{t("stats.eyebrow")}</p>
+    <div class="mt-8 grid gap-10 sm:grid-cols-3 sm:gap-6">
       {stats.map((s, i) => (
         <div
           data-reveal
           style={`--reveal-delay: ${i * 90}ms`}
           class:list={["text-center sm:text-left", i > 0 ? "sm:border-l sm:border-hairline sm:pl-8" : ""]}
         >
-          <p class="display-section tabular-nums text-primary-hover">
+          <p class="tabular-nums text-primary-hover" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -1px;">
             <span class="text-ink">{s.prefix}</span><span
               data-count={s.value}
               data-decimals={s.decimals}
             >{s.value}</span><span class="text-ink">{s.suffix}</span>
           </p>
-          <p class="mx-auto mt-2 max-w-xs text-body-sm leading-relaxed text-ink-muted sm:mx-0">{s.label}</p>
+          <p class="mx-auto mt-3 max-w-xs text-body-sm leading-relaxed text-ink-muted sm:mx-0">{s.label}</p>
         </div>
       ))}
     </div>
     <p class="mt-10 text-caption leading-relaxed text-ink-tertiary" data-reveal>
-      Figures per Indian Cyber Crime Coordination Centre (I4C) / NCRP data reported by the Government of India for 2024 — treat as scale, not precise live totals.
-      If you've been defrauded, call <a href="tel:1930" class="text-ink-muted hover:text-ink">1930</a> and file at
-      <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">cybercrime.gov.in</a>.
+      {t("stats.footnote")} — <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3Report.pdf" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">FBI IC3 2023</a> / <a href="https://apwg.org" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">APWG</a>. {t("stats.help")} <a href="#footer-help" class="text-ink-muted hover:text-ink">{t("footer.help")}</a>.
     </p>
   </div>
 </section>
@@ -61,8 +62,14 @@ const stats = [
     const target = parseFloat(el.dataset.count || "0");
     const decimals = parseInt(el.dataset.decimals || "0", 10);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fmt = (v: number) =>
-      decimals > 0 ? v.toFixed(decimals) : Math.round(v).toLocaleString("en-IN");
+    const locale = document.documentElement.lang || "en";
+    const fmt = (v: number) => {
+      try {
+        return new Intl.NumberFormat(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(v);
+      } catch {
+        return decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
+      }
+    };
     if (reduce) {
       el.textContent = fmt(target);
       return;

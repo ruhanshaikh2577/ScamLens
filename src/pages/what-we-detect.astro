@@ -2,27 +2,32 @@
 import Layout from "../layouts/Layout.astro";
 import WhatWeDetect from "../components/WhatWeDetect.astro";
 import CTA from "../components/CTA.astro";
+import FaqSection from "../components/FaqSection.astro";
+import whatFaqsMap from "../content/faqs/what-we-detect";
 import QuizIsland from "../components/QuizIsland.tsx";
 import SimulatorIsland from "../components/SimulatorIsland.tsx";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
-const title = "What ScamLens Detects — Scam Patterns, Phishing & Fraud Signals | ScamLens";
-const description = "Every signal the ScamLens checker looks for: urgency, payment asks, OTP theft, bank/courier/government impersonation, UPI tricks, shorteners, look-alike domains, punycode spoofs and more.";
+const title = t("seo.what.title");
+const description = t("seo.what.description");
+const whatFaqs = (whatFaqsMap as Record<string, typeof whatFaqsMap.en>)[lang] ?? whatFaqsMap.en;
 ---
 
 <Layout title={title} description={description} ogType="article">
   <section class="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
-    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-ink">Home</a>
+    <nav class="text-caption text-ink-subtle" aria-label={t("a11y.breadcrumb")}>
+      <a href={translatePath("/")} class="hover:text-ink">{t("nav.breadcrumb.home")}</a>
       <span class="mx-2">/</span>
-      <span class="text-ink-muted">What we detect</span>
+      <span class="text-ink-muted">{t("nav.what")}</span>
     </nav>
     <header class="mt-6" data-reveal>
-      <p class="eyebrow">What we detect</p>
-      <h1 class="display-section mt-4">Every signal, in plain language</h1>
+      <p class="eyebrow">{t("what.eyebrow")}</p>
+      <h1 class="display-section mt-4">{t("what.title")}</h1>
       <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">
-        ScamLens checks your input locally for the patterns behind today's most common
-        frauds — then quotes the exact evidence so you can verify each flag yourself.
-        Below: the categories, the raw signals behind them, and where to read a full breakdown.
+        {t("what.subtitle")}
       </p>
     </header>
   </section>
@@ -38,19 +43,18 @@ const description = "Every signal the ScamLens checker looks for: urgency, payme
 
   <section class="border-t border-hairline px-4 py-16 sm:px-6">
     <div class="mx-auto max-w-3xl" data-reveal>
-      <h2 class="headline">Where the patterns come from</h2>
+      <h2 class="headline">{t("what.where.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        Signals are mapped to real fraud patterns documented by cybercrime authorities and
-        consumer-protection reporting — India-first (UPI, KYC, courier fees, digital arrest)
-        with global coverage (USPS, Royal Mail, HMRC, SSA). Each category links to a library
-        entry with example messages and verification steps.
+        {t("what.where.body")}
       </p>
       <div class="mt-8 flex flex-col gap-2 sm:flex-row">
-        <a href="/scams" class="btn btn-primary flex-1">Browse the Scam Library</a>
-        <a href="/#checker" class="btn btn-secondary flex-1">Check a message now</a>
+        <a href={translatePath("/scams")} class="btn btn-primary flex-1">{t("what.where.browse")}</a>
+        <a href={`${translatePath("/")}#checker`} class="btn btn-secondary flex-1">{t("what.where.check")}</a>
       </div>
     </div>
   </section>
+
+  <FaqSection faqs={whatFaqs} eyebrow="FAQ" title={lang==="es"?"Detectamos — Preguntas frecuentes": lang==="fr"?"Détection — FAQ": lang==="de"?"Erkennung — FAQ": lang==="pt-br"?"Detecção — Perguntas": lang==="it"?"Rilevamento — FAQ": lang==="ja"?"検出に関するFAQ": lang==="ko"?"탐지 FAQ": "What we detect — FAQ"} id="faq-what" />
 
   <CTA />
 </Layout>

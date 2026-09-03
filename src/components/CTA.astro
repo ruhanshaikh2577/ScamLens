@@ -1,15 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <section class="px-4 pb-24 pt-8 sm:px-6">
   <div class="mx-auto max-w-6xl">
     <div data-reveal class="card panel-top-edge flex flex-col items-center gap-6 px-6 py-14 text-center sm:px-12">
-      <h2 class="display-section max-w-xl">Before you click. Check it.</h2>
+      <h2 class="display-section max-w-xl">{t("cta.title")}</h2>
       <p class="max-w-md text-body-lg leading-relaxed text-ink-muted">
-        Ten seconds of checking beats weeks of recovering money. Run the next suspicious
-        message through the lens.
+        {t("cta.body")}
       </p>
-      <a href="#checker" class="btn btn-primary px-6">Open the checker</a>
+      <a href={`${translatePath("/")}#checker`} class="btn btn-primary px-6">{t("cta.btn")}</a>
     </div>
   </div>
 </section>

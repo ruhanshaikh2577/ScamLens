@@ -1,35 +1,42 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CTA from "../components/CTA.astro";
+import FaqSection from "../components/FaqSection.astro";
+import howFaqsMap from "../content/faqs/how-it-works";
 import { VERSION } from "../lib/version";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 const { lastUpdated } = Astro.props as { lastUpdated?: string | Date };
 const displayDate = lastUpdated
-  ? new Date(lastUpdated).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })
-  : "28 August 2026";
+  ? new Date(lastUpdated).toLocaleDateString(lang === "es" ? "es-ES" : "en", { year: "numeric", month: "long", day: "numeric" })
+  : lang === "es" ? "28 de agosto de 2026" : "28 August 2026";
 
-const title = "How ScamLens Works — Scam Checker, Evidence & Privacy | ScamLens";
-const description = "Paste a message, link or screenshot: ScamLens redacts sensitive data, runs local pattern checks for urgency, payments, impersonation and link tricks, then shows quoted evidence — never a mystery score.";
+const title = t("seo.how.title");
+const description = t("seo.how.description");
+const howFaqs = (howFaqsMap as Record<string, typeof howFaqsMap.en>)[lang] ?? howFaqsMap.en;
 
 const steps = [
   {
     n: "1",
-    title: "Pick your input",
-    body: "A message, a screenshot of the chat, or a suspicious link — one checker handles all three. Paste text, drop an image, or paste a URL; the checker switches tabs automatically when it recognises what you dropped.",
+    title: t("how.step.1.title"),
+    body: t("how.step.1.body"),
   },
   {
     n: "2",
-    title: "Sensitive data is redacted first",
-    body: "Before any analysis, card numbers, Indian mobile numbers and 6-digit OTPs are masked locally. The pattern engine only ever sees the redacted version — even if you accidentally paste an OTP, it never leaves readable form.",
+    title: t("how.step.2.title"),
+    body: t("how.step.2.body"),
   },
   {
     n: "3",
-    title: "Local pattern scan in seconds",
-    body: "The engine checks urgency windows, payment demands, OTP asks, bank/courier/government impersonation, UPI handles, prize bait, job fees, legal threats — plus URL signals like shorteners, look-alike domains, punycode, raw IPs and credential-harvesting query strings.",
+    title: t("how.step.3.title"),
+    body: t("how.step.3.body"),
   },
   {
     n: "4",
-    title: "Reasons, not a score",
-    body: "Every flag shows the exact quote that triggered it, why it matters, and safe next steps. A Low result means no common markers were found — it is never a guarantee. You stay the judge; we're just the lens.",
+    title: t("how.step.4.title"),
+    body: t("how.step.4.body"),
   },
 ];
 
@@ -70,24 +77,23 @@ const urlSignals = [
 
 <Layout title={title} description={description} ogType="article">
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
-      <a href="/" class="hover:text-ink">Home</a>
+    <nav class="text-caption text-ink-subtle" aria-label={t("a11y.breadcrumb")}>
+      <a href={translatePath("/")} class="hover:text-ink">{t("nav.breadcrumb.home")}</a>
       <span class="mx-2">/</span>
-      <span class="text-ink-muted">How it works</span>
+      <span class="text-ink-muted">{t("nav.how")}</span>
     </nav>
 
     <header class="mt-6" data-reveal>
-      <p class="eyebrow">How it works</p>
-      <h1 class="display-section mt-4">From doubt to decision in four steps</h1>
+      <p class="eyebrow">{t("how.eyebrow")}</p>
+      <h1 class="display-section mt-4">{t("how.title")}</h1>
       <p class="mt-4 max-w-2xl text-body-lg leading-relaxed text-ink-muted">
-        ScamLens is rule-based decision support that identifies signals associated with known patterns — not an antivirus or a guarantee. Here is exactly what happens
-        between pasting a message and reading the verdict — including what we never see.
+        {t("how.subtitle")}
       </p>
       <div class="mt-6 flex flex-wrap items-center gap-2 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-caption leading-relaxed">
-        <span class="inline-flex items-center rounded-full border border-hairline-strong bg-surface-2 px-2.5 py-0.5 font-mono text-[11px] tracking-wide text-ink-muted">Analyzer v{VERSION}</span>
-        <span class="text-ink-tertiary">Methodology last updated {displayDate}</span>
+        <span class="inline-flex items-center rounded-full border border-hairline-strong bg-surface-2 px-2.5 py-0.5 font-mono text-[11px] tracking-wide text-ink-muted">{t("how.version", { version: VERSION })}</span>
+        <span class="text-ink-tertiary">{t("how.methodology", { date: displayDate })}</span>
         <span class="hidden text-ink-tertiary sm:inline">·</span>
-        <span class="text-ink-subtle">Static, no data leaves your device for analysis.</span>
+        <span class="text-ink-subtle">{t("how.static")}</span>
       </div>
     </header>
 
@@ -104,9 +110,9 @@ const urlSignals = [
     </ol>
 
     <section data-reveal class="mt-14 rounded-lg border border-hairline bg-surface-1 p-6">
-      <h2 class="headline">Redaction, before anything else</h2>
+      <h2 class="headline">{t("how.redaction.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        Redaction runs locally in your browser before pattern matching. Examples:
+        {t("how.redaction.body")}
       </p>
       <dl class="mt-4 divide-y divide-hairline">
         {redactionDemo.map((r) => (
@@ -118,14 +124,14 @@ const urlSignals = [
         ))}
       </dl>
       <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
-        Still avoid pasting secrets — the safest secret is one that was never shared.
+        {t("how.redaction.note")}
       </p>
     </section>
 
     <section data-reveal class="mt-12" id="detectors">
-      <h2 class="headline">What the scan checks — detectors</h2>
+      <h2 class="headline">{t("how.detectors.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        ScamLens is rule-based: it identifies signals associated with known patterns in common frauds across India and globally. Each detector looks for a narrow phrase or shape and quotes the exact match as evidence.
+        {t("how.detectors.body")}
       </p>
       <div class="mt-6 overflow-x-auto rounded-lg border border-hairline">
         <table class="w-full min-w-[520px] text-left text-sm">
@@ -140,14 +146,14 @@ const urlSignals = [
         </table>
       </div>
       <p class="mt-3 text-caption leading-relaxed text-ink-tertiary">
-        Every flag links to a Scam Library entry with example messages and verification steps. See <a href="/what-we-detect" class="text-primary-hover hover:underline">What we detect</a>.
+        {t("how.detectors.footer").replace("What we detect", t("nav.what"))} <a href={translatePath("/what-we-detect")} class="text-primary-hover hover:underline">{t("nav.what")}</a>.
       </p>
     </section>
 
     <section data-reveal class="mt-12" id="url-signals">
-      <h2 class="headline">URL signals</h2>
+      <h2 class="headline">{t("how.urlSignals.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        When the input is a link, ScamLens parses the URL separately — without fetching it — and identifies signals associated with known phishing and malware-delivery patterns.
+        {t("how.urlSignals.body")}
       </p>
       <div class="mt-6 overflow-x-auto rounded-lg border border-hairline">
         <table class="w-full min-w-[520px] text-left text-sm">
@@ -164,55 +170,57 @@ const urlSignals = [
     </section>
 
     <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6">
-      <h2 class="headline">How risk is decided</h2>
+      <h2 class="headline">{t("how.risk.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        Each signal contributes to risk — multiple signals → higher risk. The engine does not expose numeric weights or thresholds (to avoid helping evasion), but the ranking is simple:
+        {t("how.risk.body")}
       </p>
       <ul class="mt-4 space-y-2 text-body-sm leading-relaxed text-ink-muted">
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low</strong> — no common scam markers found.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Medium</strong> — one or two warning signs present.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">High</strong> — several signals together.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Critical</strong> — classic scam pattern with multiple strong signals.</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low</strong> — {t("how.risk.low")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Medium</strong> — {t("how.risk.medium")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">High</strong> — {t("how.risk.high")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Critical</strong> — {t("how.risk.critical")}</li>
       </ul>
       <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
-        Risk is shown with quoted evidence for each flag so you can verify yourself — never as a mystery score. Exact weights and thresholds are intentionally not published.
+        {t("how.risk.note")}
       </p>
     </section>
 
     <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="evaluation">
-      <h2 class="headline">Evaluation — synthetic 25+25 (internal)</h2>
+      <h2 class="headline">{t("how.eval.title")}</h2>
       <p class="mt-3 text-body leading-relaxed text-ink-muted">
-        Sprint 3 added a synthetic internal corpus: 25 scam + 25 legitimate messages (not real user reports) to estimate the rule-based engine’s behaviour. On this corpus the detector flags ≥80% of scam cases as <em>Medium</em> or higher and marks ≥85% of legitimate cases as <em>Low</em> (precision/recall for this tiny synthetic set, not a marketing claim). The corpus is versioned in <code class="evidence-pill">src/lib/corpus.test.ts</code> and is not exposed as a live counter.
+        {t("how.eval.body")}
       </p>
       <p class="mt-3 text-caption leading-relaxed text-ink-tertiary">
-        This is internal evaluation, not a guarantee. A “Low” result never means safe — always verify via official channels.
+        {t("how.eval.note")}
       </p>
     </section>
 
     <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="limitations">
-      <h2 class="headline">Limitations</h2>
+      <h2 class="headline">{t("how.limitations.title")}</h2>
       <ul class="mt-4 space-y-2.5 text-body leading-relaxed text-ink-muted">
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Rule-based:</strong> identifies signals associated with known patterns — it does not use AI to “know” intent and can miss novel phrasing.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">False negatives &amp; positives:</strong> clever wording can evade rules; legitimate urgent messages can match a pattern. Always verify via official channels.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low ≠ safe:</strong> a Low result means no common markers were found — it is not a guarantee of safety.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not a recovery service:</strong> if you lost money or shared credentials, call 1930 and your bank immediately — ScamLens cannot recover funds.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not affiliated:</strong> not connected to any bank, wallet, courier or government agency; no endorsement is implied.</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Rule-based:</strong> {t("how.limitations.ruleBased")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">False negatives &amp; positives:</strong> {t("how.limitations.false")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low ≠ safe:</strong> {t("how.limitations.low")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not a recovery service:</strong> {t("how.limitations.recovery")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not affiliated:</strong> {t("how.limitations.affiliated")}</li>
       </ul>
     </section>
 
     <section data-reveal class="mt-12 border-t border-hairline pt-8">
-      <h2 class="headline">What ScamLens is not</h2>
+      <h2 class="headline">{t("how.not.title")}</h2>
       <ul class="mt-4 space-y-2.5 text-body leading-relaxed text-ink-muted">
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>Not a guarantee — language patterns alone never prove a scam.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>Not a recovery service — if you lost money, call 1930 immediately.</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>Not connected to any bank, wallet or government agency.</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.1")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.2")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.3")}</li>
       </ul>
       <div class="mt-8 flex flex-col gap-2 sm:flex-row">
-        <a href="/#checker" class="btn btn-primary flex-1">Try the checker</a>
-        <a href="/what-we-detect" class="btn btn-secondary flex-1">See what we detect</a>
+        <a href={`${translatePath("/")}#checker`} class="btn btn-primary flex-1">{t("about.cta")}</a>
+        <a href={translatePath("/what-we-detect")} class="btn btn-secondary flex-1">{t("nav.what")}</a>
       </div>
     </section>
   </article>
+
+  <FaqSection faqs={howFaqs} eyebrow="FAQ" title={lang==="es"?"Preguntas sobre cómo funciona": lang==="fr"?"Questions sur le fonctionnement": lang==="de"?"Fragen zur Funktionsweise": lang==="pt-br"?"Perguntas sobre como funciona": lang==="it"?"Domande su come funziona": lang==="ja"?"仕組みに関するFAQ": lang==="ko"?"작동 방식 FAQ": "How it works — FAQ"} id="faq-how" />
 
   <CTA />
 </Layout>

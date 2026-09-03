@@ -1,5 +1,10 @@
 ---
 import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+// ponytail: secondary section headings still English fallback, translate when needed for full ranking
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 
 interface Props {
   /** Show only the first N entries (home page) — the full library lives on /scams. */
@@ -9,7 +14,30 @@ interface Props {
 }
 
 const { limit, heading = true } = Astro.props;
-const all = (await getCollection("scams")).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const rawAll = await getCollection("scams");
+// Deduplicate: prefer Spanish pilot entries when lang is es, otherwise English only
+// For pilot validation: es has 3 translated markdowns with ids "es/<slug>", English has "slug"
+const allSlugs = new Set(rawAll.map(e => e.id.replace(/^[a-z-]+\//,"")));
+const bySlug = new Map();
+for (const e of rawAll) {
+  const slug = e.id.replace(/^[a-z-]+\//,"");
+  const entryLang = e.id.includes("/") ? e.id.split("/")[0] : "en";
+  if (!bySlug.has(slug)) bySlug.set(slug, e);
+  else {
+    if (entryLang === lang) bySlug.set(slug, e);
+    else if (entryLang === "en" && ![...bySlug.values()].some(v => v.id.startsWith(`${lang}/`))) {
+    }
+  }
+}
+for (const slug of allSlugs) {
+  const langEntry = rawAll.find(e => e.id === `${lang}/${slug}`);
+  if (langEntry) bySlug.set(slug, langEntry);
+  else {
+    const enEntry = rawAll.find(e => e.id === slug);
+    if (enEntry) bySlug.set(slug, enEntry);
+  }
+}
+const all = [...bySlug.values()].sort((a, b) => a.data.title.localeCompare(b.data.title));
 const scams = typeof limit === "number" ? all.slice(0, limit) : all;
 ---
 
@@ -18,8 +46,8 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
     <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
       {heading && (
         <div class="max-w-xl">
-          <p class="eyebrow">Scam library</p>
-          <h2 class="display-section mt-4">Know the pattern before it reaches you</h2>
+          <p class="eyebrow">{t("footer.scams")}</p>
+          <h2 class="display-section mt-4">{t("scamLibrary.heading")}</h2>
         </div>
       )}
       <label class:list={["relative w-full max-w-xs", heading ? "" : "sm:ml-auto"]}>
@@ -27,7 +55,7 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
         <input
           id="library-search"
           type="search"
-          placeholder="Search scams… e.g. UPI, courier, job"
+          placeholder={t("safety.rules").includes("OTP") ? "Search scams… e.g. UPI, courier, job" : "Search scams…"}
           aria-controls="library-grid"
           class="w-full rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-sm text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none min-h-[44px]"
         />
@@ -35,20 +63,25 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
     </div>
 
     <div id="library-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
-      {scams.map((s, i) => (
-        <a
-          href={`/scams/${s.id}`}
-          data-reveal
-          style={`--reveal-delay: ${(i % 3) * 80}ms`}
-          data-title={`${s.data.title} ${s.data.intro} ${s.data.tag}`.toLowerCase()}
-          class="card card-lift library-card group flex flex-col p-6"
-        >
-          <span class="status-badge w-fit rounded-full bg-surface-2 px-2 py-0.5 text-xs text-ink-muted">{s.data.tag}</span>
-          <h3 class="card-title mt-4">{s.data.title}</h3>
-          <p class="mt-2 line-clamp-3 flex-1 text-body-sm leading-relaxed text-ink-muted">{s.data.intro}</p>
-          <span class="mt-4 text-[13px] font-medium text-primary-hover">Read the breakdown <span class="arrow-nudge">→</span></span>
-        </a>
-      ))}
+      {scams.map((s, i) => {
+        const rawSlug = s.id.replace(/^[a-z-]+\//,"");
+        const folderMap = {es:"estafas", fr:"arnaques", de:"betrugsmaschen", "pt-br":"golpes", it:"truffe", ja:"scams", ko:"scams"};
+        const href = lang !== "en" ? `/${lang}/${folderMap[lang] || "scams"}/${rawSlug}` : `/scams/${rawSlug}`;
+        return (
+          <a
+            href={href}
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 80}ms`}
+            data-title={`${s.data.title} ${s.data.intro} ${s.data.tag}`.toLowerCase()}
+            class="card card-lift library-card group flex flex-col p-6"
+          >
+            <span class="status-badge w-fit rounded-full bg-surface-2 px-2 py-0.5 text-xs text-ink-muted">{s.data.tag}</span>
+            <h3 class="card-title mt-4">{s.data.title}</h3>
+            <p class="mt-2 line-clamp-3 flex-1 text-body-sm leading-relaxed text-ink-muted">{s.data.intro}</p>
+            <span class="mt-4 text-[13px] font-medium text-primary-hover">Read the breakdown <span class="arrow-nudge">→</span></span>
+          </a>
+        );
+      })}
     </div>
 
     <p id="library-empty" class="mt-10 hidden text-center text-body-sm text-ink-subtle" aria-live="polite" role="status">
@@ -57,7 +90,7 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
 
     {typeof limit === "number" && (
       <div data-reveal class="mt-10 text-center">
-        <a href="/scams" class="btn btn-secondary">Browse all {all.length} breakdowns →</a>
+        <a href={translatePath("/scams")} class="btn btn-secondary">Browse all {all.length} breakdowns →</a>
       </div>
     )}
   </div>
