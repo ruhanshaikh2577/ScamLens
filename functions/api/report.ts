@@ -1,8 +1,14 @@
 import { validateReportPayload } from "../_shared/validate";
+import { isRateLimited } from "../_shared/rateLimit";
 import { analyze } from "../../src/lib/analyzer";
 import { VERSION } from "../../src/lib/version";
 
 export async function onRequestPost({ request, env }: any) {
+  // optional KV rate limit: 5/min per IP (CF Rate Limiting preferred in prod)
+  const ip = request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || (request as any).ip || "";
+  if (ip && (await isRateLimited(env, ip))) {
+    return new Response(JSON.stringify({ error: "rate limited" }), { status: 429, headers: { "content-type": "application/json" } });
+  }
   let body: any;
   try {
     body = await request.json();
@@ -24,6 +30,8 @@ export async function onRequestPost({ request, env }: any) {
     analyzerVersion: VERSION,
     timestamp: new Date().toISOString(),
   };
-  await env?.REPORTS?.put?.(`reports:${id}`, JSON.stringify(payload));
+  // KV reports expire in 30 days; no raw PII stored (redactedInput only). Rate-limit via CF or env.RATE_LIMIT if present.
+  const putOpts: any = { expirationTtl: 2592000 };
+  await env?.REPORTS?.put?.(`reports:${id}`, JSON.stringify(payload), putOpts);
   return new Response(JSON.stringify({ id }), { status: 201, headers: { "content-type": "application/json" } });
 }
