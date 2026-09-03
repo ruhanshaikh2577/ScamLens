@@ -10,5 +10,8 @@
   "host_permissions": [
     "https://scamlens.in/*"
   ],
-  "permissions": []
+  "permissions": ["contextMenus", "activeTab"],
+  "background": {
+    "service_worker": "context-menu.js"
+  }
 }
