@@ -21,4 +21,13 @@ describe("sovereign vault theme", () => {
     expect(c).toContain("color: var(--color-gold);");
     expect(c).toContain("font-family: var(--font-display);");
   });
+  it("has semantic risk scale, guilloche hero, seal badge", () => {
+    const c = css();
+    expect(c).toContain("#F59E0B");
+    expect(c).toContain("#EA580C");
+    expect(c).toContain("#DC2626");
+    expect(c).toContain(".seal-ring");
+    expect(c).toContain("repeating-linear-gradient");
+    expect(c).not.toContain("radial-gradient(circle at center, var(--color-primary), transparent 65%)");
+  });
 });

@@ -264,19 +264,29 @@ html.dark {
     border: 1px solid var(--color-hairline);
   }
   .risk-medium {
-    background: color-mix(in srgb, var(--color-primary) 14%, transparent);
-    color: var(--color-primary-hover);
-    border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+    background: color-mix(in srgb, #F59E0B 14%, transparent);
+    color: #FBBF24;
+    border: 1px solid color-mix(in srgb, #F59E0B 40%, transparent);
   }
   .risk-high {
-    background: color-mix(in srgb, var(--color-primary) 26%, transparent);
-    color: var(--color-ink);
-    border: 1px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+    background: color-mix(in srgb, #EA580C 18%, transparent);
+    color: #FB923C;
+    border: 1px solid color-mix(in srgb, #EA580C 50%, transparent);
   }
   .risk-critical {
-    background: var(--color-primary);
-    color: var(--color-on-primary);
-    border: 1px solid var(--color-primary);
+    background: #DC2626;
+    color: #fff;
+    border: 1px solid #DC2626;
+  }
+  html.light .risk-medium {
+    color: #B45309;
+  }
+  html.light .risk-high {
+    color: #C2410C;
+  }
+  html.light .risk-critical {
+    background: #B91C1C;
+    border-color: #B91C1C;
   }
   .risk-dot {
     width: 7px;
@@ -329,7 +339,7 @@ html.dark {
     transform: scaleX(1);
   }
 
-  /* Hero aurora glow — two slow-drifting primary blobs */
+  /* Hero guilloche — fine emerald line layer + two soft drifting blobs */
   .aurora {
     position: absolute;
     inset: -35% -10% auto;
@@ -337,6 +347,7 @@ html.dark {
     pointer-events: none;
     overflow: hidden;
     z-index: -1;
+    background: repeating-linear-gradient(115deg, color-mix(in srgb, var(--color-primary) 16%, transparent) 0 1px, transparent 1px 9px);
     mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
   }
   .aurora::before,
@@ -347,8 +358,8 @@ html.dark {
     height: 480px;
     border-radius: 50%;
     filter: blur(110px);
-    opacity: 0.32;
-    background: radial-gradient(circle at center, var(--color-primary), transparent 65%);
+    opacity: 0.14;
+    background: var(--color-primary);
     will-change: transform;
   }
   .aurora::before {
@@ -359,9 +370,11 @@ html.dark {
   .aurora::after {
     right: 8%;
     top: 5%;
-    opacity: 0.22;
+    opacity: 0.10;
     animation: aurora-b 26s ease-in-out infinite alternate;
   }
+  .seal-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--color-gold); font-size: 12px; font-weight: 500; }
+  .seal-ring { width: 18px; height: 18px; border: 1.5px solid var(--color-gold); border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
 
   /* Ticker marquee */
   .marquee {
