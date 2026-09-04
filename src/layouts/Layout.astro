@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { getLangFromUrl, getHreflang, getHreflangUrls, getCanonicalUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
-import { hreflangMap } from "../i18n/ui";
+import { hreflangMap, reportUrls } from "../i18n/ui";
 import { ready } from "../i18n/readiness";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 
@@ -128,8 +128,8 @@ const isActive = (href: string) =>
       <nav class="mx-auto flex h-14 w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8" aria-label={t("a11y.nav.main")}>
         <a href={translatePath("/")} class="flex items-center gap-2 font-semibold tracking-tight text-[17px]">
           <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="15" cy="15" r="9.5" fill="none" stroke="#5e6ad2" stroke-width="3"/>
-            <line x1="22" y1="22" x2="29" y2="29" stroke="#5e6ad2" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="15" cy="15" r="9.5" fill="none" stroke="#10B981" stroke-width="3"/>
+            <line x1="22" y1="22" x2="29" y2="29" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
           </svg>
           ScamLens
         </a>
@@ -147,7 +147,7 @@ const isActive = (href: string) =>
           <button id="theme-toggle" type="button" aria-label={t("a11y.theme.system")} title={t("a11y.theme.system")} class="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-hairline bg-surface-1 text-ink-subtle transition-colors hover:border-hairline-strong hover:text-ink active:border-hairline-tertiary active:text-ink">
             <span id="theme-icon" aria-hidden="true"></span>
           </button>
-          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">{t("nav.report")}</a>
+          <a href={reportUrls[lang] ?? reportUrls.en} target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">{t("nav.report")}</a>
           <a href={`${translatePath("/")}#checker`} class="btn btn-primary">{t("nav.checkNow")}</a>
         </div>
       </nav>
@@ -172,8 +172,8 @@ const isActive = (href: string) =>
           <div class="col-span-2 md:col-span-1">
             <div class="flex items-center gap-2 font-semibold text-[15px] text-ink">
               <svg width="16" height="16" viewBox="0 0 32 32" aria-hidden="true">
-                <circle cx="15" cy="15" r="9.5" fill="none" stroke="#5e6ad2" stroke-width="3"/>
-                <line x1="22" y1="22" x2="29" y2="29" stroke="#5e6ad2" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="15" cy="15" r="9.5" fill="none" stroke="#10B981" stroke-width="3"/>
+                <line x1="22" y1="22" x2="29" y2="29" stroke="#10B981" stroke-width="3" stroke-linecap="round"/>
               </svg>
               ScamLens
             </div>

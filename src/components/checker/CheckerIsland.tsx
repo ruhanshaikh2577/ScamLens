@@ -299,7 +299,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     >
       {dragActive && (
         <div class="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 rounded-lg bg-canvas/85 backdrop-blur border-2 border-dashed border-primary-hover">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5e6ad2" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4M8 8l4-4 4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4M8 8l4-4 4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
           <p class="text-sm font-medium text-ink">{t("checker.dropOverlay.title")}</p>
           <p class="text-caption text-ink-muted">{t("checker.dropOverlay.subtitle")}</p>
         </div>
@@ -529,6 +529,9 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
           <span class="risk-dot" />
           {RISK_LABEL[result.risk]}
         </span>
+        {result.risk === "low" && (
+          <span class="seal-badge ml-1" aria-hidden="true"><span class="seal-ring"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 5.2 4 7.4 8.2 2.8"/></svg></span></span>
+        )}
         <button onClick={onReset} class="btn btn-secondary !min-h-0 !px-3 !py-1.5 !text-xs">
           Scan something else
         </button>
