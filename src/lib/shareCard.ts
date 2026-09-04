@@ -52,10 +52,10 @@ export function generateShareCard(r: AnalysisResult): string {
   c.height = 600;
   const ctx = c.getContext("2d")!;
   // bg
-  ctx.fillStyle = "#010102";
+  ctx.fillStyle = "#060B14";
   ctx.fillRect(0, 0, c.width, c.height);
   // top hairline
-  ctx.fillStyle = "#23252a";
+  ctx.fillStyle = "#1E2D47";
   ctx.fillRect(0, 0, c.width, 1);
   // brand
   ctx.fillStyle = "#8a8f98";
@@ -82,7 +82,7 @@ export function generateShareCard(r: AnalysisResult): string {
   ctx.lineTo(badgeX, by + rr);
   ctx.quadraticCurveTo(badgeX, by, badgeX + rr, by);
   ctx.fill();
-  ctx.fillStyle = r.risk === "low" ? "#d0d6e0" : r.risk === "medium" ? "#828fff" : "#f7f8f8";
+  ctx.fillStyle = r.risk === "low" ? "#d0d6e0" : r.risk === "medium" ? "#F59E0B" : "#f7f8f8";
   ctx.fillText(riskLabel, badgeX + 14, by + 18);
 
   // headline - wrap
