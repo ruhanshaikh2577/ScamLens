@@ -1,6 +1,6 @@
 ---
 version: alpha
-name: Linear-design-analysis
+name: sovereign-vault-theme
 description: "A navy-ink trust canvas built around #060B14 with emerald action color and rationed gold accents, light gray text (#F2F5F9), and the signature emerald (#059669) used as the primary chromatic accent. The system reads as software-craft documentation: dense, technical, and quietly luxurious. Display type is set in Fraunces Variable serif (Georgia fallback) at 500–700 with measured negative tracking. Cards live as navy panels (#0B1424) with hairline borders. The accent emerald appears on the brand mark, focus rings, and a few intentional CTAs — never decoratively. Page rhythm leans on product UI screenshots framed in dark panels rather than atmospheric color."
 
 colors:
@@ -27,85 +27,84 @@ colors:
   inverse-surface-1: "#f5f6f6"
   inverse-surface-2: "#f6f7f7"
   inverse-ink: "#000000"
-  brand-secure: "#7a7fad"
   semantic-success: "#27a644"
   semantic-overlay: "#000000"
 
 typography:
   display-xl:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 80px
     fontWeight: 600
     lineHeight: 1.05
     letterSpacing: -3.0px
   display-lg:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 56px
     fontWeight: 600
     lineHeight: 1.10
     letterSpacing: -1.8px
   display-md:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 40px
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: -1.0px
   headline:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 28px
     fontWeight: 600
     lineHeight: 1.20
     letterSpacing: -0.6px
   card-title:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 22px
     fontWeight: 500
     lineHeight: 1.25
     letterSpacing: -0.4px
   subhead:
-    fontFamily: Linear Display
+    fontFamily: Fraunces Variable
     fontSize: 20px
     fontWeight: 400
     lineHeight: 1.40
     letterSpacing: -0.2px
   body-lg:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.50
     letterSpacing: -0.1px
   body:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.50
     letterSpacing: -0.05px
   body-sm:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.50
     letterSpacing: 0
   caption:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.40
     letterSpacing: 0
   button:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1.20
     letterSpacing: 0
   eyebrow:
-    fontFamily: Linear Text
+    fontFamily: Inter Variable
     fontSize: 13px
     fontWeight: 500
     lineHeight: 1.30
     letterSpacing: 0.4px
   mono:
-    fontFamily: Linear Mono
+    fontFamily: system mono stack
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.50
@@ -260,32 +259,33 @@ components:
 
 ## Overview
 
-Linear's marketing canvas is the deepest dark surface in this collection — `{colors.canvas}` is #010102, essentially pure black with a faint blue tint. On top sits a four-step surface ladder (`{colors.surface-1}` through `{colors.surface-4}`) for cards, panels, and lifted tiles, with hairline borders running from `{colors.hairline}` (#23252a) up through `{colors.hairline-strong}` and `{colors.hairline-tertiary}`. Light gray text (`{colors.ink}` #f7f8f8) carries the body and headlines.
+ScamLens's trust canvas is a deep navy-ink surface — `{colors.canvas}` is #060B14. On top sits a four-step surface ladder (`{colors.surface-1}` through `{colors.surface-4}`) for cards, panels, and lifted tiles, with hairline borders running from `{colors.hairline}` (#1E2D47) up through `{colors.hairline-strong}` and `{colors.hairline-tertiary}`. Light text (`{colors.ink}` #F2F5F9) carries the body and headlines.
 
-The single chromatic accent is **Linear lavender-blue** `{colors.primary}` (#5e6ad2) — used on the brand mark, focus rings, and the primary CTA button. A lighter hover state (`{colors.primary-hover}` #828fff) and a focus-tinted variant (`{colors.primary-focus}` #5e69d1) extend the same hue. Linear avoids saturated greens, oranges, reds, etc. on the marketing canvas — the only semantic color is `{colors.semantic-success}` (#27a644) for status pills and the rare success indicator.
+The primary chromatic accent is **emerald** `{colors.primary}` (#047857) — used on the brand mark, focus rings, and the primary CTA button. A lighter hover state (`{colors.primary-hover}` #059669) and a bright focus variant (`{colors.primary-focus}` #34D399) extend the same hue. A rationed gold (`{colors.gold}` #C9A227, deep #8A6D1B on light) marks eyebrows, the verified seal, and verified checkmarks only. Risk badges use a semantic scale (neutral → amber → orange → red) so verdicts read without the brand color.
 
-Display type runs Linear's custom sans (with `SF Pro Display` fallback) at weight 500–700 with negative letter-spacing scaling from -3.0px at 80px down to 0 at body. The body family is Linear's text cut, and a Linear Mono is reserved for code snippets in product screenshots.
+Display type runs Fraunces Variable serif (Georgia fallback) at weight 500–700 with negative letter-spacing scaling from -3.0px at 80px down to 0 at body. The body family is Inter Variable, and a system mono stack is reserved for evidence pills, IDs, and code snippets.
 
-The page rhythm is **dense product screenshots** — Linear's marketing leads with high-fidelity captures of the product UI (issue list, project view, dashboard) framed in `{colors.surface-1}` panels with `{rounded.xl}` 16px corners. The chrome is intentionally minimal so the app screenshots can do the heavy lifting.
+The page rhythm is **checker-first** — ScamLens leads with the working checker, framed in `{colors.surface-1}` panels with `{rounded.xl}` 16px corners, over a faint banknote-guilloche line motif in the hero. The chrome is intentionally minimal so the tool can do the heavy lifting.
 
 **Key Characteristics:**
-- **Dark-canvas marketing system** — `{colors.canvas}` (#010102) is the deepest dark in this collection.
-- **Lavender-blue brand accent** (`{colors.primary}` #5e6ad2) — used scarcely on brand mark, focus, and the primary CTA.
+- **Dark-canvas trust system** — `{colors.canvas}` (#060B14) is a deep navy ink.
+- **Emerald action accent** (`{colors.primary}` #047857) — used scarcely on brand mark, focus, and the primary CTA.
+- **Rationed gold** (`{colors.gold}` #C9A227) — eyebrows, verified seal, verified checkmarks only.
 - Four-step surface ladder (canvas → surface-1 → surface-2 → surface-3 → surface-4) carries hierarchy without shadow.
 - Display tracking pulls aggressively negative (-3.0px at 80px); body holds at -0.05px.
 - Cards use `{rounded.lg}` 12px corners with 1px hairline borders — never pill, rarely 16px.
-- **Product UI screenshots** dominate the page. The marketing chrome is a dark frame for the app.
+- **Checker UI** dominates the page. The marketing chrome is a dark frame for the tool.
 - No second chromatic color. No atmospheric gradients. No spotlight cards.
 
 ## Colors
 
-> Source pages: linear.app (home), /intake, /pricing, /contact/sales, /build.
+> Source: ScamLens implementation (replaces the Linear-design-analysis this file was adapted from).
 
 ### Brand & Accent
-- **Lavender-Blue** ({colors.primary}): The signature Linear accent — primary CTA, brand mark, link emphasis.
-- **Lavender Hover** ({colors.primary-hover}): Lighter lavender (#828fff) — hovered state of the primary CTA.
-- **Lavender Focus** ({colors.primary-focus}): Focus-ring tint (#5e69d1) — focused inputs, focused buttons.
-- **Brand Secure** ({colors.brand-secure}): Muted lavender-gray (#7a7fad) — used in "Linear Security" surfaces.
+- **Emerald** ({colors.primary}): The trust accent — primary CTA, brand mark, link emphasis.
+- **Emerald Hover** ({colors.primary-hover}): Deep emerald (#059669) — hovered state of the primary CTA.
+- **Emerald Focus** ({colors.primary-focus}): Bright focus-ring tint (#34D399) — focused inputs, focused buttons.
+- **Gold** ({colors.gold}): Rationed accent (#C9A227, deep #8A6D1B on light) — eyebrows, verified seal, verified checkmarks only.
 
 ### Surface
 - **Canvas** ({colors.canvas}): Default page background — #010102, near-pure black with a faint blue tint.
@@ -314,9 +314,9 @@ The page rhythm is **dense product screenshots** — Linear's marketing leads wi
 
 ### Font Family
 
-- **Linear Display** — Linear's custom display sans; fallback `SF Pro Display, -apple-system, system-ui, Segoe UI, Roboto`. Carries display-xl through subhead.
-- **Linear Text** — Linear's custom text sans (a slightly different cut tuned for body sizes); same fallback stack. Carries body sizes, button labels, captions.
-- **Linear Mono** — Linear's custom mono; fallback `ui-monospace, SF Mono, Menlo`. Used for code snippets in product screenshots and for status / ID tokens.
+- **Fraunces Variable** — serif display face; Georgia fallback. Carries display-xl through subhead.
+- **Inter Variable** — body/UI face. Carries body sizes, button labels, captions.
+- **System mono stack** — `ui-monospace, SFMono-Regular, Menlo, monospace`. Used for evidence pills, IDs, and code snippets.
 
 The marketing surface treats Display and Text as one continuous voice; the family change is silent.
 
@@ -336,18 +336,18 @@ The marketing surface treats Display and Text as one continuous voice; the famil
 | `{typography.caption}` | 12px | 400 | 1.40 | 0 | Captions, meta, status |
 | `{typography.button}` | 14px | 500 | 1.20 | 0 | All button labels |
 | `{typography.eyebrow}` | 13px | 500 | 1.30 | 0.4px | Section eyebrow (slight positive tracking) |
-| `{typography.mono}` | 13px | 400 | 1.50 | 0 | Linear Mono for code in product screenshots |
+| `{typography.mono}` | 13px | 400 | 1.50 | 0 | System mono for evidence pills and code snippets |
 
 ### Principles
 
 - **Aggressive negative tracking on display** (-3.0px at 80px ≈ 4% of size).
 - **Single voice from display to body.** Display-xl at 600 → body at 400 — same family, narrower weights.
 - **Eyebrow uses positive tracking** (+0.4px) — contrast against the negative-tracked display marks the eyebrow as taxonomy.
-- **Mono only in code contexts.** Linear Mono lives inside product screenshots — not on marketing chrome.
+- **Mono only in code contexts.** System mono lives in evidence pills and code snippets — not on marketing chrome.
 
 ### Note on Font Substitutes
 
-Display type is Fraunces Variable (Georgia, serif fallback), loaded via `@fontsource-variable/fraunces`; body is Inter Variable. Linear's custom typeface isn't publicly distributed; the documented fallback `SF Pro Display, -apple-system, system-ui` is the recommended substitute on macOS. For cross-platform implementation, **Inter** at weight 500 / 600 / 700 is the closest free substitute. **Geist Sans** is also viable. For mono, **JetBrains Mono** or **Geist Mono** at weight 400 closely approximates Linear Mono.
+Display type is Fraunces Variable (Georgia, serif fallback), loaded via `@fontsource-variable/fraunces`; body is Inter Variable (`@fontsource-variable/inter`); mono is the system stack.
 
 ## Layout
 
@@ -356,7 +356,7 @@ Display type is Fraunces Variable (Georgia, serif fallback), loaded via `@fontso
 - **Base unit**: 4px.
 - **Tokens (front matter)**: `{spacing.xxs}` 4px · `{spacing.xs}` 8px · `{spacing.sm}` 12px · `{spacing.md}` 16px · `{spacing.lg}` 24px · `{spacing.xl}` 32px · `{spacing.xxl}` 48px · `{spacing.section}` 96px.
 - Card interior padding: `{spacing.lg}` 24px on feature/pricing cards; `{spacing.xl}` 32px on testimonial cards; `{spacing.xxl}` 48px on CTA banners.
-- Pill button padding: 8px vertical · 14px horizontal — Linear's compact button spec.
+- Pill button padding: 8px vertical · 14px horizontal — compact button spec.
 - Form input padding: 8px vertical · 12px horizontal.
 
 ### Grid & Container
@@ -375,12 +375,12 @@ The dark canvas IS the whitespace. Sections separate by lift onto surface-1 pane
 | Level | Treatment | Use |
 |---|---|---|
 | 0 (flat) | No shadow, no border | Default for body type, hero text, footer |
-| 1 (charcoal lift) | `{colors.surface-1}` background on canvas, 1px `{colors.hairline}` | Default cards, product panels |
+| 1 (surface lift) | `{colors.surface-1}` background on canvas, 1px `{colors.hairline}` | Default cards, product panels |
 | 2 (surface-2 lift) | `{colors.surface-2}` background, 1px `{colors.hairline-strong}` | Featured pricing card, hovered cards |
 | 3 (surface-3 lift) | `{colors.surface-3}` background | Sub-nav, dropdown menus |
 | 4 (focus ring) | 2px `{colors.primary-focus}` outline at 50% opacity | Focused input, focused button |
 
-Linear's depth is carried by surface ladder + hairline borders. The brand resists drop shadows on dark almost entirely.
+Depth is carried by surface ladder + hairline borders. The brand resists drop shadows on dark almost entirely.
 
 ### Decorative Depth
 
@@ -413,10 +413,10 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 
 ### Buttons
 
-**`button-primary`** — Lavender CTA. The default primary CTA across all pages.
+**`button-primary`** — Emerald CTA. The default primary CTA across all pages.
 - Background `{colors.primary}`, text `{colors.on-primary}`, type `{typography.button}`, padding 8px 14px, rounded `{rounded.md}`.
 - Pressed state lives in `button-primary-pressed` (background shifts to `{colors.primary-focus}`).
-- Hover state lives in `button-primary-hover` (background shifts to `{colors.primary-hover}` lighter lavender).
+- Hover state lives in `button-primary-hover` (background shifts to `{colors.primary-hover}` deep emerald).
 
 **`button-secondary`** — Charcoal button. Used for secondary CTAs ("Sign in", "Read changelog").
 - Background `{colors.surface-1}`, text `{colors.ink}`, type `{typography.button}`, padding 8px 14px, rounded `{rounded.md}`. 1px `{colors.hairline}` border.
@@ -444,7 +444,7 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 **`feature-card`** — Generic feature highlight tile.
 - Background `{colors.surface-1}`, text `{colors.ink}`, type `{typography.body}`, rounded `{rounded.lg}`, padding 24px.
 
-**`product-screenshot-card`** — The dominant card type — frames a high-fidelity Linear app UI screenshot.
+**`product-screenshot-card`** — The dominant card type — frames a high-fidelity checker UI capture.
 - Background `{colors.surface-1}`, text `{colors.ink}`, type `{typography.body}`, rounded `{rounded.xl}`, padding 24px.
 
 **`testimonial-card`** — Customer quote with avatar + name + role.
@@ -472,12 +472,12 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 
 ### Navigation
 
-**`top-nav`** — Sticky dark bar with the Linear wordmark left, primary nav links centered, and a `button-secondary` ("Sign in") + `button-primary` ("Get started") pair right.
+**`top-nav`** — Sticky dark bar with the ScamLens wordmark left, primary nav links centered, and a `button-secondary` ("Sign in") + `button-primary` ("Get started") pair right.
 - Background `{colors.canvas}`, text `{colors.ink}`, type `{typography.body-sm}`, height 56px.
 
 ### Footer
 
-**`footer`** — Dense link grid on `{colors.canvas}` with the Linear wordmark left.
+**`footer`** — Dense link grid on `{colors.canvas}` with the ScamLens wordmark left.
 - Background `{colors.canvas}`, text `{colors.ink-subtle}`, type `{typography.caption}`, padding 64px 32px.
 
 ## Do's and Don'ts
@@ -485,9 +485,9 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 ### Do
 
 - Reserve `{colors.canvas}` (#010102) as the system's anchor surface — the faint blue tint is intentional.
-- Use `{colors.primary}` lavender ONLY for: brand mark, primary CTA, focus ring, link emphasis.
+- Use `{colors.primary}` emerald ONLY for: brand mark, primary CTA, focus ring, link emphasis. Gold ONLY for eyebrows, seal, verified marks.
 - Use the four-step surface ladder for hierarchy. Avoid skipping levels.
-- Pair display weight 600 with body weight 400 — Linear resists 700+ display weights.
+- Pair display weight 600 with body weight 400.
 - Apply negative letter-spacing aggressively on display.
 - Use product UI screenshots as the protagonist of every section.
 - Compose CTAs as `{rounded.md}` 8px corners.
@@ -495,7 +495,7 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 ### Don't
 
 - Don't ship a light-mode marketing page.
-- Don't use lavender as a section background or card fill.
+- Don't use emerald as a section background or card fill.
 - Don't introduce a second chromatic accent (orange, pink, green for marketing).
 - Don't add atmospheric gradients or spotlight cards.
 - Don't pill-round CTAs.
@@ -539,13 +539,13 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 3. Default body to `{typography.body}` at weight 400.
 4. Run `npx @google/design.md lint DESIGN.md` after edits.
 5. Add new variants as separate component entries.
-6. Treat lavender as scarce: brand mark, primary CTA, focus, link emphasis.
+6. Treat emerald as scarce: brand mark, primary CTA, focus, link emphasis. Treat gold as scarcer: eyebrows, seal, verified marks.
 7. Lead every section with a product UI screenshot.
 
 ## Known Gaps
 
-- The four-step surface ladder values are extracted directly from Linear's `--color-bg-level-3`, `--color-line-tint`, etc. CSS variables; they are Linear's canonical surface spec.
+- The four-step surface ladder above is the canonical spec for this theme.
 - Form-field error and validation styling is not visible on the inspected pages.
 - Light mode flips the canvas ladder to paper tones (canvas #F7F9FC, surfaces #FFFFFF/#EFF3F8/#E6ECF4/#DCE4EF, hairlines #DDE4EE/#C6D2E2/#B3C2D6, inks #0A1628/#33415C/#5B6B84/#7A879C) with a deepened primary (#047857); gold accents stay rationed in both modes.
-- Linear's actual product UI uses a richer color-tag palette (red, orange, yellow, green, blue, purple) for issue priorities and project labels — those colors live in the in-product surfaces shown in mockups.
+- Risk badges use the semantic scale (neutral → amber → orange → red); the old single-accent badge treatment is retired.
 - The custom display, text, and mono families are proprietary; an open-source substitute is acceptable.

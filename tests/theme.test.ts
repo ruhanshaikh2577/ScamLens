@@ -13,6 +13,7 @@ describe("sovereign vault theme", () => {
     expect(c).toContain("--color-gold: #C9A227;");
     expect(c).toContain("@fontsource-variable/fraunces");
     expect(c).not.toContain("#5e6ad2");
+    expect(c).not.toContain("7a7fad");
   });
   it("has light-mode paper values and serif display type", () => {
     const c = css();
