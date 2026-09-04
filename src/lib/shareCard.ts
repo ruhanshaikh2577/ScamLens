@@ -66,7 +66,7 @@ export function generateShareCard(r: AnalysisResult): string {
   ctx.font = '600 13px "Inter Variable", Inter, system-ui, sans-serif';
   const badgeW = ctx.measureText(riskLabel).width + 28;
   const badgeX = c.width - badgeW - 40;
-  ctx.fillStyle = r.risk === "critical" ? "#5e6ad2" : r.risk === "high" ? "rgba(94,106,210,0.28)" : r.risk === "medium" ? "rgba(94,106,210,0.16)" : "#141516";
+  ctx.fillStyle = r.risk === "critical" ? "#DC2626" : r.risk === "high" ? "rgba(234,88,12,0.28)" : r.risk === "medium" ? "rgba(245,158,11,0.16)" : "#0F1A2E";
   // rounded rect
   const bh = 28;
   const by = 18;
