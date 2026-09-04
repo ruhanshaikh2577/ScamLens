@@ -1,12 +1,12 @@
 ---
 version: alpha
 name: Linear-design-analysis
-description: "A navy-ink trust canvas built around #060B14 with emerald action color and rationed gold accents, light gray text (#F2F5F9), and the signature emerald (#059669) used as the single chromatic accent. The system reads as software-craft documentation: dense, technical, and quietly luxurious. Display type is set in Fraunces Variable serif (Georgia fallback) at 500–700 with measured negative tracking. Cards live as navy panels (#0B1424) with hairline borders. The accent emerald appears on the brand mark, focus rings, and a few intentional CTAs — never decoratively. Page rhythm leans on product UI screenshots framed in dark panels rather than atmospheric color."
+description: "A navy-ink trust canvas built around #060B14 with emerald action color and rationed gold accents, light gray text (#F2F5F9), and the signature emerald (#059669) used as the primary chromatic accent. The system reads as software-craft documentation: dense, technical, and quietly luxurious. Display type is set in Fraunces Variable serif (Georgia fallback) at 500–700 with measured negative tracking. Cards live as navy panels (#0B1424) with hairline borders. The accent emerald appears on the brand mark, focus rings, and a few intentional CTAs — never decoratively. Page rhythm leans on product UI screenshots framed in dark panels rather than atmospheric color."
 
 colors:
-  primary: "#059669"
+  primary: "#047857"
   on-primary: "#ffffff"
-  primary-hover: "#10B981"
+  primary-hover: "#059669"
   primary-focus: "#34D399"
   font-display: "Fraunces Variable, Georgia, serif"
   gold: "#C9A227"

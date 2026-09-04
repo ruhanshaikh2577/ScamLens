@@ -6,8 +6,8 @@ const css = () => readFileSync("src/styles/global.css", "utf8");
 describe("sovereign vault theme", () => {
   it("uses emerald primary, navy canvas, gold accent, no lavender", () => {
     const c = css();
-    expect(c).toContain("--color-primary: #059669;");
-    expect(c).toContain("--color-primary-hover: #10B981;");
+    expect(c).toContain("--color-primary: #047857;");
+    expect(c).toContain("--color-primary-hover: #059669;");
     expect(c).toContain("--color-primary-focus: #34D399;");
     expect(c).toContain("--color-canvas: #060B14;");
     expect(c).toContain("--color-gold: #C9A227;");
