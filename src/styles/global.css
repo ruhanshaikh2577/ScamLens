@@ -1,30 +1,34 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
 
 @theme {
-  /* DESIGN.md colors — verbatim */
-  --color-primary: #5e6ad2;
+  /* Sovereign Vault theme — verbatim */
+  --color-primary: #059669;
   --color-on-primary: #ffffff;
-  --color-primary-hover: #828fff;
-  --color-primary-focus: #5e69d1;
-  --color-ink: #f7f8f8;
-  --color-ink-muted: #d0d6e0;
-  --color-ink-subtle: #8a8f98;
-  --color-ink-tertiary: #62666d;
-  --color-canvas: #010102;
-  --color-surface-1: #0f1011;
-  --color-surface-2: #141516;
-  --color-surface-3: #18191a;
-  --color-surface-4: #191a1b;
-  --color-hairline: #23252a;
-  --color-hairline-strong: #34343a;
-  --color-hairline-tertiary: #3e3e44;
+  --color-primary-hover: #10B981;
+  --color-primary-focus: #34D399;
+  --color-ink: #F2F5F9;
+  --color-ink-muted: #C3CEDD;
+  --color-ink-subtle: #8B98AD;
+  --color-ink-tertiary: #5F6B80;
+  --color-canvas: #060B14;
+  --color-surface-1: #0B1424;
+  --color-surface-2: #0F1A2E;
+  --color-surface-3: #142238;
+  --color-surface-4: #182742;
+  --color-hairline: #1E2D47;
+  --color-hairline-strong: #2A3D5C;
+  --color-hairline-tertiary: #35496B;
   --color-inverse-canvas: #ffffff;
   --color-inverse-ink: #000000;
   --color-brand-secure: #7a7fad;
   --color-success: #27a644;
+  --color-gold: #C9A227;
+  --color-gold-deep: #8A6D1B;
 
-  /* Typography — Linear Display/Text substitute: Inter Variable */
+  /* Typography — Inter Variable body + Fraunces Variable display */
+  --font-display: "Fraunces Variable", Georgia, serif;
   --font-sans: "Inter Variable", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
