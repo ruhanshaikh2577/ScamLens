@@ -41,38 +41,16 @@ const steps = [
 ];
 
 const redactionDemo = [
-  { raw: "OTP is 492813", masked: "OTP is ******", note: "6-digit codes" },
-  { raw: "call 9876543210", masked: "call **********", note: "Indian mobiles" },
-  { raw: "card 4111 1111 1111 1111", masked: "card **** **** **** ****", note: "16-digit cards" },
+  { raw: "OTP is 492813", masked: "OTP is ******", note: t("how.redaction.note.otp") },
+  { raw: "call 9876543210", masked: "call **********", note: t("how.redaction.note.mobile") },
+  { raw: "card 4111 1111 1111 1111", masked: "card **** **** **** ****", note: t("how.redaction.note.card") },
 ];
 
-const detectors = [
-  { id: "payment-request", label: "Payment request", purpose: "Amount or fee demanded to receive a parcel, refund, prize or job." },
-  { id: "otp-pin", label: "Asks for OTP / PIN / password", purpose: "Any request to share or enter a secret code." },
-  { id: "urgency", label: "Artificial urgency", purpose: "Expire/today/24 h windows pressuring instant action." },
-  { id: "fear-threat", label: "Fear or legal threat", purpose: "Police, arrest, FIR, court or account-block threats." },
-  { id: "impersonation", label: "Impersonates bank / courier / agency", purpose: "Name-drops HDFC/SBI/DTDC/India Post/RBI/TRAI etc." },
-  { id: "reward-bait", label: "Prize or reward bait", purpose: "Lottery, lucky draw, prize, cashback you never entered." },
-  { id: "job-fee", label: "Too-good job with upfront fee", purpose: "Work-from-home / task-pay with registration fee." },
-  { id: "qr-upi", label: "QR / UPI to “receive” money", purpose: "Scan QR or enter PIN to receive funds — always a pay trick." },
-  { id: "investment-bait", label: "Guaranteed-return investment", purpose: "Guaranteed/assured profit, double-money, VIP trading groups." },
-  { id: "family-emergency", label: "Family member from new number", purpose: "“Hi Mum/Dad — new number” emergency asking for money." },
-  { id: "utility-disconnection", label: "Utility disconnection tonight", purpose: "Electricity will be cut tonight unless you pay now." },
-  { id: "loan-app", label: "Instant loan with upfront fee", purpose: "Instant approval / 5-minute loan asking for processing fee." },
-  { id: "text-shortener", label: "Shortened link in message", purpose: "bit.ly / tinyurl etc. hiding the real destination." },
-];
+const detectorIds = ["payment-request", "otp-pin", "urgency", "fear-threat", "impersonation", "reward-bait", "job-fee", "qr-upi", "investment-bait", "family-emergency", "utility-disconnection", "loan-app", "text-shortener"];
+const detectors = detectorIds.map((id) => ({ id, label: t(`how.detectors.${id}.label`), purpose: t(`how.detectors.${id}.purpose`) }));
 
-const urlSignals = [
-  { id: "url-shortener", label: "Shortened link hides destination", purpose: "bit.ly, tinyurl, t.co and 10+ others." },
-  { id: "url-punycode", label: "Look-alike characters (punycode)", purpose: "xn-- domains spoofing brand names." },
-  { id: "url-ip", label: "Raw IP instead of domain", purpose: "http://192.168.x.x style links." },
-  { id: "url-insecure-http", label: "Insecure http://", purpose: "No encryption for anything typed next." },
-  { id: "url-userinfo", label: "“@” trick", purpose: "Real destination hides before the @ in the URL." },
-  { id: "url-apk", label: "Direct APK download", purpose: ".apk files that can install SMS-stealing malware." },
-  { id: "url-tld", label: "High-abuse domain ending", purpose: ".zip / .top / .xyz / .click etc. heavily abused by kits." },
-  { id: "url-credentials", label: "Sensitive fields in the link", purpose: "?password= / ?otp= / ?pin= pre-filled in the URL." },
-  { id: "url-brand-mismatch", label: "Brand name on wrong domain", purpose: "Contains hdfcbank/amazon etc. but not the official domain." },
-];
+const urlSignalIds = ["url-shortener", "url-punycode", "url-ip", "url-insecure-http", "url-userinfo", "url-apk", "url-tld", "url-credentials", "url-brand-mismatch"];
+const urlSignals = urlSignalIds.map((id) => ({ id, label: t(`how.urlSignals.${id}.label`), purpose: t(`how.urlSignals.${id}.purpose`) }));
 ---
 
 <Layout title={title} description={description} ogType="article">
@@ -175,10 +153,10 @@ const urlSignals = [
         {t("how.risk.body")}
       </p>
       <ul class="mt-4 space-y-2 text-body-sm leading-relaxed text-ink-muted">
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low</strong> — {t("how.risk.low")}</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Medium</strong> — {t("how.risk.medium")}</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">High</strong> — {t("how.risk.high")}</li>
-        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Critical</strong> — {t("how.risk.critical")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.low")}</strong> — {t("how.risk.low")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.medium")}</strong> — {t("how.risk.medium")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.high")}</strong> — {t("how.risk.high")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.critical")}</strong> — {t("how.risk.critical")}</li>
       </ul>
       <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
         {t("how.risk.note")}

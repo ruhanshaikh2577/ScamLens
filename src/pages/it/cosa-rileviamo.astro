@@ -36,8 +36,8 @@ const whatFaqs = (whatFaqsMap as Record<string, typeof whatFaqsMap.en>)[lang] ??
 
   <section class="border-t border-hairline px-4 py-12 sm:px-6">
     <div class="mx-auto max-w-3xl space-y-8">
-      <QuizIsland client:load />
-      <SimulatorIsland client:load />
+      <QuizIsland client:load lang={lang} />
+      <SimulatorIsland client:load lang={lang} />
     </div>
   </section>
 

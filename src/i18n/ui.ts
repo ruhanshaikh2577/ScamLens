@@ -106,3 +106,28 @@ export const reverseRoutes: Record<Lang, Record<string, string>> = {
     ])
   ),
 } as Record<Lang, Record<string, string>>;
+
+// Official cyber-fraud reporting portal per locale (nav "Report a scam" button).
+export const reportUrls: Record<Lang, string> = {
+  en: "https://cybercrime.gov.in",
+  es: "https://www.incibe.es/ciudadania/ayuda/denuncia",
+  fr: "https://www.internet-signalement.gouv.fr/",
+  de: "https://www.polizei-beratung.de/",
+  "pt-br": "https://delegaciavirtual.sinesp.gov.br/",
+  it: "https://www.commissariatodips.it/",
+  ja: "https://www.npa.go.jp/bureau/cyber/soudan.html",
+  ko: "https://ecrm.police.go.kr/minwon/main",
+};
+
+// Victim helpline (tel: link) per locale, or null where no single national
+// scam helpline exists — detail pages then show the portal button only.
+export const reportHelplines: Record<Lang, string | null> = {
+  en: "tel:1930",
+  es: "tel:017",
+  fr: "tel:0805805817",
+  de: null,
+  "pt-br": null,
+  it: null,
+  ja: "tel:188",
+  ko: "tel:182",
+};

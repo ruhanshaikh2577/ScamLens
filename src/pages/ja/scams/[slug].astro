@@ -4,6 +4,7 @@ import FaqSection from "../../../components/FaqSection.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl, getCanonicalUrl, useTranslations, useTranslatedPath } from "../../../i18n/utils";
 import { isScamReady } from "../../../i18n/scamReadiness";
+import { reportUrls, reportHelplines } from "../../../i18n/ui";
 
 export async function getStaticPaths() {
   const scams = await getCollection("scams");
@@ -122,8 +123,8 @@ const articleLd = {
     <section class="mt-12 border-t border-hairline pt-8">
       <p class="eyebrow">{t("scam.detail.beenTargeted")}</p>
       <div class="mt-3 flex flex-col gap-2 sm:flex-row">
-        <a href="tel:1930" class="btn btn-secondary flex-1">{t("scam.detail.callHelpline")}</a>
-        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">{t("scam.detail.fileReport")}</a>
+        {reportHelplines[lang] && <a href={reportHelplines[lang] as string} class="btn btn-secondary flex-1">{t("scam.detail.callHelpline")}</a>}
+        <a href={reportUrls[lang]} target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">{t("scam.detail.fileReport")}</a>
       </div>
     </section>
 
