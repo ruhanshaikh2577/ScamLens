@@ -2,8 +2,8 @@
 title: Arnaque QR remboursement UPI
 longTitle: Peut-on vous arnaquer en demandant de scanner un QR pour un remboursement ?
 description: L'arnaque QR UPI expliquée.
-tag: Payments
-intro: A “customer support” agent calls about a refund — an extra payment you received, a failed order, cashback pending. To “process” it they ask you to scan a QR code, approve a “collect request”, or enter your UPI PIN “to receive” money. The moment you authorise, money leaves your account. There is no mechanism in UPI to receive funds via PIN — PIN always means pay.
+tag: Paiements
+intro: Un faux agent du “service client” vous appelle pour un remboursement — un paiement en trop, une commande échouée, un cashback en attente. Pour le “traiter”, il vous demande de scanner un QR, d'approuver une “demande de collecte” ou de saisir votre code PIN UPI pour “recevoir” l'argent. Dès que vous validez, l'argent quitte votre compte. En UPI, il n'existe aucun moyen de recevoir des fonds avec un PIN — PIN signifie toujours payer.
 looksLike:
 - “Je vous rembourse 2 000 Rs en extra, scannez ce QR pour recevoir” avec un QR qui est en fait une demande de paiement de 2 000 Rs
 - “Demande de collecte UPI de ravi@ybl pour 5 000 Rs — approuvez pour recevoir le remboursement”

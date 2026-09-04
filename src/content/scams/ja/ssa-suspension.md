@@ -1,32 +1,32 @@
 ---
-title: SSAアカウント停止
-longTitle: '「SSA: アカウントが停止されました」は詐欺ですか？'
-description: SSA詐欺の解説。
-tag: Government
+title: "SSAアカウント停止詐欺"
+longTitle: "「SSA:社会保障口座が停止されました」は詐欺ですか？"
+description: "SSA停止詐欺の解説。停止を脅す偽の社会保障局SMS・電話、警告サイン、ssa.govでの公式確認方法を紹介します。"
+tag: "行政"
 region: global
-intro: A call or text says your Social Security number has been suspended due to suspicious activity, and you must call a number or click a link to verify identity. The “agent” asks for your SSN, bank details, or a fee to reactivate. SSA never suspends SSNs — the number is permanent — and never threatens arrest over the phone.
+intro: "不審な行為のため社会保障番号が停止されたとして、番号への電話やリンクのクリックで本人確認を求める着信やSMSが届きます。「担当者」はSSNや銀行情報、再開手数料を求めます。SSAがSSNを停止することはありません。番号は一生変わらず、電話で逮捕を脅すこともありません。"
 looksLike:
-- 'SSA Alert: Your Social Security number has been suspended. Call 1-XXX-XXX-XXXX immediately to avoid arrest.'
-- 'Social Security Administration: We detected misuse of your SSN. Verify at ssa-verification-gov.com'
-- Your benefits have been put on hold — confirm your SSN and bank to release them
+- 'SSA警告:あなたの社会保障番号は停止されました。逮捕を避けるため1-XXX-XXX-XXXXにすぐ電話してください'
+- '社会保障局:あなたのSSNの不正利用を検出しました。ssa-verification-gov.comで確認してください'
+- 給付が保留されました — 解除のためSSNと銀行情報を確認してください
 warningSigns:
-- Threat of SSN suspension — SSA states SSNs cannot be suspended, revoked or cancelled.
-- Calls from spoofed numbers with badge numbers and case IDs to sound official.
-- Demands SSN, bank account, or gift-card payment to “clear” the record.
-- Pressure to act now and not tell family or a lawyer.
-whyItWorks: An SSN is the master key to identity in the US, so the threat feels catastrophic. Authority plus fear plus isolation stops victims from calling family — the very people who would recognize the scam. The script mirrors the digital-arrest scam in India.
+- SSN停止の脅し。SSAはSSNの停止・取消・無効化はできないと明言しています。
+- 偽装番号からバッジ番号や事件IDで公式らしく装う電話。
+- 記録の「解消」のためSSN、銀行口座、ギフトカード払いを要求します。
+- 今すぐ行動し家族や弁護士に言わないよう圧力をかけます。
+whyItWorks: "米国ではSSNが身元の要であり、脅しが壊滅的に感じられます。権威と恐怖と孤立化で家族への連絡を止めさせます。まさに家族が気づく機会を奪う手口であり、インドのデジタルアレスト詐欺と同じ台本です。"
 whatToDo:
-- Hang up. Do not call the number in the message. Verify by calling SSA at 1-800-772-1213 (from ssa.gov) or logging into my.ssa.gov via a typed address.
-- If you shared your SSN, place a freeze with credit bureaus and report at reportfraud.ftc.gov and IdentityTheft.gov.
-- Report the number to reportfraud.ftc.gov and forward texts to 7726.
-verify: Create or log into my.ssa.gov by typing ssa.gov yourself. SSA lists no “suspension” status — any real issue arrives by postal mail with a case number you can verify via the official helpline.
+- 電話を切ってください。メッセージ内の番号にはかけないでください。ssa.gov記載の1-800-772-1213に電話するか、自分で入力したmy.ssa.govにログインして確認してください。
+- SSNを教えた場合は、信用機関で凍結し、reportfraud.ftc.govとIdentityTheft.govに報告してください。
+- 番号をreportfraud.ftc.govに報告し、SMSは7726に転送してください。
+verify: "ssa.govを自分で入力してmy.ssa.govにログイン・登録してください。SSAに「停止」状態はなく、本物の問題は事件番号付きの郵便で届き、公式ヘルプラインで確認できます。"
 faqs:
-- q: Does SSA suspend Social Security numbers over text or email?
-  a: No. SSA never suspends SSN over text/email and never threatens arrest over a call. Any ‘SSA account suspended’ message with a link is phishing.
-- q: How does the SSA scam work?
-  a: It creates fear of losing benefits, pushes you to a fake ssa.gov look-alike that asks for SSN, OTP or payment to ‘verify’ — the domain is not ssa.gov (e.g. ssa-verify.xyz).
-- q: How do I verify a real SSA notice?
-  a: Log in only at ssa.gov typed yourself, or call SSA via the number on ssa.gov — never the number in the message.
+- q: "SSAはSMSやメールで社会保障番号を停止しますか？"
+  a: いいえ。SSAがSMSやメールでSSNを停止したり、電話で逮捕を脅したりしません。「SSA口座停止」のリンク付きメッセージはフィッシングです。
+- q: "SSA詐欺はどう進みますか？"
+  a: 給付喪失の恐怖を作り、ssa.govそっくりの偽サイトに誘導して「確認」のためSSN、OTP、支払いを求めます。ドメインはssa.govではありません（例:ssa-verify.xyz）。
+- q: "本物のSSA通知はどう確認しますか？"
+  a: ssa.govを自分で入力してログインするか、ssa.gov記載の番号に電話してください。メッセージ内の番号は使わないでください。
 similar:
 - /scams/digital-arrest-video-call
 - /scams/hmrc-tax-refund

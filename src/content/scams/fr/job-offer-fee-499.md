@@ -1,32 +1,32 @@
 ---
-title: Offre d'emploi avec frais
-longTitle: Cette offre "travail à domicile, payez 499 Rs" est-elle une arnaque ?
-description: L'arnaque d'offre d'emploi expliquée.
-tag: Jobs
-intro: An HR person messages you about easy work-from-home earnings — rating hotels, liking videos, data entry at Rs 3,000–15,000/day. You're selected instantly (no interview), then asked for a small registration or “task wallet” fee, typically Rs 499 to Rs 2,999. The first tiny payout arrives to build trust; then fees escalate until you stop paying. No real salary ever comes.
+title: "Offre d'emploi avec frais d'inscription"
+longTitle: "Cette offre « travail à domicile, payez Rs 499 d'inscription » est-elle une arnaque ? Comment fonctionne la fraude aux frais de tâches"
+description: "Fausses offres d'emploi facturant des frais d'inscription/formation (Rs 499–2 999) expliquées : tâches Telegram, astuces de lettres d'offre, signaux d'alerte et comment vérifier un vrai employeur."
+tag: "Emploi"
+intro: "Un « RH » vous contacte pour des gains faciles à domicile — noter des hôtels, liker des vidéos, saisie à Rs 3 000–15 000/jour. Vous êtes sélectionné instantanément (sans entretien), puis on vous demande de petits frais d'inscription ou de « portefeuille de tâches », typiquement Rs 499 à Rs 2 999. Le premier petit paiement arrive pour instaurer la confiance ; puis les frais s'enchaînent jusqu'à ce que vous arrêtiez de payer. Aucun vrai salaire n'arrive jamais."
 looksLike:
-- “Congratulations! You're shortlisted for part-time work from Home. Daily payout Rs 3000+. Registration fee Rs 499 only.”
-- A polished PDF offer letter from \u201CHR Department\u201D of a real-sounding company, sent before any interview"
-- Telegram groups where \u201Ccompleted tasks\u201D screenshots flood the chat as social proof"
+  - "« Félicitations ! Vous êtes présélectionné pour un temps partiel à domicile. Paiement quotidien Rs 3000+. Frais d'inscription Rs 499 uniquement. »"
+  - "Une lettre d'offre PDF soignée du « service RH » d'une société au nom crédible, envoyée avant tout entretien"
+  - "Groupes Telegram où les captures de « tâches terminées » inondent le chat comme preuve sociale"
 warningSigns:
-- Selection without an interview, especially over WhatsApp/Telegram.
-- Any upfront fee — registration, training kit, document verification, GST release.
-- Personal UPI handles (@paytm, @ybl) for fee payment instead of company accounts.
-- Earnings wildly out of proportion to skill (“Rs 5,000/day for liking videos”).
-whyItWorks: Job scarcity plus flexible-work demand makes the pitch irresistible, and the small first fee feels like normal paperwork (we're used to paying for courses and certifications). The early micro-payouts are funded by later victims' fees — a Ponzi-shaped hook that turns skeptics into evangelists who recruit friends.
+  - "Sélection sans entretien, surtout sur WhatsApp/Telegram."
+  - "Tout frais anticipé — inscription, kit de formation, vérification de documents, libération GST."
+  - "Handles UPI personnels (@paytm, @ybl) pour payer les frais au lieu de comptes d'entreprise."
+  - "Gains totalement disproportionnés par rapport à la compétence (« Rs 5 000/jour pour liker des vidéos »)."
+whyItWorks: "La rareté des emplois plus la demande de travail flexible rend l'offre irrésistible, et les premiers petits frais semblent de la paperasse normale (on a l'habitude de payer cours et certifications). Les premiers micro-paiements sont financés par les frais des victimes suivantes — un hameçon en forme de Ponzi qui transforme les sceptiques en évangélistes qui recrutent des amis."
 whatToDo:
-- Never pay any fee to apply, start, or “release” earnings. Real employers deduct nothing in advance.
-- If already paid, stop all further payments — escalation fees are how losses become lakhs.
-- Report the number/UPI handle on 1930 and cybercrime.gov.in with transaction proof.
-verify: Search the company on LinkedIn and its official careers page — genuine openings exist there without fees. Check the recruiter's email domain matches the company. MCA's website lets you verify company registration numbers.
+  - "Ne payez jamais de frais pour postuler, commencer, ou « libérer » des gains. Les vrais employeurs ne déduisent rien d'avance."
+  - "Si déjà payé, stoppez tout autre paiement — les frais d'escalade transforment les pertes en lakhs."
+  - "Signalez le numéro/handle UPI au 1930 et sur cybercrime.gov.in avec preuve de transaction."
+verify: "Cherchez l'entreprise sur LinkedIn et sa page carrières officielle — les vraies offres y existent sans frais. Vérifiez que le domaine e-mail du recruteur correspond à l'entreprise. Le site MCA permet de vérifier les numéros d'enregistrement des sociétés."
 faqs:
-- q: Is a work-from-home job with Rs 499 registration fee legitimate?
-  a: No. Real employers never charge to apply, train or verify documents. Any fee to start is the scam itself — the job doesn’t exist.
-- q: What does the offer letter look like?
-  a: A PDF with logos and a signature, asking for Rs 499-2000 via UPI before onboarding. Real offers don’t ask for payment and are verifiable via the company’s official careers page or HR phone.
-- q: How can I verify the company?
-  a: Search the company name on its official website’s careers section and call HR via the number on the website, not the one in the message. Check MCA or LinkedIn for the company’s real presence.
+  - q: "Un emploi à domicile avec Rs 499 de frais d'inscription est-il légitime ?"
+    a: "Non. Les vrais employeurs ne facturent jamais pour postuler, former ou vérifier des documents. Tout frais pour commencer est l'arnaque elle-même — l'emploi n'existe pas."
+  - q: "À quoi ressemble la lettre d'offre ?"
+    a: "Un PDF avec logos et signature, demandant Rs 499-2000 via UPI avant l'intégration. Les vraies offres ne demandent pas de paiement et sont vérifiables via la page carrières officielle ou le téléphone RH."
+  - q: "Comment vérifier l'entreprise ?"
+    a: "Cherchez le nom de l'entreprise dans la rubrique carrières de son site officiel et appelez les RH via le numéro sur le site, pas celui du message. Vérifiez MCA ou LinkedIn pour la présence réelle."
 similar:
-- /scams/digital-arrest-video-call
-- /scams/upi-refund-qr
+  - /scams/digital-arrest-video-call
+  - /scams/upi-refund-qr
 ---

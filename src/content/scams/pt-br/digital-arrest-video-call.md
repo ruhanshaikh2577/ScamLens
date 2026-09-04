@@ -1,33 +1,33 @@
 ---
-title: Golpe de prisão digital por vídeo
-longTitle: O que é "prisão digital"?
-description: O golpe de prisão digital explicado.
-tag: Impersonation
-intro: 'You get a call claiming to be from FedEx customs, TRAI, a courier company, or the CBI: a package with drugs was intercepted in your name, or your Aadhaar was linked to money laundering. You''re transferred to “police officers” on WhatsApp/ Skype video calls wearing uniforms in office-looking rooms. They order you to stay on camera — “digital arrest” — and transfer money to “verify” your account isn''t tainted. It''s theatre; there is no such legal process.'
+title: "Golpe da prisão digital por videochamada"
+longTitle: 'O que é "prisão digital"? Como o golpe de videochamada com falsos policiais rouba lakhs'
+description: 'O golpe da prisão digital explicado: falsos agentes do CBI/polícia/alfândega em videochamadas, ameaças de prisão domiciliar, sinais de alerta e por que nenhuma agência pode prender você digitalmente.'
+tag: "Falsa identidade"
+intro: 'Você recebe uma ligação dizendo ser da alfândega da FedEx, da TRAI, de uma transportadora ou do CBI: um pacote com drogas foi interceptado em seu nome, ou seu Aadhaar foi ligado a lavagem de dinheiro. Transferem você para “policiais” em videochamadas de WhatsApp/Skype, uniformizados, em salas com cara de escritório. Eles mandam você ficar diante da câmera — a “prisão digital” — e transferir dinheiro para “verificar” que sua conta não está contaminada. É teatro; esse procedimento legal não existe.'
 looksLike:
-- “This is Inspector Sharma, Mumbai Cyber Cell. A parcel with 140g MDMA addressed to you was seized. Cooperate or face arrest.”
-- Video call with uniformed men, badges, and a background of shelves/files (often AI-enhanced or reused footage)"
-- “Stay on video until verification completes. Do not tell anyone — case is confidential.”
+- '“Aqui é o inspetor Sharma, Célula Cibernética de Mumbai. Uma encomenda com 140g de MDMA endereçada a você foi apreendida. Coopere ou será preso.”'
+- Videochamada com homens uniformizados, distintivos e fundo de estantes/arquivos (muitas vezes com IA ou imagens reaproveitadas)
+- '“Fique no vídeo até concluir a verificação. Não conte a ninguém — o caso é sigiloso.”'
 warningSigns:
-- Government agencies never announce investigations via video call, and “digital arrest” does not exist in Indian law.
-- Demands for secrecy — real proceedings come with written notices and lawyers.
-- “Safe account” / “verification deposit” transfers — no agency takes money this way.
-- Pressure to stay continuously on call for hours or days.
-whyItWorks: Fear plus authority plus isolation — the three levers of every con, executed with uniforms and official-sounding jargon. Victims are often educated professionals who panic about reputational damage. The continuous video call prevents them from calling family or a lawyer, which is exactly what would break the spell.
+- Órgãos do governo nunca anunciam investigações por videochamada, e “prisão digital” não existe na lei indiana.
+- Exigência de sigilo — processos reais vêm com notificações escritas e advogados.
+- Transferências para “conta segura” / “depósito de verificação” — nenhuma agência recebe dinheiro assim.
+- Pressão para ficar na ligação sem desligar por horas ou dias.
+whyItWorks: "Medo mais autoridade mais isolamento — as três alavancas de todo golpe, executadas com uniformes e jargão oficial. As vítimas costumam ser profissionais instruídos que entram em pânico com o dano à reputação. A videochamada contínua impede que liguem para a família ou um advogado, que é exatamente o que quebraria o encanto."
 whatToDo:
-- Hang up immediately. No genuine agency will object to you calling the local police station to verify.
-- Never transfer money to any “safe account” — that phrase itself is proof of fraud.
-- If money left your account, call 1930 within the golden hour so accounts can be frozen.
-verify: Real notices arrive physically with case numbers. Verify any claim by contacting the named agency through its official website phone numbers — never the ones given by the caller. RBI and state police have publicly stated digital arrest is always fraud.
+- Desligue na hora. Nenhuma agência legítima vai se opor a você ligar para a delegacia local para conferir.
+- Nunca transfira dinheiro para qualquer “conta segura” — a própria expressão já é prova de fraude.
+- Se o dinheiro saiu da conta, ligue para 1930 na primeira hora para que as contas sejam bloqueadas.
+verify: "Notificações reais chegam fisicamente, com números de processo. Confira qualquer alegação ligando para a agência citada pelos telefones do site oficial — nunca os passados pelo interlocutor. O RBI e as polícias estaduais já declararam publicamente que prisão digital é sempre fraude."
 faqs:
-- q: Can police really do a ‘digital arrest’ over video call?
-  a: No. Police and tax departments never arrest or interrogate over WhatsApp video calls and never demand transfers to clear your name. Any video call claiming arrest is impersonation.
-- q: Why does the call feel so convincing?
-  a: Scammers use fake uniforms, case FIR numbers, and fear of immediate arrest. They keep you on continuous video to isolate you from family. A real investigation gives written notice and allows you to visit a station with a lawyer.
-- q: What if they showed my Aadhaar or bank details?
-  a: Data from leaks makes it feel real, but it doesn’t prove authority. Hang up, call the local police station via the number on their official website, and report at 1930.
-- q: They asked me to transfer money for verification — is that ever legitimate?
-  a: Never. No agency asks for money to verify innocence or to unfreeze accounts. Any payment request to ‘prove’ innocence is the scam.
+- q: "A polícia pode mesmo fazer uma ‘prisão digital’ por videochamada?"
+  a: Não. Polícia e fisco nunca prendem nem interrogam por videochamada de WhatsApp e nunca exigem transferências para limpar seu nome. Qualquer videochamada alegando prisão é personificação.
+- q: "Por que a ligação parece tão convincente?"
+  a: Os golpistas usam uniformes falsos, números de FIR e medo de prisão imediata. Mantêm você no vídeo sem desligar para isolar você da família. Uma investigação real dá notificação escrita e permite ir à delegacia com advogado.
+- q: "E se mostraram meu Aadhaar ou dados bancários?"
+  a: Dados de vazamentos parecem reais, mas não provam autoridade. Desligue, ligue para a delegacia local pelo número do site oficial e denuncie no 1930.
+- q: "Pediram transferência para verificação — isso alguma vez é legítimo?"
+  a: Nunca. Nenhuma agência pede dinheiro para provar inocência ou desbloquear contas. Qualquer pedido de pagamento para “provar” inocência é o golpe.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

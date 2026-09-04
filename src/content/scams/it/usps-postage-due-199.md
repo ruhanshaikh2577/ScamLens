@@ -1,32 +1,32 @@
 ---
-title: USPS affrancatura dovuta $1.99
-longTitle: 'È una truffa "USPS: affrancatura dovuta $1.99"?'
-description: La truffa USPS spiegata.
-tag: Delivery
+title: "USPS affrancatura dovuta ($1.99)"
+longTitle: '“USPS: affrancatura dovuta $1.99” è una truffa via SMS? Come funziona lo smishing USPS'
+description: 'Smishing USPS da $1.99 spiegato: falsi SMS di fermo consegna, domini sosia di usps, segnali e verifica sul sito USPS ufficiale.'
+tag: "Consegne"
 region: global
-intro: You get a text saying USPS could not deliver your package due to incomplete address or postage due of $1.99. A link asks you to confirm details and pay a tiny fee. Real USPS does not collect postage this way over text. The link opens a clone that steals card details and often installs a UPI/auto-debit style mandate on your card.
+intro: "Ricevi un SMS: USPS non ha potuto consegnare per indirizzo incompleto o affrancatura dovuta da $1.99. Un link chiede di confermare dati e pagare la piccola tassa. USPS non riscuote così via SMS. Il link apre un clone che ruba dati carta e spesso attiva addebiti sulla carta."
 looksLike:
-- 'USPS: Your package is on hold due to incomplete address. Pay $1.99 to reschedule delivery: usps-postagehelp.com'
-- 'USPS Tracking #9205… Delivery exception — confirm address here: bit.ly/usps-fix'
-- Your item could not be delivered — update shipping info within 24 hours or it will be returned
+- 'USPS: pacco in attesa per indirizzo incompleto. Paga $1.99 per riprogrammare: usps-postagehelp.com'
+- 'USPS Tracking #9205… Eccezione consegna — conferma qui: bit.ly/usps-fix'
+- Articolo non consegnabile — aggiorna i dati entro 24 ore o sarà restituito
 warningSigns:
-- Unsolicited text about a package you did not expect, with a shortener link.
-- Domain is not usps.com — look-alikes like usps-help, usps-delivery, postage-usps.
-- Tiny fee urgency ($1.99) to bypass scrutiny, plus request for full card details.
-- Page asks for card number, expiry, CVV and even SSN — USPS never asks for SSN.
-whyItWorks: Everyone shops online, so a delivery hiccup feels plausible. The amount is trivial, so victims pay without inspecting the domain. The smish blasts millions of numbers; even a 0.1% hit rate pays because card data is resold or used for larger fraud.
+- SMS non richiesto su un pacco mai atteso, con link abbreviato.
+- Il dominio non è usps.com — sosia tipo usps-help, usps-delivery, postage-usps.
+- Urgenza da piccola tassa ($1.99) per saltare i controlli, più richiesta di dati carta completi.
+- La pagina chiede carta, scadenza, CVV e persino SSN — USPS non chiede mai SSN.
+whyItWorks: "Tutti comprano online, quindi un intoppo sembra plausibile. La cifra è irrisoria, così le vittime pagano senza controllare il dominio. Lo smish colpisce milioni di numeri; anche lo 0,1% paga perché i dati carta sono rivenduti o usati per frodi maggiori."
 whatToDo:
-- Do not click. Track only on usps.com via the official tracking tool by typing the address yourself.
-- If you paid, call your card issuer to block the card and dispute the charge; monitor for larger follow-up charges.
-- Report the smish to reportfraud.ftc.gov and forward the text to 7726 (SPAM).
-verify: Go to usps.com → Tracking, enter your tracking number there. USPS lists any postage due inside your informed delivery account — never via a texted link.
+- Non cliccare. Traccia solo su usps.com dallo strumento ufficiale digitando tu l’indirizzo.
+- Se hai pagato, chiama la banca per bloccare la carta e contestare; controlla addebiti maggiori successivi.
+- Segnala lo smish su reportfraud.ftc.gov e inoltra il testo al 7726 (SPAM).
+verify: "Vai su usps.com → Tracking, inserisci lì il numero. USPS mostra eventuali affrancature nel tuo account — mai via link SMS."
 faqs:
-- q: Does USPS really text about $1.99 postage due?
-  a: No. USPS doesn’t text for postage due on a parcel you didn’t send. The link is a shortener hiding a fake domain not usps.com that asks for card details.
-- q: How can I verify a USPS delivery?
-  a: Track only with the tracking number on usps.com typed yourself, or call USPS via the number on usps.com — not the number in the text.
-- q: I entered my card — what now?
-  a: Call your bank to block the card, monitor for small test charges, and report at reportfraud.ftc.gov and your bank. Change passwords if you reused them.
+- q: "USPS manda davvero SMS per $1.99 di affrancatura?"
+  a: No. USPS non manda SMS per affrancature su pacchi mai spediti. Il link è un abbreviato che nasconde un falso non-usps.com che chiede dati carta.
+- q: "Come verifico una consegna USPS?"
+  a: Traccia solo col numero su usps.com digitato da te, o chiama USPS al numero su usps.com — non quello nel testo.
+- q: "Ho inserito la carta — e ora?"
+  a: Chiama la banca per bloccarla, controlla piccoli addebiti di prova, e segnala su reportfraud.ftc.gov e in banca. Cambia password se le hai riusate.
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/royal-mail-redelivery-099

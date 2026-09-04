@@ -1,32 +1,32 @@
 ---
-title: Suspensão de conta SSA
-longTitle: 'É golpe "SSA: sua conta está suspensa"?'
-description: O golpe SSA explicado.
-tag: Government
+title: "Suspensão de conta SSA"
+longTitle: 'É golpe o "SSA: sua conta da Previdência foi suspensa"? Phishing da Previdência dos EUA'
+description: 'Golpe de suspensão da SSA explicado: SMS/ligações falsas da Previdência americana ameaçando suspensão, sinais de alerta e verificação oficial via ssa.gov.'
+tag: "Governo"
 region: global
-intro: A call or text says your Social Security number has been suspended due to suspicious activity, and you must call a number or click a link to verify identity. The “agent” asks for your SSN, bank details, or a fee to reactivate. SSA never suspends SSNs — the number is permanent — and never threatens arrest over the phone.
+intro: "Uma ligação ou SMS diz que seu número da Previdência Social (SSN) foi suspenso por atividade suspeita e que você precisa ligar para um número ou clicar num link para verificar a identidade. O “agente” pede seu SSN, dados bancários ou uma taxa para reativar. A SSA nunca suspende SSNs — o número é permanente — e nunca ameaça prisão por telefone."
 looksLike:
-- 'SSA Alert: Your Social Security number has been suspended. Call 1-XXX-XXX-XXXX immediately to avoid arrest.'
-- 'Social Security Administration: We detected misuse of your SSN. Verify at ssa-verification-gov.com'
-- Your benefits have been put on hold — confirm your SSN and bank to release them
+- 'Alerta SSA: Seu número da Previdência foi suspenso. Ligue 1-XXX-XXX-XXXX agora para evitar prisão.'
+- 'Social Security Administration: Detectamos uso indevido do seu SSN. Verifique em ssa-verification-gov.com'
+- Seus benefícios foram suspensos — confirme SSN e banco para liberar
 warningSigns:
-- Threat of SSN suspension — SSA states SSNs cannot be suspended, revoked or cancelled.
-- Calls from spoofed numbers with badge numbers and case IDs to sound official.
-- Demands SSN, bank account, or gift-card payment to “clear” the record.
-- Pressure to act now and not tell family or a lawyer.
-whyItWorks: An SSN is the master key to identity in the US, so the threat feels catastrophic. Authority plus fear plus isolation stops victims from calling family — the very people who would recognize the scam. The script mirrors the digital-arrest scam in India.
+- Ameaça de suspensão do SSN — a SSA afirma que SSNs não podem ser suspensos, revogados nem cancelados.
+- Ligações de números falsificados com números de distintivo e protocolos para parecer oficial.
+- Exigência de SSN, conta bancária ou pagamento com gift card para “limpar” o registro.
+- Pressão para agir agora e não contar para família ou advogado.
+whyItWorks: "O SSN é a chave-mestra da identidade nos EUA, então a ameaça parece catastrófica. Autoridade mais medo mais isolamento impedem as vítimas de ligar para a família — justamente quem reconheceria o golpe. O roteiro espelha o golpe da prisão digital na Índia."
 whatToDo:
-- Hang up. Do not call the number in the message. Verify by calling SSA at 1-800-772-1213 (from ssa.gov) or logging into my.ssa.gov via a typed address.
-- If you shared your SSN, place a freeze with credit bureaus and report at reportfraud.ftc.gov and IdentityTheft.gov.
-- Report the number to reportfraud.ftc.gov and forward texts to 7726.
-verify: Create or log into my.ssa.gov by typing ssa.gov yourself. SSA lists no “suspension” status — any real issue arrives by postal mail with a case number you can verify via the official helpline.
+- Desligue. Não ligue para o número da mensagem. Confira ligando para a SSA em 1-800-772-1213 (via ssa.gov) ou entrando em my.ssa.gov por endereço digitado.
+- Se compartilhou seu SSN, congele seu crédito nos bureaus e denuncie em reportfraud.ftc.gov e IdentityTheft.gov.
+- Denuncie o número em reportfraud.ftc.gov e encaminhe SMS para 7726.
+verify: "Crie ou acesse my.ssa.gov digitando ssa.gov você mesmo. A SSA não tem nenhum status de “suspensão” — qualquer questão real chega por carta, com protocolo verificável na central oficial."
 faqs:
-- q: Does SSA suspend Social Security numbers over text or email?
-  a: No. SSA never suspends SSN over text/email and never threatens arrest over a call. Any ‘SSA account suspended’ message with a link is phishing.
-- q: How does the SSA scam work?
-  a: It creates fear of losing benefits, pushes you to a fake ssa.gov look-alike that asks for SSN, OTP or payment to ‘verify’ — the domain is not ssa.gov (e.g. ssa-verify.xyz).
-- q: How do I verify a real SSA notice?
-  a: Log in only at ssa.gov typed yourself, or call SSA via the number on ssa.gov — never the number in the message.
+- q: "A SSA suspende números da Previdência por SMS ou e-mail?"
+  a: Não. A SSA nunca suspende SSN por SMS/e-mail e nunca ameaça prisão por ligação. Qualquer mensagem de “conta SSA suspensa” com link é phishing.
+- q: "Como funciona o golpe da SSA?"
+  a: Ele cria medo de perder benefícios e empurra você para um falso ssa.gov que pede SSN, OTP ou pagamento para “verificar” — o domínio não é ssa.gov (ex. ssa-verify.xyz).
+- q: "Como verifico um aviso real da SSA?"
+  a: Entre só em ssa.gov digitado por você, ou ligue para a SSA pelo número em ssa.gov — nunca o da mensagem.
 similar:
 - /scams/digital-arrest-video-call
 - /scams/hmrc-tax-refund

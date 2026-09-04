@@ -1,34 +1,34 @@
 ---
-title: Arnaque arrestation numérique en visio
-longTitle: Qu'est-ce que l'"arrestation numérique" ?
-description: L'arnaque de l'arrestation numérique expliquée.
-tag: Impersonation
-intro: 'You get a call claiming to be from FedEx customs, TRAI, a courier company, or the CBI: a package with drugs was intercepted in your name, or your Aadhaar was linked to money laundering. You''re transferred to “police officers” on WhatsApp/ Skype video calls wearing uniforms in office-looking rooms. They order you to stay on camera — “digital arrest” — and transfer money to “verify” your account isn''t tainted. It''s theatre; there is no such legal process.'
+title: "Arnaque à l'arrestation numérique en appel vidéo"
+longTitle: "Qu'est-ce que « l'arrestation numérique » ? Comment l'arnaque à l'usurpation policière en appel vidéo vole des lakhs"
+description: "L'arnaque à l'arrestation numérique expliquée : faux agents CBI/police/douanes en appels vidéo, menaces d'assignation à résidence, signaux d'alerte, et pourquoi aucune agence ne peut vous arrêter numériquement."
+tag: "Usurpation d'identité"
+intro: "Vous recevez un appel prétendant venir des douanes FedEx, de la TRAI, d'une société de livraison ou du CBI : un colis avec de la drogue a été intercepté à votre nom, ou votre Aadhaar serait lié à du blanchiment d'argent. Vous êtes transféré vers de « faux policiers » en appels vidéo WhatsApp/Skype en uniforme dans des bureaux crédibles. Ils vous ordonnent de rester face caméra — une « arrestation numérique » — et de transférer de l'argent pour « vérifier » que votre compte n'est pas compromis. C'est du théâtre ; une telle procédure légale n'existe pas."
 looksLike:
-- “This is Inspector Sharma, Mumbai Cyber Cell. A parcel with 140g MDMA addressed to you was seized. Cooperate or face arrest.”
-- Video call with uniformed men, badges, and a background of shelves/files (often AI-enhanced or reused footage)"
-- “Stay on video until verification completes. Do not tell anyone — case is confidential.”
+  - "« Ici l'inspecteur Sharma, cellule cyber de Mumbai. Un colis avec 140g de MDMA adressé à votre nom a été saisi. Coopérez ou vous serez arrêté. »"
+  - "Appel vidéo avec des hommes en uniforme, badges, et un décor d'étagères/dossiers (souvent amélioré par IA ou images réutilisées)"
+  - "« Restez en vidéo jusqu'à la fin de la vérification. N'en parlez à personne — l'affaire est confidentielle. »"
 warningSigns:
-- Government agencies never announce investigations via video call, and “digital arrest” does not exist in Indian law.
-- Demands for secrecy — real proceedings come with written notices and lawyers.
-- “Safe account” / “verification deposit” transfers — no agency takes money this way.
-- Pressure to stay continuously on call for hours or days.
-whyItWorks: Fear plus authority plus isolation — the three levers of every con, executed with uniforms and official-sounding jargon. Victims are often educated professionals who panic about reputational damage. The continuous video call prevents them from calling family or a lawyer, which is exactly what would break the spell.
+  - "Les agences gouvernementales n'annoncent jamais d'enquête par appel vidéo, et « l'arrestation numérique » n'existe pas dans la loi indienne."
+  - "Exigences de secret — les vraies procédures arrivent avec des convocations écrites et des avocats."
+  - "Transferts vers un « compte sécurisé » / « dépôt de vérification » — aucune agence ne prend de l'argent ainsi."
+  - "Pression pour rester en ligne en continu pendant des heures ou des jours."
+whyItWorks: "La peur plus l'autorité plus l'isolement — les trois leviers de toute arnaque, exécutés avec des uniformes et du jargon officiel. Les victimes sont souvent des professionnels instruits qui paniquent pour leur réputation. L'appel vidéo continu les empêche d'appeler leur famille ou un avocat, ce qui briserait exactement le sortilège."
 whatToDo:
-- Hang up immediately. No genuine agency will object to you calling the local police station to verify.
-- Never transfer money to any “safe account” — that phrase itself is proof of fraud.
-- If money left your account, call 1930 within the golden hour so accounts can be frozen.
-verify: Real notices arrive physically with case numbers. Verify any claim by contacting the named agency through its official website phone numbers — never the ones given by the caller. RBI and state police have publicly stated digital arrest is always fraud.
+  - "Raccrochez immédiatement. Aucune agence légitime ne s'opposera à ce que vous appeliez le commissariat local pour vérifier."
+  - "Ne transférez jamais d'argent vers un « compte sécurisé » — cette expression est en soi la preuve de la fraude."
+  - "Si de l'argent a quitté votre compte, appelez le 1930 dans l'heure dorée pour faire geler les comptes."
+verify: "Les vraies convocations arrivent physiquement avec des numéros de dossier. Vérifiez toute affirmation en contactant l'agence nommée via les numéros de son site officiel — jamais ceux donnés par l'appelant. La RBI et les polices d'État ont déclaré publiquement que l'arrestation numérique est toujours une fraude."
 faqs:
-- q: Can police really do a ‘digital arrest’ over video call?
-  a: No. Police and tax departments never arrest or interrogate over WhatsApp video calls and never demand transfers to clear your name. Any video call claiming arrest is impersonation.
-- q: Why does the call feel so convincing?
-  a: Scammers use fake uniforms, case FIR numbers, and fear of immediate arrest. They keep you on continuous video to isolate you from family. A real investigation gives written notice and allows you to visit a station with a lawyer.
-- q: What if they showed my Aadhaar or bank details?
-  a: Data from leaks makes it feel real, but it doesn’t prove authority. Hang up, call the local police station via the number on their official website, and report at 1930.
-- q: They asked me to transfer money for verification — is that ever legitimate?
-  a: Never. No agency asks for money to verify innocence or to unfreeze accounts. Any payment request to ‘prove’ innocence is the scam.
+  - q: "La police peut-elle vraiment procéder à une « arrestation numérique » en appel vidéo ?"
+    a: "Non. La police et les impôts n'arrêtent ni n'interrogent jamais via des appels vidéo WhatsApp et ne demandent jamais de transferts pour blanchir votre nom. Tout appel vidéo prétendant une arrestation est une usurpation."
+  - q: "Pourquoi l'appel semble-t-il si convaincant ?"
+    a: "Les escrocs utilisent de faux uniformes, des numéros FIR et la peur d'une arrestation immédiate. Ils vous maintiennent en vidéo continue pour vous isoler de votre famille. Une vraie enquête donne un avis écrit et permet de se rendre au commissariat avec un avocat."
+  - q: "Et s'ils ont montré mon Aadhaar ou mes coordonnées bancaires ?"
+    a: "Des données issues de fuites rendent cela crédible, mais ne prouvent pas l'autorité. Raccrochez, appelez le commissariat local via le numéro sur son site officiel, et signalez au 1930."
+  - q: "Ils m'ont demandé de transférer de l'argent pour vérification — est-ce jamais légitime ?"
+    a: "Jamais. Aucune agence ne demande d'argent pour vérifier l'innocence ou débloquer des comptes. Toute demande de paiement pour « prouver » l'innocence est l'arnaque."
 similar:
-- /scams/fake-kyc-suspended
-- /scams/job-offer-fee-499
+  - "/scams/fake-kyc-suspended"
+  - "/scams/job-offer-fee-499"
 ---

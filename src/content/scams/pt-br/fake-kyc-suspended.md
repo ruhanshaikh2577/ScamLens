@@ -1,31 +1,31 @@
 ---
-title: Suspensão KYC falsa
-longTitle: É golpe o SMS "Seu KYC expirou"?
-description: O golpe de suspensão KYC explicado.
-tag: Banking
-intro: A message claims your bank account, Paytm, FASTag or digital wallet will be blocked because your KYC (Know Your Customer) documents have expired. It pushes you to a link or an app to “update” Aadhaar, PAN or card details. The link is fake — every field you fill goes straight to a fraudster, who then drains the account or takes loans in your name.
+title: "Falsa suspensão de KYC"
+longTitle: 'É golpe o SMS "Seu KYC expirou"? Sim — veja como funciona'
+description: 'O golpe de KYC falso / suspensão de conta explicado: como ele se parece, sinais de alerta com frases reais e como verificar seu KYC com segurança.'
+tag: "Banco"
+intro: "Uma mensagem diz que sua conta bancária, Paytm, FASTag ou carteira digital será bloqueada porque seus documentos KYC (Know Your Customer) venceram. Ela empurra você para um link ou app para “atualizar” Aadhaar, PAN ou dados do cartão. O link é falso — cada campo preenchido vai direto para um golpista, que depois esvazia a conta ou faz empréstimos em seu nome."
 looksLike:
-- '“SBI Alert: Your KYC has expired. Update within 24 hours or your account will be deactivated. Click hdfcbank-kyc.com”'
-- '“Dear customer your e-KYC is pending, complete now: bit.ly/kyc-upd”'
-- A WhatsApp forward with a logo-laden form asking for card number, expiry, CVV and OTP
+- '“Alerta SBI: Seu KYC venceu. Atualize em 24 horas ou sua conta será desativada. Clique hdfcbank-kyc.com”'
+- '“Prezado cliente, seu e-KYC está pendente, conclua agora: bit.ly/kyc-upd”'
+- Mensagem encaminhada no WhatsApp com formulário cheio de logos pedindo número do cartão, validade, CVV e OTP
 warningSigns:
-- Urgency tied to account closure — real banks give weeks and never close accounts over one SMS.
-- The link domain doesn't match your bank's official website.
-- The form asks for CVV or OTP — no genuine KYC update ever needs them.
-- Sender is a normal 10-digit mobile number instead of a bank's official sender ID (like XX-SBIINB).
-whyItWorks: 'KYC renewal genuinely happens in India, so the request feels plausible. Fear of losing access to your money makes people comply fast, and the small effort (“it''s just a form”) hides that they are handing over everything a criminal needs: identity data plus card credentials plus the OTP that authorises the theft.'
+- Urgência ligada ao fechamento da conta — bancos reais dão semanas e nunca fecham contas por um SMS.
+- O domínio do link não é o site oficial do seu banco.
+- O formulário pede CVV ou OTP — nenhuma atualização real de KYC precisa disso.
+- Remetente é um número comum de 10 dígitos em vez do ID oficial do banco (como XX-SBIINB).
+whyItWorks: 'A renovação de KYC realmente existe na Índia, então o pedido parece plausível. O medo de perder acesso ao dinheiro faz as pessoas obedecerem rápido, e o pequeno esforço (“é só um formulário”) esconde que estão entregando tudo que um criminoso precisa: dados de identidade mais dados do cartão mais o OTP que autoriza o roubo.'
 whatToDo:
-- Do not click the link or fill any form received by SMS or WhatsApp.
-- Open your bank's official app or type its known web address yourself — KYC status is always visible there.
-- If you already entered details, call your bank's helpline immediately to block the card and then call 1930.
-verify: Log in to your bank's official app and check the KYC/pending-actions section, or visit the nearest branch. Banks list their only official websites on the back of your debit card and passbook.
+- Não clique no link nem preencha nenhum formulário recebido por SMS ou WhatsApp.
+- Abra o app oficial do banco ou digite você mesmo o endereço conhecido — o status do KYC sempre aparece lá.
+- Se já digitou dados, ligue na hora para a central do banco para bloquear o cartão e depois ligue para 1930.
+verify: "Entre no app oficial do banco e confira a seção de KYC/pendências, ou vá à agência mais próxima. Os bancos listam seus únicos sites oficiais no verso do cartão de débito e na caderneta."
 faqs:
-- q: Is any KYC update link sent by SMS ever legitimate?
-  a: No. Real banks never send a clickable link to update KYC. They ask you to visit the official app or branch and give weeks, not 24 hours. Any link demanding CVV or OTP is a scam.
-- q: How can I check my real KYC status safely?
-  a: Open your bank's official app or type its official website yourself and check the KYC or profile section. The only official domains are printed on your card and passbook — not the link in the SMS.
-- q: I entered my card details and OTP — what should I do immediately?
-  a: Call your bank's helpline to block the card, then call 1930 and file at cybercrime.gov.in with screenshots. Change passwords and monitor for loans taken in your name.
+- q: "Algum link de atualização de KYC enviado por SMS é legítimo?"
+  a: Não. Bancos reais nunca enviam link clicável para atualizar KYC. Eles pedem para ir ao app oficial ou à agência e dão semanas, não 24 horas. Qualquer link pedindo CVV ou OTP é golpe.
+- q: "Como confiro meu status real de KYC com segurança?"
+  a: Abra o app oficial do banco ou digite você mesmo o site oficial e confira a seção de KYC ou perfil. Os únicos domínios oficiais estão impressos no seu cartão e caderneta — não no link do SMS.
+- q: "Digitei dados do cartão e OTP — o que faço agora?"
+  a: Ligue para a central do banco para bloquear o cartão, depois ligue para 1930 e registre em cybercrime.gov.in com prints. Troque senhas e fique de olho em empréstimos feitos em seu nome.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/upi-refund-qr

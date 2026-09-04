@@ -1,31 +1,31 @@
 ---
-title: 偽KYC停止
-longTitle: 「KYCが期限切れです」は詐欺SMSですか？
-description: 偽KYC停止詐欺の解説。
-tag: Banking
-intro: A message claims your bank account, Paytm, FASTag or digital wallet will be blocked because your KYC (Know Your Customer) documents have expired. It pushes you to a link or an app to “update” Aadhaar, PAN or card details. The link is fake — every field you fill goes straight to a fraudster, who then drains the account or takes loans in your name.
+title: "偽KYC停止詐欺"
+longTitle: "「KYCが期限切れです」は詐欺SMSですか？手口の解説"
+description: "偽KYC・口座停止詐欺の解説。手口の実例、警告サイン、安全なKYC確認方法を紹介します。"
+tag: "銀行"
+intro: "銀行口座、Paytm、FASTag、電子ウォレットが、KYC（本人確認）書類の期限切れで停止されるというメッセージが届きます。Aadhaar、PAN、カード情報を「更新」するためのリンクやアプリに誘導されます。そのリンクは偽物であり、入力した情報はすべて詐欺師に渡り、口座から引き出されたり名義で借金されたりします。"
 looksLike:
-- '“SBI Alert: Your KYC has expired. Update within 24 hours or your account will be deactivated. Click hdfcbank-kyc.com”'
-- '“Dear customer your e-KYC is pending, complete now: bit.ly/kyc-upd”'
-- A WhatsApp forward with a logo-laden form asking for card number, expiry, CVV and OTP
+- '「SBI警告:KYCが期限切れです。24時間以内に更新しないと口座を停止します。hdfcbank-kyc.comをクリック」'
+- '「お客様のe-KYCが未完了です。今すぐ完了してください:bit.ly/kyc-upd」'
+- カード番号、有効期限、CVV、OTPの入力を求めるロゴ付きフォームのWhatsApp転送。
 warningSigns:
-- Urgency tied to account closure — real banks give weeks and never close accounts over one SMS.
-- The link domain doesn't match your bank's official website.
-- The form asks for CVV or OTP — no genuine KYC update ever needs them.
-- Sender is a normal 10-digit mobile number instead of a bank's official sender ID (like XX-SBIINB).
-whyItWorks: 'KYC renewal genuinely happens in India, so the request feels plausible. Fear of losing access to your money makes people comply fast, and the small effort (“it''s just a form”) hides that they are handing over everything a criminal needs: identity data plus card credentials plus the OTP that authorises the theft.'
+- 口座閉鎖をちらつかせた緊急性。本物の銀行は数週間の猶予を与え、一通のSMSで閉鎖しません。
+- リンクのドメインが銀行の公式サイトと一致しません。
+- CVVやOTPの入力を求められます。本物のKYC更新で必要なことはありません。
+- 銀行の公式送信者ID（XX-SBIINBなど）ではなく通常の10桁番号から届きます。
+whyItWorks: "インドではKYC更新が実際にあるため、要求がもっともらしく感じられます。お金を失う恐怖で急いで従わせ、「ただのフォーム」と思わせて、身分情報・カード情報・窃取を承認するOTPまで一気に奪います。"
 whatToDo:
-- Do not click the link or fill any form received by SMS or WhatsApp.
-- Open your bank's official app or type its known web address yourself — KYC status is always visible there.
-- If you already entered details, call your bank's helpline immediately to block the card and then call 1930.
-verify: Log in to your bank's official app and check the KYC/pending-actions section, or visit the nearest branch. Banks list their only official websites on the back of your debit card and passbook.
+- SMSやWhatsAppで届いたリンクは開かず、フォームにも入力しないでください。
+- 銀行の公式アプリを開くか、知っている公式アドレスを直接入力してください。KYC状況はそこで確認できます。
+- すでに入力した場合は、銀行のヘルプラインでカードを止めてから1930番に電話してください。
+verify: "銀行の公式アプリにログインしてKYC・未完了手続きの項目を確認するか、最寄りの支店を訪ねてください。公式サイトはデビットカードや通帳の裏面に記載されています。"
 faqs:
-- q: Is any KYC update link sent by SMS ever legitimate?
-  a: No. Real banks never send a clickable link to update KYC. They ask you to visit the official app or branch and give weeks, not 24 hours. Any link demanding CVV or OTP is a scam.
-- q: How can I check my real KYC status safely?
-  a: Open your bank's official app or type its official website yourself and check the KYC or profile section. The only official domains are printed on your card and passbook — not the link in the SMS.
-- q: I entered my card details and OTP — what should I do immediately?
-  a: Call your bank's helpline to block the card, then call 1930 and file at cybercrime.gov.in with screenshots. Change passwords and monitor for loans taken in your name.
+- q: "SMSで届くKYC更新リンクに正当なものはありますか？"
+  a: ありません。本物の銀行はクリック可能なリンクでKYC更新を求めません。公式アプリや支店での手続きを求め、期限も24時間ではなく数週間です。CVVやOTPを求めるリンクは詐欺です。
+- q: "本物のKYC状況はどう確認しますか？"
+  a: 銀行の公式アプリを開くか公式サイトを直接入力し、KYCやプロフィール欄を確認してください。公式ドメインはカードや通帳記載のものだけです。
+- q: "カード情報とOTPを入力してしまいました。"
+  a: 銀行のヘルプラインでカードを止め、1930番に電話し、スクリーンショット付きでcybercrime.gov.inに届け出てください。パスワードを変更し、名義で借金されていないか確認してください。
 similar:
 - /scams/fastag-kyc-scam
 - /scams/upi-refund-qr

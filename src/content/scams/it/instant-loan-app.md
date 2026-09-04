@@ -1,33 +1,33 @@
 ---
-title: Trappola app prestito istantaneo
-longTitle: Le app di prestito istantaneo sono una truffa?
-description: La trappola dell'app di prestito spiegata.
-tag: Loans
-intro: 'A “loan approved in 5 minutes” app asks for contacts, photos and ID, then disburse Rs 5,000 but demand Rs 8,000 within days. Miss it and your contacts receive doctored images with abuse. The fee demands and the harassment are the same business model: unregistered lending apps that monetise shame and fear.'
+title: "Trappola delle app di prestito istantaneo"
+longTitle: 'Le app di prestito “zero documenti” sono una truffa? Come funziona il prestito predatorio'
+description: 'App di prestito predatorio spiegate: commissioni anticipate, furto della rubrica, minacce — e come controllare se un prestatore è registrato RBI.'
+tag: "Prestiti"
+intro: "Un’app “prestito approvato in 5 minuti” chiede contatti, foto e documenti, poi eroga Rs 5,000 ma ne pretende Rs 8,000 in pochi giorni. Se non paghi, i tuoi contatti ricevono immagini ritoccate con insulti. Commissioni e molestie sono lo stesso modello: app non registrate che monetizzano vergogna e paura."
 looksLike:
-- '“Congratulations! You are pre-approved for Rs 50,000. Zero documents, money in 5 minutes. Download: [APK link]”'
-- “Pay Rs 999 processing/insurance fee to release the disbursed amount.”
-- Apps demanding access to contacts, gallery and SMS “for verification”.
-- Short 7-day tenures with effective interest rates running into hundreds of percent annualised.
+- '“Congratulazioni! Sei pre-approvato per Rs 50,000. Zero documenti, soldi in 5 minuti. Scarica: [link APK]”'
+- '“Paga Rs 999 di commissione/garanzia per sbloccare l’importo.”'
+- App che chiedono accesso a contatti, galleria e SMS “per verifica”.
+- Durate brevissime di 7 giorni con tassi effettivi di centinaia di punti annui.
 warningSigns:
-- The lender's name doesn't appear in RBI's list of registered NBFCs/banks or their partner disclosures.
-- Fees collected before any disbursal, via UPI to personal handles.
-- The app is only an APK sideload, absent from Google Play/App Store.
-- Contact/photo/SMS access unrelated to lending; repayment pressure starts before due date.
-whyItWorks: Borrowers targeted here are exactly those banks reject — no credit file, urgent need. Access to the phone's contacts turns default into blackmail, and many victims pay repeatedly just to stop the harassment. Regulators have removed hundreds of such apps from app stores, yet new clones appear within weeks.
+- Il nome del prestatore non è nella lista RBI di NBFC/banche registrate né nelle informative partner.
+- Commissioni chieste prima di ogni erogazione, via UPI a handle personali.
+- L’app è solo un APK esterno, assente da Google Play/App Store.
+- Accesso a contatti/foto/SMS non pertinente al prestito; pressioni prima della scadenza.
+whyItWorks: "I bersagli sono proprio chi le banche rifiutano — senza storia creditizia, con bisogno urgente. L’accesso ai contatti trasforma il mancato pagamento in ricatto, e molti pagano più volte solo per fermare le molestie. Centinaia di app sono state rimosse dagli store, ma nuovi cloni appaiono in settimane."
 whatToDo:
-- Never grant contact/gallery access to a lending app; revoke permissions immediately if already granted.
-- 'If harassed: file at cybercrime.gov.in (extortion/blackmail) and complain through the National Consumer Helpline (1915).'
-- Only repay through official channels after verifying the NBFC/bank name on RBI's lists; never to personal UPI IDs.
-- Uninstall the app, then report it in the Play Store/App Store listing.
-verify: Check the lender against RBI's published lists of licensed banks/NBFCs and the app's disclosed partner NBFC. Genuine lenders deduct fees from the loan amount at disbursal — they never ask for pre-payment via UPI.
+- Non dare mai accesso a contatti/galleria a un’app di prestiti; revoca subito i permessi se già dati.
+- "Se molestato: denuncia su cybercrime.gov.in (estorsione/ricatto) e al National Consumer Helpline (1915)."
+- Rimborsa solo via canali ufficiali dopo aver verificato NBFC/banca nelle liste RBI; mai a ID UPI personali.
+- Disinstalla l’app e segnalala nello store.
+verify: "Controlla il prestatore nelle liste RBI di banche/NBFC autorizzate e nella NBFC partner dichiarata dall’app. I prestatori veri trattengono le commissioni all’erogazione — non chiedono mai pre-pagamenti via UPI."
 faqs:
-- q: Are instant loan apps with zero paperwork safe?
-  a: No. Many unregistered apps harvest contacts/photos on install and then demand upfront ‘processing fees’ to disburse a loan that never arrives, then harass with your contacts.
-- q: How can I tell a legitimate loan app?
-  a: Check RBI’s list of registered NBFCs/P2P lenders and the app’s listing on the lender’s official website. Real lenders deduct fees at disbursal, never ask for pre-payment via UPI.
-- q: What if I already gave contacts access?
-  a: Uninstall, revoke permissions, warn contacts, change passwords, and report the app at cybercrime.gov.in and to Google Play. Don’t pay harassment demands.
+- q: "Le app di prestito istantaneo zero documenti sono sicure?"
+  a: No. Molte app non registrate rubano contatti/foto all’installazione e poi chiedono “commissioni” anticipate per un prestito che non arriva mai, poi molestano usando i tuoi contatti.
+- q: "Come riconosco un’app di prestito legittima?"
+  a: Controlla la lista RBI di NBFC/prestatori P2P registrati e la scheda app sul sito ufficiale del prestatore. Quelli veri trattengono le commissioni all’erogazione, mai pre-pagamenti via UPI.
+- q: "Ho già dato accesso ai contatti?"
+  a: Disinstalla, revoca i permessi, avvisa i contatti, cambia password e segnala l’app su cybercrime.gov.in e a Google Play. Non pagare le richieste estorsive.
 similar:
 - /scams/job-offer-fee-499
 - /scams/wedding-invite-apk

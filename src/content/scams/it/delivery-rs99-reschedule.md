@@ -1,31 +1,31 @@
 ---
-title: Truffa tassa di consegna 99 Rs
-longTitle: È una truffa "Paga 99 Rs per riprogrammare"?
-description: La truffa della tassa di consegna spiegata.
-tag: Delivery
-intro: You're expecting a parcel. An SMS says delivery failed and you must pay a small “reschedule” or “customs” fee — usually Rs 99 to Rs 499 — via UPI or a card page. Real couriers don't collect reschedule fees over payment links. The amount is deliberately tiny so you barely think; the saved card details or UPI mandate are where the real damage happens.
+title: "Truffa tassa di consegna da Rs 99"
+longTitle: '“Paga Rs 99 per riprogrammare la consegna” è una truffa? Come funziona'
+description: 'La truffa della tassa di riprogrammazione da Rs 99 (DTDC, Delhivery, India Post) spiegata: messaggi tipici, segnali e perché una piccola cifra è l’esca.'
+tag: "Consegne"
+intro: "Aspetti un pacco. Un SMS dice che la consegna è fallita e devi pagare una piccola tassa di riprogrammazione — di solito da Rs 99 a Rs 499 — via UPI o con carta. I corrieri veri non chiedono mai tasse via link. La cifra è volutamente piccola per farti pensare poco; i dati della carta salvati o il mandato UPI sono il vero danno."
 looksLike:
-- '“DTDC: Your parcel ON HOLD [DT-99213]. Pay Rs 99 to reschedule today else it returns to warehouse. bit.ly/dtdc-fee”'
-- '“India Post: customs charge pending for international package, clear here:” followed by a shortener'
-- A WhatsApp message with a \u201Cdelivery partner\u201D APK file attached (\u201Ctrack your parcel\u201D)
+- '“DTDC: pacco IN ATTESA [DT-99213]. Paga Rs 99 per riprogrammare oggi o torna al magazzino. bit.ly/dtdc-fee”'
+- '“India Post: oneri doganali in sospeso per pacco internazionale, paga qui:” seguito da un link abbreviato'
+- Un messaggio WhatsApp con un file APK allegato del “corriere” (“traccia il tuo pacco”)
 warningSigns:
-- You're asked to pay a fee for a parcel you already paid for at booking.
-- The consignment number format doesn't match the courier's real tracking IDs.
-- Payment via UPI handle like @ybl or @paytm belonging to a personal name.
-- Message arrives before you were even expecting any delivery attempt.
-whyItWorks: Small amounts bypass our mental security checks — Rs 99 feels cheaper than the hassle of a lost parcel. Scammers time messages to festive-season shopping spikes when everyone is expecting deliveries, and impersonate brands (DTDC, Delhivery, Blue Dart) whose names carry trust without verification.
+- Ti chiedono una tassa per un pacco già pagato alla spedizione.
+- Il numero di spedizione non corrisponde al formato reale del corriere.
+- Pagamento verso un handle UPI personale tipo @ybl o @paytm intestato a un privato.
+- Il messaggio arriva prima di qualsiasi tentativo di consegna atteso.
+whyItWorks: "Le piccole cifre aggirano i nostri controlli mentali — Rs 99 sembra meno fastidioso di un pacco perso. I truffatori mandano i messaggi nei picchi di shopping, impersonando marchi fidati (DTDC, Delhivery, Blue Dart) senza che nessuno verifichi."
 whatToDo:
-- Never pay through links in messages. Track the consignment number on the courier's own site or app.
-- If you paid, check for any UPI auto-debit mandate created and revoke it in your UPI app settings immediately.
-- Report to 1930 and to the real courier's official support with screenshots.
-verify: Every major courier (DTDC, Delhivery, India Post, Blue Dart) has tracking on their official website. Enter the consignment number there — if the parcel shows normal movement, the fee demand was fake.
+- Non pagare mai dai link nei messaggi. Traccia il codice solo sul sito o app ufficiale del corriere.
+- Se hai pagato, controlla eventuali mandati di addebito UPI creati e revocali subito nelle impostazioni dell’app UPI.
+- Segnala al 1930 e al supporto ufficiale del vero corriere con screenshot.
+verify: "Ogni grande corriere (DTDC, Delhivery, India Post, Blue Dart) ha il tracking sul sito ufficiale. Inserisci lì il codice — se il pacco risulta in movimento normale, la richiesta era falsa."
 faqs:
-- q: Is ‘Pay Rs 99 to reschedule delivery’ ever a real courier request?
-  a: No. Couriers like DTDC, Delhivery or India Post never ask for a small UPI fee to reschedule. Delivery charges are paid at booking by the sender, not via a link after dispatch.
-- q: What does the fake link look like?
-  a: It’s usually a short link (bit.ly, tinyurl) hiding a look-alike domain like dtdc-fee.xyz or delhivery-reschedule.top — not dtdc.in or delhivery.com. The page asks for UPI PIN to receive the parcel, which always means paying.
-- q: How do I track my real parcel?
-  a: Copy the consignment number and track it only in the courier’s official app or website typed yourself — not via the link in the SMS. Call the official customer care number from the website if unsure.
+- q: "'“Paga Rs 99 per riprogrammare” è mai una richiesta vera?'"
+  a: No. Corrieri come DTDC, Delhivery o India Post non chiedono mai piccole tasse UPI per riprogrammare. I costi li paga il mittente alla spedizione, non tu via link.
+- q: "Com’è fatto il link falso?"
+  a: Di solito è un link abbreviato (bit.ly, tinyurl) che nasconde un dominio simile come dtdc-fee.xyz o delhivery-reschedule.top — non dtdc.in o delhivery.com. La pagina chiede il PIN UPI per ricevere il pacco, e PIN significa sempre pagare.
+- q: "Come traccio il mio vero pacco?"
+  a: Copia il codice e traccialo solo nell’app o sito ufficiale del corriere digitato da te — mai dal link nell’SMS. In caso di dubbi chiama il servizio clienti dal sito ufficiale.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/fake-kyc-suspended

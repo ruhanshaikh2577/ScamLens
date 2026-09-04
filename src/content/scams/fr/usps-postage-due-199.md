@@ -1,34 +1,34 @@
 ---
-title: USPS frais d'affranchissement $1.99
-longTitle: 'Est-ce que "USPS: frais dus $1.99" est une arnaque ?'
-description: L'arnaque USPS expliquée.
-tag: Delivery
+title: "USPS frais d'affranchissement dus ($1.99)"
+longTitle: "« USPS : affranchissement dû $1.99 » est-ce un SMS d'arnaque ? Comment fonctionne le smishing USPS"
+description: "Smishing USPS $1.99 d'affranchissement dû expliqué : faux SMS de retenue de livraison, domaines sosies usps, signaux d'alerte, et comment vérifier sur le site officiel USPS."
+tag: "Livraison"
 region: global
-intro: You get a text saying USPS could not deliver your package due to incomplete address or postage due of $1.99. A link asks you to confirm details and pay a tiny fee. Real USPS does not collect postage this way over text. The link opens a clone that steals card details and often installs a UPI/auto-debit style mandate on your card.
+intro: "Vous recevez un SMS affirmant qu'USPS n'a pas pu livrer votre colis pour adresse incomplète ou affranchissement dû de $1.99. Un lien vous demande de confirmer les détails et de payer des frais minimes. Le vrai USPS ne collecte pas l'affranchissement ainsi par SMS. Le lien ouvre un clone qui vole les données de carte et installe souvent un mandat de type UPI/prélèvement sur votre carte."
 looksLike:
-- 'USPS: Your package is on hold due to incomplete address. Pay $1.99 to reschedule delivery: usps-postagehelp.com'
-- 'USPS Tracking #9205… Delivery exception — confirm address here: bit.ly/usps-fix'
-- Your item could not be delivered — update shipping info within 24 hours or it will be returned
+  - "« USPS : Votre colis est en attente pour adresse incomplète. Payez $1.99 pour reprogrammer la livraison : usps-postagehelp.com »"
+  - "« Suivi USPS #9205… Exception de livraison — confirmez l'adresse ici : bit.ly/usps-fix »"
+  - "Votre article n'a pas pu être livré — mettez à jour les infos d'expédition sous 24 heures sinon il sera retourné"
 warningSigns:
-- Unsolicited text about a package you did not expect, with a shortener link.
-- Domain is not usps.com — look-alikes like usps-help, usps-delivery, postage-usps.
-- Tiny fee urgency ($1.99) to bypass scrutiny, plus request for full card details.
-- Page asks for card number, expiry, CVV and even SSN — USPS never asks for SSN.
-whyItWorks: Everyone shops online, so a delivery hiccup feels plausible. The amount is trivial, so victims pay without inspecting the domain. The smish blasts millions of numbers; even a 0.1% hit rate pays because card data is resold or used for larger fraud.
+  - "SMS non sollicité sur un colis que vous n'attendiez pas, avec un lien raccourci."
+  - "Le domaine n'est pas usps.com — sosies comme usps-help, usps-delivery, postage-usps."
+  - "Urgence de petits frais ($1.99) pour contourner la vigilance, plus demande de données complètes de carte."
+  - "La page demande numéro de carte, expiration, CVV et même SSN — USPS ne demande jamais de SSN."
+whyItWorks: "Tout le monde achète en ligne, donc un accroc de livraison semble plausible. Le montant est dérisoire, donc les victimes paient sans inspecter le domaine. Le smishing arrose des millions de numéros ; même un taux de 0,1 pourcent paie car les données de carte sont revendues ou utilisées pour une fraude plus large."
 whatToDo:
-- Do not click. Track only on usps.com via the official tracking tool by typing the address yourself.
-- If you paid, call your card issuer to block the card and dispute the charge; monitor for larger follow-up charges.
-- Report the smish to reportfraud.ftc.gov and forward the text to 7726 (SPAM).
-verify: Go to usps.com → Tracking, enter your tracking number there. USPS lists any postage due inside your informed delivery account — never via a texted link.
+  - "Ne cliquez pas. Suivez uniquement sur usps.com via l'outil de suivi officiel en tapant vous-même l'adresse."
+  - "Si vous avez payé, appelez l'émetteur de votre carte pour la bloquer et contester le débit ; surveillez des débits de suivi plus gros."
+  - "Signalez le smishing sur reportfraud.ftc.gov et transférez le SMS au 7726 (SPAM)."
+verify: "Allez sur usps.com → Suivi, saisissez-y votre numéro de suivi. USPS liste tout affranchissement dû dans votre compte de livraison informée — jamais via un lien textoté."
 faqs:
-- q: Does USPS really text about $1.99 postage due?
-  a: No. USPS doesn’t text for postage due on a parcel you didn’t send. The link is a shortener hiding a fake domain not usps.com that asks for card details.
-- q: How can I verify a USPS delivery?
-  a: Track only with the tracking number on usps.com typed yourself, or call USPS via the number on usps.com — not the number in the text.
-- q: I entered my card — what now?
-  a: Call your bank to block the card, monitor for small test charges, and report at reportfraud.ftc.gov and your bank. Change passwords if you reused them.
+  - q: "USPS envoie-t-il vraiment des SMS pour $1.99 d'affranchissement dû ?"
+    a: "Non. USPS n'envoie pas de SMS pour un affranchissement dû sur un colis que vous n'avez pas envoyé. Le lien est un raccourcisseur cachant un faux domaine hors usps.com qui demande des données de carte."
+  - q: "Comment vérifier une vraie livraison USPS ?"
+    a: "Suivez uniquement avec le numéro de suivi sur usps.com tapé vous-même, ou appelez USPS via le numéro sur usps.com — pas celui du SMS."
+  - q: "J'ai saisi ma carte — que faire maintenant ?"
+    a: "Appelez votre banque pour bloquer la carte, surveillez les petits débits de test, et signalez sur reportfraud.ftc.gov et à votre banque. Changez les mots de passe si réutilisés."
 similar:
-- /scams/delivery-rs99-reschedule
-- /scams/royal-mail-redelivery-099
+  - /scams/delivery-rs99-reschedule
+  - /scams/royal-mail-redelivery-099
 updated: 2026-08-25
 ---

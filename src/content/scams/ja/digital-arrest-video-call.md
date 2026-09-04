@@ -1,33 +1,33 @@
 ---
-title: デジタルアレスト詐欺
-longTitle: 「デジタルアレスト」とは何ですか？
-description: デジタルアレスト詐欺の解説。
-tag: Impersonation
-intro: 'You get a call claiming to be from FedEx customs, TRAI, a courier company, or the CBI: a package with drugs was intercepted in your name, or your Aadhaar was linked to money laundering. You''re transferred to “police officers” on WhatsApp/ Skype video calls wearing uniforms in office-looking rooms. They order you to stay on camera — “digital arrest” — and transfer money to “verify” your account isn''t tainted. It''s theatre; there is no such legal process.'
+title: "デジタルアレスト詐欺"
+longTitle: "「デジタルアレスト」とは何ですか？ビデオ通話の警察詐欺の手口"
+description: "デジタルアレスト詐欺の解説。偽のCBI・警察・税関職員によるビデオ通話、自宅軟禁の脅し、警告サインを紹介します。"
+tag: "なりすまし"
+intro: "FedExの税関、TRAI、配送会社、CBIなどを名乗る電話がかかってきます。「あなたの名義で薬物入りの荷物が押収された」「Aadhaarが資金洗浄に使われた」などと言われ、WhatsAppやSkypeのビデオ通話で制服姿の「警官」に接続されます。「デジタルアレスト」としてカメラの前から離れないよう命じられ、口座が潔白だと「証明」するため送金を求められます。これはすべて演技です。そのような法的手続きは存在しません。"
 looksLike:
-- “This is Inspector Sharma, Mumbai Cyber Cell. A parcel with 140g MDMA addressed to you was seized. Cooperate or face arrest.”
-- Video call with uniformed men, badges, and a background of shelves/files (often AI-enhanced or reused footage)"
-- “Stay on video until verification completes. Do not tell anyone — case is confidential.”
+- '「ムンバイサイバーセルのシャルマ警部です。あなた宛てのMDMA140gを押収しました。協力しなければ逮捕します」'
+- 制服姿の人物、バッジ、棚や書類の背景が映るビデオ通話（使い回し映像やAI加工の場合もあります）
+- '「確認が終わるまでビデオ通話を切らないでください。事件は秘密なので誰にも言わないでください」'
 warningSigns:
-- Government agencies never announce investigations via video call, and “digital arrest” does not exist in Indian law.
-- Demands for secrecy — real proceedings come with written notices and lawyers.
-- “Safe account” / “verification deposit” transfers — no agency takes money this way.
-- Pressure to stay continuously on call for hours or days.
-whyItWorks: Fear plus authority plus isolation — the three levers of every con, executed with uniforms and official-sounding jargon. Victims are often educated professionals who panic about reputational damage. The continuous video call prevents them from calling family or a lawyer, which is exactly what would break the spell.
+- 公的機関がビデオ通話で捜査を通知することはなく、「デジタルアレスト」はインドの法律に存在しません。
+- 秘密を要求されます。本物の手続きは書面通知と弁護士同伴で行われます。
+- 「安全口座」「確認金」への送金を求められます。公的機関がこの方法でお金を受け取ることはありません。
+- 何時間も何日も通話を切り続けさせようとします。
+whyItWorks: "恐怖と権威と孤立化という詐欺の三大要素を、制服と専門用語で演出します。被害者は評判を気にする教養ある人が多く、家族や弁護士に連絡できないよう通話を続けさせることで冷静な判断を奪います。"
 whatToDo:
-- Hang up immediately. No genuine agency will object to you calling the local police station to verify.
-- Never transfer money to any “safe account” — that phrase itself is proof of fraud.
-- If money left your account, call 1930 within the golden hour so accounts can be frozen.
-verify: Real notices arrive physically with case numbers. Verify any claim by contacting the named agency through its official website phone numbers — never the ones given by the caller. RBI and state police have publicly stated digital arrest is always fraud.
+- すぐに電話を切ってください。本物の機関なら最寄りの警察署に確認すると伝えても問題ありません。
+- 「安全口座」には絶対に送金しないでください。その言葉自体が詐欺の証拠です。
+- 送金してしまった場合は、口座凍結のため1時間以内に1930番に電話してください。
+verify: "本物の通知は事件番号付きの書面で届きます。相手が名乗った機関の公式サイトに記載の電話番号で確認してください。相手が教えた番号にはかけないでください。RBIと州警察はデジタルアレストは常に詐欺だと公表しています。"
 faqs:
-- q: Can police really do a ‘digital arrest’ over video call?
-  a: No. Police and tax departments never arrest or interrogate over WhatsApp video calls and never demand transfers to clear your name. Any video call claiming arrest is impersonation.
-- q: Why does the call feel so convincing?
-  a: Scammers use fake uniforms, case FIR numbers, and fear of immediate arrest. They keep you on continuous video to isolate you from family. A real investigation gives written notice and allows you to visit a station with a lawyer.
-- q: What if they showed my Aadhaar or bank details?
-  a: Data from leaks makes it feel real, but it doesn’t prove authority. Hang up, call the local police station via the number on their official website, and report at 1930.
-- q: They asked me to transfer money for verification — is that ever legitimate?
-  a: Never. No agency asks for money to verify innocence or to unfreeze accounts. Any payment request to ‘prove’ innocence is the scam.
+- q: "警察はビデオ通話で「デジタルアレスト」できますか？"
+  a: できません。警察や税務署がWhatsAppのビデオ通話で逮捕や取り調べをしたり、身の潔白のために送金を求めたりすることはありません。
+- q: "なぜ電話が本物に感じられるのですか？"
+  a: 偽の制服、FIR番号、逮捕への恐怖を使います。家族と連絡できないよう通話を続けさせます。本物の捜査は書面通知があり、弁護士同伴で出頭できます。
+- q: "Aadhaarや銀行情報を見せられました。"
+  a: 流出データで本物らしく見せているだけであり、権限の証明にはなりません。電話を切り、公式サイト記載の番号で最寄りの警察署に連絡し、1930番に通報してください。
+- q: "確認のために送金するよう言われました。正当な場合がありますか？"
+  a: ありません。無実の証明や口座凍結解除のためにお金を求める機関は存在しません。「証明」のための支払いはすべて詐欺です。
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

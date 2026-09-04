@@ -1,33 +1,33 @@
 ---
-title: 즉시 대출 앱 함정
-longTitle: 즉시 대출 앱은 사기인가요?
-description: 대출 앱 함정 설명.
-tag: Loans
-intro: 'A “loan approved in 5 minutes” app asks for contacts, photos and ID, then disburse Rs 5,000 but demand Rs 8,000 within days. Miss it and your contacts receive doctored images with abuse. The fee demands and the harassment are the same business model: unregistered lending apps that monetise shame and fear.'
+title: "즉시 대출 앱 함정"
+longTitle: '서류 없이 5분 대출 앱은 사기인가요? 불법 대출 사기 수법'
+description: '불법 즉시 대출 앱 설명: 선입금 수수료, 연락처 탈취, 협박 수법, RBI 등록 업체인지 확인하는 법을 알려드려요.'
+tag: "대출"
+intro: "'5분 만에 대출 승인' 앱이 연락처, 사진, 신분증을 요구한 뒤 Rs 5,000을 빌려주고 며칠 안에 Rs 8,000을 갚으라고 해요. 어기면 조작된 사진과 욕설이 지인들에게 전송돼요. 수수료 요구와 협박은 같은 사업 모델로, 수치심과 공포로 돈을 버는 미등록 대출 앱이에요."
 looksLike:
-- '“Congratulations! You are pre-approved for Rs 50,000. Zero documents, money in 5 minutes. Download: [APK link]”'
-- “Pay Rs 999 processing/insurance fee to release the disbursed amount.”
-- Apps demanding access to contacts, gallery and SMS “for verification”.
-- Short 7-day tenures with effective interest rates running into hundreds of percent annualised.
+- '"축하합니다! Rs 50,000 사전 승인. 서류 없이 5분 입금. 다운로드: [APK 링크]"'
+- '"입금된 금액을 받으려면 Rs 999 처리·보험 수수료를 내세요."'
+- '확인을 명목으로 연락처·갤러리·SMS 접근을 요구하는 앱.'
+- 7일 같은 초단기 상환에 연 수백 %에 달하는 실질 금리.
 warningSigns:
-- The lender's name doesn't appear in RBI's list of registered NBFCs/banks or their partner disclosures.
-- Fees collected before any disbursal, via UPI to personal handles.
-- The app is only an APK sideload, absent from Google Play/App Store.
-- Contact/photo/SMS access unrelated to lending; repayment pressure starts before due date.
-whyItWorks: Borrowers targeted here are exactly those banks reject — no credit file, urgent need. Access to the phone's contacts turns default into blackmail, and many victims pay repeatedly just to stop the harassment. Regulators have removed hundreds of such apps from app stores, yet new clones appear within weeks.
+- RBI 등록 NBFC·은행 목록이나 제휴 공시에 대부업체 이름이 없어요.
+- 대출 실행 전에 개인 명의 UPI로 수수료를 받아요.
+- Google Play·App Store에 없고 APK 직접 설치 파일로만 돌아요.
+- 대출과 무관한 연락처·사진·SMS 접근을 요구하고 만기 전부터 상환을 압박해요.
+whyItWorks: "은행에서 거절당한 급한 사람들이 표적이라 연락처 접근이 곧 협박 수단이 돼요. 괴롭힘을 멈추려고 반복해서 돈을 내는 피해자가 많고, 수백 개 앱이 스토어에서 삭제돼도 몇 주 만에 복제 앱이 다시 나와요."
 whatToDo:
-- Never grant contact/gallery access to a lending app; revoke permissions immediately if already granted.
-- 'If harassed: file at cybercrime.gov.in (extortion/blackmail) and complain through the National Consumer Helpline (1915).'
-- Only repay through official channels after verifying the NBFC/bank name on RBI's lists; never to personal UPI IDs.
-- Uninstall the app, then report it in the Play Store/App Store listing.
-verify: Check the lender against RBI's published lists of licensed banks/NBFCs and the app's disclosed partner NBFC. Genuine lenders deduct fees from the loan amount at disbursal — they never ask for pre-payment via UPI.
+- 대출 앱에 연락처·갤러리 접근을 주지 말고, 이미 줬다면 즉시 권한을 해제하세요.
+- 협박받으면 cybercrime.gov.in(갈취·협박)과 소비자 헬프라인(1915)에 신고하세요.
+- RBI 목록에서 NBFC·은행 이름을 확인한 뒤 공식 채널로만 상환하고 개인 UPI ID로는 절대 보내지 마세요.
+- 앱을 삭제하고 Play 스토어·App Store에서 신고하세요.
+verify: "RBI가 공개한 허가 은행·NBFC 목록과 앱에 공시된 제휴 NBFC를 대조하세요. 진짜 업체는 실행 시 대출금에서 수수료를 공제하지, UPI 선입금을 요구하지 않아요."
 faqs:
-- q: Are instant loan apps with zero paperwork safe?
-  a: No. Many unregistered apps harvest contacts/photos on install and then demand upfront ‘processing fees’ to disburse a loan that never arrives, then harass with your contacts.
-- q: How can I tell a legitimate loan app?
-  a: Check RBI’s list of registered NBFCs/P2P lenders and the app’s listing on the lender’s official website. Real lenders deduct fees at disbursal, never ask for pre-payment via UPI.
-- q: What if I already gave contacts access?
-  a: Uninstall, revoke permissions, warn contacts, change passwords, and report the app at cybercrime.gov.in and to Google Play. Don’t pay harassment demands.
+- q: "서류 없이 즉시 대출해주는 앱은 안전한가요?"
+  a: 아니요. 미등록 앱 다수가 설치 시 연락처·사진을 가져간 뒤 '처리 수수료' 선입금을 요구하고 대출은 주지 않은 채 지인 협박을 시작해요.
+- q: "정상 대출 앱은 어떻게 구별하나요?"
+  a: RBI 등록 NBFC·P2P 업체 목록과 대부업체 공식 사이트의 앱 안내를 확인하세요. 진짜 업체는 실행 시 수수료를 공제하지, UPI 선입금을 요구하지 않아요.
+- q: "이미 연락처 접근을 허용했는데 어떻게 하죠?"
+  a: 삭제 후 권한을 해제하고, 지인들에게 알리고, 비밀번호를 바꾼 뒤 cybercrime.gov.in과 Google Play에 신고하세요. 협박성 요구에는 돈을 보내지 마세요.
 similar:
 - /scams/job-offer-fee-499
 - /scams/wedding-invite-apk

@@ -1,35 +1,35 @@
 ---
-title: WhatsApp家族緊急詐欺
-longTitle: 「やあママ、電話をなくした」メッセージは詐欺ですか？
-description: 家族緊急詐欺の解説。
-tag: Impersonation
-intro: '“Hi Mum, my phone broke — this is my new number.” Hours later: “I''m stuck, can you pay for something urgent? I''ll explain later.” The message impersonates a child or relative from an unknown number, banking on love outpacing suspicion. Police forces worldwide report this pattern surging since 2023, with Indian families increasingly targeted as forwards travel between countries.'
+title: "「やあママ」WhatsApp家族緊急詐欺"
+longTitle: "「やあママ、電話をなくした」というWhatsAppは詐欺ですか？"
+description: "「やあママ・パパ」家族なりすまし詐欺の解説。新しい番号、壊れた電話、緊急支払いの手口と、一問で見破る確認習慣を紹介します。"
+tag: "なりすまし"
+intro: "「やあママ、電話が壊れたの — これが新しい番号だよ」。数時間後には「困ってるんだ、急ぎで払ってくれない?後で説明するよ」。未知の番号から子や親族を装い、愛情が疑いを上回ることに賭けます。2023年以降この手口は世界中で急増し、転送を通じてインドの家庭も狙われています。"
 looksLike:
-- “Hi mum, my phone is damaged and this is my new number. Please save it.”
-- “I'm in trouble — I have to pay a deposit right now, I'll call you tonight, please don't tell Dad.”
-- “My UPI isn't working, can you send it to my friend's number instead?”
-- Poor punctuation, generic greetings and refusal to talk on a voice or video call.
+- '「やあママ、電話が壊れてこれが新しい番号だよ。保存しておいて」'
+- '「困ってるんだ — 今すぐ保証金を払わないと。夜に電話するから、パパには言わないで」'
+- '「僕のUPIが使えないんだ。友達の番号に送ってくれない?」'
+- 句読点が不自然で一般的な挨拶ばかり、音声やビデオ通話を拒む。
 warningSigns:
-- A “new number” for someone whose real phone still rings when you dial the old one.
-- Urgency plus secrecy (“don't tell anyone yet”) — isolation is the scammer's tool.
-- Requests to pay a third party's UPI handle or account “because my wallet is blocked”.
-- Dodges every attempt at a live call, or claims the microphone/camera is “broken”.
-whyItWorks: 'It hijacks the strongest reflex there is — helping your child. The story explains every red flag in advance: no calls because the phone is broken, secrecy to avoid “worrying” others, third-party accounts because “my own apps don''t work”. Emotional pressure plus a small-seeming amount short-circuits verification exactly once, which is all they need.'
+- 古い番号にかけるとまだつながる相手の「新しい番号」。
+- 緊急性と秘密（「まだ誰にも言わないで」）。孤立化が詐欺師の道具です。
+- 「自分の財布が使えないから」と第三者のUPIや口座への支払い要求。
+- 実況通話の試みをすべてかわし、マイクやカメラが「壊れた」と主張します。
+whyItWorks: "子を助けたいという最も強い反射を突きます。電話できないのは壊れたから、秘密は「心配させない」ため、第三者口座は「自分のアプリが使えない」からと、あらかじめ言い訳が用意されています。感情の圧力と少額に見える金額で確認を一度だけ飛ばさせます。それで十分です。"
 whatToDo:
-- Call the person's old/known number before replying — even if you think you know the answer.
-- Ask a question only the real person knows (a shared memory, not their birthday).
-- Never pay before a live voice or video confirmation through known channels.
-- If money was sent, call 1930 immediately — golden-hour reporting can freeze the transfer.
-verify: Contact the relative directly on their existing number, or through another family member who can physically reach them. No genuine emergency survives a callback.
+- 返信前に相手の古い番号・知っている番号に電話してください。分かっていると思っても必ずです。
+- 本人しか知らない質問（誕生日ではなく共有の思い出）を聞いてください。
+- 知っている経路での実況音声・ビデオ確認なしに支払わないでください。
+- 送金した場合は、すぐに1930番に電話してください。早期報告で送金を止められます。
+verify: "既存の番号で本人に直接連絡するか、会いに行ける家族経由で確認してください。本物の緊急事態は折り返しで崩れません。"
 faqs:
-- q: Is ‘Hi Mum, new number’ always a scam?
-  a: Not always, but the pattern ‘Hi Mum/Dad, I lost my phone, this is my new number, need money urgently’ from an unknown number is almost always the family emergency scam — verify before sending.
-- q: How does the Hi Mum scam work?
-  a: A new number claims to be your child, says phone is broken, builds rapport, then invents an emergency (hospital, rent, phone bill) and asks for an urgent transfer — often via UPI.
-- q: How should I verify?
-  a: Call your child on their old number or via a known family group before replying. A real emergency survives a callback to a known number.
-- q: What if they sent a voice note?
-  a: Voice can be cloned. Still call the old number. Ask a question only your child would know — scammers fail personal questions.
+- q: "「やあママ、新しい番号だよ」は常に詐欺ですか？"
+  a: 常にではありませんが、未知の番号から「やあママ・パパ、電話をなくした、新しい番号だよ、急ぎでお金が必要」という型はほぼ家族緊急詐欺です。送る前に確認してください。
+- q: "やあママ詐欺はどう進みますか？"
+  a: 新しい番号が子を装い、電話が壊れたと言って親しくなり、緊急事態（入院、家賃、電話代）を作って緊急送金を求めます。UPIが多いです。
+- q: "どう確認すればいいですか？"
+  a: 返信前に古い番号や既知の家族グループで子に電話してください。本物の緊急事態は知っている番号への折り返しで崩れません。
+- q: "ボイスメッセージが届きました。"
+  a: 声は複製できます。それでも古い番号に電話してください。子しか知らない質問を聞いてください。詐欺師は個人的な質問に答えられません。
 similar:
 - /scams/digital-arrest-video-call
 - /scams/upi-refund-qr

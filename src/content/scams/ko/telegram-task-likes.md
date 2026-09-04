@@ -1,33 +1,33 @@
 ---
-title: 텔레그램 작업 사기
-longTitle: 텔레그램 유료 작업은 사기인가요?
-description: 텔레그램 작업 사기 설명.
-tag: Jobs
-intro: 'You''re paid Rs 150–500 for liking videos or rating hotels — real money lands in your account, building trust. Then “premium merchant tasks” begin: pay Rs 2,000 to earn Rs 2,600, complete combined sets of three or four tasks to withdraw anything at all. The sets never close. This is the same engine behind fake job offers, refined into daily micro-payments.'
+title: "텔레그램 작업·좋아요 사기"
+longTitle: '돈 버는 텔레그램 ‘좋아요·구독’ 업무는 사기인가요?'
+description: '텔레그램·WhatsApp 업무 사기 설명: 좋아요·리뷰로 주는 소액 일당, 이어지는 선입금 ‘상인 업무’의 정체, 경고 신호와 대처법을 알려드려요.'
+tag: "취업"
+intro: "영상 좋아요나 호텔 평가로 Rs 150~500을 받아요. 진짜 돈이 입금되면서 신뢰가 쌓여요. 그러다 '프리미엄 상인 업무'가 시작돼요. Rs 2,000을 내면 Rs 2,600을 준다며, 출금하려면 세네 개 업무를 한 세트로 끝내야 한다고 해요. 그 세트는 절대 끝나지 않아요. 가짜 구인과 같은 수법을 매일 소액 지급으로 다듬은 거예요."
 looksLike:
-- '“Earn Rs 300/day working 30 minutes! Like YouTube videos, get instant payout. Join: t.me/…”'
-- A mentor figure assigning numbered tasks with screenshots of members' earnings.
-- '“Task 7: Pay Rs 5,000 to the merchant UPI below; you''ll receive Rs 6,500 in 10 minutes.”'
-- “Tasks are bundled today — finish all three to unlock withdrawal of your earlier balance.”
+- '"하루 30분으로 일당 Rs 300! 유튜브 좋아요 누르고 즉시 수령. 가입: t.me/…"'
+- 번호가 매겨진 업무를 주고 회원 수익 스크린샷을 올리는 멘토 역할.
+- '"업무 7: 아래 상인 UPI로 Rs 5,000을 보내면 10분 안에 Rs 6,500을 받습니다."'
+- '"오늘 업무는 묶음입니다 — 이전 잔액 출금을 위해 세 개를 모두 끝내세요."'
 warningSigns:
-- Payment arrives first (small), then ever-larger deposits are required to continue.
-- “Bundled” or “sequential” tasks designed so you can never complete the set.
-- Withdrawals blocked pending more deposits, “taxes”, or “account upgrade” fees.
-- Recruiters move you from public groups to private chats with new handles each week.
-whyItWorks: 'The early payouts are real — funded by later victims — so your brain files it under legitimate work. Losses follow a predictable curve: trust built at Rs 200 gets harvested at Rs 20,000. Task-fraud losses in India grew sharply through 2024, often merging with investment-app fraud once victims are warmed up.'
+- 처음엔 소액을 주고(미끼), 계속하려면 점점 큰 입금을 요구해요.
+- 세트를 절대 끝낼 수 없게 설계된 '묶음'·'순차' 업무.
+- 추가 입금, '세금', '계정 업그레이드' 비용을 내야 출금이 된다며 막아요.
+- 공개 그룹에서 매주 바뀌는 새 계정의 개인 채팅으로 이동시켜요.
+whyItWorks: "초기 지급은 실제로 들어와서 — 나중 피해자 돈으로 — 정상 일처럼 느껴져요. Rs 200으로 쌓은 신뢰를 Rs 20,000에서 회수하는 예측 가능한 곡선을 따라요. 2024년 이후 인도의 업무 사기 손실이 급증했고, 피해자가 마음을 열면 투자 앱 사기로 이어지기도 해요."
 whatToDo:
-- Stop mid-task if asked to pay to withdraw — that's the pivot point where recovery gets hard.
-- Save task lists, UPI handles and chat exports as evidence before leaving the group.
-- Report to 1930 and cybercrime.gov.in; report the Telegram/WhatsApp account in-app too.
-- Treat any similar offer that follows as the same operation re-contacting warm targets.
-verify: No employer pays via random personal UPI handles, and no platform pays users to boost its own metrics. If payouts depend on deposits, it is fraud by definition — check the pattern against our job-offer fee breakdown.
+- 출금을 위해 돈을 내라고 하면 그 지점에서 멈추세요. 거기가 회복이 어려워지는 전환점이에요.
+- 그룹을 나가기 전에 업무 목록, UPI 핸들, 대화 내보내기를 증거로 저장하세요.
+- 1930과 cybercrime.gov.in에 신고하고 텔레그램·WhatsApp 앱 안에서도 신고하세요.
+- 이후 오는 비슷한 제안은 같은 조직이 기존 표적에게 다시 연락하는 것으로 보세요.
+verify: "어떤 회사도 개인 UPI 핸들로 월급을 주지 않고, 어떤 플랫폼도 자기 지표 올리기에 사용자에게 돈을 주지 않아요. 입금해야 출금되면 정의상 사기예요. 구인 수수료 글의 패턴과 대조해 보세요."
 faqs:
-- q: Are paid Telegram ‘like and subscribe’ tasks real?
-  a: No. They start with tiny payouts to build trust, then ask for larger deposits to unlock tasks. The dashboard profits are fake and withdrawals are blocked.
-- q: Why did I get paid for the first two tasks?
-  a: That’s the bait. Small UPI credits make you believe the system works, so you deposit more for ‘VIP’ tasks that steal the larger amount.
-- q: Is there any legitimate job that pays for liking videos?
-  a: No real employer pays for liking videos or follows, and no real employer charges a registration fee. If a fee is required to start, it’s a scam.
+- q: "돈 버는 텔레그램 '좋아요·구독' 업무는 진짜인가요?"
+  a: 아니요. 신뢰를 쌓으려고 소액 지급으로 시작해 '상인 업무' 해금을 위해 더 큰 입금을 요구해요. 대시보드 수익은 가짜고 출금은 막혀 있어요.
+- q: "왜 처음 두 업무는 돈을 줬나요?"
+  a: 미끼예요. 소액 UPI 입금으로 시스템이 진짜처럼 느껴지게 한 뒤, 더 큰 금액을 노리는 'VIP' 업무에 더 많이 입금하게 해요.
+- q: "영상 좋아요로 돈 주는 정상 일자리는 없나요?"
+  a: 없어요. 진짜 회사는 영상 좋아요·팔로우에 돈을 주지 않고 등록비도 받지 않아요. 시작하려면 비용이 필요하다면 사기예요.
 similar:
 - /scams/job-offer-fee-499
 - /scams/trading-app-guaranteed-returns

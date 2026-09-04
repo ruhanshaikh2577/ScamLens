@@ -1,32 +1,32 @@
 ---
-title: Reembolso de imposto HMRC
-longTitle: 'É golpe "HMRC: reembolso devido"?'
-description: O golpe HMRC explicado.
-tag: Government
+title: "Reembolso de imposto HMRC"
+longTitle: 'É golpe o "HMRC: você tem £342 de reembolso"? Como funciona o phishing do HMRC'
+description: 'Phishing de reembolso do HMRC explicado: links falsos de GOV.UK prometendo restituição, sinais de alerta e como verificar no portal oficial do HMRC.'
+tag: "Governo"
 region: global
-intro: An email or text says HMRC owes you a tax refund (£200–£600) and you must claim via a link within 24 hours. The link looks like gov.uk but is a clone that asks for card and bank details to “verify identity.” HMRC does not notify refunds this way — real refunds appear inside your Government Gateway or via P800 letter.
+intro: "Um e-mail ou SMS diz que o HMRC lhe deve um reembolso (£200–£600) e que você precisa resgatar por um link em 24 horas. O link parece gov.uk, mas é um clone que pede dados do cartão e do banco para “verificar identidade”. O HMRC não avisa reembolsos assim — restituições reais aparecem na sua conta Government Gateway ou por carta P800."
 looksLike:
-- 'HMRC: Good news — you are eligible for a £342.86 tax refund. Claim at hmrc-refund-gateway.com'
-- 'GOV.UK: Tax refund available. Submit your details to receive it: bit.ly/hmrc-claim'
-- Your self-assessment shows overpayment — follow the link to get your money back today
+- 'HMRC: Boas notícias — você tem direito a £342.86 de reembolso. Resgate em hmrc-refund-gateway.com'
+- 'GOV.UK: Reembolso disponível. Envie seus dados para receber: bit.ly/hmrc-claim'
+- Sua autodeclaração mostra pagamento a maior — siga o link para receber hoje
 warningSigns:
-- Refund offered without you filing or expecting one, with 24-hour deadline.
-- Domain is not gov.uk — fakes use hmrc-gov, gov-hmrc, tax-refund-gateway.
-- Requests card number, CVV, sort code and account number to receive money.
-- Generic greeting (Dear taxpayer) instead of your Self Assessment ID.
-whyItWorks: Tax is universally disliked and refunds are universally liked — the bait exploits wishful thinking plus fiscal anxiety. Cloned GOV.UK pages are highly trusted, and the small-friction claim flow feels like normal government digital services.
+- Reembolso oferecido sem você ter declarado ou esperado nada, com prazo de 24 horas.
+- Domínio não é gov.uk — falsos usam hmrc-gov, gov-hmrc, tax-refund-gateway.
+- Pede número do cartão, CVV, sort code e número da conta para receber dinheiro.
+- Saudação genérica (Prezado contribuinte) em vez do seu ID de Self Assessment.
+whyItWorks: "Imposto todo mundo odeia e reembolso todo mundo adora — a isca explora a ilusão mais a ansiedade fiscal. Páginas clonadas do GOV.UK inspiram muita confiança, e o fluxo de resgate sem atrito parece um serviço público digital normal."
 whatToDo:
-- Do not claim via the link. Log into gov.uk → Personal tax account via the real GOV.UK homepage you type yourself.
-- If you entered bank details, contact your bank and HMRC via the official helpline; monitor for direct-debit fraud.
-- Forward the email to phishing@hmrc.gov.uk and report at actionfraud.police.uk.
-verify: Sign in at gov.uk through a typed address, not a link. HMRC shows any refund under Self Assessment → Tax overview. You can also call the HMRC helpline listed on gov.uk.
+- Não resgate pelo link. Entre em gov.uk → conta de imposto pessoal pelo endereço real do GOV.UK, digitado por você.
+- Se digitou dados bancários, fale com seu banco e com o HMRC pela central oficial; fique de olho em fraudes de débito direto.
+- Encaminhe o e-mail para phishing@hmrc.gov.uk e denuncie em actionfraud.police.uk.
+verify: "Entre em gov.uk por endereço digitado, não por link. O HMRC mostra restituições em Self Assessment → resumo de impostos. Você também pode ligar para a central do HMRC listada em gov.uk."
 faqs:
-- q: Does HMRC really text about a tax refund?
-  a: HMRC rarely texts for refunds and never asks for card details via a link. The text with a link to hmrc-refund.xyz and asking for sort code is phishing — real refunds go via your Government Gateway account.
-- q: How do I check a real HMRC refund?
-  a: Log in only at gov.uk typed yourself or via the HMRC app, and check your Personal Tax Account. Call HMRC via the number on gov.uk, not the text.
-- q: I entered details — what now?
-  a: Call your bank to block the card, report at actionfraud.police.uk and HMRC phishing@hmrc.gov.uk, and monitor for HMRC impersonation follow-ups.
+- q: "O HMRC manda mesmo SMS sobre reembolso?"
+  a: O HMRC raramente manda SMS sobre reembolso e nunca pede dados do cartão por link. O SMS com link para hmrc-refund.xyz pedindo sort code é phishing — reembolsos reais vão para sua conta Government Gateway.
+- q: "Como confiro um reembolso real do HMRC?"
+  a: Entre só em gov.uk digitado por você ou pelo app do HMRC e confira sua conta de imposto pessoal. Ligue para o HMRC pelo número em gov.uk, não o do SMS.
+- q: "Digitei meus dados — e agora?"
+  a: Ligue para o banco para bloquear o cartão, denuncie em actionfraud.police.uk e em phishing@hmrc.gov.uk, e fique atento a novas personificações do HMRC.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/royal-mail-redelivery-099

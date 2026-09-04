@@ -1,33 +1,33 @@
 ---
-title: 디지털 체포 사기
-longTitle: '"디지털 체포"란 무엇인가요?'
-description: 디지털 체포 사기 설명.
-tag: Impersonation
-intro: 'You get a call claiming to be from FedEx customs, TRAI, a courier company, or the CBI: a package with drugs was intercepted in your name, or your Aadhaar was linked to money laundering. You''re transferred to “police officers” on WhatsApp/ Skype video calls wearing uniforms in office-looking rooms. They order you to stay on camera — “digital arrest” — and transfer money to “verify” your account isn''t tainted. It''s theatre; there is no such legal process.'
+title: "디지털 체포 영상통화 사기"
+longTitle: '"디지털 체포"란? 영상통화로 경찰을 사칭해 거액을 뜯는 수법'
+description: '디지털 체포 사기 설명: 가짜 CBI·경찰·세관이 영상통화로 협박하는 수법, 경고 신호, 디지털 체포는 법적으로 없다는 점을 알려드려요.'
+tag: "사칭"
+intro: "FedEx 세관, TRAI, 택배사, CBI를 사칭하며 전화가 와요. 당신 명의로 마약 소포가 적발됐다거나, Aadhaar가 자금세탁에 연루됐다고 해요. 이어서 WhatsApp·Skype 영상통화로 제복 입은 '경찰'이 나와 사무실 같은 방에서 조사하며 카메라 앞에서 대기하라는 '디지털 체포'를 명령하고, 계좌가 깨끗한지 '검증'하겠다며 송금을 요구해요. 연극일 뿐, 그런 법적 절차는 없어요."
 looksLike:
-- “This is Inspector Sharma, Mumbai Cyber Cell. A parcel with 140g MDMA addressed to you was seized. Cooperate or face arrest.”
-- Video call with uniformed men, badges, and a background of shelves/files (often AI-enhanced or reused footage)"
-- “Stay on video until verification completes. Do not tell anyone — case is confidential.”
+- '"뭄바이 사이버셀 Sharma 경감입니다. 당신 앞으로 온 140g 마약 소포가 압수됐습니다. 협조하지 않으면 체포됩니다."'
+- 제복 입은 남성들, 배지, 선반·서류 배경의 영상통화 (AI 보정이나 재활용 영상인 경우가 많아요)
+- '"검증이 끝날 때까지 영상통화를 유지하세요. 사건은 기밀이니 누구에게도 말하지 마세요."'
 warningSigns:
-- Government agencies never announce investigations via video call, and “digital arrest” does not exist in Indian law.
-- Demands for secrecy — real proceedings come with written notices and lawyers.
-- “Safe account” / “verification deposit” transfers — no agency takes money this way.
-- Pressure to stay continuously on call for hours or days.
-whyItWorks: Fear plus authority plus isolation — the three levers of every con, executed with uniforms and official-sounding jargon. Victims are often educated professionals who panic about reputational damage. The continuous video call prevents them from calling family or a lawyer, which is exactly what would break the spell.
+- 수사기관은 영상통화로 수사를 알리지 않아요. '디지털 체포'는 인도 법에 없어요.
+- 비밀 유지를 요구해요. 진짜 절차는 서면 통지와 변호인이 함께해요.
+- "'안전 계좌'·'검증 예치금' 송금 요구는 그 자체로 사기예요. 어떤 기관도 이렇게 돈을 받지 않아요."
+- 몇 시간~며칠씩 계속 통화 상태를 유지하라고 압박해요.
+whyItWorks: "공포, 권위, 고립이라는 사기의 세 가지 지렛대를 제복과 관청 용어로 실행해요. 명예 훼손을 두려워하는 전문직 피해자가 많고, 계속되는 영상통화 때문에 가족이나 변호사에게 확인할 틈을 빼앗는 게 핵심이에요."
 whatToDo:
-- Hang up immediately. No genuine agency will object to you calling the local police station to verify.
-- Never transfer money to any “safe account” — that phrase itself is proof of fraud.
-- If money left your account, call 1930 within the golden hour so accounts can be frozen.
-verify: Real notices arrive physically with case numbers. Verify any claim by contacting the named agency through its official website phone numbers — never the ones given by the caller. RBI and state police have publicly stated digital arrest is always fraud.
+- 즉시 끊으세요. 진짜 기관이라면 관할 경찰서에 확인하겠다고 해도 반대하지 않아요.
+- 어떤 '안전 계좌'에도 송금하지 마세요. 그 말 자체가 사기의 증거예요.
+- 돈이 빠져나갔다면 1시간 안에 1930에 전화해서 계좌를 동결하세요.
+verify: "진짜 통지는 사건 번호와 함께 우편으로 와요. 상대가 알려준 번호가 아니라 해당 기관 공식 사이트에 적힌 번호로 직접 연락해서 확인하세요. RBI와 주 경찰은 디지털 체포는 무조건 사기라고 공지했어요."
 faqs:
-- q: Can police really do a ‘digital arrest’ over video call?
-  a: No. Police and tax departments never arrest or interrogate over WhatsApp video calls and never demand transfers to clear your name. Any video call claiming arrest is impersonation.
-- q: Why does the call feel so convincing?
-  a: Scammers use fake uniforms, case FIR numbers, and fear of immediate arrest. They keep you on continuous video to isolate you from family. A real investigation gives written notice and allows you to visit a station with a lawyer.
-- q: What if they showed my Aadhaar or bank details?
-  a: Data from leaks makes it feel real, but it doesn’t prove authority. Hang up, call the local police station via the number on their official website, and report at 1930.
-- q: They asked me to transfer money for verification — is that ever legitimate?
-  a: Never. No agency asks for money to verify innocence or to unfreeze accounts. Any payment request to ‘prove’ innocence is the scam.
+- q: "경찰이 영상통화로 '디지털 체포'를 할 수 있나요?"
+  a: 없어요. 경찰과 세무 당국은 WhatsApp 영상통화로 체포·심문하지 않고, 결백을 증명하라며 송금을 요구하지도 않아요. 체포를 주장하는 영상통화는 전부 사칭이에요.
+- q: "왜 전화가 그렇게 그럴듯하게 느껴지나요?"
+  a: 가짜 제복, FIR 사건 번호, 즉시 체포 공포를 이용해요. 계속 영상통화를 유지하며 가족과 고립시켜요. 진짜 수사는 서면 통지를 주고 변호인과 함께 출석할 수 있어요.
+- q: "제 Aadhaar나 계좌 정보를 알고 있던데요?"
+  a: 유출된 정보로 진짜처럼 꾸밀 뿐, 권한의 증거가 아니에요. 끊고 공식 사이트에 적힌 번호로 관할 경찰서에 전화한 뒤 1930에 신고하세요.
+- q: "검증을 위해 송금하라는데 정당한 경우도 있나요?"
+  a: 절대 없어요. 결백 증명이나 계좌 동결 해제를 이유로 돈을 요구하는 기관은 없어요. 결백을 '증명'하라며 결제를 요구하면 그게 사기예요.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

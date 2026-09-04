@@ -1,33 +1,33 @@
 ---
-title: Malware APK convite de casamento
-longTitle: O APK de convite de casamento é golpe?
-description: O malware APK explicado.
-tag: Malware
-intro: A WhatsApp message offers a “wedding card”, “party invite” or parcel-tracking app as an .apk download. It installs nothing visible, but quietly requests notification or SMS access and reads every OTP that arrives. Bank balances drain through UPI while the victim watches, confused, from the same phone. Cybercrime agencies reported waves of these Android trojans across India since 2024.
+title: "Malware APK de convite de casamento"
+longTitle: 'Um convite de casamento em APK no WhatsApp é golpe? Como o malware de convites rouba seus OTPs'
+description: 'A onda de malware APK de convites/correios explicada: um cartão que não abre, um pedido de instalação e um trojan leitor de SMS que esvazia carteiras.'
+tag: "Malware"
+intro: "Uma mensagem de WhatsApp oferece um “cartão de casamento”, “convite de festa” ou app de rastreio de encomenda como download .apk. Não instala nada visível, mas pede silenciosamente acesso a notificações ou SMS e lê cada OTP que chega. Saldos somem via UPI enquanto a vítima assiste, confusa, no mesmo celular. Agências de cibercrime relatam ondas desses trojans Android na Índia desde 2024."
 looksLike:
-- '“You are invited! 🎉 Open the card: bit.ly/wedding-card-v2 (downloads invite.apk)”'
-- “Your parcel can't be delivered — install our delivery partner app to reschedule.”
-- An install screen warning “this app wants to read SMS / display over other apps”.
-- 'After install: no icon, odd battery drain, or OTPs arriving that you didn''t trigger.'
+- '“Você está convidado! 🎉 Abra o cartão: bit.ly/wedding-card-v2 (baixa invite.apk)”'
+- '“Sua encomenda não pôde ser entregue — instale nosso app parceiro para reagendar.”'
+- Uma tela de instalação avisando “este app quer ler SMS / exibir sobre outros apps”.
+- "Depois de instalar: sem ícone, bateria estranha, ou OTPs chegando sem você ter pedido."
 warningSigns:
-- Any .apk shared over chat, especially with emotional hooks (invitations) or delivery urgency.
-- Install prompts for accessibility services, notification access or SMS reading.
-- Bank alerts for UPI transactions you didn't make — often small amounts first.
-- Friends say they received the same file from you without your knowledge.
-whyItWorks: Social rituals feel safe — nobody suspects a wedding invite. Android blocks such installs by default, so the message coaches users past the warning (“allow installs from this source”). Once SMS/notification access is granted, the malware intercepts OTPs in real time, turning your own bank's security code into the scammer's final signature.
+- Qualquer .apk compartilhado por chat, principalmente com ganchos emocionais (convites) ou urgência de entrega.
+- Pedidos de instalação para serviços de acessibilidade, acesso a notificações ou leitura de SMS.
+- Alertas do banco sobre transações UPI que você não fez — muitas vezes valores pequenos primeiro.
+- Amigos dizendo que receberam o mesmo arquivo vindo de você sem seu conhecimento.
+whyItWorks: "Rituais sociais parecem seguros — ninguém desconfia de convite de casamento. O Android bloqueia essas instalações por padrão, então a mensagem ensina a passar pelo aviso (“permitir instalar desta fonte”). Com o acesso a SMS/notificações concedido, o malware intercepta OTPs em tempo real, transformando o código de segurança do seu próprio banco na assinatura final do golpista."
 whatToDo:
-- Do not open the file; delete the chat media and report the sender in-app.
-- 'If installed: disconnect from internet, uninstall, run Play Protect scan, change banking PINs from another device, and call your bank to block UPI mandates.'
-- Check for unknown devices/sessions linked to your accounts and revoke them.
-- File at cybercrime.gov.in if money is gone; call 1930 within the golden hour.
-verify: Genuine invitations come as PDFs/images or verified event links — never APKs. If unsure whether your phone is compromised, a factory reset after backing up data removes consumer-grade trojans; then restore apps only from the official store.
+- Não abra o arquivo; apague a mídia do chat e denuncie o remetente no app.
+- "Se instalou: desconecte da internet, desinstale, rode verificação do Play Protect, troque senhas bancárias por outro aparelho e ligue para o banco para bloquear débitos UPI."
+- Confira aparelhos/sessões desconhecidos ligados às suas contas e revogue.
+- Registre em cybercrime.gov.in se o dinheiro sumiu; ligue para 1930 na primeira hora.
+verify: "Convites verdadeiros vêm como PDF/imagem ou link de evento verificado — nunca APK. Se não sabe se o celular foi comprometido, uma restauração de fábrica após backup remove trojans comuns; depois restaure apps só da loja oficial."
 faqs:
-- q: Is a WhatsApp wedding invitation APK file safe to open?
-  a: No. Real invites are images or PDFs, not .apk files. An APK is an app installer that can steal SMS, OTPs and contacts once installed.
-- q: What happens if I installed the APK?
-  a: Turn off mobile data/Wi-Fi, uninstall the app, change passwords from another device, call your bank to block vulnerable cards, and run a malware scan. Report at 1930.
-- q: How can I verify a wedding invite is real?
-  a: Call the sender on their old number (not the new one that sent the file) and ask them to confirm. Don’t tap .apk links — ask for a photo preview instead.
+- q: "Arquivo APK de convite de casamento no WhatsApp é seguro abrir?"
+  a: Não. Convites reais são imagens ou PDFs, não .apk. Um APK é um instalador de app que pode roubar SMS, OTPs e contatos depois de instalado.
+- q: "O que acontece se instalei o APK?"
+  a: Desligue dados/Wi-Fi, desinstale o app, troque senhas por outro aparelho, ligue para o banco para bloquear cartões vulneráveis e rode verificação de malware. Denuncie no 1930.
+- q: "Como verifico se um convite é real?"
+  a: Ligue para o remetente no número antigo dele (não o novo que enviou o arquivo) e peça confirmação. Não toque em links .apk — peça uma foto de prévia.
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/instant-loan-app

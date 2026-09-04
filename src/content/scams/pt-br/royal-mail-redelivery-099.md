@@ -1,32 +1,32 @@
 ---
-title: Royal Mail reentrega £0.99
-longTitle: 'É golpe "Royal Mail: pague £0.99"?'
-description: O golpe Royal Mail explicado.
-tag: Delivery
+title: "Reentrega Royal Mail (£0.99)"
+longTitle: 'É golpe o "Royal Mail: pague £0.99 pela reentrega"? Como funciona no Reino Unido'
+description: 'Golpe da taxa de £0.99 de reentrega do Royal Mail explicado: SMS com domínios falsos, sinais de alerta e verificação oficial via royalmail.com.'
+tag: "Entrega"
 region: global
-intro: A text claims Royal Mail tried to deliver but you owe £0.99 or £1.45 for redelivery or customs. The link mimics Royal Mail branding and asks for card details to pay the tiny fee. Royal Mail does charge for some redeliveries, but never via an unexpected text link like this — the fee screen is fake and harvests your card.
+intro: "Um SMS diz que o Royal Mail tentou entregar, mas você deve £0.99 ou £1.45 de reentrega ou alfândega. O link imita a marca do Royal Mail e pede dados do cartão para pagar a taxinha. O Royal Mail cobra por algumas reentregas, mas nunca por link inesperado de SMS assim — a tela de pagamento é falsa e rouba seu cartão."
 looksLike:
-- 'Royal Mail: Your package is waiting. Pay £0.99 redelivery fee now: royalmail-redelivery.com'
-- 'RM: Action required — customs fee £2.99 to release your parcel: bit.ly/rm-customs'
-- We could not deliver your item today. Schedule redelivery here within 24h
+- 'Royal Mail: Sua encomenda está aguardando. Pague £0.99 de reentrega agora: royalmail-redelivery.com'
+- 'RM: Ação necessária — taxa alfandegária de £2.99 para liberar sua encomenda: bit.ly/rm-customs'
+- Não conseguimos entregar seu item hoje. Reagende a entrega aqui em 24h
 warningSigns:
-- Text from a random mobile number, not Royal Mail's official sender ID.
-- Domain is not royalmail.com — fakes use royal-mail, rm-delivery, parcel-royal.
-- Urgency to pay a small amount today to avoid return to depot.
-- Form asks for full card and address details, sometimes even mother’s maiden name.
-whyItWorks: Royal Mail redelivery fees are real, so the premise passes a quick plausibility check. The £0.99 amount is below the threshold where people scrutinize, and the cloned site is pixel-perfect on mobile. Post-Brexit customs fees have also normalized small-fee messages.
+- SMS de número móvel aleatório, não do remetente oficial do Royal Mail.
+- Domínio não é royalmail.com — falsos usam royal-mail, rm-delivery, parcel-royal.
+- Urgência para pagar valor pequeno hoje e evitar devolução ao depósito.
+- Formulário pede cartão completo e endereço, às vezes até nome de solteira da mãe.
+whyItWorks: "Taxas de reentrega do Royal Mail existem de verdade, então a história passa num teste rápido de plausibilidade. O valor de £0.99 fica abaixo do limite em que as pessoas conferem, e o site clonado é perfeito no celular. As taxas alfandegárias pós-Brexit também normalizaram mensagens de taxinhas."
 whatToDo:
-- Do not pay via the link. Check at royalmail.com → Track your item by entering the reference you were given at purchase.
-- If you entered card details, contact your bank to cancel the card and watch for subscription traps.
-- Report to actionfraud.police.uk and forward the text to 7726.
-verify: Use royalmail.com Track & Trace and the official Royal Mail app. Any genuine fee appears there after you enter the exact parcel reference — not via a generic link.
+- Não pague pelo link. Confira em royalmail.com → rastreie seu item com a referência recebida na compra.
+- Se digitou dados do cartão, fale com o banco para cancelar o cartão e fique de olho em assinaturas indevidas.
+- Denuncie em actionfraud.police.uk e encaminhe o SMS para 7726.
+verify: "Use o Track & Trace em royalmail.com e o app oficial do Royal Mail. Qualquer taxa real aparece lá após digitar a referência exata da encomenda — não por link genérico."
 faqs:
-- q: Does Royal Mail text for £0.99 redelivery fee?
-  a: No. Royal Mail doesn’t text for redelivery fees on parcels you didn’t send. The link is a fake not royalmail.com that asks for card details.
-- q: How do I track a real Royal Mail parcel?
-  a: Track only with the tracking number on royalmail.com typed yourself, or call Royal Mail via the number on royalmail.com.
-- q: I paid the fee — what now?
-  a: Call your bank to block the card, report at actionfraud.police.uk and Royal Mail’s phishing report, and watch for follow-up HMRC/Royal Mail impersonations.
+- q: "O Royal Mail manda SMS cobrando £0.99 de reentrega?"
+  a: Não. O Royal Mail não manda SMS cobrando reentrega de encomendas que você não enviou. O link é falso, não é royalmail.com, e pede dados do cartão.
+- q: "Como rastreio uma encomenda real do Royal Mail?"
+  a: Rastreie só com o código em royalmail.com digitado por você, ou ligue para o Royal Mail pelo número em royalmail.com.
+- q: "Paguei a taxa — e agora?"
+  a: Ligue para o banco para bloquear o cartão, denuncie em actionfraud.police.uk e no canal de phishing do Royal Mail, e fique atento a novas personificações de HMRC/Royal Mail.
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/usps-postage-due-199

@@ -1,31 +1,31 @@
 ---
-title: 수수료가 있는 구인 사기
-longTitle: '"재택근무, 499루피 수수료"는 사기인가요?'
-description: 구인 사기 설명.
-tag: Jobs
-intro: An HR person messages you about easy work-from-home earnings — rating hotels, liking videos, data entry at Rs 3,000–15,000/day. You're selected instantly (no interview), then asked for a small registration or “task wallet” fee, typically Rs 499 to Rs 2,999. The first tiny payout arrives to build trust; then fees escalate until you stop paying. No real salary ever comes.
+title: "등록비가 있는 구인 사기"
+longTitle: '"재택근무, 등록비 Rs 499" 구인 제안은 사기인가요? 수수료형 취업 사기'
+description: '등록·교육 수수료(Rs 499~2,999)를 요구하는 가짜 구인 설명: 텔레그램 업무, 제안서 속임수, 경고 신호와 진짜 회사 확인법을 알려드려요.'
+tag: "취업"
+intro: "호텔 평가, 영상 좋아요, 데이터 입력으로 하루 Rs 3,000~15,000을 벌 수 있다며 HR 담당자라며 연락이 와요. 면접 없이 즉시 합격시키고 Rs 499~Rs 2,999의 등록비나 '업무 지갑' 수수료를 요구해요. 처음엔 소액을 입금해주며 신뢰를 쌓다가, 그만둘 때까지 수수료를 계속 올려요. 진짜 월급은 절대 오지 않아요."
 looksLike:
-- “Congratulations! You're shortlisted for part-time work from Home. Daily payout Rs 3000+. Registration fee Rs 499 only.”
-- A polished PDF offer letter from \u201CHR Department\u201D of a real-sounding company, sent before any interview"
-- Telegram groups where \u201Ccompleted tasks\u201D screenshots flood the chat as social proof"
+- '"축하합니다! 재택 아르바이트에 선발되셨습니다. 일당 Rs 3,000 이상. 등록비 Rs 499뿐."'
+- 면접도 전에 온, 실존할 듯한 회사의 'HR 부서' 명의 PDF 제안서
+- "'업무 완료' 스크린샷이 계속 올라오는 사회적 증거용 텔레그램 그룹"
 warningSigns:
-- Selection without an interview, especially over WhatsApp/Telegram.
-- Any upfront fee — registration, training kit, document verification, GST release.
-- Personal UPI handles (@paytm, @ybl) for fee payment instead of company accounts.
-- Earnings wildly out of proportion to skill (“Rs 5,000/day for liking videos”).
-whyItWorks: Job scarcity plus flexible-work demand makes the pitch irresistible, and the small first fee feels like normal paperwork (we're used to paying for courses and certifications). The early micro-payouts are funded by later victims' fees — a Ponzi-shaped hook that turns skeptics into evangelists who recruit friends.
+- WhatsApp·텔레그램으로 면접 없이 합격시켜요.
+- 등록비, 교육 키트비, 서류 검증비, GST 해제비 등 어떤 명목이든 선입금을 요구해요.
+- 회사 계좌가 아니라 @paytm, @ybl 같은 개인 UPI 핸들로 받아요.
+- "'영상 좋아요로 일당 Rs 5,000'처럼 일 대비 수입이 터무니없이 커요."
+whyItWorks: "일자리 부족과 유연근무 수요를 파고들고, 소액 첫 수수료는 익숙한 서류 절차처럼 느껴져요. 초기 소액 지급은 나중 피해자의 수수료로 충당하는 폰지식 미끼라서, 의심하던 사람도 친구를 끌어들이는 전도사가 돼요."
 whatToDo:
-- Never pay any fee to apply, start, or “release” earnings. Real employers deduct nothing in advance.
-- If already paid, stop all further payments — escalation fees are how losses become lakhs.
-- Report the number/UPI handle on 1930 and cybercrime.gov.in with transaction proof.
-verify: Search the company on LinkedIn and its official careers page — genuine openings exist there without fees. Check the recruiter's email domain matches the company. MCA's website lets you verify company registration numbers.
+- 지원·시작·수익 '해제' 명목의 수수료는 절대 내지 마세요. 진짜 회사는 미리 돈을 받지 않아요.
+- 이미 냈다면 추가 입금은 멈추세요. 추가 수수료가 손실을 수십만 루피로 키워요.
+- 거래 증빙과 함께 1930과 cybercrime.gov.in에 번호·UPI 핸들을 신고하세요.
+verify: "LinkedIn과 회사 공식 채용 페이지에서 공고를 찾아보세요. 진짜 공고는 수수료 없이 거기 있어요. 채용 담당자 이메일 도메인이 회사와 같은지 확인하고, 회사 등록번호는 MCA 사이트에서 조회할 수 있어요."
 faqs:
-- q: Is a work-from-home job with Rs 499 registration fee legitimate?
-  a: No. Real employers never charge to apply, train or verify documents. Any fee to start is the scam itself — the job doesn’t exist.
-- q: What does the offer letter look like?
-  a: A PDF with logos and a signature, asking for Rs 499-2000 via UPI before onboarding. Real offers don’t ask for payment and are verifiable via the company’s official careers page or HR phone.
-- q: How can I verify the company?
-  a: Search the company name on its official website’s careers section and call HR via the number on the website, not the one in the message. Check MCA or LinkedIn for the company’s real presence.
+- q: "재택근무에 등록비 Rs 499가 있는 구인은 정상인가요?"
+  a: 아니요. 진짜 회사는 지원·교육·서류 확인 명목으로 돈을 받지 않아요. 시작을 위한 수수료 자체가 사기이고, 그 일자리는 없어요.
+- q: "제안서는 어떻게 생겼나요?"
+  a: 로고와 서명이 있는 PDF로 입사 전 UPI로 Rs 499~2,000을 요구해요. 진짜 제안서는 돈을 요구하지 않고 회사 공식 채용 페이지나 HR 전화로 확인할 수 있어요.
+- q: "회사는 어떻게 확인하나요?"
+  a: 메시지 속 번호가 아니라 회사 공식 사이트 채용란에서 회사명을 검색해 사이트에 적힌 번호로 HR에 전화하세요. MCA나 LinkedIn에서 실제 회사인지도 확인하세요.
 similar:
 - /scams/digital-arrest-video-call
 - /scams/upi-refund-qr

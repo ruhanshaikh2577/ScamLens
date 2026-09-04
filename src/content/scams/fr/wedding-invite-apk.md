@@ -1,35 +1,35 @@
 ---
-title: Malware APK invitation mariage
-longTitle: L'APK d'invitation de mariage WhatsApp est-il une arnaque ?
-description: Le malware APK d'invitation expliqué.
-tag: Malware
-intro: A WhatsApp message offers a “wedding card”, “party invite” or parcel-tracking app as an .apk download. It installs nothing visible, but quietly requests notification or SMS access and reads every OTP that arrives. Bank balances drain through UPI while the victim watches, confused, from the same phone. Cybercrime agencies reported waves of these Android trojans across India since 2024.
+title: "Malware APK invitation de mariage"
+longTitle: "Une APK d'invitation de mariage WhatsApp est-elle une arnaque ? Comment le malware d'invitation vole vos OTP"
+description: "La vague de malware APK d'invitation de mariage/coursier expliquée : une carte qu'on ne peut pas ouvrir, une invite d'installation, et un cheval de Troie lecteur de SMS qui vide les portefeuilles. Signaux d'alerte et étapes de nettoyage."
+tag: "Malware"
+intro: "Un message WhatsApp propose une « carte de mariage », « invitation de fête » ou appli de suivi de colis en téléchargement .apk. Il n'installe rien de visible, mais demande discrètement l'accès notifications ou SMS et lit chaque OTP qui arrive. Les soldes bancaires se vident via UPI pendant que la victime regarde, confuse, depuis le même téléphone. Les agences cybercriminelles ont signalé des vagues de ces chevaux de Troie Android à travers l'Inde depuis 2024."
 looksLike:
-- '“You are invited! 🎉 Open the card: bit.ly/wedding-card-v2 (downloads invite.apk)”'
-- “Your parcel can't be delivered — install our delivery partner app to reschedule.”
-- An install screen warning “this app wants to read SMS / display over other apps”.
-- 'After install: no icon, odd battery drain, or OTPs arriving that you didn''t trigger.'
+  - "« Vous êtes invité ! Ouvrez la carte : bit.ly/wedding-card-v2 (télécharge invite.apk) »"
+  - "« Votre colis ne peut pas être livré — installez notre appli partenaire de livraison pour reprogrammer. »"
+  - "Un écran d'installation avertissant « cette appli veut lire les SMS / s'afficher par-dessus d'autres applis »."
+  - "Après install : pas d'icône, batterie anormale, ou des OTP qui arrivent sans que vous les ayez déclenchés."
 warningSigns:
-- Any .apk shared over chat, especially with emotional hooks (invitations) or delivery urgency.
-- Install prompts for accessibility services, notification access or SMS reading.
-- Bank alerts for UPI transactions you didn't make — often small amounts first.
-- Friends say they received the same file from you without your knowledge.
-whyItWorks: Social rituals feel safe — nobody suspects a wedding invite. Android blocks such installs by default, so the message coaches users past the warning (“allow installs from this source”). Once SMS/notification access is granted, the malware intercepts OTPs in real time, turning your own bank's security code into the scammer's final signature.
+  - "Tout .apk partagé via chat, surtout avec des accroches émotionnelles (invitations) ou urgence de livraison."
+  - "Invites d'installation pour services d'accessibilité, accès notifications ou lecture SMS."
+  - "Alertes bancaires pour des transactions UPI non effectuées — souvent petits montants d'abord."
+  - "Des amis disent avoir reçu le même fichier de vous sans que vous le sachiez."
+whyItWorks: "Les rituels sociaux semblent sûrs — personne ne soupçonne une invitation de mariage. Android bloque ces installs par défaut, donc le message coache les utilisateurs au-delà de l'avertissement (« autoriser les installs de cette source »). Une fois l'accès SMS/notifications accordé, le malware intercepte les OTP en temps réel, transformant le code de sécurité de votre propre banque en signature finale de l'escroc."
 whatToDo:
-- Do not open the file; delete the chat media and report the sender in-app.
-- 'If installed: disconnect from internet, uninstall, run Play Protect scan, change banking PINs from another device, and call your bank to block UPI mandates.'
-- Check for unknown devices/sessions linked to your accounts and revoke them.
-- File at cybercrime.gov.in if money is gone; call 1930 within the golden hour.
-verify: Genuine invitations come as PDFs/images or verified event links — never APKs. If unsure whether your phone is compromised, a factory reset after backing up data removes consumer-grade trojans; then restore apps only from the official store.
+  - "N'ouvrez pas le fichier ; supprimez le média du chat et signalez l'expéditeur dans l'appli."
+  - "Si installé : déconnectez d'internet, désinstallez, lancez un scan Play Protect, changez les PIN bancaires depuis un autre appareil, et appelez votre banque pour bloquer les mandats UPI."
+  - "Vérifiez les appareils/sessions inconnus liés à vos comptes et révoquez-les."
+  - "Déposez sur cybercrime.gov.in si de l'argent a disparu ; appelez le 1930 dans l'heure dorée."
+verify: "Les vraies invitations arrivent en PDF/images ou liens d'événement vérifiés — jamais en APK. Si vous doutez que votre téléphone soit compromis, une réinitialisation d'usine après sauvegarde supprime les trojans grand public ; restaurez ensuite les applis uniquement depuis le store officiel."
 faqs:
-- q: Is a WhatsApp wedding invitation APK file safe to open?
-  a: No. Real invites are images or PDFs, not .apk files. An APK is an app installer that can steal SMS, OTPs and contacts once installed.
-- q: What happens if I installed the APK?
-  a: Turn off mobile data/Wi-Fi, uninstall the app, change passwords from another device, call your bank to block vulnerable cards, and run a malware scan. Report at 1930.
-- q: How can I verify a wedding invite is real?
-  a: Call the sender on their old number (not the new one that sent the file) and ask them to confirm. Don’t tap .apk links — ask for a photo preview instead.
+  - q: "Un fichier APK d'invitation de mariage WhatsApp est-il sûr à ouvrir ?"
+    a: "Non. Les vraies invitations sont des images ou PDF, pas des fichiers .apk. Un APK est un installeur d'appli qui peut voler SMS, OTP et contacts une fois installé."
+  - q: "Que se passe-t-il si j'ai installé l'APK ?"
+    a: "Coupez données mobiles/Wi-Fi, désinstallez l'appli, changez les mots de passe depuis un autre appareil, appelez votre banque pour bloquer les cartes vulnérables, et lancez un scan malware. Signalez au 1930."
+  - q: "Comment vérifier qu'une invitation de mariage est réelle ?"
+    a: "Appelez l'expéditeur sur son ancien numéro (pas le nouveau qui a envoyé le fichier) et demandez-lui de confirmer. Ne touchez pas aux liens .apk — demandez plutôt un aperçu photo."
 similar:
-- /scams/delivery-rs99-reschedule
-- /scams/instant-loan-app
+  - /scams/delivery-rs99-reschedule
+  - /scams/instant-loan-app
 updated: 2026-08-26
 ---

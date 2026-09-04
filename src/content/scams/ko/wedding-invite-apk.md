@@ -1,33 +1,33 @@
 ---
-title: 결혼식 초대 APK 악성코드
-longTitle: WhatsApp 결혼식 초대 APK는 사기인가요?
-description: 결혼식 초대 APK 설명.
-tag: Malware
-intro: A WhatsApp message offers a “wedding card”, “party invite” or parcel-tracking app as an .apk download. It installs nothing visible, but quietly requests notification or SMS access and reads every OTP that arrives. Bank balances drain through UPI while the victim watches, confused, from the same phone. Cybercrime agencies reported waves of these Android trojans across India since 2024.
+title: "결혼식 초대 APK 악성코드"
+longTitle: 'WhatsApp 결혼식 초대 APK는 사기인가요? 초대 악성코드가 OTP를 훔치는 수법'
+description: '결혼식·택배 APK 악성코드 유행 설명: 열리지 않는 청첩장, 설치 유도, OTP를 읽어 지갑을 비우는 트로이목마. 경고 신호와 정리법을 알려드려요.'
+tag: "악성코드"
+intro: "WhatsApp으로 '결혼식 청첩장', '파티 초대', 택배 조회 앱이라며 .apk 다운로드를 보내와요. 눈에 보이는 건 설치되지 않지만, 알림·SMS 접근을 조용히 요구하며 도착하는 OTP를 모두 읽어요. 피해자가 같은 휴대폰으로 지켜보는 사이 UPI로 잔액이 빠져나가요. 2024년 이후 인도에서 이런 안드로이드 트로이목마가 유행한다고 사이버 당국이 발표했어요."
 looksLike:
-- '“You are invited! 🎉 Open the card: bit.ly/wedding-card-v2 (downloads invite.apk)”'
-- “Your parcel can't be delivered — install our delivery partner app to reschedule.”
-- An install screen warning “this app wants to read SMS / display over other apps”.
-- 'After install: no icon, odd battery drain, or OTPs arriving that you didn''t trigger.'
+- '"초대합니다! 🎉 청첩장 열기: bit.ly/wedding-card-v2 (invite.apk 다운로드)"'
+- '"소포 배송 불가 — 재배송을 위해 택배 파트너 앱을 설치하세요."'
+- '"이 앱이 SMS 읽기·다른 앱 위에 표시를 원합니다"라는 설치 화면 경고.'
+- '설치 후: 아이콘 없음, 이상한 배터리 소모, 본인이 요청하지 않은 OTP 도착.'
 warningSigns:
-- Any .apk shared over chat, especially with emotional hooks (invitations) or delivery urgency.
-- Install prompts for accessibility services, notification access or SMS reading.
-- Bank alerts for UPI transactions you didn't make — often small amounts first.
-- Friends say they received the same file from you without your knowledge.
-whyItWorks: Social rituals feel safe — nobody suspects a wedding invite. Android blocks such installs by default, so the message coaches users past the warning (“allow installs from this source”). Once SMS/notification access is granted, the malware intercepts OTPs in real time, turning your own bank's security code into the scammer's final signature.
+- 채팅으로 공유된 모든 .apk, 특히 초대 같은 감성 자극이나 배송 긴급 문구.
+- 접근성 서비스, 알림 접근, SMS 읽기 권한을 요구하는 설치 안내.
+- 본인이 하지 않은 UPI 거래 알림 — 처음엔 소액인 경우가 많아요.
+- 본인도 모르게 같은 파일이 지인들에게 발송됐다는 연락.
+whyItWorks: "결혼식 같은 의식은 안전하게 느껴져서 아무도 청첩장을 의심하지 않아요. 안드로이드는 이런 설치를 기본 차단해서 '이 출처 설치 허용'까지 메시지로 안내해요. SMS·알림 접근을 허용하는 순간 악성코드가 OTP를 실시간으로 가로채서, 은행 보안번호가 사기범의 최종 서명이 돼요."
 whatToDo:
-- Do not open the file; delete the chat media and report the sender in-app.
-- 'If installed: disconnect from internet, uninstall, run Play Protect scan, change banking PINs from another device, and call your bank to block UPI mandates.'
-- Check for unknown devices/sessions linked to your accounts and revoke them.
-- File at cybercrime.gov.in if money is gone; call 1930 within the golden hour.
-verify: Genuine invitations come as PDFs/images or verified event links — never APKs. If unsure whether your phone is compromised, a factory reset after backing up data removes consumer-grade trojans; then restore apps only from the official store.
+- 파일을 열지 말고 채팅 미디어를 삭제한 뒤 앱 안에서 발신자를 신고하세요.
+- 설치했다면 인터넷을 끊고, 삭제 후 Play Protect 검사를 하고, 다른 기기에서 은행 PIN을 바꾼 뒤, 은행에 전화해 UPI 승인을 차단하세요.
+- 계정에 연결된 모르는 기기·세션을 확인하고 연결을 해제하세요.
+- 돈이 빠져나갔다면 cybercrime.gov.in에 신고하고 1시간 안에 1930에 전화하세요.
+verify: "진짜 초대는 APK가 아니라 PDF·이미지나 검증된 행사 링크로 와요. 감염이 의심되면 데이터 백업 후 공장 초기화로 일반 트로이목마는 제거돼요. 이후에는 공식 스토어에서만 앱을 다시 설치하세요."
 faqs:
-- q: Is a WhatsApp wedding invitation APK file safe to open?
-  a: No. Real invites are images or PDFs, not .apk files. An APK is an app installer that can steal SMS, OTPs and contacts once installed.
-- q: What happens if I installed the APK?
-  a: Turn off mobile data/Wi-Fi, uninstall the app, change passwords from another device, call your bank to block vulnerable cards, and run a malware scan. Report at 1930.
-- q: How can I verify a wedding invite is real?
-  a: Call the sender on their old number (not the new one that sent the file) and ask them to confirm. Don’t tap .apk links — ask for a photo preview instead.
+- q: "WhatsApp 결혼식 초대 APK 파일, 열어도 안전한가요?"
+  a: 아니요. 진짜 초대는 .apk가 아니라 이미지나 PDF예요. APK는 설치되면 SMS, OTP, 연락처를 훔칠 수 있는 앱 설치 파일이에요.
+- q: "APK를 설치했는데 어떻게 하죠?"
+  a: 모바일 데이터·Wi-Fi를 끄고 앱을 삭제한 뒤, 다른 기기에서 비밀번호를 바꾸고, 은행에 전화해 위험한 카드를 차단하고, 악성코드 검사를 하세요. 1930에 신고하세요.
+- q: "결혼식 초대가 진짜인지 어떻게 확인하나요?"
+  a: 파일을 보낸 새 번호가 아니라 예전 번호로 발신자에게 직접 전화해 확인하세요. .apk 링크는 누르지 말고 사진 미리보기를 달라고 하세요.
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/instant-loan-app

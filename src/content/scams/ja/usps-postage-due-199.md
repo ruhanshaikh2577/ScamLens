@@ -1,32 +1,32 @@
 ---
-title: USPS料金不足1.99ドル
-longTitle: '「USPS: 料金不足1.99ドル」は詐欺ですか？'
-description: USPS詐欺の解説。
-tag: Delivery
+title: "USPS料金不足詐欺（$1.99）"
+longTitle: "「USPS:料金不足$1.99」は詐欺SMSですか？USPSスミッシングの手口"
+description: "USPSの$1.99料金不足スミッシングの解説。偽の保留SMS、偽uspsドメイン、警告サイン、公式USPSサイトでの確認方法を紹介します。"
+tag: "配送"
 region: global
-intro: You get a text saying USPS could not deliver your package due to incomplete address or postage due of $1.99. A link asks you to confirm details and pay a tiny fee. Real USPS does not collect postage this way over text. The link opens a clone that steals card details and often installs a UPI/auto-debit style mandate on your card.
+intro: "住所不備や$1.99の料金不足でUSPSが配達できなかったというSMSが届きます。リンクで詳細確認と少額支払いを求められます。本物のUSPSがSMS経由でこの方法で料金を集めることはありません。リンク先はカード情報を盗む偽サイトであり、カードに自動引き落とし設定を仕掛ける場合もあります。"
 looksLike:
-- 'USPS: Your package is on hold due to incomplete address. Pay $1.99 to reschedule delivery: usps-postagehelp.com'
-- 'USPS Tracking #9205… Delivery exception — confirm address here: bit.ly/usps-fix'
-- Your item could not be delivered — update shipping info within 24 hours or it will be returned
+- 'USPS:住所不備のため荷物は保留中です。$1.99で再配達を予約してください:usps-postagehelp.com'
+- 'USPS追跡番号#9205… 配達例外 — こちらで住所を確認してください:bit.ly/usps-fix'
+- お届けできませんでした — 24時間以内に配送情報を更新しないと返送されます
 warningSigns:
-- Unsolicited text about a package you did not expect, with a shortener link.
-- Domain is not usps.com — look-alikes like usps-help, usps-delivery, postage-usps.
-- Tiny fee urgency ($1.99) to bypass scrutiny, plus request for full card details.
-- Page asks for card number, expiry, CVV and even SSN — USPS never asks for SSN.
-whyItWorks: Everyone shops online, so a delivery hiccup feels plausible. The amount is trivial, so victims pay without inspecting the domain. The smish blasts millions of numbers; even a 0.1% hit rate pays because card data is resold or used for larger fraud.
+- 身に覚えのない荷物について短縮リンク付きの突然のSMS。
+- ドメインがusps.comではありません。usps-help、usps-delivery、postage-uspsなどが使われます。
+- 吟味されない$1.99の少額緊急性と、カード全情報の要求。
+- カード番号、有効期限、CVV、さらにSSNまで求めるページ。USPSがSSNを求めることはありません。
+whyItWorks: "誰もが通販を使うため、配達トラブルがもっともらしく感じられます。金額がわずかでドメインを確認せず支払い、カード情報が転売や大型詐欺に使われます。何百万もの番号に一斉送信し、0.1%でも当たれば利益になります。"
 whatToDo:
-- Do not click. Track only on usps.com via the official tracking tool by typing the address yourself.
-- If you paid, call your card issuer to block the card and dispute the charge; monitor for larger follow-up charges.
-- Report the smish to reportfraud.ftc.gov and forward the text to 7726 (SPAM).
-verify: Go to usps.com → Tracking, enter your tracking number there. USPS lists any postage due inside your informed delivery account — never via a texted link.
+- クリックしないでください。アドレスを自分で入力したusps.comの公式追跡でのみ確認してください。
+- 支払った場合は、カード会社に連絡してカードを止めて異議を申し立て、続く高額請求に注意してください。
+- reportfraud.ftc.govに報告し、SMSは7726（SPAM）に転送してください。
+verify: "usps.comのTrackingに追跡番号を入力してください。料金不足は通知アカウント内に表示されます。SMSのリンク経由ではありません。"
 faqs:
-- q: Does USPS really text about $1.99 postage due?
-  a: No. USPS doesn’t text for postage due on a parcel you didn’t send. The link is a shortener hiding a fake domain not usps.com that asks for card details.
-- q: How can I verify a USPS delivery?
-  a: Track only with the tracking number on usps.com typed yourself, or call USPS via the number on usps.com — not the number in the text.
-- q: I entered my card — what now?
-  a: Call your bank to block the card, monitor for small test charges, and report at reportfraud.ftc.gov and your bank. Change passwords if you reused them.
+- q: "USPSは本当に$1.99の料金不足をSMSで通知しますか？"
+  a: いいえ。送っていない荷物の料金不足をUSPSがSMSで請求しません。そのリンクはusps.comではない偽ドメインを隠した短縮URLであり、カード情報を求めます。
+- q: "USPSの配達はどう確認しますか？"
+  a: 追跡番号を使って自分で入力したusps.comでのみ追跡するか、usps.com記載の番号に電話してください。SMS内の番号は使わないでください。
+- q: "カードを入力してしまいました。"
+  a: 銀行でカードを止め、少額の試し引き落としに注意し、reportfraud.ftc.govと銀行に報告してください。使い回したパスワードは変更してください。
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/royal-mail-redelivery-099

@@ -1,31 +1,31 @@
 ---
-title: Golpe do QR de reembolso UPI
-longTitle: Podem te dar golpe pedindo para escanear QR para reembolso?
-description: O golpe QR UPI explicado.
-tag: Payments
-intro: A “customer support” agent calls about a refund — an extra payment you received, a failed order, cashback pending. To “process” it they ask you to scan a QR code, approve a “collect request”, or enter your UPI PIN “to receive” money. The moment you authorise, money leaves your account. There is no mechanism in UPI to receive funds via PIN — PIN always means pay.
+title: "Golpe do reembolso UPI / QR para receber"
+longTitle: 'Podem te dar golpe pedindo para escanear QR para reembolso? Sim — veja como'
+description: 'O golpe do QR para receber e do falso reembolso UPI explicado: por que escanear QR nunca recebe dinheiro, os sinais de alerta e como verificar com segurança.'
+tag: "Pagamentos"
+intro: "Um “atendente” liga sobre um reembolso — um pagamento extra que você recebeu, um pedido que falhou, um cashback pendente. Para “processar”, pedem que você escaneie um QR, aprove uma “solicitação de cobrança” ou digite sua senha UPI “para receber” o dinheiro. No momento em que você autoriza, o dinheiro sai da sua conta. Não existe mecanismo no UPI para receber com senha — senha sempre significa pagar."
 looksLike:
-- “Sir, we accidentally credited Rs 5,000 to your account. Scan this QR to return it” (the credit is a screenshot or a reversible trick)
-- “To receive your refund of Rs 1,200, enter your UPI PIN when the request pops up”
-- A payment request appearing on your phone mid-call, framed as \u201Cjust accept to get your refund\u201D"
+- '“Senhor, creditamos Rs 5.000 por engano na sua conta. Escaneie este QR para devolver” (o crédito é print ou truque reversível)'
+- '“Para receber seu reembolso de Rs 1.200, digite sua senha UPI quando o pedido aparecer”'
+- Um pedido de pagamento surgindo no seu celular no meio da ligação, apresentado como “só aceitar para receber o reembolso”
 warningSigns:
-- Any mention of entering a UPI PIN to RECEIVE money — that's technically impossible.
-- Caller knows partial details (name, last order) to sound official but pressures you to stay on the line.
-- “Customer care” numbers found via Google search results or YouTube comments.
-- 'Urgency: refund expires today, account will be charged if you don''t act now.'
-whyItWorks: UPI's collect-request feature legitimately pops up on your screen, so the fraud hides inside a real interface. The caller keeps you busy and emotionally charged while the request sits there looking routine. Most victims have used UPI hundreds of times on autopilot — muscle memory does the rest.
+- Qualquer menção a digitar senha UPI para RECEBER dinheiro — isso é tecnicamente impossível.
+- O interlocutor sabe dados parciais (nome, último pedido) para parecer oficial, mas pressiona para você não desligar.
+- Números de “SAC” achados em resultados de Google ou comentários de YouTube.
+- "Urgência: o reembolso expira hoje, sua conta será debitada se não agir agora."
+whyItWorks: "A função de cobrança do UPI aparece legitimamente na sua tela, então a fraude se esconde numa interface real. O interlocutor mantém você ocupado e emocionalmente agitado enquanto o pedido fica ali parecendo rotina. A maioria das vítimas já usou UPI centenas de vezes no automático — a memória muscular faz o resto."
 whatToDo:
-- Hang up. Refunds are processed inside the merchant app automatically — no agent action needed.
-- Never share OTP/PIN with anyone claiming to be support; end the call and call back via the app's official help section.
-- If you authorised a payment, immediately report on 1930 and raise it in your UPI app's dispute flow.
-verify: Open the merchant app (Amazon, Flipkart, IRCTC etc.) and check Orders → Refunds. Genuine refunds appear there without any action from you. Bank credits can be checked directly in your bank statement.
+- Desligue. Reembolsos são processados automaticamente dentro do app do lojista — nenhum atendente precisa agir.
+- Nunca compartilhe OTP/senha com quem diz ser suporte; encerre a ligação e retorne pela ajuda oficial do app.
+- Se autorizou um pagamento, denuncie na hora no 1930 e abra disputa no fluxo do seu app UPI.
+verify: "Abra o app do lojista (Amazon, Flipkart, IRCTC etc.) e confira Pedidos → Reembolsos. Reembolsos verdadeiros aparecem lá sem nenhuma ação sua. Créditos bancários podem ser conferidos direto no extrato."
 faqs:
-- q: Can I receive money by scanning a QR code or entering my UPI PIN?
-  a: No. You never scan or enter your PIN to receive money — only to pay. Any QR or PIN request to ‘receive’ a refund is a payment trick.
-- q: What does the refund QR scam look like?
-  a: A buyer says ‘I’ll refund extra, scan this QR’ or sends a UPI collect request. The QR contains a pay-request for your account, not a receive. The UPI handle often looks like fastagpay@ybl or similar.
-- q: How should I handle a real refund?
-  a: Refunds go to your original payment method automatically. For marketplace sales, never accept QR-based refunds — ask for bank transfer or official app refund flow and verify in your bank app that money actually arrived.
+- q: "Dá para receber dinheiro escaneando QR ou digitando a senha UPI?"
+  a: Não. Você nunca escaneia nem digita senha para receber — só para pagar. Qualquer QR ou pedido de senha para ‘receber’ reembolso é truque de pagamento.
+- q: "Como é o golpe do QR de reembolso?"
+  a: Um comprador diz ‘vou devolver o extra, escaneie este QR’ ou envia uma cobrança UPI. O QR contém um pedido de pagamento da sua conta, não de recebimento. A chave UPI costuma parecer fastagpay@ybl ou similar.
+- q: "Como lidar com um reembolso real?"
+  a: Reembolsos voltam automaticamente para o meio de pagamento original. Em vendas em marketplaces, nunca aceite reembolso por QR — peça transferência bancária ou fluxo oficial do app e confira no app do banco se o dinheiro chegou mesmo.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

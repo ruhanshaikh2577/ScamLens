@@ -1,31 +1,31 @@
 ---
-title: Truffa KYC FASTag
-longTitle: Quel SMS di ricarica FASTag è una truffa?
-description: La truffa FASTag spiegata.
-tag: Vehicles
-intro: An SMS says your FASTag has insufficient balance, faces deactivation, or your vehicle has an unpaid traffic challan — with a link to recharge or pay now. The link opens a pixel-perfect clone of an official-looking portal. The card details you enter are stolen and used within minutes; OTP phishing follows if the first page asks for “verification.” Variants target PUC certificates and driving-licence renewal too.
+title: "Phishing FASTag / multe stradali"
+longTitle: 'Quell’SMS di ricarica FASTag o multa è una truffa? Come funziona il phishing e-challan'
+description: 'Truffe ricarica FASTag e falsi SMS di multe spiegati: siti cloni che rubano dati carta, messaggi tipici e canali ufficiali di verifica.'
+tag: "Veicoli"
+intro: "Un SMS dice che il tuo FASTag ha saldo insufficiente, sarà disattivato, o che hai una multa non pagata — con link per ricaricare o pagare subito. Il link apre un clone perfetto di un portale ufficiale. I dati carta inseriti vengono rubati e usati in minuti; segue phishing OTP se la pagina chiede “verifica”. Varianti puntano anche a certificati PUC e rinnovo patente."
 looksLike:
-- '“Your FASTag will expire tonight due to negative balance. Recharge instantly: fasttag-recharge.in”'
-- '“e-Challan: A traffic fine of Rs 500 is pending on vehicle MH12… Pay now to avoid escalation”'
-- “Your vehicle insurance expired, renew to avoid challan — link via bit.ly”
+- '“Il tuo FASTag scadrà stasera per saldo negativo. Ricarica subito: fasttag-recharge.in”'
+- '“E-Challan: multa da Rs 500 in sospeso sul veicolo MH12… Paga ora per evitare aggravi”'
+- '“Assicurazione veicolo scaduta, rinnova per evitare multe — link via bit.ly”'
 warningSigns:
-- 'Domain look-alikes: extra letters, hyphens or wrong TLD (.in/.xyz/.site) versus the official site.'
-- Challan messages from random 10-digit numbers instead of official sender IDs (like VM-CHALLA).
-- 'Pressure timing: “expires tonight”, “pay before midnight”.'
-- Page asking for UPI PIN, CVV or OTP just to “check pending challans”.
-whyItWorks: Vehicle owners genuinely fear fines and daily-commute disruption, so the request maps to a real recurring task. The clone sites are cheap to build and rank via SMS links directly, bypassing search. Because amounts are small (Rs 200–700), many victims pay without scrutinising the URL — handing over full card data for a fraction they'd have paid anyway.
+- "Domini simili: lettere in più, trattini o TLD sbagliato (.in/.xyz/.site) rispetto al sito ufficiale."
+- Multe da numeri casuali invece di ID mittente ufficiali (tipo VM-CHALLA).
+- "Pressione temporale: “scade stasera”, “paga entro mezzanotte”."
+- Pagina che chiede PIN UPI, CVV o OTP solo per “controllare le multe”.
+whyItWorks: "Gli automobilisti temono davvero multe e blocchi quotidiani, quindi la richiesta sembra un’attività normale. I cloni costano poco e arrivano via SMS diretto, saltando la ricerca. Con importi piccoli (Rs 200–700) molti pagano senza guardare l’URL — consegnando tutti i dati carta per pochi spicci."
 whatToDo:
-- Ignore the link. Recharge FASTag only via your bank app, NETC portal, or GPay/PhonePe official bill-pay.
-- Check challans only on parivahan.gov.in or your state transport official portal.
-- If you entered card details, block the card via your bank app immediately and call 1930.
-verify: 'Official channels only: NETC FASTag at netc.ac.in lists all member banks; e-challans live at parivahan.gov.in/ecr. Both show your actual status without any payment pressure.'
+- Ignora il link. Ricarica FASTag solo via app banca, portale NETC o pagamenti ufficiali GPay/PhonePe.
+- Controlla le multe solo su parivahan.gov.in o sul portale ufficiale dei trasporti.
+- Se hai inserito dati carta, blocca la carta dall’app banca subito e chiama il 1930.
+verify: 'Solo canali ufficiali: FASTag NETC su netc.ac.in con tutte le banche aderenti; le e-challan su parivahan.gov.in/ecr. Entrambi mostrano lo stato reale senza pressioni.'
 faqs:
-- q: Does FASTag really block for KYC via SMS link?
-  a: No. FASTag providers (Paytm, HDFC, ICICI) may notify, but they never block via an SMS link in 24 hours nor ask for card/OTP via a form. The link is a fake domain not the official bank.
-- q: How can I verify my FASTag status?
-  a: Open the provider’s official app (Paytm, HDFC Bank, ICICI) typed yourself and check FASTag section, or call the number on the FASTag sticker — not the SMS link.
-- q: What about traffic challan payment links?
-  a: Pay only at parivahan.gov.in or your state’s official challan portal typed yourself — not via SMS with a short link and UPI handle.
+- q: "FASTag blocca davvero via link SMS per KYC?"
+  a: No. I provider FASTag (Paytm, HDFC, ICICI) possono avvisare, ma non bloccano mai via link SMS in 24 ore né chiedono carta/OTP via modulo. Il link è un dominio falso, non la banca ufficiale.
+- q: "Come verifico lo stato FASTag?"
+  a: Apri da solo l’app ufficiale del provider (Paytm, HDFC Bank, ICICI) e controlla la sezione FASTag, o chiama il numero sull’adesivo FASTag — non il link SMS.
+- q: "E i link di pagamento multe?"
+  a: Paga solo su parivahan.gov.in o sul portale multe ufficiale digitato da te — non via SMS con link abbreviato e handle UPI.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/delivery-rs99-reschedule

@@ -1,35 +1,35 @@
 ---
-title: 왓츠앱 가족 긴급 사기
-longTitle: '"엄마, 휴대폰을 잃어버렸어" 메시지는 사기인가요?'
-description: 가족 긴급 사기 설명.
-tag: Impersonation
-intro: '“Hi Mum, my phone broke — this is my new number.” Hours later: “I''m stuck, can you pay for something urgent? I''ll explain later.” The message impersonates a child or relative from an unknown number, banking on love outpacing suspicion. Police forces worldwide report this pattern surging since 2023, with Indian families increasingly targeted as forwards travel between countries.'
+title: "'엄마 나야' WhatsApp 가족 긴급 사기"
+longTitle: '"엄마, 휴대폰 잃어버렸어" WhatsApp 메시지는 사기인가요? 가족 긴급 사칭 수법'
+description: "'엄마·아빠 나야' 가족 사칭 사기 설명: 새 번호, 고장 난 휴대폰, 긴급 송금 요구 — 한 질문으로 막는 확인 습관을 알려드려요."
+tag: "사칭"
+intro: '“엄마, 휴대폰 고장 났어 — 이게 새 번호야.” 몇 시간 뒤 “급한데 대신 결제해줄 수 있어? 나중에 설명할게.” 모르는 번호로 자녀·친척을 사칭하며 사랑이 의심을 앞지르길 노려요. 2023년 이후 전 세계 경찰이 이 패턴 급증을 보고했고, 해외 전달을 타고 인도 가족 피해도 늘고 있어요.'
 looksLike:
-- “Hi mum, my phone is damaged and this is my new number. Please save it.”
-- “I'm in trouble — I have to pay a deposit right now, I'll call you tonight, please don't tell Dad.”
-- “My UPI isn't working, can you send it to my friend's number instead?”
-- Poor punctuation, generic greetings and refusal to talk on a voice or video call.
+- '"엄마, 휴대폰이 고장 나서 이게 새 번호야. 저장해줘."'
+- '"곤란한 상황이야 — 지금 보증금을 내야 해, 오늘 밤 전화할게, 아빠한테는 말하지 마."'
+- '"내 UPI가 안 돼서 친구 번호로 대신 보내줄 수 있어?"'
+- 어색한 문장, 두루뭉술한 호칭, 음성·영상통화 거부.
 warningSigns:
-- A “new number” for someone whose real phone still rings when you dial the old one.
-- Urgency plus secrecy (“don't tell anyone yet”) — isolation is the scammer's tool.
-- Requests to pay a third party's UPI handle or account “because my wallet is blocked”.
-- Dodges every attempt at a live call, or claims the microphone/camera is “broken”.
-whyItWorks: 'It hijacks the strongest reflex there is — helping your child. The story explains every red flag in advance: no calls because the phone is broken, secrecy to avoid “worrying” others, third-party accounts because “my own apps don''t work”. Emotional pressure plus a small-seeming amount short-circuits verification exactly once, which is all they need.'
+- 예전 번호로 전화하면 여전히 울리는데 '새 번호'라고 해요.
+- 긴급함과 비밀 유지('아직 아무에게도 말하지 마') — 고립이 사기범의 도구예요.
+- "'내 지갑이 막혔다'며 제3자 UPI 핸들·계좌로 보내라고 해요."
+- 실시간 통화를 계속 피하거나 마이크·카메라가 '고장'이라고 해요.
+whyItWorks: "자녀를 돕고 싶은 가장 강한 반사신경을 노려요. 통화 불가(휴대폰 고장), 비밀 유지(걱정 끼치기 싫어서), 제3자 계좌(내 앱이 안 돼서)까지 모든 위험 신호를 이야기로 미리 설명해요. 감정 압박과 적어 보이는 금액이 확인 절차를 정확히 한 번 무너뜨리는데, 그 한 번이면 충분해요."
 whatToDo:
-- Call the person's old/known number before replying — even if you think you know the answer.
-- Ask a question only the real person knows (a shared memory, not their birthday).
-- Never pay before a live voice or video confirmation through known channels.
-- If money was sent, call 1930 immediately — golden-hour reporting can freeze the transfer.
-verify: Contact the relative directly on their existing number, or through another family member who can physically reach them. No genuine emergency survives a callback.
+- 답장 전에 상대의 예전·알던 번호로 먼저 전화하세요. 답을 아는 것 같아도 그래야 해요.
+- 진짜 본인만 아는 질문(생일이 아니라 공유된 추억)을 물어보세요.
+- 알던 경로로 실시간 음성·영상으로 확인하기 전에는 절대 보내지 마세요.
+- 돈을 보냈다면 즉시 1930에 전화하세요. 1시간 안 신고면 이체를 동결할 수 있어요.
+verify: "기존 번호로 가족에게 직접 연락하거나, 직접 만날 수 있는 다른 가족을 통해 확인하세요. 진짜 긴급 상황은 콜백으로 무너지지 않아요."
 faqs:
-- q: Is ‘Hi Mum, new number’ always a scam?
-  a: Not always, but the pattern ‘Hi Mum/Dad, I lost my phone, this is my new number, need money urgently’ from an unknown number is almost always the family emergency scam — verify before sending.
-- q: How does the Hi Mum scam work?
-  a: A new number claims to be your child, says phone is broken, builds rapport, then invents an emergency (hospital, rent, phone bill) and asks for an urgent transfer — often via UPI.
-- q: How should I verify?
-  a: Call your child on their old number or via a known family group before replying. A real emergency survives a callback to a known number.
-- q: What if they sent a voice note?
-  a: Voice can be cloned. Still call the old number. Ask a question only your child would know — scammers fail personal questions.
+- q: "'엄마, 새 번호야'는 항상 사기인가요?"
+  a: 항상은 아니지만, 모르는 번호로 '엄마·아빠, 휴대폰 잃어버렸어, 새 번호야, 급히 돈 필요해'라는 패턴은 거의 가족 긴급 사기예요. 보내기 전에 꼭 확인하세요.
+- q: "엄마 사칭 사기는 어떻게 진행되나요?"
+  a: 새 번호가 자녀라며 휴대폰 고장이라 하고 친해지다가 긴급 상황(병원, 월세, 휴대폰 요금)을 꾸며 긴급 송금을 요구해요. UPI인 경우가 많아요.
+- q: "어떻게 확인해야 하나요?"
+  a: 답장 전에 예전 번호나 알던 가족 단체 채팅으로 자녀에게 전화하세요. 진짜 긴급 상황은 알던 번호로의 콜백을 견뎌요.
+- q: "음성 메시지를 보냈는데요?"
+  a: 음성도 복제할 수 있어요. 그래도 예전 번호로 전화하세요. 자녀만 알 질문을 물어보세요. 사기범은 개인 질문에 답하지 못해요.
 similar:
 - /scams/digital-arrest-video-call
 - /scams/upi-refund-qr

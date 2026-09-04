@@ -1,35 +1,35 @@
 ---
-title: Arnaque tâches Telegram
-longTitle: Les tâches payées Telegram sont-elles une arnaque ?
-description: L'arnaque des tâches Telegram expliquée.
-tag: Jobs
-intro: 'You''re paid Rs 150–500 for liking videos or rating hotels — real money lands in your account, building trust. Then “premium merchant tasks” begin: pay Rs 2,000 to earn Rs 2,600, complete combined sets of three or four tasks to withdraw anything at all. The sets never close. This is the same engine behind fake job offers, refined into daily micro-payments.'
+title: "Arnaque aux tâches Telegram et likes-partages"
+longTitle: "Les tâches payées Telegram « like et abonnement » sont-elles une arnaque ? Comment fonctionne l'escalade de fraude aux tâches"
+description: "L'arnaque aux tâches Telegram/WhatsApp expliquée : petits paiements quotidiens pour likes et avis, puis « tâches marchandes » prépayées qui avalent les dépôts. Signaux d'alerte et prochaines étapes sûres."
+tag: "Emploi"
+intro: "On vous paie Rs 150–500 pour liker des vidéos ou noter des hôtels — de l'argent réel arrive sur votre compte, instaurant la confiance. Puis commencent les « tâches marchandes premium » : payez Rs 2 000 pour gagner Rs 2 600, terminez des séries combinées de trois ou quatre tâches pour retirer quoi que ce soit. Les séries ne se terminent jamais. C'est le même moteur que les fausses offres d'emploi, raffiné en micro-paiements quotidiens."
 looksLike:
-- '“Earn Rs 300/day working 30 minutes! Like YouTube videos, get instant payout. Join: t.me/…”'
-- A mentor figure assigning numbered tasks with screenshots of members' earnings.
-- '“Task 7: Pay Rs 5,000 to the merchant UPI below; you''ll receive Rs 6,500 in 10 minutes.”'
-- “Tasks are bundled today — finish all three to unlock withdrawal of your earlier balance.”
+  - "« Gagnez Rs 300/jour en travaillant 30 minutes ! Likez des vidéos YouTube, paiement instantané. Rejoignez : t.me/… »"
+  - "Une figure de mentor assignant des tâches numérotées avec captures des gains des membres."
+  - "« Tâche 7 : Payez Rs 5 000 au marchand UPI ci-dessous ; vous recevrez Rs 6 500 en 10 minutes. »"
+  - "« Tâches groupées aujourd'hui — terminez les trois pour débloquer le retrait de votre solde précédent. »"
 warningSigns:
-- Payment arrives first (small), then ever-larger deposits are required to continue.
-- “Bundled” or “sequential” tasks designed so you can never complete the set.
-- Withdrawals blocked pending more deposits, “taxes”, or “account upgrade” fees.
-- Recruiters move you from public groups to private chats with new handles each week.
-whyItWorks: 'The early payouts are real — funded by later victims — so your brain files it under legitimate work. Losses follow a predictable curve: trust built at Rs 200 gets harvested at Rs 20,000. Task-fraud losses in India grew sharply through 2024, often merging with investment-app fraud once victims are warmed up.'
+  - "Le paiement arrive d'abord (petit), puis des dépôts toujours plus gros sont exigés pour continuer."
+  - "Tâches « groupées » ou « séquentielles » conçues pour que vous ne puissiez jamais finir la série."
+  - "Retraits bloqués en attente de plus de dépôts, « taxes », ou frais de « mise à niveau de compte »."
+  - "Recruteurs qui vous déplacent de groupes publics vers des chats privés avec de nouveaux pseudos chaque semaine."
+whyItWorks: "Les premiers paiements sont réels — financés par les victimes suivantes — donc votre cerveau les classe comme travail légitime. Les pertes suivent une courbe prévisible : confiance bâtie à Rs 200 récoltée à Rs 20 000. Les pertes de fraude aux tâches en Inde ont fortement augmenté en 2024, fusionnant souvent avec la fraude aux applis d'investissement une fois les victimes amadouées."
 whatToDo:
-- Stop mid-task if asked to pay to withdraw — that's the pivot point where recovery gets hard.
-- Save task lists, UPI handles and chat exports as evidence before leaving the group.
-- Report to 1930 and cybercrime.gov.in; report the Telegram/WhatsApp account in-app too.
-- Treat any similar offer that follows as the same operation re-contacting warm targets.
-verify: No employer pays via random personal UPI handles, and no platform pays users to boost its own metrics. If payouts depend on deposits, it is fraud by definition — check the pattern against our job-offer fee breakdown.
+  - "Arrêtez en pleine tâche si on vous demande de payer pour retirer — c'est le point de bascule où la récupération devient dure."
+  - "Sauvegardez listes de tâches, handles UPI et exports de chats comme preuves avant de quitter le groupe."
+  - "Signalez au 1930 et sur cybercrime.gov.in ; signalez aussi le compte Telegram/WhatsApp dans l'appli."
+  - "Traitez toute offre similaire suivante comme la même opération qui recontacte des cibles tièdes."
+verify: "Aucun employeur ne paie via des handles UPI personnels aléatoires, et aucune plateforme ne paie les utilisateurs pour gonfler ses propres métriques. Si les paiements dépendent de dépôts, c'est par définition une fraude — comparez le schéma à notre analyse des frais d'offre d'emploi."
 faqs:
-- q: Are paid Telegram ‘like and subscribe’ tasks real?
-  a: No. They start with tiny payouts to build trust, then ask for larger deposits to unlock tasks. The dashboard profits are fake and withdrawals are blocked.
-- q: Why did I get paid for the first two tasks?
-  a: That’s the bait. Small UPI credits make you believe the system works, so you deposit more for ‘VIP’ tasks that steal the larger amount.
-- q: Is there any legitimate job that pays for liking videos?
-  a: No real employer pays for liking videos or follows, and no real employer charges a registration fee. If a fee is required to start, it’s a scam.
+  - q: "Les tâches payées Telegram « like et abonnement » sont-elles réelles ?"
+    a: "Non. Elles commencent par de minuscules paiements pour instaurer la confiance, puis demandent des dépôts plus gros pour débloquer des tâches. Les profits du tableau de bord sont faux et les retraits sont bloqués."
+  - q: "Pourquoi ai-je été payé pour les deux premières tâches ?"
+    a: "C'est l'appât. De petits crédits UPI vous font croire que le système marche, donc vous déposez plus pour des tâches « VIP » qui volent le montant supérieur."
+  - q: "Existe-t-il un vrai emploi qui paie pour liker des vidéos ?"
+    a: "Aucun vrai employeur ne paie pour liker des vidéos ou des abonnements, et aucun vrai employeur ne facture de frais d'inscription. Si des frais sont exigés pour commencer, c'est une arnaque."
 similar:
-- /scams/job-offer-fee-499
-- /scams/trading-app-guaranteed-returns
+  - /scams/job-offer-fee-499
+  - /scams/trading-app-guaranteed-returns
 updated: 2026-08-26
 ---

@@ -1,33 +1,33 @@
 ---
-title: Telegramタスク詐欺
-longTitle: Telegramの有料タスクは詐欺ですか？
-description: Telegramタスク詐欺の解説。
-tag: Jobs
-intro: 'You''re paid Rs 150–500 for liking videos or rating hotels — real money lands in your account, building trust. Then “premium merchant tasks” begin: pay Rs 2,000 to earn Rs 2,600, complete combined sets of three or four tasks to withdraw anything at all. The sets never close. This is the same engine behind fake job offers, refined into daily micro-payments.'
+title: "Telegramタスク・いいね詐欺"
+longTitle: "Telegramの有料「いいね・登録」タスクは詐欺ですか？"
+description: "Telegramタスク詐欺の解説。少額報酬を餌にし、偽ダッシュボードと出金停止で追い込む手口を紹介します。"
+tag: "求人"
+intro: "動画へのいいねやホテルの評価でRs 150〜500が支払われ、本当に入金されて信用させます。次に「プレミアム加盟店タスク」が始まります。Rs 2,000払えばRs 2,600稼げる、3〜4件まとめて完了しないと出金できない、といった条件です。そのセットは永遠に終わりません。偽求人と同じ仕組みを日々の少額支払いで洗練させたものです。"
 looksLike:
-- '“Earn Rs 300/day working 30 minutes! Like YouTube videos, get instant payout. Join: t.me/…”'
-- A mentor figure assigning numbered tasks with screenshots of members' earnings.
-- '“Task 7: Pay Rs 5,000 to the merchant UPI below; you''ll receive Rs 6,500 in 10 minutes.”'
-- “Tasks are bundled today — finish all three to unlock withdrawal of your earlier balance.”
+- '「1日30分でRs 300稼げます!YouTube動画にいいねで即時支払い。参加:t.me/…」'
+- 番号付きタスクを割り振り、会員の収益画像を見せる指導者役。
+- '「タスク7:下の加盟店UPIにRs 5,000を支払ってください。10分でRs 6,500が戻ります」'
+- '「本日のタスクはセットです — 3件すべて完了で以前の残高を出金できます」'
 warningSigns:
-- Payment arrives first (small), then ever-larger deposits are required to continue.
-- “Bundled” or “sequential” tasks designed so you can never complete the set.
-- Withdrawals blocked pending more deposits, “taxes”, or “account upgrade” fees.
-- Recruiters move you from public groups to private chats with new handles each week.
-whyItWorks: 'The early payouts are real — funded by later victims — so your brain files it under legitimate work. Losses follow a predictable curve: trust built at Rs 200 gets harvested at Rs 20,000. Task-fraud losses in India grew sharply through 2024, often merging with investment-app fraud once victims are warmed up.'
+- 最初に少額が支払われ、その後継続のためにより大きな入金を求められます。
+- セットが終わらないよう設計された「まとめ」や「連続」タスク。
+- 出金に追加入金、「税金」、「アカウント更新」料を要求されます。
+- 公開グループから毎週変わるハンドルの個別チャットに移動させられます。
+whyItWorks: "最初の支払いは本物であり、後の被害者のお金で賄われるため、脳は正当な仕事と認識します。Rs 200で築いた信頼をRs 20,000で回収するのが定番です。インドのタスク詐欺被害は2024年に急増し、被害者が慣れた頃に投資アプリ詐欺へ合流することも多いです。"
 whatToDo:
-- Stop mid-task if asked to pay to withdraw — that's the pivot point where recovery gets hard.
-- Save task lists, UPI handles and chat exports as evidence before leaving the group.
-- Report to 1930 and cybercrime.gov.in; report the Telegram/WhatsApp account in-app too.
-- Treat any similar offer that follows as the same operation re-contacting warm targets.
-verify: No employer pays via random personal UPI handles, and no platform pays users to boost its own metrics. If payouts depend on deposits, it is fraud by definition — check the pattern against our job-offer fee breakdown.
+- 出金のために支払いを求められたら、その場で止めてください。そこが取り返しが難しくなる分岐点です。
+- グループを抜ける前にタスク一覧、UPIハンドル、チャット記録を証拠として保存してください。
+- 1930番とcybercrime.gov.inに通報し、TelegramやWhatsAppのアプリ内でも報告してください。
+- その後に来る似た誘いは、温まった標的への再接触と考えてください。
+verify: "個人名義のランダムなUPIで給料を払う雇用主はおらず、自社の指標上げにお金を払う仕組みもありません。出金に入金が必要なら定義上詐欺です。求人手数料詐欺の解説と照らしてください。"
 faqs:
-- q: Are paid Telegram ‘like and subscribe’ tasks real?
-  a: No. They start with tiny payouts to build trust, then ask for larger deposits to unlock tasks. The dashboard profits are fake and withdrawals are blocked.
-- q: Why did I get paid for the first two tasks?
-  a: That’s the bait. Small UPI credits make you believe the system works, so you deposit more for ‘VIP’ tasks that steal the larger amount.
-- q: Is there any legitimate job that pays for liking videos?
-  a: No real employer pays for liking videos or follows, and no real employer charges a registration fee. If a fee is required to start, it’s a scam.
+- q: "Telegramの有料「いいね」タスクは本物ですか？"
+  a: いいえ。少額支払いで信用させ、高額タスク解除のためにより大きな入金を求めます。ダッシュボードの利益は偽物で出金は停止されます。
+- q: "なぜ最初の2件は支払われたのですか？"
+  a: それが餌です。少額のUPI入金で仕組みを信じさせ、より大きな金額を奪う「VIP」タスクに入金させます。
+- q: "動画へのいいねで稼げる正当な仕事はありますか？"
+  a: ありません。本物の雇用主は動画へのいいねやフォローにお金を払わず、登録料も取りません。開始に費用が必要なら詐欺です。
 similar:
 - /scams/job-offer-fee-499
 - /scams/trading-app-guaranteed-returns

@@ -1,35 +1,35 @@
 ---
-title: 전기 요금 차단 위협
-longTitle: '"오늘 밤 전기가 차단됩니다"는 사기인가요?'
-description: 전기 차단 위협 설명.
-tag: Utilities
-intro: An SMS or robocall claims your electricity will be disconnected within hours for an unpaid bill. You're asked to pay immediately to a UPI handle — often a personal name like “Ravi Kumar @ybl” — or download an app to “restore connection”. Real disconnections follow multiple written cycles, never a same-evening deadline with a personal payment handle.
+title: "전기요금 단전 협박 사기"
+longTitle: '"오늘 밤 전기를 끊겠습니다"는 사기인가요? 전력공사 사칭 수법'
+description: '가짜 전력공사 단전 통지(BSES, Adani, MSEB, TNEB 등) 설명: 당일 저녁 협박, 개인 명의 UPI, 실제 요금을 안전하게 확인하는 법을 알려드려요.'
+tag: "공과금"
+intro: "미납 요금 때문에 몇 시간 안에 전기를 끊겠다는 SMS나 자동 음성전화가 와요. 개인 명의 UPI 핸들 — 흔히 'Ravi Kumar @ybl' 같은 — 로 즉시 내라거나, '연결 복구'용 앱을 설치하라고 해요. 진짜 단전은 여러 차례 서면 절차를 거쳐 진행되지, 당일 저녁 마감에 개인 계좌로 받는 일은 없어요."
 looksLike:
-- '“Your electricity will be disconnected today at 8:00 PM due to non-payment. Kindly pay immediately: [bit.ly link] — BSES Delhi”'
-- A robocall in Hindi claiming to be from the electricity board's “bill department”.
-- Payment requested to a personal-name UPI ID (@ybl, @paytm) rather than the board's biller name.
-- Instructions to install a screen-sharing or “bill support” APK to “process the reversal”.
+- '"미납으로 오늘 저녁 8시에 단전됩니다. 즉시 납부하세요: [bit.ly 링크] — BSES Delhi"'
+- 전력공사 '요금 부서'를 사칭하는 힌디어 자동 음성전화.
+- 공사 명의가 아니라 @ybl, @paytm 같은 개인 명의 UPI ID로 납부를 요구.
+- "'환불 처리'를 위해 화면 공유나 '요금 지원' APK 설치를 지시."
 warningSigns:
-- Same-day disconnection deadline with evening timing chosen to panic you.
-- Personal UPI handles or bank accounts instead of the official biller on your UPI app.
-- Message arrives outside your actual billing cycle or for a property you don't own.
-- Any request to install an app or share screen during the “payment”.
-whyItWorks: Electricity is non-negotiable daily life, so the threat targets routine, not greed. The amounts are plausible (a real bill-sized figure), and most people have never seen what an official notice actually looks like. Boards have repeatedly warned that they never demand instant UPI payments over calls or texts.
+- 당일 저녁 단전 마감으로 공포를 조성해요.
+- UPI 앱 속 공식 납부처가 아니라 개인 UPI 핸들이나 계좌로 받으려 해요.
+- 실제 청구 주기와 무관하거나 본인 소유가 아닌 주소로 와요.
+- "'결제' 중에 앱 설치나 화면 공유를 요구해요."
+whyItWorks: "전기는 매일 필요한 생활 필수라 욕심이 아니라 일상을 겨냥해요. 금액도 실제 요금처럼 그럴듯하고, 공식 통지가 어떻게 생겼는지 아는 사람이 거의 없어요. 각 전력공사는 전화·문자로 즉시 UPI 납부를 요구하지 않는다고 반복 공지했어요."
 whatToDo:
-- Open your state board's official app or website yourself and check the bill status — ignore the message entirely.
-- Pay only inside official channels where the payee shows as the registered board name.
-- If you paid a fake handle, call 1930 immediately and report to cybercrime.gov.in with the UPI transaction ID.
-- Report the sender in WhatsApp/SMS and block the number.
-verify: Every state board (BSES, Adani Electricity, MSEB, TNEB, PSPCL and others) has an official app or portal showing live dues. Disconnection follows printed notices across billing cycles — never a single evening SMS.
+- 메시지는 무시하고 주 전력공사 공식 앱이나 사이트에 직접 들어가서 요금 상태를 확인하세요.
+- 수취인이 등록된 공사명으로 뜨는 공식 채널에서만 내세요.
+- 가짜 핸들에 냈다면 즉시 1930에 전화하고 UPI 거래 ID와 함께 cybercrime.gov.in에 신고하세요.
+- WhatsApp·SMS에서 발신자를 신고하고 번호를 차단하세요.
+verify: "BSES, Adani Electricity, MSEB, TNEB, PSPCL 등 모든 주 전력공사는 실시간 미납액을 보여주는 공식 앱·포털이 있어요. 단전은 청구 주기에 걸친 인쇄 통지 뒤에 진행되지, 저녁 SMS 한 통으로 이뤄지지 않아요."
 faqs:
-- q: Will my power really be cut tonight if I don’t pay via link?
-  a: No. Electricity boards (BSES, MSEDCL, TNEB etc.) never cut power based on a single SMS with a UPI link. They send written notices and allow payment only via official portals/apps.
-- q: Why does the message feel urgent?
-  a: It uses ‘tonight 9:30 PM’ and a fake officer number to stop you from checking. Real disconnection notices give days and reference your consumer number verifiable in the official app.
-- q: How should I pay a real electricity bill?
-  a: Open your state board’s official app or website typed yourself (e.g. bsesdelhi, msedcl), enter your consumer number, and pay there — never via a link with a personal UPI handle.
-- q: What if they threatened from an electricity call centre number?
-  a: Hang up and call the number on your last bill or the board’s official website — not the number in the SMS.
+- q: "링크로 안 내면 오늘 밤 정말 단전되나요?"
+  a: 아니요. 전력공사(BSES, MSEDCL, TNEB 등)는 UPI 링크가 담긴 SMS 한 통으로 단전하지 않아요. 서면 통지를 보내고 공식 포털·앱으로만 납부를 받아요.
+- q: "왜 문자가 그렇게 급박하게 느껴지나요?"
+  a: "'오늘 밤 9시 30분'과 가짜 담당자 번호로 확인할 틈을 주지 않으려는 거예요. 진짜 단전 통지는 며칠 여유를 주고 공식 앱에서 확인할 수 있는 소비자 번호를 적어요."
+- q: "진짜 전기요금은 어떻게 내야 하나요?"
+  a: 주 전력공사 공식 앱이나 직접 입력한 사이트(bsesdelhi, msedcl 등)에 들어가 소비자 번호를 입력하고 내세요. 개인 UPI 핸들이 적힌 링크로는 절대 내지 마세요.
+- q: "전력 콜센터 번호로 협박하면 어떻게 하죠?"
+  a: 끊고 이전 고지서나 공사 공식 사이트에 적힌 번호로 전화하세요. SMS 속 번호는 쓰지 마세요.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/fake-kyc-suspended

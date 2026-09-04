@@ -1,35 +1,35 @@
 ---
-title: Ameaça de corte de luz
-longTitle: É golpe "sua luz será cortada esta noite"?
-description: A ameaça de corte explicada.
-tag: Utilities
-intro: An SMS or robocall claims your electricity will be disconnected within hours for an unpaid bill. You're asked to pay immediately to a UPI handle — often a personal name like “Ravi Kumar @ybl” — or download an app to “restore connection”. Real disconnections follow multiple written cycles, never a same-evening deadline with a personal payment handle.
+title: "Ameaça de corte de energia"
+longTitle: 'É golpe o "sua luz será cortada hoje à noite"? Como funciona o golpe da conta de luz'
+description: 'Falsos avisos de corte de energia (BSES, Adani, MSEB, TNEB e outros) explicados: a ameaça "hoje às 20h", chaves UPI pessoais e como conferir sua conta real com segurança.'
+tag: "Serviços"
+intro: "Um SMS ou ligação automática diz que sua energia será cortada em poucas horas por conta em atraso. Pedem pagamento imediato para uma chave UPI — muitas vezes em nome de pessoa física como “Ravi Kumar @ybl” — ou mandam baixar um app para “restabelecer a ligação”. Cortes reais seguem vários ciclos de aviso escrito, nunca um prazo para a mesma noite com chave de pessoa física."
 looksLike:
-- '“Your electricity will be disconnected today at 8:00 PM due to non-payment. Kindly pay immediately: [bit.ly link] — BSES Delhi”'
-- A robocall in Hindi claiming to be from the electricity board's “bill department”.
-- Payment requested to a personal-name UPI ID (@ybl, @paytm) rather than the board's biller name.
-- Instructions to install a screen-sharing or “bill support” APK to “process the reversal”.
+- '“Sua energia será cortada hoje às 20:00 por falta de pagamento. Pague já: [link bit.ly] — BSES Delhi”'
+- Ligação automática em hindi dizendo ser do “departamento de contas” da companhia elétrica.
+- Pagamento pedido para UPI em nome pessoal (@ybl, @paytm) em vez do nome oficial da companhia.
+- Instrução para instalar APK de compartilhamento de tela ou “suporte de contas” para “processar o estorno”.
 warningSigns:
-- Same-day disconnection deadline with evening timing chosen to panic you.
-- Personal UPI handles or bank accounts instead of the official biller on your UPI app.
-- Message arrives outside your actual billing cycle or for a property you don't own.
-- Any request to install an app or share screen during the “payment”.
-whyItWorks: Electricity is non-negotiable daily life, so the threat targets routine, not greed. The amounts are plausible (a real bill-sized figure), and most people have never seen what an official notice actually looks like. Boards have repeatedly warned that they never demand instant UPI payments over calls or texts.
+- Prazo de corte para o mesmo dia, à noite, escolhido para causar pânico.
+- Chaves UPI ou contas bancárias pessoais em vez do recebedor oficial no seu app UPI.
+- Mensagem fora do seu ciclo real de fatura ou sobre imóvel que você não tem.
+- Qualquer pedido para instalar app ou compartilhar a tela durante o “pagamento”.
+whyItWorks: "Energia elétrica é item inegociável do dia a dia, então a ameaça mira a rotina, não a ganância. Os valores são plausíveis (parecem conta de verdade), e a maioria nunca viu um aviso oficial de verdade. As companhias já avisaram várias vezes que nunca exigem pagamentos UPI instantâneos por ligação ou SMS."
 whatToDo:
-- Open your state board's official app or website yourself and check the bill status — ignore the message entirely.
-- Pay only inside official channels where the payee shows as the registered board name.
-- If you paid a fake handle, call 1930 immediately and report to cybercrime.gov.in with the UPI transaction ID.
-- Report the sender in WhatsApp/SMS and block the number.
-verify: Every state board (BSES, Adani Electricity, MSEB, TNEB, PSPCL and others) has an official app or portal showing live dues. Disconnection follows printed notices across billing cycles — never a single evening SMS.
+- Abra você mesmo o app ou site oficial da companhia do seu estado e confira a fatura — ignore a mensagem.
+- Pague só nos canais oficiais, onde o recebedor aparece com o nome registrado da companhia.
+- Se pagou para chave falsa, ligue para 1930 na hora e denuncie em cybercrime.gov.in com o ID da transação UPI.
+- Denuncie o remetente no WhatsApp/SMS e bloqueie o número.
+verify: "Toda companhia estadual (BSES, Adani Electricity, MSEB, TNEB, PSPCL e outras) tem app ou portal oficial com os débitos atualizados. O corte segue avisos impressos ao longo de vários ciclos — nunca um único SMS numa noite."
 faqs:
-- q: Will my power really be cut tonight if I don’t pay via link?
-  a: No. Electricity boards (BSES, MSEDCL, TNEB etc.) never cut power based on a single SMS with a UPI link. They send written notices and allow payment only via official portals/apps.
-- q: Why does the message feel urgent?
-  a: It uses ‘tonight 9:30 PM’ and a fake officer number to stop you from checking. Real disconnection notices give days and reference your consumer number verifiable in the official app.
-- q: How should I pay a real electricity bill?
-  a: Open your state board’s official app or website typed yourself (e.g. bsesdelhi, msedcl), enter your consumer number, and pay there — never via a link with a personal UPI handle.
-- q: What if they threatened from an electricity call centre number?
-  a: Hang up and call the number on your last bill or the board’s official website — not the number in the SMS.
+- q: "Minha luz vai mesmo ser cortada hoje à noite se eu não pagar pelo link?"
+  a: Não. Companhias como BSES, MSEDCL e TNEB nunca cortam energia com base num único SMS com link UPI. Elas enviam avisos escritos e só aceitam pagamento em portais/apps oficiais.
+- q: "Por que a mensagem parece tão urgente?"
+  a: Ela usa “hoje às 21:30” e um número falso de atendente para impedir que você confira. Avisos reais dão dias de prazo e citam seu número de cliente, verificável no app oficial.
+- q: "Como pago uma conta de luz de verdade?"
+  a: Abra o app ou site oficial da companhia do seu estado, digitado por você (ex. bsesdelhi, msedcl), informe seu número de cliente e pague lá — nunca por link com chave UPI pessoal.
+- q: "E se ameaçaram de um número parecido com o call center da companhia?"
+  a: Desligue e ligue para o número da sua última conta ou do site oficial da companhia — não o do SMS.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/fake-kyc-suspended

@@ -1,31 +1,31 @@
 ---
-title: Oferta de emprego com taxa
-longTitle: Essa oferta "trabalho em casa, pague 499 Rs" é golpe?
-description: O golpe de oferta de emprego explicado.
-tag: Jobs
-intro: An HR person messages you about easy work-from-home earnings — rating hotels, liking videos, data entry at Rs 3,000–15,000/day. You're selected instantly (no interview), then asked for a small registration or “task wallet” fee, typically Rs 499 to Rs 2,999. The first tiny payout arrives to build trust; then fees escalate until you stop paying. No real salary ever comes.
+title: "Oferta de emprego com taxa de cadastro"
+longTitle: 'A oferta "trabalho em casa, pague Rs 499 de cadastro" é golpe? Como funciona a fraude de taxa por tarefa'
+description: 'Falsas ofertas de emprego que cobram taxa de cadastro/treinamento (Rs 499–2.999) explicadas: tarefas no Telegram, truques de carta-proposta, sinais de alerta e como verificar um empregador real.'
+tag: "Emprego"
+intro: "Uma pessoa do “RH” chama você com ganhos fáceis em casa — avaliar hotéis, curtir vídeos, digitação por Rs 3.000–15.000/dia. Você é “selecionado” na hora (sem entrevista) e então pedem uma pequena taxa de cadastro ou de “carteira de tarefas”, em geral Rs 499 a Rs 2.999. O primeiro pagamentinho chega para gerar confiança; depois as taxas sobem até você parar de pagar. Nenhum salário real jamais vem."
 looksLike:
-- “Congratulations! You're shortlisted for part-time work from Home. Daily payout Rs 3000+. Registration fee Rs 499 only.”
-- A polished PDF offer letter from \u201CHR Department\u201D of a real-sounding company, sent before any interview"
-- Telegram groups where \u201Ccompleted tasks\u201D screenshots flood the chat as social proof"
+- '“Parabéns! Você foi pré-selecionado para meio período em casa. Ganho diário Rs 3.000+. Taxa de cadastro só Rs 499.”'
+- Carta-proposta em PDF caprichada do “departamento de RH” de empresa com nome convincente, enviada antes de qualquer entrevista
+- Grupos de Telegram onde prints de “tarefas concluídas” inundam o chat como prova social
 warningSigns:
-- Selection without an interview, especially over WhatsApp/Telegram.
-- Any upfront fee — registration, training kit, document verification, GST release.
-- Personal UPI handles (@paytm, @ybl) for fee payment instead of company accounts.
-- Earnings wildly out of proportion to skill (“Rs 5,000/day for liking videos”).
-whyItWorks: Job scarcity plus flexible-work demand makes the pitch irresistible, and the small first fee feels like normal paperwork (we're used to paying for courses and certifications). The early micro-payouts are funded by later victims' fees — a Ponzi-shaped hook that turns skeptics into evangelists who recruit friends.
+- Seleção sem entrevista, principalmente por WhatsApp/Telegram.
+- Qualquer taxa antecipada — cadastro, kit de treinamento, verificação de documentos, liberação de GST.
+- Chaves UPI pessoais (@paytm, @ybl) para pagar a taxa em vez de contas da empresa.
+- Ganhos totalmente desproporcionais à habilidade (“Rs 5.000/dia curtindo vídeos”).
+whyItWorks: "Escassez de vagas mais demanda por trabalho flexível tornam a proposta irresistível, e a primeira taxinha parece burocracia normal (estamos acostumados a pagar por cursos e certificados). Os micropagamentos iniciais são bancados com as taxas de vítimas posteriores — um gancho em forma de pirâmide que transforma céticos em divulgadores que recrutam amigos."
 whatToDo:
-- Never pay any fee to apply, start, or “release” earnings. Real employers deduct nothing in advance.
-- If already paid, stop all further payments — escalation fees are how losses become lakhs.
-- Report the number/UPI handle on 1930 and cybercrime.gov.in with transaction proof.
-verify: Search the company on LinkedIn and its official careers page — genuine openings exist there without fees. Check the recruiter's email domain matches the company. MCA's website lets you verify company registration numbers.
+- Nunca pague taxa para se candidatar, começar ou “liberar” ganhos. Empregadores reais não descontam nada antecipado.
+- Se já pagou, pare todos os pagamentos — as taxas escalonadas são o caminho para prejuízos de lakhs.
+- Denuncie o número/chave UPI no 1930 e em cybercrime.gov.in com comprovantes.
+verify: "Pesquise a empresa no LinkedIn e na página oficial de carreiras — vagas verdadeiras estão lá, sem taxas. Confira se o e-mail do recrutador é do domínio da empresa. O site do MCA permite verificar números de registro de empresas."
 faqs:
-- q: Is a work-from-home job with Rs 499 registration fee legitimate?
-  a: No. Real employers never charge to apply, train or verify documents. Any fee to start is the scam itself — the job doesn’t exist.
-- q: What does the offer letter look like?
-  a: A PDF with logos and a signature, asking for Rs 499-2000 via UPI before onboarding. Real offers don’t ask for payment and are verifiable via the company’s official careers page or HR phone.
-- q: How can I verify the company?
-  a: Search the company name on its official website’s careers section and call HR via the number on the website, not the one in the message. Check MCA or LinkedIn for the company’s real presence.
+- q: "Vaga home office com taxa de Rs 499 é legítima?"
+  a: Não. Empregadores reais nunca cobram para candidatar, treinar ou verificar documentos. Qualquer taxa para começar é o próprio golpe — a vaga não existe.
+- q: "Como é a carta-proposta?"
+  a: Um PDF com logos e assinatura, pedindo Rs 499–2.000 via UPI antes da integração. Propostas reais não pedem pagamento e são verificáveis na página oficial de carreiras ou no telefone do RH.
+- q: "Como verifico a empresa?"
+  a: Pesquise o nome da empresa na seção de carreiras do site oficial e ligue para o RH pelo número do site, não o da mensagem. Confira a presença real da empresa no MCA ou LinkedIn.
 similar:
 - /scams/digital-arrest-video-call
 - /scams/upi-refund-qr

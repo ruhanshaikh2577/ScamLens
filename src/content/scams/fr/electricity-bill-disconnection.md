@@ -1,37 +1,37 @@
 ---
-title: Menace de coupure d'électricité
-longTitle: Est-ce que "votre électricité sera coupée ce soir" est une arnaque ?
-description: La menace de coupure expliquée.
-tag: Utilities
-intro: An SMS or robocall claims your electricity will be disconnected within hours for an unpaid bill. You're asked to pay immediately to a UPI handle — often a personal name like “Ravi Kumar @ybl” — or download an app to “restore connection”. Real disconnections follow multiple written cycles, never a same-evening deadline with a personal payment handle.
+title: "Menace de coupure de facture d'électricité"
+longTitle: "« Votre électricité sera coupée ce soir » est-ce une arnaque ? Comment fonctionne l'astuce du fournisseur d'électricité"
+description: "Les faux avis de coupure d'électricité (BSES, Adani, MSEB, TNEB et autres) expliqués : la menace de ce soir à 20h, les handles UPI personnels, et comment vérifier votre vraie facture en sécurité."
+tag: "Services publics"
+intro: "Un SMS ou un appel automatisé affirme que votre électricité sera coupée dans quelques heures pour facture impayée. On vous demande de payer immédiatement vers un handle UPI — souvent un nom personnel comme « Ravi Kumar @ybl » — ou de télécharger une appli pour « rétablir la connexion ». Les vraies coupures suivent plusieurs cycles écrits, jamais un délai le soir même avec un moyen de paiement personnel."
 looksLike:
-- '“Your electricity will be disconnected today at 8:00 PM due to non-payment. Kindly pay immediately: [bit.ly link] — BSES Delhi”'
-- A robocall in Hindi claiming to be from the electricity board's “bill department”.
-- Payment requested to a personal-name UPI ID (@ybl, @paytm) rather than the board's biller name.
-- Instructions to install a screen-sharing or “bill support” APK to “process the reversal”.
+  - "« Votre électricité sera coupée aujourd'hui à 20h00 pour non-paiement. Veuillez payer immédiatement : [lien bit.ly] — BSES Delhi »"
+  - "Un appel automatisé en hindi prétendant venir du « service facturation » du fournisseur d'électricité."
+  - "Paiement demandé vers un ID UPI à nom personnel (@ybl, @paytm) plutôt qu'au nom du fournisseur."
+  - "Consignes pour installer une appli de partage d'écran ou APK « d'assistance facture » pour « traiter le remboursement »."
 warningSigns:
-- Same-day disconnection deadline with evening timing chosen to panic you.
-- Personal UPI handles or bank accounts instead of the official biller on your UPI app.
-- Message arrives outside your actual billing cycle or for a property you don't own.
-- Any request to install an app or share screen during the “payment”.
-whyItWorks: Electricity is non-negotiable daily life, so the threat targets routine, not greed. The amounts are plausible (a real bill-sized figure), and most people have never seen what an official notice actually looks like. Boards have repeatedly warned that they never demand instant UPI payments over calls or texts.
+  - "Délai de coupure le jour même avec horaire du soir choisi pour vous paniquer."
+  - "Handles UPI personnels ou comptes bancaires au lieu du fournisseur officiel dans votre appli UPI."
+  - "Message qui arrive hors de votre cycle de facturation réel ou pour un logement qui ne vous appartient pas."
+  - "Toute demande d'installer une appli ou de partager l'écran pendant le « paiement »."
+whyItWorks: "L'électricité est vitale au quotidien, donc la menace vise la routine, pas l'avidité. Les montants sont plausibles (un vrai montant de facture), et la plupart des gens n'ont jamais vu à quoi ressemble un avis officiel. Les fournisseurs ont rappelé à plusieurs reprises qu'ils n'exigent jamais de paiements UPI instantanés par appels ou SMS."
 whatToDo:
-- Open your state board's official app or website yourself and check the bill status — ignore the message entirely.
-- Pay only inside official channels where the payee shows as the registered board name.
-- If you paid a fake handle, call 1930 immediately and report to cybercrime.gov.in with the UPI transaction ID.
-- Report the sender in WhatsApp/SMS and block the number.
-verify: Every state board (BSES, Adani Electricity, MSEB, TNEB, PSPCL and others) has an official app or portal showing live dues. Disconnection follows printed notices across billing cycles — never a single evening SMS.
+  - "Ouvrez vous-même l'appli ou le site officiel de votre fournisseur et vérifiez le statut de la facture — ignorez entièrement le message."
+  - "Payez uniquement dans les canaux officiels où le bénéficiaire s'affiche comme le nom enregistré du fournisseur."
+  - "Si vous avez payé un faux handle, appelez immédiatement le 1930 et signalez sur cybercrime.gov.in avec l'ID de transaction UPI."
+  - "Signalez l'expéditeur dans WhatsApp/SMS et bloquez le numéro."
+verify: "Chaque fournisseur d'État (BSES, Adani Electricity, MSEB, TNEB, PSPCL et autres) a une appli ou un portail officiel affichant les dus en direct. La coupure suit des avis imprimés sur plusieurs cycles de facturation — jamais un seul SMS du soir."
 faqs:
-- q: Will my power really be cut tonight if I don’t pay via link?
-  a: No. Electricity boards (BSES, MSEDCL, TNEB etc.) never cut power based on a single SMS with a UPI link. They send written notices and allow payment only via official portals/apps.
-- q: Why does the message feel urgent?
-  a: It uses ‘tonight 9:30 PM’ and a fake officer number to stop you from checking. Real disconnection notices give days and reference your consumer number verifiable in the official app.
-- q: How should I pay a real electricity bill?
-  a: Open your state board’s official app or website typed yourself (e.g. bsesdelhi, msedcl), enter your consumer number, and pay there — never via a link with a personal UPI handle.
-- q: What if they threatened from an electricity call centre number?
-  a: Hang up and call the number on your last bill or the board’s official website — not the number in the SMS.
+  - q: "Mon électricité sera-t-elle vraiment coupée ce soir si je ne paie pas via le lien ?"
+    a: "Non. Les fournisseurs d'électricité (BSES, MSEDCL, TNEB etc.) ne coupent jamais l'électricité sur la base d'un seul SMS avec un lien UPI. Ils envoient des avis écrits et permettent le paiement uniquement via les portails/applis officiels."
+  - q: "Pourquoi le message semble-t-il urgent ?"
+    a: "Il utilise « ce soir 21h30 » et un faux numéro d'agent pour vous empêcher de vérifier. Les vrais avis de coupure donnent des jours et mentionnent votre numéro client vérifiable dans l'appli officielle."
+  - q: "Comment payer une vraie facture d'électricité ?"
+    a: "Ouvrez vous-même l'appli ou le site officiel de votre fournisseur (ex. bsesdelhi, msedcl), saisissez votre numéro client, et payez là — jamais via un lien avec un handle UPI personnel."
+  - q: "Et s'ils ont menacé depuis un numéro du centre d'appels d'électricité ?"
+    a: "Raccrochez et appelez le numéro sur votre dernière facture ou le site officiel du fournisseur — pas celui du SMS."
 similar:
-- /scams/fastag-kyc-scam
-- /scams/fake-kyc-suspended
+  - /scams/fastag-kyc-scam
+  - /scams/fake-kyc-suspended
 updated: 2026-08-26
 ---

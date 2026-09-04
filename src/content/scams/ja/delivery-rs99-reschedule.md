@@ -1,31 +1,31 @@
 ---
-title: 配送料99ルピー詐欺
-longTitle: 「再配達に99ルピーを支払う」は詐欺ですか？
-description: 配送料詐欺の解説。
-tag: Delivery
-intro: You're expecting a parcel. An SMS says delivery failed and you must pay a small “reschedule” or “customs” fee — usually Rs 99 to Rs 499 — via UPI or a card page. Real couriers don't collect reschedule fees over payment links. The amount is deliberately tiny so you barely think; the saved card details or UPI mandate are where the real damage happens.
+title: "配送料99ルピー詐欺"
+longTitle: "「再配達にRs 99を支払ってください」は詐欺ですか？"
+description: "Rs 99の再配達詐欺（DTDC、Delhivery、India Post）の解説。手口、警告サイン、少額請求が餌である理由を紹介します。"
+tag: "配送"
+intro: "荷物を待っているときに「配達に失敗したため、再配達料または通関料をお支払いください」というSMSが届きます。金額は通常Rs 99〜Rs 499で、UPIやカード情報の入力を求められます。本物の配送業者はリンク経由で再配達料を請求しません。少額だからこそ警戒が緩みますが、狙いは保存されたカード情報やUPIの自動引き落とし設定です。"
 looksLike:
-- '“DTDC: Your parcel ON HOLD [DT-99213]. Pay Rs 99 to reschedule today else it returns to warehouse. bit.ly/dtdc-fee”'
-- '“India Post: customs charge pending for international package, clear here:” followed by a shortener'
-- A WhatsApp message with a \u201Cdelivery partner\u201D APK file attached (\u201Ctrack your parcel\u201D)
+- '「DTDC: 荷物は保留中です [DT-99213]。本日中にRs 99をお支払いください。さもないと倉庫に返送されます。bit.ly/dtdc-fee」'
+- '「India Post: 国際郵便の通関料金が未払いです。こちらでお支払いください:」の後に短縮URLが続くもの'
+- '「荷物を追跡してください」という文面と一緒に「配達パートナー」のAPKファイルが添付されたWhatsAppメッセージ'
 warningSigns:
-- You're asked to pay a fee for a parcel you already paid for at booking.
-- The consignment number format doesn't match the courier's real tracking IDs.
-- Payment via UPI handle like @ybl or @paytm belonging to a personal name.
-- Message arrives before you were even expecting any delivery attempt.
-whyItWorks: Small amounts bypass our mental security checks — Rs 99 feels cheaper than the hassle of a lost parcel. Scammers time messages to festive-season shopping spikes when everyone is expecting deliveries, and impersonate brands (DTDC, Delhivery, Blue Dart) whose names carry trust without verification.
+- 発送時にすでに支払い済みの荷物に追加料金を請求されます。
+- 追跡番号の形式が配送業者の本物の形式と一致しません。
+- 個人名義のUPIハンドル（@yblや@paytmなど）への支払いを求められます。
+- 配達予定もないのにメッセージが届きます。
+whyItWorks: "少額だと心理的な警戒が働きにくくなります。Rs 99なら荷物を失う手間より安く感じるからです。詐欺師は誰もが荷物を待つ祝祭シーズンに合わせて送信し、DTDC、Delhivery、Blue Dartといった信頼あるブランド名を悪用します。"
 whatToDo:
-- Never pay through links in messages. Track the consignment number on the courier's own site or app.
-- If you paid, check for any UPI auto-debit mandate created and revoke it in your UPI app settings immediately.
-- Report to 1930 and to the real courier's official support with screenshots.
-verify: Every major courier (DTDC, Delhivery, India Post, Blue Dart) has tracking on their official website. Enter the consignment number there — if the parcel shows normal movement, the fee demand was fake.
+- メッセージ内のリンクからは絶対に支払わないでください。配送業者の公式サイトやアプリで追跡番号を確認してください。
+- 支払ってしまった場合は、UPIの自動引き落とし設定が作られていないか確認し、すぐに解除してください。
+- 1930番に通報し、スクリーンショットを添えて本物の配送業者の公式サポートにも報告してください。
+verify: "DTDC、Delhivery、India Post、Blue Dartはいずれも公式サイトで追跡できます。追跡番号を公式サイトに直接入力してください。荷物が正常に動いていれば、料金請求は偽物です。"
 faqs:
-- q: Is ‘Pay Rs 99 to reschedule delivery’ ever a real courier request?
-  a: No. Couriers like DTDC, Delhivery or India Post never ask for a small UPI fee to reschedule. Delivery charges are paid at booking by the sender, not via a link after dispatch.
-- q: What does the fake link look like?
-  a: It’s usually a short link (bit.ly, tinyurl) hiding a look-alike domain like dtdc-fee.xyz or delhivery-reschedule.top — not dtdc.in or delhivery.com. The page asks for UPI PIN to receive the parcel, which always means paying.
-- q: How do I track my real parcel?
-  a: Copy the consignment number and track it only in the courier’s official app or website typed yourself — not via the link in the SMS. Call the official customer care number from the website if unsure.
+- q: "「再配達にRs 99を支払ってください」は本物の請求ですか？"
+  a: いいえ。本物のDTDC、Delhivery、India Postが再配達のために少額のUPI支払いを求めることはありません。送料は発送時に差出人が支払います。
+- q: "偽リンクはどんな見た目ですか？"
+  a: 短縮URL（bit.ly、tinyurl）の裏に、dtdc-fee.xyzのような偽ドメインが隠れています。dtdc.inやdelhivery.comではありません。荷物の受け取りにUPIのPIN入力を求められたら、それは支払いを意味します。
+- q: "本物の荷物はどう追跡しますか？"
+  a: SMSのリンクは使わず、追跡番号をコピーして公式アプリや公式サイトに直接入力してください。不安な場合はサイト記載の公式カスタマーケアに電話してください。
 similar:
 - /scams/fastag-kyc-scam
 - /scams/fake-kyc-suspended

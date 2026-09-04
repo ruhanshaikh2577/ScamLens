@@ -1,31 +1,31 @@
 ---
-title: UPI 환불 QR 사기
-longTitle: QR을 스캔하여 환불받는다는 것은 사기인가요?
-description: UPI 환불 QR 사기 설명.
-tag: Payments
-intro: A “customer support” agent calls about a refund — an extra payment you received, a failed order, cashback pending. To “process” it they ask you to scan a QR code, approve a “collect request”, or enter your UPI PIN “to receive” money. The moment you authorise, money leaves your account. There is no mechanism in UPI to receive funds via PIN — PIN always means pay.
+title: "UPI 환불·QR 스캔 사기"
+longTitle: '환급받으라며 QR을 스캔하라는 게 사기일 수 있나요? 수법 정리'
+description: 'UPI 받기 스캔·가짜 환불 사기 설명: QR 스캔으로는 돈을 받을 수 없는 이유, 경고 신호, 안전한 확인법을 알려드려요.'
+tag: "결제"
+intro: "'고객센터' 직원이라며 환불 건으로 전화가 와요. 잘못 들어간 입금, 실패한 주문, 적립 예정 캐시백 같은 명목이에요. '처리'를 위해 QR 스캔, '수금 요청' 승인, 돈을 '받기 위한' UPI PIN 입력을 요구해요. 승인하는 순간 돈은 빠져나가요. UPI에서 PIN으로 돈을 받는 방법은 없어요. PIN은 항상 지불이라는 뜻이에요."
 looksLike:
-- “Sir, we accidentally credited Rs 5,000 to your account. Scan this QR to return it” (the credit is a screenshot or a reversible trick)
-- “To receive your refund of Rs 1,200, enter your UPI PIN when the request pops up”
-- A payment request appearing on your phone mid-call, framed as \u201Cjust accept to get your refund\u201D"
+- '"선생님, Rs 5,000을 잘못 입금했습니다. 이 QR을 스캔해 돌려주세요" (입금은 스크린샷이나 되돌릴 수 있는 속임수예요)'
+- '"Rs 1,200 환급을 받으려면 요청이 뜨면 UPI PIN을 입력하세요"'
+- 통화 중에 '환급받으려면 수락만 하세요'라며 휴대폰에 뜨는 결제 요청.
 warningSigns:
-- Any mention of entering a UPI PIN to RECEIVE money — that's technically impossible.
-- Caller knows partial details (name, last order) to sound official but pressures you to stay on the line.
-- “Customer care” numbers found via Google search results or YouTube comments.
-- 'Urgency: refund expires today, account will be charged if you don''t act now.'
-whyItWorks: UPI's collect-request feature legitimately pops up on your screen, so the fraud hides inside a real interface. The caller keeps you busy and emotionally charged while the request sits there looking routine. Most victims have used UPI hundreds of times on autopilot — muscle memory does the rest.
+- 돈을 '받는데' UPI PIN을 입력하라는 말 — 기술적으로 불가능해요.
+- 이름, 최근 주문 같은 일부 정보를 알며 공식처럼 굴고 통화를 유지하라고 압박해요.
+- Google 검색 결과나 YouTube 댓글에서 찾은 '고객센터' 번호.
+- 오늘 지나면 환급 만료, 지금 안 하면 요금 부과 같은 긴급 압박.
+whyItWorks: "UPI 수금 요청은 실제로 화면에 뜨는 정상 기능이라 진짜 화면 안에 사기를 숨겨요. 요청이 평범하게 보이는 동안 계속 바쁘고 감정적으로 몰아가요. 수백 번 자동처럼 써온 UPI라 손이 먼저 움직이고 말아요."
 whatToDo:
-- Hang up. Refunds are processed inside the merchant app automatically — no agent action needed.
-- Never share OTP/PIN with anyone claiming to be support; end the call and call back via the app's official help section.
-- If you authorised a payment, immediately report on 1930 and raise it in your UPI app's dispute flow.
-verify: Open the merchant app (Amazon, Flipkart, IRCTC etc.) and check Orders → Refunds. Genuine refunds appear there without any action from you. Bank credits can be checked directly in your bank statement.
+- 끊으세요. 환불은 판매자 앱 안에서 자동으로 처리되지, 직원 조치가 필요 없어요.
+- 지원이라며 OTP·PIN을 요구하면 누구에게도 주지 말고 끊고 앱 공식 도움말의 경로로 다시 연락하세요.
+- 결제를 승인했다면 즉시 1930에 신고하고 UPI 앱 분쟁 절차도 진행하세요.
+verify: "판매자 앱(Amazon, Flipkart, IRCTC 등)을 열어 주문 → 환불 내역을 확인하세요. 진짜 환불은 아무 조치 없이 거기 표시돼요. 은행 입금은 통장에서 직접 확인할 수 있어요."
 faqs:
-- q: Can I receive money by scanning a QR code or entering my UPI PIN?
-  a: No. You never scan or enter your PIN to receive money — only to pay. Any QR or PIN request to ‘receive’ a refund is a payment trick.
-- q: What does the refund QR scam look like?
-  a: A buyer says ‘I’ll refund extra, scan this QR’ or sends a UPI collect request. The QR contains a pay-request for your account, not a receive. The UPI handle often looks like fastagpay@ybl or similar.
-- q: How should I handle a real refund?
-  a: Refunds go to your original payment method automatically. For marketplace sales, never accept QR-based refunds — ask for bank transfer or official app refund flow and verify in your bank app that money actually arrived.
+- q: "QR을 스캔하거나 UPI PIN을 입력해서 돈을 받을 수 있나요?"
+  a: 없어요. 돈을 받는 데 스캔이나 PIN 입력은 필요 없고, 지불할 때만 써요. '수령'을 위한 QR·PIN 요청은 결제 속임수예요.
+- q: "환불 QR 사기는 어떻게 생겼나요?"
+  a: 구매자가 '초과분 환불할게요, 이 QR 스캔하세요'라거나 UPI 수금 요청을 보내요. 그 QR은 수령이 아니라 당신 계좌에 대한 지불 요청이 담겨 있어요. fastagpay@ybl 같은 UPI 핸들인 경우도 많아요.
+- q: "진짜 환불은 어떻게 처리해야 하나요?"
+  a: 환불은 원래 결제 수단으로 자동 환불돼요. 중고·장터 거래는 QR 환불을 받지 말고 계좌이체나 공식 앱 환불 절차를 요구한 뒤, 은행 앱에서 실제 입금을 확인하세요.
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

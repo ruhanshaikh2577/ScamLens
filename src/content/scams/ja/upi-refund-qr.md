@@ -1,31 +1,31 @@
 ---
-title: UPI返金QR詐欺
-longTitle: QRをスキャンさせて返金すると言われたら詐欺ですか？
-description: UPI返金QR詐欺の解説。
-tag: Payments
-intro: A “customer support” agent calls about a refund — an extra payment you received, a failed order, cashback pending. To “process” it they ask you to scan a QR code, approve a “collect request”, or enter your UPI PIN “to receive” money. The moment you authorise, money leaves your account. There is no mechanism in UPI to receive funds via PIN — PIN always means pay.
+title: "UPI返金・QRスキャン詐欺"
+longTitle: "返金のためにQRコードのスキャンを求められたら詐欺ですか？"
+description: "UPIの受取QR・偽返金詐欺の解説。受取にPINが不要な理由、警告サイン、安全な確認手順を紹介します。"
+tag: "決済"
+intro: "「カスタマーサポート」を名乗る人物から返金について電話がきます。二重払い、失敗注文、未受取キャッシュバックなどと言い、「処理」のためQRコードのスキャン、「請求リクエスト」の承認、受け取りのためのUPIのPIN入力を求めます。承認した瞬間にお金が出ていきます。UPIにPINで受け取る仕組みはなく、PINは常に支払いを意味します。"
 looksLike:
-- “Sir, we accidentally credited Rs 5,000 to your account. Scan this QR to return it” (the credit is a screenshot or a reversible trick)
-- “To receive your refund of Rs 1,200, enter your UPI PIN when the request pops up”
-- A payment request appearing on your phone mid-call, framed as \u201Cjust accept to get your refund\u201D"
+- '「誤ってRs 5,000を振り込みました。このQRで返してください」（入金は画像や取消可能な小細工です）'
+- '「Rs 1,200の返金の受け取りには、表示されたらUPIのPINを入力してください」'
+- 通話中に届く支払いリクエストを「返金のため承認してください」と説明する手口。
 warningSigns:
-- Any mention of entering a UPI PIN to RECEIVE money — that's technically impossible.
-- Caller knows partial details (name, last order) to sound official but pressures you to stay on the line.
-- “Customer care” numbers found via Google search results or YouTube comments.
-- 'Urgency: refund expires today, account will be charged if you don''t act now.'
-whyItWorks: UPI's collect-request feature legitimately pops up on your screen, so the fraud hides inside a real interface. The caller keeps you busy and emotionally charged while the request sits there looking routine. Most victims have used UPI hundreds of times on autopilot — muscle memory does the rest.
+- 受け取りにUPIのPIN入力を求められます。技術的にあり得ません。
+- 名前や直近注文など部分的情報を知っていて公式らしく装い、通話を切らせません。
+- Google検索やYouTubeコメントで見つけた「カスタマーケア」番号。
+- 本日で返金期限、対応しなければ課金されるという緊急性。
+whyItWorks: "UPIの請求リクエストは本物の画面に表示されるため、詐欺が正規の操作に紛れます。相手は動揺させたまま画面を見せ、日常的にUPIを使う惰性で承認させます。"
 whatToDo:
-- Hang up. Refunds are processed inside the merchant app automatically — no agent action needed.
-- Never share OTP/PIN with anyone claiming to be support; end the call and call back via the app's official help section.
-- If you authorised a payment, immediately report on 1930 and raise it in your UPI app's dispute flow.
-verify: Open the merchant app (Amazon, Flipkart, IRCTC etc.) and check Orders → Refunds. Genuine refunds appear there without any action from you. Bank credits can be checked directly in your bank statement.
+- 電話を切ってください。返金は販売アプリ内で自動処理され、担当者の操作は不要です。
+- サポートを名乗る相手にOTPやPINを教えないでください。アプリの公式ヘルプからかけ直してください。
+- 支払いを承認した場合は、すぐに1930番に報告し、UPIアプリの異議申立てを使ってください。
+verify: "販売アプリ（Amazon、Flipkart、IRCTCなど）で注文→返金を確認してください。本物の返金は操作なしで表示されます。銀行入金は明細で直接確認できます。"
 faqs:
-- q: Can I receive money by scanning a QR code or entering my UPI PIN?
-  a: No. You never scan or enter your PIN to receive money — only to pay. Any QR or PIN request to ‘receive’ a refund is a payment trick.
-- q: What does the refund QR scam look like?
-  a: A buyer says ‘I’ll refund extra, scan this QR’ or sends a UPI collect request. The QR contains a pay-request for your account, not a receive. The UPI handle often looks like fastagpay@ybl or similar.
-- q: How should I handle a real refund?
-  a: Refunds go to your original payment method automatically. For marketplace sales, never accept QR-based refunds — ask for bank transfer or official app refund flow and verify in your bank app that money actually arrived.
+- q: "QRスキャンやUPIのPIN入力でお金を受け取れますか？"
+  a: いいえ。受け取りにスキャンやPINは不要であり、使うのは支払い時のみです。「受取」のためのQRやPIN要求は支払いの罠です。
+- q: "返金QR詐欺はどんな見た目ですか？"
+  a: 購入者が「多く払ったのでこのQRで返して」と言ったりUPI請求を送ったりします。そのQRは受取ではなくあなたへの支払い要求です。fastagpay@yblのようなハンドルが使われます。
+- q: "本物の返金はどう扱いますか？"
+  a: 返金は元の支払い方法に自動で戻ります。販売時はQR返金を受けず、銀行振込や公式アプリの返金手続きを求め、銀行アプリで実際に入金を確認してください。
 similar:
 - /scams/fake-kyc-suspended
 - /scams/job-offer-fee-499

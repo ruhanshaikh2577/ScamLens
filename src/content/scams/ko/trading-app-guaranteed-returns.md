@@ -1,36 +1,36 @@
 ---
-title: 보장 수익 투자 앱 사기
-longTitle: 보장 수익 트레이딩 앱은 사기인가요?
-description: 투자 앱 사기 설명.
-tag: Investment
-intro: You're added to a WhatsApp or Telegram group where a “professor” or analyst posts winning trades. A small deposit seems to grow on a professional-looking dashboard. The moment you try to withdraw a larger amount — or hesitate to “upgrade your tier” — fees, taxes and account freezes appear. No SEBI-registered adviser recruits through chat groups, and guaranteed returns do not exist in real markets.
+title: "보장 수익 트레이딩 앱 사기"
+longTitle: '보장 수익 트레이딩 앱은 사기인가요? 투자 사기 수법'
+description: 'WhatsApp·텔레그램 트레이딩 그룹 사기 설명: 가짜 교수, 보장된 일일 수익, 그럴듯한 대시보드, 절대 안 되는 출금. 경고 신호와 확인법을 알려드려요.'
+tag: "투자"
+intro: "'교수'나 애널리스트가 적중 매매를 올리는 WhatsApp·텔레그램 그룹에 초대돼요. 소액을 넣으면 전문가스러운 대시보드에서 잔액이 늘어나는 것처럼 보여요. 큰 금액을 출금하려 하거나 '등급 업그레이드'를 망설이는 순간 수수료, 세금, 계좌 동결이 등장해요. SEBI 등록 자문인은 채팅 그룹에서 모집하지 않고, 보장 수익은 실제 시장에 없어요."
 looksLike:
-- “Welcome to VIP Trading Zone 📈 Professor Arjun sir gives 100% sure shot calls. Daily profit 8-12%. Join now, slots closing.”
-- A sleek app or website (often a look-alike of a real broker) showing your balance growing daily.
-- “To unlock withdrawal, pay 18% GST / clearance fee / level-up deposit first.”
-- Screenshots of members “withdrawing lakhs” posted every few minutes by group admins.
+- '"VIP 트레이딩방 환영 📈 Arjun 교수가 100% 확실한 종목 제공. 일 수익 8-12%. 마감 전 가입."'
+- 잔액이 매일 늘어나는 것처럼 보이는 세련된 앱·사이트 (진짜 증권사 유사 화면인 경우가 많아요)
+- '"출금 해금을 위해 18% GST·클리어 수수료·등급 상향 입금을 먼저 내세요."'
+- 몇 분마다 그룹 관리자가 올리는 '수십만 루피 출금' 회원 스크린샷.
 warningSigns:
-- “Guaranteed”, “sure shot”, “risk-free” or fixed daily percentage returns — impossible in real markets.
-- Recruitment via WhatsApp/Telegram/Dating apps rather than a SEBI-registered platform.
-- Small withdrawals allowed at first (bait), larger ones blocked pending “fees” or “taxes”.
-- Pressure to recruit friends or move to a “premium mentorship” tier.
-- The app is an APK sideloaded from a link instead of an app store listing.
-whyItWorks: The fake dashboard does all the convincing — numbers going up feel like proof. Early small payouts are funded from newer victims' deposits (the same mechanics as a Ponzi scheme), which builds trust right up to the large deposit. Losses here are among the fastest-growing cyber-fraud categories reported in India since 2023.
+- "'보장', '확실', '무위험', 고정 일일 수익률 — 실제 시장에서는 불가능해요."
+- SEBI 등록 플랫폼이 아니라 WhatsApp·텔레그램·데이팅 앱으로 모집해요.
+- 처음엔 소액 출금만 되고(미끼), 큰 금액은 '수수료'·'세금'을 내야 풀려요.
+- 친구 초대나 '프리미엄 멘토십' 등급 상향을 압박해요.
+- 앱스토어가 아니라 링크로 받은 APK를 직접 설치하게 해요.
+whyItWorks: "올라가는 숫자의 가짜 대시보드가 모든 설득을 해요. 초기 소액 지급은 새 피해자 돈으로 충당하는 폰지 구조라서 큰 금액을 넣기 직전까지 신뢰가 쌓여요. 2023년 이후 인도에서 가장 빨리 느는 사이버 사기 유형 중 하나예요."
 whatToDo:
-- Stop sending money immediately — any “one last fee to release funds” is the final squeeze.
-- 'Screenshot everything: app name, UPI/account details used, chat history, transaction IDs.'
-- Call 1930 within the golden hour and file at cybercrime.gov.in; ask your bank to flag the receiving accounts.
-- Verify any adviser's registration on the SEBI website before investing a single rupee.
-verify: Check adviser registration on sebi.gov.in and confirm the broker is listed on NSE/BSE exchange sites. Real brokers never take deposits into personal UPI handles — only into accounts matching their registered name.
+- 즉시 송금을 멈추세요. '자금 해제를 위한 마지막 수수료'는 마지막 한탕이에요.
+- 앱 이름, 쓴 UPI·계좌 정보, 대화 기록, 거래 ID를 모두 스크린샷으로 저장하세요.
+- 1시간 안에 1930에 전화하고 cybercrime.gov.in에 신고한 뒤, 은행에 수취 계좌 표시를 요청하세요.
+- 1루피도 넣기 전에 SEBI 사이트에서 자문인 등록을 확인하세요.
+verify: "sebi.gov.in에서 자문인 등록을 확인하고, 증권사가 NSE·BSE 거래소 사이트에 있는지 확인하세요. 진짜 증권사는 개인 UPI 핸들로 입금받지 않고 등록된 명의 계좌로만 받아요."
 faqs:
-- q: Can a trading app guarantee daily returns?
-  a: No. Markets have no guaranteed returns. Any app promising 2-5% daily or double money is a Ponzi dashboard showing fake profits you can’t withdraw.
-- q: Why does the dashboard show profits increasing?
-  a: It’s a simulated number to make you deposit more. Withdrawals are blocked with excuses like ‘pay 10% release fee’ or ‘upgrade to VIP’ — that’s the theft.
-- q: How do I check if an adviser is legitimate?
-  a: Search the adviser’s name on sebi.gov.in registered intermediaries list. No SEBI-registered adviser recruits via Telegram/WhatsApp groups or guarantees returns.
-- q: They added me to a WhatsApp profit group — is that real?
-  a: Those groups are filled with fake accounts posting profit screenshots. Real trading never happens in closed chat groups.
+- q: "트레이딩 앱이 일일 수익을 보장할 수 있나요?"
+  a: 없어요. 시장에는 보장 수익이 없어요. 일 2-5%나 원금 2배를 약속하는 앱은 출금 안 되는 가짜 수익을 보여주는 폰지 대시보드예요.
+- q: "왜 대시보드에서는 수익이 계속 늘어나나요?"
+  a: 더 많이 입금하게 하려는 가짜 숫자예요. 출금은 '10% 해제 수수료'나 'VIP 업그레이드' 핑계로 막히는데, 그게 돈을 빼가는 지점이에요.
+- q: "자문인이 정상인지 어떻게 확인하나요?"
+  a: sebi.gov.in 등록 중개기관 목록에서 자문인 이름을 검색하세요. SEBI 등록 자문인은 텔레그램·WhatsApp 그룹에서 모집하거나 수익을 보장하지 않아요.
+- q: "WhatsApp 수익 그룹에 초대됐는데 진짜인가요?"
+  a: 수익 스크린샷을 올리는 가짜 계정으로 가득한 방이에요. 진짜 매매는 비공개 채팅방에서 이뤄지지 않아요.
 similar:
 - /scams/job-offer-fee-499
 - /scams/upi-refund-qr

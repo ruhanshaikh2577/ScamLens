@@ -1,32 +1,32 @@
 ---
-title: Royal Mail再配達0.99ポンド
-longTitle: '「Royal Mail: 再配達料0.99ポンド」は詐欺ですか？'
-description: Royal Mail詐欺の解説。
-tag: Delivery
+title: "Royal Mail再配達料詐欺（£0.99）"
+longTitle: "「Royal Mail:再配達料£0.99を支払ってください」は詐欺ですか？"
+description: "Royal Mailの£0.99再配達詐欺の解説。偽royalmailドメインのSMS、警告サイン、royalmail.comでの公式確認方法を紹介します。"
+tag: "配送"
 region: global
-intro: A text claims Royal Mail tried to deliver but you owe £0.99 or £1.45 for redelivery or customs. The link mimics Royal Mail branding and asks for card details to pay the tiny fee. Royal Mail does charge for some redeliveries, but never via an unexpected text link like this — the fee screen is fake and harvests your card.
+intro: "Royal Mailが配達に来たが£0.99や£1.45の再配達料・通関料が必要だというSMSが届きます。リンクはRoyal Mailそっくりで、少額支払いのためカード情報を求めます。Royal Mailにも再配達料はありますが、突然のSMSリンクで請求することはありません。その支払い画面はカード情報を盗む偽物です。"
 looksLike:
-- 'Royal Mail: Your package is waiting. Pay £0.99 redelivery fee now: royalmail-redelivery.com'
-- 'RM: Action required — customs fee £2.99 to release your parcel: bit.ly/rm-customs'
-- We could not deliver your item today. Schedule redelivery here within 24h
+- 'Royal Mail:荷物をお預かりしています。今すぐ£0.99の再配達料をお支払いください:royalmail-redelivery.com'
+- 'RM:対応が必要です — 荷物の受け取りに£2.99の通関料が必要です:bit.ly/rm-customs'
+- 本日お届けできませんでした。24時間以内にこちらで再配達を予約してください
 warningSigns:
-- Text from a random mobile number, not Royal Mail's official sender ID.
-- Domain is not royalmail.com — fakes use royal-mail, rm-delivery, parcel-royal.
-- Urgency to pay a small amount today to avoid return to depot.
-- Form asks for full card and address details, sometimes even mother’s maiden name.
-whyItWorks: Royal Mail redelivery fees are real, so the premise passes a quick plausibility check. The £0.99 amount is below the threshold where people scrutinize, and the cloned site is pixel-perfect on mobile. Post-Brexit customs fees have also normalized small-fee messages.
+- Royal Mailの公式送信者IDではなくランダムな携帯番号からのSMS。
+- ドメインがroyalmail.comではありません。royal-mail、rm-delivery、parcel-royalなどが使われます。
+- 営業所返送を避けるため本日中の少額支払いを急がせます。
+- カードと住所の全情報、時には母親の旧姓まで求めるフォーム。
+whyItWorks: "再配達料自体は実在するため、一見もっともらしく感じられます。£0.99は吟味されない金額であり、偽サイトはスマホでは本物そっくりです。EU離脱後の通関料も少額請求を自然に見せています。"
 whatToDo:
-- Do not pay via the link. Check at royalmail.com → Track your item by entering the reference you were given at purchase.
-- If you entered card details, contact your bank to cancel the card and watch for subscription traps.
-- Report to actionfraud.police.uk and forward the text to 7726.
-verify: Use royalmail.com Track & Trace and the official Royal Mail app. Any genuine fee appears there after you enter the exact parcel reference — not via a generic link.
+- リンクから支払わないでください。royalmail.comの荷物追跡に購入時の番号を入力して確認してください。
+- カード情報を入力した場合は、銀行に連絡してカードを止め、定期課金トラップに注意してください。
+- actionfraud.police.ukに報告し、SMSは7726に転送してください。
+verify: "royalmail.comのTrack & Traceと公式Royal Mailアプリを使ってください。本物の料金は荷物番号を入力した後に表示されます。一般的なリンク経由ではありません。"
 faqs:
-- q: Does Royal Mail text for £0.99 redelivery fee?
-  a: No. Royal Mail doesn’t text for redelivery fees on parcels you didn’t send. The link is a fake not royalmail.com that asks for card details.
-- q: How do I track a real Royal Mail parcel?
-  a: Track only with the tracking number on royalmail.com typed yourself, or call Royal Mail via the number on royalmail.com.
-- q: I paid the fee — what now?
-  a: Call your bank to block the card, report at actionfraud.police.uk and Royal Mail’s phishing report, and watch for follow-up HMRC/Royal Mail impersonations.
+- q: "Royal Mailは£0.99の再配達料をSMSで請求しますか？"
+  a: いいえ。送っていない荷物の再配達料をSMSで請求しません。そのリンクはroyalmail.comではない偽物であり、カード情報を求めます。
+- q: "本物のRoyal Mail荷物はどう追跡しますか？"
+  a: 追跡番号を使って自分で入力したroyalmail.comでのみ追跡するか、royalmail.com記載の番号に電話してください。
+- q: "料金を払ってしまいました。"
+  a: 銀行でカードを止め、actionfraud.police.ukとRoyal Mailのフィッシング窓口に報告し、HMRCやRoyal Mailを装う続報に注意してください。
 similar:
 - /scams/delivery-rs99-reschedule
 - /scams/usps-postage-due-199

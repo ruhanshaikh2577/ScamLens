@@ -1,36 +1,36 @@
 ---
-title: Truffa app trading rendimenti garantiti
-longTitle: Questa app di trading con rendimenti garantiti è una truffa?
-description: La truffa dell'app di trading spiegata.
-tag: Investment
-intro: You're added to a WhatsApp or Telegram group where a “professor” or analyst posts winning trades. A small deposit seems to grow on a professional-looking dashboard. The moment you try to withdraw a larger amount — or hesitate to “upgrade your tier” — fees, taxes and account freezes appear. No SEBI-registered adviser recruits through chat groups, and guaranteed returns do not exist in real markets.
+title: "Truffa app di trading “rendimenti garantiti”"
+longTitle: 'Questa app di trading con rendimenti garantiti è una truffa? Come funziona'
+description: 'La truffa dei gruppi trading WhatsApp/Telegram spiegata: falsi professori, profitti giornalieri garantiti, dashboard curate — e prelievi che non arrivano mai.'
+tag: "Investimenti"
+intro: "Vieni aggiunto a un gruppo WhatsApp o Telegram dove un “professore” posta operazioni vincenti. Un piccolo deposito sembra crescere su una dashboard professionale. Quando provi a prelevare cifre maggiori — o esiti ad “aumentare il livello” — spuntano tasse, imposte e blocchi. Nessun consulente registrato SEBI recluta via chat, e i rendimenti garantiti non esistono nei mercati veri."
 looksLike:
-- “Welcome to VIP Trading Zone 📈 Professor Arjun sir gives 100% sure shot calls. Daily profit 8-12%. Join now, slots closing.”
-- A sleek app or website (often a look-alike of a real broker) showing your balance growing daily.
-- “To unlock withdrawal, pay 18% GST / clearance fee / level-up deposit first.”
-- Screenshots of members “withdrawing lakhs” posted every few minutes by group admins.
+- '“Benvenuto nella VIP Trading Zone 📈 Il professor Arjun dà segnali sicuri al 100%. Profitto giornaliero 8-12%. Iscriviti, posti in chiusura.”'
+- Un’app o sito elegante (spesso sosia di un broker vero) che mostra il saldo in crescita.
+- '“Per sbloccare il prelievo, paga prima 18% GST / tassa di sdoganamento / deposito level-up.”'
+- Screenshot di membri che “prelevano lakh” postati ogni pochi minuti dagli admin.
 warningSigns:
-- “Guaranteed”, “sure shot”, “risk-free” or fixed daily percentage returns — impossible in real markets.
-- Recruitment via WhatsApp/Telegram/Dating apps rather than a SEBI-registered platform.
-- Small withdrawals allowed at first (bait), larger ones blocked pending “fees” or “taxes”.
-- Pressure to recruit friends or move to a “premium mentorship” tier.
-- The app is an APK sideloaded from a link instead of an app store listing.
-whyItWorks: The fake dashboard does all the convincing — numbers going up feel like proof. Early small payouts are funded from newer victims' deposits (the same mechanics as a Ponzi scheme), which builds trust right up to the large deposit. Losses here are among the fastest-growing cyber-fraud categories reported in India since 2023.
+- Parole “garantito”, “sicuro”, “senza rischio” o percentuali giornaliere fisse — impossibili nei mercati veri.
+- Reclutamento via WhatsApp/Telegram/app incontri invece che piattaforma registrata SEBI.
+- Piccoli prelievi concessi all’inizio (esca), quelli grandi bloccati con “tasse”.
+- Pressione a reclutare amici o passare al livello “mentorship premium”.
+- L’app è un APK da link invece che dallo store ufficiale.
+whyItWorks: "La dashboard falsa convince da sola — numeri che salgono sembrano prova. I primi piccoli pagamenti sono finanziati dai depositi delle nuove vittime (come uno schema Ponzi), e creano fiducia fino al grande deposito. Sono tra le frodi online in più rapida crescita in India dal 2023."
 whatToDo:
-- Stop sending money immediately — any “one last fee to release funds” is the final squeeze.
-- 'Screenshot everything: app name, UPI/account details used, chat history, transaction IDs.'
-- Call 1930 within the golden hour and file at cybercrime.gov.in; ask your bank to flag the receiving accounts.
-- Verify any adviser's registration on the SEBI website before investing a single rupee.
-verify: Check adviser registration on sebi.gov.in and confirm the broker is listed on NSE/BSE exchange sites. Real brokers never take deposits into personal UPI handles — only into accounts matching their registered name.
+- Smetti subito di inviare soldi — qualsiasi “ultima tassa per sbloccare” è la stretta finale.
+- "Fai screenshot di tutto: nome app, dati UPI/conto usati, chat, ID transazioni."
+- Chiama il 1930 entro l’ora d’oro e denuncia su cybercrime.gov.in; chiedi alla banca di flaggare i conti.
+- Verifica ogni consulente sul sito SEBI prima di investire una sola rupia.
+verify: "Controlla la registrazione su sebi.gov.in e che il broker sia listato sui siti NSE/BSE. I broker veri non prendono mai depositi su handle UPI personali — solo su conti col nome registrato."
 faqs:
-- q: Can a trading app guarantee daily returns?
-  a: No. Markets have no guaranteed returns. Any app promising 2-5% daily or double money is a Ponzi dashboard showing fake profits you can’t withdraw.
-- q: Why does the dashboard show profits increasing?
-  a: It’s a simulated number to make you deposit more. Withdrawals are blocked with excuses like ‘pay 10% release fee’ or ‘upgrade to VIP’ — that’s the theft.
-- q: How do I check if an adviser is legitimate?
-  a: Search the adviser’s name on sebi.gov.in registered intermediaries list. No SEBI-registered adviser recruits via Telegram/WhatsApp groups or guarantees returns.
-- q: They added me to a WhatsApp profit group — is that real?
-  a: Those groups are filled with fake accounts posting profit screenshots. Real trading never happens in closed chat groups.
+- q: "Un’app di trading può garantire rendimenti giornalieri?"
+  a: No. Nei mercati non esistono rendimenti garantiti. Chi promette 2-5% al giorno o raddoppi è una dashboard Ponzi con profitti falsi non prelevabili.
+- q: "Perché la dashboard mostra profitti in crescita?"
+  a: È un numero simulato per farti depositare di più. I prelievi sono bloccati con scuse tipo “paga 10% per sbloccare” o “passa a VIP” — quello è il furto.
+- q: "Come controllo se un consulente è legittimo?"
+  a: Cerca il nome nella lista intermediari registrati su sebi.gov.in. Nessun consulente SEBI recluta via Telegram/WhatsApp né garantisce rendimenti.
+- q: "Mi hanno aggiunto a un gruppo WhatsApp di profitti — è vero?"
+  a: Quei gruppi sono pieni di account falsi con screenshot di profitti. Il trading vero non avviene in chat chiuse.
 similar:
 - /scams/job-offer-fee-499
 - /scams/upi-refund-qr

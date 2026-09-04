@@ -1,31 +1,31 @@
 ---
-title: 가짜 KYC 정지
-longTitle: '"귀하의 KYC가 만료되었습니다"는 사기 SMS인가요?'
-description: 가짜 KYC 정지 사기 설명.
-tag: Banking
-intro: A message claims your bank account, Paytm, FASTag or digital wallet will be blocked because your KYC (Know Your Customer) documents have expired. It pushes you to a link or an app to “update” Aadhaar, PAN or card details. The link is fake — every field you fill goes straight to a fraudster, who then drains the account or takes loans in your name.
+title: "가짜 KYC 정지 사기"
+longTitle: '"KYC가 만료됐습니다"는 사기 SMS인가요? 수법 정리'
+description: '가짜 KYC·계좌 정지 사기 설명: 실제 문구 예시, 경고 신호, KYC를 안전하게 확인하는 법을 알려드려요.'
+tag: "은행"
+intro: "은행 계좌, Paytm, FASTag, 전자지갑이 KYC(고객확인) 서류 만료로 차단된다는 메시지가 와요. Aadhaar, PAN, 카드 정보를 '업데이트'하라며 링크나 앱으로 유도해요. 그 링크는 가짜라서 입력한 모든 정보가 사기범에게 넘어가고, 계좌를 비우거나 당신 명의로 대출을 받아요."
 looksLike:
-- '“SBI Alert: Your KYC has expired. Update within 24 hours or your account will be deactivated. Click hdfcbank-kyc.com”'
-- '“Dear customer your e-KYC is pending, complete now: bit.ly/kyc-upd”'
-- A WhatsApp forward with a logo-laden form asking for card number, expiry, CVV and OTP
+- '"SBI 알림: KYC가 만료됐습니다. 24시간 안에 업데이트하지 않으면 계좌가 정지됩니다. hdfcbank-kyc.com 클릭"'
+- '"고객님 e-KYC 미완료, 지금 완료하세요: bit.ly/kyc-upd"'
+- 카드 번호, 유효기간, CVV, OTP를 요구하는 로고 가득한 양식의 WhatsApp 전달 메시지
 warningSigns:
-- Urgency tied to account closure — real banks give weeks and never close accounts over one SMS.
-- The link domain doesn't match your bank's official website.
-- The form asks for CVV or OTP — no genuine KYC update ever needs them.
-- Sender is a normal 10-digit mobile number instead of a bank's official sender ID (like XX-SBIINB).
-whyItWorks: 'KYC renewal genuinely happens in India, so the request feels plausible. Fear of losing access to your money makes people comply fast, and the small effort (“it''s just a form”) hides that they are handing over everything a criminal needs: identity data plus card credentials plus the OTP that authorises the theft.'
+- 계좌 폐쇄를 앞세운 긴급 압박. 진짜 은행은 몇 주 여유를 주고 SMS 한 통으로 계좌를 닫지 않아요.
+- 링크 도메인이 은행 공식 사이트와 달라요.
+- CVV나 OTP를 요구해요. 진짜 KYC 업데이트는 절대 요구하지 않아요.
+- XX-SBIINB 같은 은행 공식 발신번호가 아니라 일반 10자리 휴대폰 번호로 와요.
+whyItWorks: "인도에서는 KYC 갱신이 실제로 있어서 그럴듯하게 느껴져요. 돈을 잃을까 봐 서둘러 응하게 되고, '양식 작성일 뿐'이라는 작은 수고 뒤에 신원 정보, 카드 정보, 돈을 빼가는 OTP까지 모두 넘기게 돼요."
 whatToDo:
-- Do not click the link or fill any form received by SMS or WhatsApp.
-- Open your bank's official app or type its known web address yourself — KYC status is always visible there.
-- If you already entered details, call your bank's helpline immediately to block the card and then call 1930.
-verify: Log in to your bank's official app and check the KYC/pending-actions section, or visit the nearest branch. Banks list their only official websites on the back of your debit card and passbook.
+- SMS·WhatsApp으로 온 링크를 누르거나 양식을 작성하지 마세요.
+- 은행 공식 앱을 열거나 알고 있는 주소를 직접 입력하세요. KYC 상태는 항상 거기서 보여요.
+- 이미 입력했다면 즉시 은행 헬프라인에 전화해 카드를 정지하고 1930에도 전화하세요.
+verify: "은행 공식 앱에 로그인해 KYC·대기 작업 항목을 확인하거나 가까운 지점에 방문하세요. 유일한 공식 사이트는 체크카드 뒷면과 통장에 적혀 있어요."
 faqs:
-- q: Is any KYC update link sent by SMS ever legitimate?
-  a: No. Real banks never send a clickable link to update KYC. They ask you to visit the official app or branch and give weeks, not 24 hours. Any link demanding CVV or OTP is a scam.
-- q: How can I check my real KYC status safely?
-  a: Open your bank's official app or type its official website yourself and check the KYC or profile section. The only official domains are printed on your card and passbook — not the link in the SMS.
-- q: I entered my card details and OTP — what should I do immediately?
-  a: Call your bank's helpline to block the card, then call 1930 and file at cybercrime.gov.in with screenshots. Change passwords and monitor for loans taken in your name.
+- q: "SMS로 온 KYC 업데이트 링크 중에 진짜도 있나요?"
+  a: 없어요. 진짜 은행은 클릭 가능한 KYC 링크를 보내지 않아요. 공식 앱이나 지점 방문을 안내하고 24시간이 아니라 몇 주를 줘요. CVV·OTP를 요구하는 링크는 사기예요.
+- q: "진짜 KYC 상태는 안전하게 어떻게 확인하나요?"
+  a: 은행 공식 앱을 열거나 공식 사이트 주소를 직접 입력해 KYC·프로필 항목을 확인하세요. SMS 속 링크가 아니라 카드·통장에 적힌 도메인만 공식 주소예요.
+- q: "카드 정보와 OTP를 입력했는데 지금 뭘 해야 하나요?"
+  a: 은행 헬프라인에 전화해 카드를 정지하고, 1930에 전화한 뒤 스크린샷과 함께 cybercrime.gov.in에 신고하세요. 비밀번호를 바꾸고 본인 명의 대출이 생겼는지 확인하세요.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/upi-refund-qr

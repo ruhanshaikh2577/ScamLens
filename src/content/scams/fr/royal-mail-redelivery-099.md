@@ -1,34 +1,34 @@
 ---
-title: Royal Mail relivraison £0.99
-longTitle: 'Est-ce que "Royal Mail: payez £0.99" est une arnaque ?'
-description: L'arnaque Royal Mail expliquée.
-tag: Delivery
+title: "Royal Mail relivraison (£0.99)"
+longTitle: "« Royal Mail : payez £0.99 de frais de relivraison » est-ce une arnaque ? Comment ça marche au Royaume-Uni"
+description: "Arnaque aux £0.99 de relivraison Royal Mail expliquée : SMS avec faux domaines royalmail, signaux d'alerte et vérification officielle via royalmail.com."
+tag: "Livraison"
 region: global
-intro: A text claims Royal Mail tried to deliver but you owe £0.99 or £1.45 for redelivery or customs. The link mimics Royal Mail branding and asks for card details to pay the tiny fee. Royal Mail does charge for some redeliveries, but never via an unexpected text link like this — the fee screen is fake and harvests your card.
+intro: "Un SMS affirme que Royal Mail a tenté de livrer mais que vous devez £0.99 ou £1.45 pour relivraison ou douane. Le lien imite la marque Royal Mail et demande les données de carte pour payer les petits frais. Royal Mail facture certaines relivraisons, mais jamais via un lien texte inattendu comme celui-ci — l'écran de frais est faux et récolte votre carte."
 looksLike:
-- 'Royal Mail: Your package is waiting. Pay £0.99 redelivery fee now: royalmail-redelivery.com'
-- 'RM: Action required — customs fee £2.99 to release your parcel: bit.ly/rm-customs'
-- We could not deliver your item today. Schedule redelivery here within 24h
+  - "« Royal Mail : Votre colis attend. Payez £0.99 de frais de relivraison maintenant : royalmail-redelivery.com »"
+  - "« RM : Action requise — frais de douane £2.99 pour libérer votre colis : bit.ly/rm-customs »"
+  - "Nous n'avons pas pu livrer votre article aujourd'hui. Planifiez la relivraison ici sous 24h"
 warningSigns:
-- Text from a random mobile number, not Royal Mail's official sender ID.
-- Domain is not royalmail.com — fakes use royal-mail, rm-delivery, parcel-royal.
-- Urgency to pay a small amount today to avoid return to depot.
-- Form asks for full card and address details, sometimes even mother’s maiden name.
-whyItWorks: Royal Mail redelivery fees are real, so the premise passes a quick plausibility check. The £0.99 amount is below the threshold where people scrutinize, and the cloned site is pixel-perfect on mobile. Post-Brexit customs fees have also normalized small-fee messages.
+  - "SMS depuis un numéro mobile aléatoire, pas l'ID d'expéditeur officiel de Royal Mail."
+  - "Le domaine n'est pas royalmail.com — les faux utilisent royal-mail, rm-delivery, parcel-royal."
+  - "Urgence à payer un petit montant aujourd'hui pour éviter le retour au dépôt."
+  - "Formulaire qui demande carte complète et adresse, parfois même le nom de jeune fille de la mère."
+whyItWorks: "Les frais de relivraison Royal Mail existent vraiment, donc le prétexte passe un rapide contrôle de plausibilité. Le montant de £0.99 est sous le seuil où les gens vérifient, et le site cloné est parfait sur mobile. Les frais de douane post-Brexit ont aussi normalisé les messages de petits frais."
 whatToDo:
-- Do not pay via the link. Check at royalmail.com → Track your item by entering the reference you were given at purchase.
-- If you entered card details, contact your bank to cancel the card and watch for subscription traps.
-- Report to actionfraud.police.uk and forward the text to 7726.
-verify: Use royalmail.com Track & Trace and the official Royal Mail app. Any genuine fee appears there after you enter the exact parcel reference — not via a generic link.
+  - "Ne payez pas via le lien. Vérifiez sur royalmail.com → Suivez votre article en saisissant la référence donnée à l'achat."
+  - "Si vous avez saisi des données de carte, contactez votre banque pour annuler la carte et surveillez les pièges d'abonnement."
+  - "Signalez sur actionfraud.police.uk et transférez le SMS au 7726."
+verify: "Utilisez royalmail.com Suivi et l'appli officielle Royal Mail. Tout vrai frais y apparaît après avoir saisi la référence exacte du colis — pas via un lien générique."
 faqs:
-- q: Does Royal Mail text for £0.99 redelivery fee?
-  a: No. Royal Mail doesn’t text for redelivery fees on parcels you didn’t send. The link is a fake not royalmail.com that asks for card details.
-- q: How do I track a real Royal Mail parcel?
-  a: Track only with the tracking number on royalmail.com typed yourself, or call Royal Mail via the number on royalmail.com.
-- q: I paid the fee — what now?
-  a: Call your bank to block the card, report at actionfraud.police.uk and Royal Mail’s phishing report, and watch for follow-up HMRC/Royal Mail impersonations.
+  - q: "Royal Mail envoie-t-il des SMS pour £0.99 de relivraison ?"
+    a: "Non. Royal Mail n'envoie pas de SMS pour des frais de relivraison sur des colis que vous n'avez pas envoyés. Le lien est un faux hors royalmail.com qui demande des données de carte."
+  - q: "Comment suivre un vrai colis Royal Mail ?"
+    a: "Suivez uniquement avec le numéro de suivi sur royalmail.com tapé vous-même, ou appelez Royal Mail via le numéro sur royalmail.com."
+  - q: "J'ai payé les frais — que faire maintenant ?"
+    a: "Appelez votre banque pour bloquer la carte, signalez sur actionfraud.police.uk et au rapport phishing de Royal Mail, et surveillez les usurpations HMRC/Royal Mail suivantes."
 similar:
-- /scams/delivery-rs99-reschedule
-- /scams/usps-postage-due-199
+  - /scams/delivery-rs99-reschedule
+  - /scams/usps-postage-due-199
 updated: 2026-08-25
 ---

@@ -1,31 +1,31 @@
 ---
-title: FASTag KYC詐欺
-longTitle: FASTagのKYC SMSは詐欺ですか？
-description: FASTag詐欺の解説。
-tag: Vehicles
-intro: An SMS says your FASTag has insufficient balance, faces deactivation, or your vehicle has an unpaid traffic challan — with a link to recharge or pay now. The link opens a pixel-perfect clone of an official-looking portal. The card details you enter are stolen and used within minutes; OTP phishing follows if the first page asks for “verification.” Variants target PUC certificates and driving-licence renewal too.
+title: "FASTag・交通違反金フィッシング"
+longTitle: "FASTagチャージや交通違反金のSMSは詐欺ですか？e-challan詐欺の手口"
+description: "FASTagチャージ詐欺と偽の交通違反金SMSの解説。カード情報を盗む偽サイト、手口、公式の確認方法を紹介します。"
+tag: "車両"
+intro: "FASTagの残高不足や利用停止、未払いの交通違反金があるとして、今すぐリンクからチャージや支払いを求めるSMSが届きます。リンク先は本物そっくりの偽サイトです。入力したカード情報は数分で悪用され、続けて「確認」の名目でOTPも狙われます。PUC証明書や免許更新を装う型もあります。"
 looksLike:
-- '“Your FASTag will expire tonight due to negative balance. Recharge instantly: fasttag-recharge.in”'
-- '“e-Challan: A traffic fine of Rs 500 is pending on vehicle MH12… Pay now to avoid escalation”'
-- “Your vehicle insurance expired, renew to avoid challan — link via bit.ly”
+- '「残高不足のためFASTagは今夜停止します。今すぐチャージ:fasttag-recharge.in」'
+- '「e-Challan:車両MH12…にRs 500の未払い罰金があります。早急にお支払いください」'
+- '「車両保険が切れています。罰金を避けるため更新してください — bit.ly経由のリンク」'
 warningSigns:
-- 'Domain look-alikes: extra letters, hyphens or wrong TLD (.in/.xyz/.site) versus the official site.'
-- Challan messages from random 10-digit numbers instead of official sender IDs (like VM-CHALLA).
-- 'Pressure timing: “expires tonight”, “pay before midnight”.'
-- Page asking for UPI PIN, CVV or OTP just to “check pending challans”.
-whyItWorks: Vehicle owners genuinely fear fines and daily-commute disruption, so the request maps to a real recurring task. The clone sites are cheap to build and rank via SMS links directly, bypassing search. Because amounts are small (Rs 200–700), many victims pay without scrutinising the URL — handing over full card data for a fraction they'd have paid anyway.
+- 公式サイトと似たドメイン。余分な文字、ハイフン、違うTLD（.in/.xyz/.site）を使います。
+- 公式送信者ID（VM-CHALLAなど）ではなくランダムな10桁番号からの違反金通知。
+- 「今夜期限」「深夜までに支払い」といった時間的圧力。
+- 違反金の「確認」だけなのにUPIのPIN、CVV、OTPを求めるページ。
+whyItWorks: "車の所有者は罰金や通勤への支障を本気で恐れるため、要求が日常業務に重なります。偽サイトは安く作れ、SMSリンクで直接誘導するため検索を回避できます。金額が小さい（Rs 200〜700）ためURLを確認せず支払い、少額のためにカード情報すべてを渡してしまいます。"
 whatToDo:
-- Ignore the link. Recharge FASTag only via your bank app, NETC portal, or GPay/PhonePe official bill-pay.
-- Check challans only on parivahan.gov.in or your state transport official portal.
-- If you entered card details, block the card via your bank app immediately and call 1930.
-verify: 'Official channels only: NETC FASTag at netc.ac.in lists all member banks; e-challans live at parivahan.gov.in/ecr. Both show your actual status without any payment pressure.'
+- リンクは無視してください。FASTagチャージは銀行アプリ、NETCサイト、GPayやPhonePeの公式請求払いのみ使ってください。
+- 違反金はparivahan.gov.inか州運輸局の公式サイトでのみ確認してください。
+- カード情報を入力した場合は、銀行アプリですぐにカードを止めて1930番に電話してください。
+verify: "公式チャネルだけ使ってください。NETC FASTagはnetc.ac.in、e-challanはparivahan.gov.in/ecrで確認できます。どちらも支払いの圧力なく実際の状況を表示します。"
 faqs:
-- q: Does FASTag really block for KYC via SMS link?
-  a: No. FASTag providers (Paytm, HDFC, ICICI) may notify, but they never block via an SMS link in 24 hours nor ask for card/OTP via a form. The link is a fake domain not the official bank.
-- q: How can I verify my FASTag status?
-  a: Open the provider’s official app (Paytm, HDFC Bank, ICICI) typed yourself and check FASTag section, or call the number on the FASTag sticker — not the SMS link.
-- q: What about traffic challan payment links?
-  a: Pay only at parivahan.gov.in or your state’s official challan portal typed yourself — not via SMS with a short link and UPI handle.
+- q: "FASTagはSMSリンクでKYCのため停止されますか？"
+  a: いいえ。提供会社（Paytm、HDFC、ICICI）が通知することはありますが、24時間で停止したりフォームでカードやOTPを求めたりしません。そのリンクは公式銀行とは無関係の偽ドメインです。
+- q: "FASTagの状態はどう確認しますか？"
+  a: 提供会社の公式アプリ（Paytm、HDFC Bank、ICICI）を自分で開いてFASTag欄を確認するか、ステッカー記載の番号に電話してください。SMSのリンクは使わないでください。
+- q: "交通違反金の支払いリンクはどうですか？"
+  a: parivahan.gov.inか州の公式challanサイトを自分で入力して支払ってください。短縮リンクとUPIハンドル付きのSMSは使わないでください。
 similar:
 - /scams/fake-kyc-suspended
 - /scams/delivery-rs99-reschedule

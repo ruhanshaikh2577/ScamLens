@@ -1,31 +1,31 @@
 ---
-title: 배송비 99루피 사기
-longTitle: '"재배송을 위해 99루피를 지불하세요"는 사기인가요?'
-description: 배송비 사기 설명.
-tag: Delivery
-intro: You're expecting a parcel. An SMS says delivery failed and you must pay a small “reschedule” or “customs” fee — usually Rs 99 to Rs 499 — via UPI or a card page. Real couriers don't collect reschedule fees over payment links. The amount is deliberately tiny so you barely think; the saved card details or UPI mandate are where the real damage happens.
+title: "택배 수수료 사기 (Rs 99 재배송)"
+longTitle: '"Rs 99를 내면 재배송"은 사기인가요? 택배 수수료 수법의 정체'
+description: 'Rs 99 택배 재배송 사기(DTDC, Delhivery, India Post) 설명: 실제 문자 패턴, 경고 신호, 소액 수수료가 미끼인 이유를 알려드려요.'
+tag: "배송"
+intro: "택배를 기다리는데 배송 실패라며 소액의 '재배송비'나 '통관 수수료' — 보통 Rs 99~Rs 499 — 를 UPI나 카드 페이지로 내라는 문자가 와요. 진짜 택배사는 링크로 재배송비를 받지 않아요. 일부러 고민할 틈이 없을 만큼 적은 금액을 노리고, 저장된 카드 정보나 UPI 자동이체 승인이 진짜 목표예요."
 looksLike:
-- '“DTDC: Your parcel ON HOLD [DT-99213]. Pay Rs 99 to reschedule today else it returns to warehouse. bit.ly/dtdc-fee”'
-- '“India Post: customs charge pending for international package, clear here:” followed by a shortener'
-- A WhatsApp message with a \u201Cdelivery partner\u201D APK file attached (\u201Ctrack your parcel\u201D)
+- '"DTDC: 소포가 보류 중입니다 [DT-99213]. 오늘 Rs 99를 내면 재배송합니다. bit.ly/dtdc-fee"'
+- '"India Post: 국제 소포 통관 요금 미납, 여기서 납부하세요:" 뒤에 단축 링크가 오는 경우'
+- '"소포를 조회하세요"라며 "택배 파트너" APK 파일이 첨부된 WhatsApp 메시지'
 warningSigns:
-- You're asked to pay a fee for a parcel you already paid for at booking.
-- The consignment number format doesn't match the courier's real tracking IDs.
-- Payment via UPI handle like @ybl or @paytm belonging to a personal name.
-- Message arrives before you were even expecting any delivery attempt.
-whyItWorks: Small amounts bypass our mental security checks — Rs 99 feels cheaper than the hassle of a lost parcel. Scammers time messages to festive-season shopping spikes when everyone is expecting deliveries, and impersonate brands (DTDC, Delhivery, Blue Dart) whose names carry trust without verification.
+- 이미 발송인이 낸 배송비인데 다시 수수료를 내라고 해요.
+- 운송장 번호 형식이 택배사 실제 추적 번호와 달라요.
+- "@ybl, @paytm 같은 개인 명의 UPI 핸들로 입금을 요구해요."
+- 배송 시도도 없었는데 미리 수수료 문자가 와요.
+whyItWorks: "Rs 99 같은 소액은 경계심을 피하기 쉬워서 소포를 잃는 번거움보다 싸게 느껴져요. 모두가 택배를 기다리는 쇼핑 성수기에 맞춰 DTDC, Delhivery, Blue Dart 같은 신뢰도 높은 브랜드를 사칭해요."
 whatToDo:
-- Never pay through links in messages. Track the consignment number on the courier's own site or app.
-- If you paid, check for any UPI auto-debit mandate created and revoke it in your UPI app settings immediately.
-- Report to 1930 and to the real courier's official support with screenshots.
-verify: Every major courier (DTDC, Delhivery, India Post, Blue Dart) has tracking on their official website. Enter the consignment number there — if the parcel shows normal movement, the fee demand was fake.
+- 문자 속 링크로 절대 결제하지 말고, 운송장 번호를 택배사 공식 사이트나 앱에서 직접 조회하세요.
+- 이미 냈다면 UPI 앱 설정에서 자동이체 승인이 생겼는지 확인하고 즉시 해지하세요.
+- 1930에 신고하고 스크린샷과 함께 진짜 택배사 공식 고객센터에도 제보하세요.
+verify: "DTDC, Delhivery, India Post, Blue Dart 모두 공식 사이트에서 운송장 조회가 돼요. 직접 입력한 번호로 조회했을 때 소포가 정상 이동 중이면 수수료 요구는 가짜예요."
 faqs:
-- q: Is ‘Pay Rs 99 to reschedule delivery’ ever a real courier request?
-  a: No. Couriers like DTDC, Delhivery or India Post never ask for a small UPI fee to reschedule. Delivery charges are paid at booking by the sender, not via a link after dispatch.
-- q: What does the fake link look like?
-  a: It’s usually a short link (bit.ly, tinyurl) hiding a look-alike domain like dtdc-fee.xyz or delhivery-reschedule.top — not dtdc.in or delhivery.com. The page asks for UPI PIN to receive the parcel, which always means paying.
-- q: How do I track my real parcel?
-  a: Copy the consignment number and track it only in the courier’s official app or website typed yourself — not via the link in the SMS. Call the official customer care number from the website if unsure.
+- q: "'“Rs 99를 내면 재배송”이라는 택배 요청이 진짜일 수도 있나요?'"
+  a: 아니요. DTDC, Delhivery, India Post는 재배송 명목으로 소액 UPI 수수료를 요구하지 않아요. 배송비는 발송 시 발송인이 내는 것이지, 배송 후 링크로 받지 않아요.
+- q: "가짜 링크는 어떻게 생겼나요?"
+  a: 보통 bit.ly, tinyurl 같은 단축 링크 뒤에 dtdc-fee.xyz, delhivery-reschedule.top 같은 유사 도메인이 숨어 있어요. dtdc.in, delhivery.com이 아니에요. 소포 수령을 위해 UPI PIN을 입력하라는 페이지는 무조건 결제라는 뜻이에요.
+- q: "진짜 소포는 어떻게 조회하나요?"
+  a: 운송장 번호를 복사해서 문자 속 링크가 아니라 직접 입력한 택배사 공식 앱이나 사이트에서만 조회하세요. 확실하지 않으면 사이트에 적힌 공식 고객센터 번호로 전화하세요.
 similar:
 - /scams/fastag-kyc-scam
 - /scams/fake-kyc-suspended

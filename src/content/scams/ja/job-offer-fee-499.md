@@ -1,31 +1,31 @@
 ---
-title: 手数料付き求人詐欺
-longTitle: 「在宅ワーク、手数料499ルピー」は詐欺ですか？
-description: 求人詐欺の解説。
-tag: Jobs
-intro: An HR person messages you about easy work-from-home earnings — rating hotels, liking videos, data entry at Rs 3,000–15,000/day. You're selected instantly (no interview), then asked for a small registration or “task wallet” fee, typically Rs 499 to Rs 2,999. The first tiny payout arrives to build trust; then fees escalate until you stop paying. No real salary ever comes.
+title: "登録料付き求人詐欺"
+longTitle: "「在宅ワーク、登録料Rs 499」の求人は詐欺ですか？手数料詐欺の手口"
+description: "登録料・研修料（Rs 499〜2,999）を取る偽求人の解説。Telegramタスク、偽内定通知、警告サイン、本物の雇用主の確認方法を紹介します。"
+tag: "求人"
+intro: "在宅で稼げる仕事として、人事担当者を名乗る人物からメッセージが届きます。ホテルの評価、動画へのいいね、データ入力で日給Rs 3,000〜15,000などと言われ、面接なしですぐ採用されます。その後、登録料や「タスク用ウォレット」料としてRs 499〜Rs 2,999を求められます。最初に少額が振り込まれて信用させ、支払いをやめるまで金額が上がります。給料が支払われることはありません。"
 looksLike:
-- “Congratulations! You're shortlisted for part-time work from Home. Daily payout Rs 3000+. Registration fee Rs 499 only.”
-- A polished PDF offer letter from \u201CHR Department\u201D of a real-sounding company, sent before any interview"
-- Telegram groups where \u201Ccompleted tasks\u201D screenshots flood the chat as social proof"
+- '「おめでとうございます!在宅パートタイムに内定です。日給Rs 3000以上。登録料はRs 499のみ」'
+- 面接前に送られる実在しそうな会社の「人事部」名義の立派なPDF内定通知。
+- 「タスク完了」のスクリーンショットが流れるTelegramグループによる社会的証明。
 warningSigns:
-- Selection without an interview, especially over WhatsApp/Telegram.
-- Any upfront fee — registration, training kit, document verification, GST release.
-- Personal UPI handles (@paytm, @ybl) for fee payment instead of company accounts.
-- Earnings wildly out of proportion to skill (“Rs 5,000/day for liking videos”).
-whyItWorks: Job scarcity plus flexible-work demand makes the pitch irresistible, and the small first fee feels like normal paperwork (we're used to paying for courses and certifications). The early micro-payouts are funded by later victims' fees — a Ponzi-shaped hook that turns skeptics into evangelists who recruit friends.
+- 面接なしの採用、特にWhatsAppやTelegram経由。
+- 登録料、研修キット、書類確認、GST解除などの前払い請求。
+- 会社口座ではなく個人名義UPI（@paytm、@ybl）への支払い。
+- 仕事内容に対して不自然な高収入（「動画にいいねで日給Rs 5,000」）。
+whyItWorks: "求人不足と柔軟な働き方への需要が魅力となり、少額の初回費用が講座料のように感じられます。最初の少額支払いは後の被害者の料金で賄われ、疑っていた人も友人を勧誘する仕組みです。"
 whatToDo:
-- Never pay any fee to apply, start, or “release” earnings. Real employers deduct nothing in advance.
-- If already paid, stop all further payments — escalation fees are how losses become lakhs.
-- Report the number/UPI handle on 1930 and cybercrime.gov.in with transaction proof.
-verify: Search the company on LinkedIn and its official careers page — genuine openings exist there without fees. Check the recruiter's email domain matches the company. MCA's website lets you verify company registration numbers.
+- 応募・開始・報酬解除のための費用は一切払わないでください。本物の雇用主は事前に何も引きません。
+- すでに払った場合は追加支払いを止めてください。増額請求で損失が何十万にもなります。
+- 番号やUPIハンドルを取引証拠付きで1930番とcybercrime.gov.inに通報してください。
+verify: "LinkedInと会社の公式採用ページで会社を調べてください。本物の募集は手数料なしで掲載されています。採用者のメールアドレスが会社ドメインか確認し、会社登録番号はMCAサイトで確認できます。"
 faqs:
-- q: Is a work-from-home job with Rs 499 registration fee legitimate?
-  a: No. Real employers never charge to apply, train or verify documents. Any fee to start is the scam itself — the job doesn’t exist.
-- q: What does the offer letter look like?
-  a: A PDF with logos and a signature, asking for Rs 499-2000 via UPI before onboarding. Real offers don’t ask for payment and are verifiable via the company’s official careers page or HR phone.
-- q: How can I verify the company?
-  a: Search the company name on its official website’s careers section and call HR via the number on the website, not the one in the message. Check MCA or LinkedIn for the company’s real presence.
+- q: "登録料Rs 499の在宅求人は正当ですか？"
+  a: いいえ。本物の雇用主は応募・研修・書類確認にお金を請求しません。開始時の費用はそれ自体が詐欺であり、仕事は存在しません。
+- q: "内定通知はどんな見た目ですか？"
+  a: ロゴと署名付きPDFで、入社前にUPIでRs 499〜2000を求めます。本物の内定は支払いを求めず、公式採用ページや人事電話で確認できます。
+- q: "会社はどう確認しますか？"
+  a: 公式サイトの採用欄で会社名を調べ、メッセージ内の番号ではなくサイト記載の番号で人事に電話してください。MCAやLinkedInでも実在を確認できます。
 similar:
 - /scams/digital-arrest-video-call
 - /scams/upi-refund-qr
