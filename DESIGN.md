@@ -1,25 +1,28 @@
 ---
 version: alpha
 name: Linear-design-analysis
-description: "A near-black product-focused marketing canvas built around #010102 (the deepest dark surface of any tool in this collection), light gray text (#f7f8f8), and the signature Linear lavender-blue (#5e6ad2) used as the single chromatic accent. The system reads as software-craft documentation: dense, technical, and quietly luxurious. Display type is set in the Linear custom sans (SF Pro Display fallback) at 500–700 with measured negative tracking. Cards live as charcoal panels (#0f1011) with hairline borders. The accent lavender appears on the brand mark, focus rings, and a few intentional CTAs — never decoratively. Page rhythm leans on product UI screenshots framed in dark panels rather than atmospheric color."
+description: "A navy-ink trust canvas built around #060B14 with emerald action color and rationed gold accents, light gray text (#F2F5F9), and the signature emerald (#059669) used as the single chromatic accent. The system reads as software-craft documentation: dense, technical, and quietly luxurious. Display type is set in Fraunces Variable serif (Georgia fallback) at 500–700 with measured negative tracking. Cards live as navy panels (#0B1424) with hairline borders. The accent emerald appears on the brand mark, focus rings, and a few intentional CTAs — never decoratively. Page rhythm leans on product UI screenshots framed in dark panels rather than atmospheric color."
 
 colors:
-  primary: "#5e6ad2"
+  primary: "#059669"
   on-primary: "#ffffff"
-  primary-hover: "#828fff"
-  primary-focus: "#5e69d1"
-  ink: "#f7f8f8"
-  ink-muted: "#d0d6e0"
-  ink-subtle: "#8a8f98"
-  ink-tertiary: "#62666d"
-  canvas: "#010102"
-  surface-1: "#0f1011"
-  surface-2: "#141516"
-  surface-3: "#18191a"
-  surface-4: "#191a1b"
-  hairline: "#23252a"
-  hairline-strong: "#34343a"
-  hairline-tertiary: "#3e3e44"
+  primary-hover: "#10B981"
+  primary-focus: "#34D399"
+  font-display: "Fraunces Variable, Georgia, serif"
+  gold: "#C9A227"
+  gold-deep: "#8A6D1B"
+  ink: "#F2F5F9"
+  ink-muted: "#C3CEDD"
+  ink-subtle: "#8B98AD"
+  ink-tertiary: "#5F6B80"
+  canvas: "#060B14"
+  surface-1: "#0B1424"
+  surface-2: "#0F1A2E"
+  surface-3: "#142238"
+  surface-4: "#182742"
+  hairline: "#1E2D47"
+  hairline-strong: "#2A3D5C"
+  hairline-tertiary: "#35496B"
   inverse-canvas: "#ffffff"
   inverse-surface-1: "#f5f6f6"
   inverse-surface-2: "#f6f7f7"
@@ -344,7 +347,7 @@ The marketing surface treats Display and Text as one continuous voice; the famil
 
 ### Note on Font Substitutes
 
-Linear's custom typeface isn't publicly distributed; the documented fallback `SF Pro Display, -apple-system, system-ui` is the recommended substitute on macOS. For cross-platform implementation, **Inter** at weight 500 / 600 / 700 is the closest free substitute. **Geist Sans** is also viable. For mono, **JetBrains Mono** or **Geist Mono** at weight 400 closely approximates Linear Mono.
+Display type is Fraunces Variable (Georgia, serif fallback), loaded via `@fontsource-variable/fraunces`; body is Inter Variable. Linear's custom typeface isn't publicly distributed; the documented fallback `SF Pro Display, -apple-system, system-ui` is the recommended substitute on macOS. For cross-platform implementation, **Inter** at weight 500 / 600 / 700 is the closest free substitute. **Geist Sans** is also viable. For mono, **JetBrains Mono** or **Geist Mono** at weight 400 closely approximates Linear Mono.
 
 ## Layout
 
@@ -543,6 +546,6 @@ Linear's depth is carried by surface ladder + hairline borders. The brand resist
 
 - The four-step surface ladder values are extracted directly from Linear's `--color-bg-level-3`, `--color-line-tint`, etc. CSS variables; they are Linear's canonical surface spec.
 - Form-field error and validation styling is not visible on the inspected pages.
-- Light mode is not documented because the marketing site does not ship a light theme.
+- Light mode flips the canvas ladder to paper tones (canvas #F7F9FC, surfaces #FFFFFF/#EFF3F8/#E6ECF4/#DCE4EF, hairlines #DDE4EE/#C6D2E2/#B3C2D6, inks #0A1628/#33415C/#5B6B84/#7A879C) with a deepened primary (#047857); gold accents stay rationed in both modes.
 - Linear's actual product UI uses a richer color-tag palette (red, orange, yellow, green, blue, purple) for issue priorities and project labels — those colors live in the in-product surfaces shown in mockups.
 - The custom display, text, and mono families are proprietary; an open-source substitute is acceptable.
