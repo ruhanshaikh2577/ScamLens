@@ -14,4 +14,11 @@ describe("sovereign vault theme", () => {
     expect(c).toContain("@fontsource-variable/fraunces");
     expect(c).not.toContain("#5e6ad2");
   });
+  it("has light-mode paper values and serif display type", () => {
+    const c = css();
+    expect(c).toContain("--light-canvas: #F7F9FC;");
+    expect(c).toContain("--light-ink: #0A1628;");
+    expect(c).toContain("color: var(--color-gold);");
+    expect(c).toContain("font-family: var(--font-display);");
+  });
 });
