@@ -593,7 +593,7 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
 
     <div id="checker-utility" class="card mx-auto mt-4 w-full max-w-2xl p-5 sm:p-8">
       {result.similarScams.length > 0 && (
-        <section class="mt-6 border-t border-hairline pt-6" aria-label="Similar scams">
+        <section aria-label="Similar scams">
           <h4 class="eyebrow">Similar scams</h4>
           <div class="mt-3 flex flex-wrap gap-2">
             {result.similarScams.map((s) => (

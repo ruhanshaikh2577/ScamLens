@@ -1,5 +1,5 @@
-import { readFileSync } from "node:fs";
-import { execSync } from "node:child_process";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const css = () => readFileSync("src/styles/global.css", "utf8");
@@ -19,38 +19,63 @@ describe("vault discipline items 1-2", () => {
   });
 });
 
-function rg(pattern: string): string {
-  try {
-    return execSync(`rg -l "${pattern}" src --glob '!**/node_modules'`, { encoding: "utf8" });
-  } catch { return ""; }
+// node:fs recursive walk of src/ — no rg binary dependency, so the sweep
+// suite cannot pass vacuously where ripgrep is missing.
+function srcFiles(dir = "src"): string[] {
+  const out: string[] = [];
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) out.push(...srcFiles(p));
+    else if (e.isFile()) out.push(p);
+  }
+  return out;
 }
 
-function rgLines(pattern: string): string[] {
-  try {
-    return execSync(`rg -n "${pattern}" src`, { encoding: "utf8" }).trim().split("\n").filter(Boolean);
-  } catch { return []; }
+function grepFiles(pattern: string): string {
+  const re = new RegExp(pattern);
+  return srcFiles()
+    .filter((f) => re.test(readFileSync(f, "utf8")))
+    .join("\n");
+}
+
+function grepLines(pattern: string): string[] {
+  const re = new RegExp(pattern);
+  const hits: string[] = [];
+  for (const f of srcFiles()) {
+    readFileSync(f, "utf8")
+      .split("\n")
+      .forEach((line, i) => {
+        if (re.test(line)) hits.push(`${f}:${i + 1}:${line}`);
+      });
+  }
+  return hits;
 }
 
 describe("vault discipline item 1 sweep", () => {
   it("no card-lift or arrow-nudge anywhere in src", () => {
     // src/pages/preview is untracked other-task dirt — not this task's scope.
-    const hits = [...rgLines("card-lift"), ...rgLines("arrow-nudge")].filter(
+    const hits = [...grepLines("card-lift"), ...grepLines("arrow-nudge")].filter(
       (l) => !l.includes("src/pages/preview"),
     );
     expect(hits).toEqual([]);
   });
   it("no emerald-tint surfaces (bg-primary/5, bg-primary/10)", () => {
-    expect(rg("bg-primary/")).toBe("");
+    expect(grepFiles("bg-primary/")).toBe("");
   });
   it("no text-primary-hover outside CheckerIsland scan/result icons", () => {
-    const lines = rgLines("text-primary-hover");
-    // Allowed: CheckerIsland scan/result icons (Task 3 narrows further);
+    const lines = grepLines("text-primary-hover");
+    // Allowed — rg-verified line locks (evidence icons are vault gold
+    // post-Task-3, so the old file-level CheckerIsland allow is dead; lock the
+    // survivors to stop reintroduction):
+    // - CheckerIsland.tsx:433 file-error text (pre-existing error affordance)
+    // - CheckerIsland.tsx:459 scan-lens icon (active-scan affordance)
     // AboutReportBox helpline links stay emerald per ruling (b) — genuine link
     // emphasis; QuizIsland incorrect-answer text is pre-existing HEAD content
     // outside this task's file list (Task 3 scope).
     const allowed = lines.filter(
       (l) =>
-        l.includes("CheckerIsland.tsx") ||
+        l.includes("CheckerIsland.tsx:433") ||
+        l.includes("CheckerIsland.tsx:459") ||
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
@@ -65,15 +90,19 @@ describe("vault discipline item 3 verdict hierarchy", () => {
     expect(s).toContain('id="checker-result"');
     expect(s).toContain('id="checker-utility"');
     const goldenBoxes = (s.match(/const goldenBox|goldenBox\}/g) ?? []).length;
-    expect(goldenBoxes).toBeLessThanOrEqual(2);
+    expect(goldenBoxes).toBe(2);
     // report box rendered exactly once in JSX (not {urgent && goldenBox} + {!urgent && goldenBox})
     const conditionalRenders = (s.match(/\{urgent && goldenBox\}|\{!urgent && goldenBox\}/g) ?? []).length;
     expect(conditionalRenders).toBe(0);
     expect(s).toContain("{goldenBox}");
   });
-  it("demo badge is not a risk badge", () => {
+  it("demo status is a neutral paragraph, not a risk badge", () => {
     const s = src();
-    expect(s).not.toContain('risk-badge risk-low">\n            <span class="risk-dot" />\n            DEMO');
+    // Neutral-badge upgrade deferred pending the i18n key (8-locale rule):
+    // committed tree has no demoTitle usage — demo state stays the
+    // description paragraph.
+    expect(s).not.toContain("demoTitle");
+    expect(s).toContain('t("checker.result.demo")');
   });
   it("evidence icons use vault gold, not emerald", () => {
     const s = src();
