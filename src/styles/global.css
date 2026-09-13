@@ -11,7 +11,7 @@
   --color-ink: #F2F5F9;
   --color-ink-muted: #C3CEDD;
   --color-ink-subtle: #8B98AD;
-  --color-ink-tertiary: #79879E;
+  --color-ink-tertiary: #5F6B80;
   --color-canvas: #060B14;
   --color-surface-1: #0B1424;
   --color-surface-2: #0F1A2E;
@@ -23,7 +23,6 @@
   --color-inverse-canvas: #ffffff;
   --color-inverse-ink: #000000;
   --color-success: #27a644;
-  --color-error: #F87171;
   --color-gold: #C9A227;
   --color-gold-deep: #8A6D1B;
 
@@ -62,9 +61,8 @@
   --light-ink: #0A1628;
   --light-ink-muted: #33415C;
   --light-ink-subtle: #5B6B84;
-  --light-ink-tertiary: #66748A;
+  --light-ink-tertiary: #7A879C;
   --light-primary: #047857;
-  --light-error: #B91C1C;
 }
 
 /* Light/Dark auto — flip semantic vars under light preference (DESIGN.md inverse tokens) */
@@ -83,7 +81,6 @@
     --color-ink-muted: var(--light-ink-muted);
     --color-ink-subtle: var(--light-ink-subtle);
     --color-ink-tertiary: var(--light-ink-tertiary);
-    --color-error: var(--light-error);
   }
 }
 html.light {
@@ -101,7 +98,6 @@ html.light {
   --color-ink-muted: var(--light-ink-muted);
   --color-ink-subtle: var(--light-ink-subtle);
   --color-ink-tertiary: var(--light-ink-tertiary);
-  --color-error: var(--light-error);
 }
 html.dark {
   --color-canvas: #060B14;
@@ -115,7 +111,7 @@ html.dark {
   --color-ink: #F2F5F9;
   --color-ink-muted: #C3CEDD;
   --color-ink-subtle: #8B98AD;
-  --color-ink-tertiary: #79879E;
+  --color-ink-tertiary: #5F6B80;
 }
 
 @layer base {
@@ -331,8 +327,22 @@ html.dark {
   .seal-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--color-gold); font-size: 12px; font-weight: 500; }
   .seal-ring { width: 18px; height: 18px; border: 1.5px solid var(--color-gold); border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
 
-  /* Checker: errors read as errors (never success green), in both modes */
-  .form-error { color: var(--color-error); }
+  /* Ticker marquee */
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
 
   /* Checker scan progress */
   .scan-bar {
@@ -445,6 +455,11 @@ html.dark {
     background-position: -200% 0;
   }
 }
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
@@ -490,6 +505,11 @@ html.dark {
   .hero-in {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: auto;
   }
 }
 
