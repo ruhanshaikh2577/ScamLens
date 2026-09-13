@@ -67,15 +67,15 @@ describe("vault discipline item 1 sweep", () => {
     // Allowed — rg-verified line locks (evidence icons are vault gold
     // post-Task-3, so the old file-level CheckerIsland allow is dead; lock the
     // survivors to stop reintroduction):
-    // - CheckerIsland.tsx:433 file-error text (pre-existing error affordance)
-    // - CheckerIsland.tsx:459 scan-lens icon (active-scan affordance)
+    // - CheckerIsland.tsx:446 file-error text (pre-existing error affordance)
+    // - CheckerIsland.tsx:473 scan-lens icon (active-scan affordance)
     // AboutReportBox helpline links stay emerald per ruling (b) — genuine link
     // emphasis; QuizIsland incorrect-answer text is pre-existing HEAD content
     // outside this task's file list (Task 3 scope).
     const allowed = lines.filter(
       (l) =>
-        l.includes("CheckerIsland.tsx:433") ||
-        l.includes("CheckerIsland.tsx:459") ||
+        l.includes("CheckerIsland.tsx:446") ||
+        l.includes("CheckerIsland.tsx:473") ||
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
@@ -107,5 +107,24 @@ describe("vault discipline item 3 verdict hierarchy", () => {
   it("evidence icons use vault gold, not emerald", () => {
     const s = src();
     expect(s).not.toMatch(/findings\.map[\s\S]{0,400}text-primary-hover/);
+  });
+});
+
+describe("vault honesty: scan states", () => {
+  const src = () => readFileSync("src/components/checker/CheckerIsland.tsx", "utf8");
+  it("no fixed fake delay gates text/url scans", () => {
+    expect(src()).not.toContain("const delay = 2000");
+  });
+  it("progress is a real progressbar with SR percent and busy state", () => {
+    const s = src();
+    expect(s).toContain('role="progressbar"');
+    expect(s).toContain("aria-valuenow");
+    expect(s).toContain('class="sr-only"');
+    expect(s).toContain("aria-busy");
+  });
+  it("CLIENT-SIDE chip renders only when served locally", () => {
+    const s = src();
+    expect(s).toContain("servedLocal &&");
+    expect(s).toContain('t("checker.trust.clientSide")');
   });
 });

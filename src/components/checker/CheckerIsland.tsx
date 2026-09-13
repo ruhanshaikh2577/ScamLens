@@ -24,7 +24,7 @@ function getT(lang: string) {
   return (key: string) => d[key] ?? fb[key] ?? key;
 }
 
-async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
+async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<{ result: AnalysisResult; local: boolean }> {
   try {
     const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
     const res = await fetch(url, {
@@ -32,11 +32,11 @@ async function analyzeWithFallback(input: string, kind: "message" | "url"): Prom
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ input, kind }),
     });
-    if (res.ok) return (await res.json()) as AnalysisResult;
+    if (res.ok) return { result: (await res.json()) as AnalysisResult, local: false };
   } catch (e) {
     if (import.meta.env.DEV) console.warn("[analyzeWithFallback]", e);
   }
-  return analyze(input, kind);
+  return { result: analyze(input, kind), local: true };
 }
 
 type Tab = "text" | "image" | "link";
@@ -111,6 +111,8 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [demoNote, setDemoNote] = useState(false);
+  const [servedLocal, setServedLocal] = useState(true);
+  const [showScanUi, setShowScanUi] = useState(false);
 
   const canScan =
     phase !== "scanning" &&
@@ -161,6 +163,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     setUrl("");
     setResult(null);
     setDemoNote(false);
+    setShowScanUi(false);
     setPhase("idle");
   }
 
@@ -170,6 +173,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     setStatusLine(0);
     setProgress(8);
     setDemoNote(false);
+    setShowScanUi(false);
 
     if (tab === "image" && file) {
       // Real local OCR — progress follows the recognizer; engine assets download
@@ -189,29 +193,37 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       const trimmed = extracted.trim();
       const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
       const ok = trimmed.length >= 24 && wordCount >= 4;
-      setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
+      const { result, local } = await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message");
+      setResult(result);
+      setServedLocal(local);
       setDemoNote(!ok);
       setProgress(100);
       setPhase("done");
       return;
     }
 
-    const delay = 2000;
-    const stepMs = delay / SCAN_STEPS.length;
-    const tick = setInterval(() => setStatusLine((s) => Math.min(s + 1, SCAN_STEPS.length - 1)), stepMs);
-    const bar = setInterval(
-      () => setProgress((p) => Math.min(p + Math.round(88 / (delay / 250)), 94)),
-      250
-    );
-    setTimeout(async () => {
-      clearInterval(tick);
-      clearInterval(bar);
-      setProgress(100);
+    // No fixed delay: analysis runs immediately. The stepped UI below
+    // appears only if the round-trip is slow enough to need it (>150ms).
+    setPhase("scanning");
+    setStatusLine(0);
+    setProgress(8);
+    setDemoNote(false);
+    setShowScanUi(false);
+    let settled = false;
+    const showTimer = setTimeout(() => { if (!settled) setShowScanUi(true); }, 150);
+    try {
       const input = tab === "text" ? text : url;
       const kind = tab === "link" || (tab === "text" && looksLikeUrl(text)) ? "url" : "message";
-      setResult(await analyzeWithFallback(input, kind));
+      const { result, local } = await analyzeWithFallback(input, kind);
+      setResult(result);
+      setServedLocal(local);
+      setProgress(100);
+      setStatusLine(SCAN_STEPS.length - 1);
       setPhase("done");
-    }, delay);
+    } finally {
+      settled = true;
+      clearTimeout(showTimer);
+    }
   }
 
   if (phase === "done" && result) {
@@ -290,6 +302,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
   return (
     <div
       id="checker"
+      aria-busy={phase === "scanning"}
       onDragEnter={onCheckerDragEnter}
       onDragOver={onCheckerDragOver}
       onDragLeave={onCheckerDragLeave}
@@ -342,8 +355,8 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       </div>
 
       <div class="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono tracking-wide text-ink-tertiary" aria-label="Trust signals">
-        <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" /> {t("checker.trust.clientSide")}</span>
-        <span class="text-hairline-strong" aria-hidden="true">·</span>
+        {servedLocal && (<><span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" /> {t("checker.trust.clientSide")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span></>)}
         <span>{t("checker.trust.redacted")}</span>
         <span class="text-hairline-strong" aria-hidden="true">·</span>
         <span>{t("checker.trust.notStored")}</span>
@@ -443,10 +456,11 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
         </button>
       </div>
 
-      {phase === "scanning" && (
+      {phase === "scanning" && showScanUi && (
         <div class="mt-5" role="status" aria-live="polite">
-          <div class="scan-bar">
+          <div class="scan-bar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress} aria-label={t("checker.scanning")}>
             <div class="scan-bar-fill" style={{ width: `${progress}%` }} />
+            <span class="sr-only">{progress}%</span>
           </div>
           <ul class="mt-4 space-y-2.5 text-sm">
             {SCAN_STEPS.map((s, i) => (
