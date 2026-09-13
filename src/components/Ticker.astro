@@ -12,19 +12,13 @@ const items = [
   { label: "'Hi Mum' WhatsApp emergency", href: "/scams/whatsapp-family-emergency" },
   { label: "Wedding invite APK malware", href: "/scams/wedding-invite-apk" },
 ];
-const loop = [...items, ...items];
 ---
 
-<section aria-label="Trending scam patterns" class="border-y border-hairline bg-surface-1/60 marquee py-3">
-  <div class="marquee-track text-[13px] text-ink-subtle px-4">
-    {loop.map((it, i) => (
-      <a
-        href={it.href}
-        aria-hidden={i >= items.length ? "true" : undefined}
-        tabindex={i >= items.length ? -1 : undefined}
-        class:list={["shrink-0 transition-colors hover:text-ink", i < items.length ? "" : "pointer-events-none"]}
-      >
-        <span class="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-primary-hover align-middle" aria-hidden="true"></span>{it.label}
+<section aria-label="Trending scam patterns" class="border-y border-hairline bg-surface-1/60 px-4 py-4 sm:px-6">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-2">
+    {items.map((it) => (
+      <a href={it.href} class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-canvas px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-strong hover:text-ink">
+        <span class="h-1.5 w-1.5 rounded-full bg-primary-hover" aria-hidden="true"></span>{it.label}
       </a>
     ))}
   </div>

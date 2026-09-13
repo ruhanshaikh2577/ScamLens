@@ -128,3 +128,28 @@ describe("vault honesty: scan states", () => {
     expect(s).toContain('t("checker.trust.clientSide")');
   });
 });
+
+describe("vault rhythm: section tiers + static ticker", () => {
+  const read = (p: string) => readFileSync(p, "utf8");
+  it("tier-A story sections use py-20", () => {
+    for (const f of ["src/components/HowItWorks.astro", "src/components/WhatWeDetect.astro", "src/components/ExampleAnalysis.astro"]) {
+      expect(read(f)).toMatch(/<section[^>]*py-20/);
+    }
+  });
+  it("tier-B dense sections use py-16", () => {
+    for (const f of ["src/components/ScamLibraryGrid.astro", "src/components/SafetyTips.astro", "src/components/FAQ.astro", "src/components/SEOContent.astro"]) {
+      expect(read(f)).toMatch(/<section[^>]*py-16/);
+    }
+    expect(read("src/components/StatsBand.astro")).toContain("py-16 sm:py-20");
+  });
+  it("no marquee system anywhere", () => {
+    expect(read("src/styles/global.css")).not.toContain("marquee");
+    expect(read("src/components/Ticker.astro")).not.toContain("marquee");
+    expect(read("src/components/Ticker.astro")).not.toContain("const loop");
+  });
+  it("ticker is a static wrap list", () => {
+    const s = read("src/components/Ticker.astro");
+    expect(s).toContain("flex-wrap");
+    expect(s).toContain("items.map((it)");
+  });
+});

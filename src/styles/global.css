@@ -327,23 +327,6 @@ html.dark {
   .seal-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--color-gold); font-size: 12px; font-weight: 500; }
   .seal-ring { width: 18px; height: 18px; border: 1.5px solid var(--color-gold); border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
 
-  /* Ticker marquee */
-  .marquee {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  }
-  .marquee-track {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    width: max-content;
-    animation: marquee 36s linear infinite;
-  }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
-
   /* Checker scan progress */
   .scan-bar {
     position: relative;
@@ -455,11 +438,6 @@ html.dark {
     background-position: -200% 0;
   }
 }
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
@@ -505,11 +483,6 @@ html.dark {
   .hero-in {
     opacity: 1 !important;
     transform: none !important;
-  }
-  .marquee-track {
-    animation: none !important;
-    flex-wrap: wrap;
-    width: auto;
   }
 }
 

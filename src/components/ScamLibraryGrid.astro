@@ -41,7 +41,7 @@ const all = [...bySlug.values()].sort((a, b) => a.data.title.localeCompare(b.dat
 const scams = typeof limit === "number" ? all.slice(0, limit) : all;
 ---
 
-<section id="scam-library" class="border-t border-hairline px-4 py-24 sm:px-6">
+<section id="scam-library" class="border-t border-hairline px-4 py-16 sm:px-6">
   <div class="mx-auto max-w-6xl">
     <div data-reveal class="flex flex-wrap items-end justify-between gap-6">
       {heading && (
