@@ -32,4 +32,9 @@ describe("sovereign vault theme", () => {
     expect(c).toContain("repeating-linear-gradient");
     expect(c).not.toContain("radial-gradient(circle at center, var(--color-primary), transparent 65%)");
   });
+  it("vault motion restraint: static hero, static cards", () => {
+    const c = css();
+    expect(c).not.toContain("radial-gradient(circle at center, var(--color-primary), transparent 65%)");
+    expect(c).not.toContain("translateY(-3px)");
+  });
 });

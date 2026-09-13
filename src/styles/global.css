@@ -11,7 +11,7 @@
   --color-ink: #F2F5F9;
   --color-ink-muted: #C3CEDD;
   --color-ink-subtle: #8B98AD;
-  --color-ink-tertiary: #5F6B80;
+  --color-ink-tertiary: #79879E;
   --color-canvas: #060B14;
   --color-surface-1: #0B1424;
   --color-surface-2: #0F1A2E;
@@ -23,6 +23,7 @@
   --color-inverse-canvas: #ffffff;
   --color-inverse-ink: #000000;
   --color-success: #27a644;
+  --color-error: #F87171;
   --color-gold: #C9A227;
   --color-gold-deep: #8A6D1B;
 
@@ -61,8 +62,9 @@
   --light-ink: #0A1628;
   --light-ink-muted: #33415C;
   --light-ink-subtle: #5B6B84;
-  --light-ink-tertiary: #7A879C;
+  --light-ink-tertiary: #66748A;
   --light-primary: #047857;
+  --light-error: #B91C1C;
 }
 
 /* Light/Dark auto — flip semantic vars under light preference (DESIGN.md inverse tokens) */
@@ -81,6 +83,7 @@
     --color-ink-muted: var(--light-ink-muted);
     --color-ink-subtle: var(--light-ink-subtle);
     --color-ink-tertiary: var(--light-ink-tertiary);
+    --color-error: var(--light-error);
   }
 }
 html.light {
@@ -98,6 +101,7 @@ html.light {
   --color-ink-muted: var(--light-ink-muted);
   --color-ink-subtle: var(--light-ink-subtle);
   --color-ink-tertiary: var(--light-ink-tertiary);
+  --color-error: var(--light-error);
 }
 html.dark {
   --color-canvas: #060B14;
@@ -111,7 +115,7 @@ html.dark {
   --color-ink: #F2F5F9;
   --color-ink-muted: #C3CEDD;
   --color-ink-subtle: #8B98AD;
-  --color-ink-tertiary: #5F6B80;
+  --color-ink-tertiary: #79879E;
 }
 
 @layer base {
@@ -226,28 +230,6 @@ html.dark {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
-  /* Hover lift for interactive cards (paired with .card) */
-  .card-lift {
-    transition:
-      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 160ms ease,
-      box-shadow 220ms ease;
-  }
-  @media (hover: hover) {
-    .card-lift:hover {
-      transform: translateY(-3px);
-      border-color: var(--color-hairline-strong);
-      box-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.55);
-    }
-    .card-lift:hover .arrow-nudge {
-      transform: translateX(4px);
-    }
-  }
-  .arrow-nudge {
-    display: inline-block;
-    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
   .risk-badge {
     display: inline-flex;
     align-items: center;
@@ -295,10 +277,6 @@ html.dark {
     background: currentColor;
     will-change: transform, opacity;
   }
-  .risk-high .risk-dot,
-  .risk-critical .risk-dot {
-    animation: risk-pulse 1.6s ease-in-out infinite;
-  }
 
   .evidence-pill {
     display: inline-block;
@@ -339,7 +317,7 @@ html.dark {
     transform: scaleX(1);
   }
 
-  /* Hero guilloche — fine emerald line layer + two soft drifting blobs */
+  /* Hero guilloche — static fine emerald line layer */
   .aurora {
     position: absolute;
     inset: -35% -10% auto;
@@ -350,48 +328,11 @@ html.dark {
     background: repeating-linear-gradient(115deg, color-mix(in srgb, var(--color-primary) 16%, transparent) 0 1px, transparent 1px 9px);
     mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
   }
-  .aurora::before,
-  .aurora::after {
-    content: "";
-    position: absolute;
-    width: 480px;
-    height: 480px;
-    border-radius: 50%;
-    filter: blur(110px);
-    opacity: 0.14;
-    background: var(--color-primary);
-    will-change: transform;
-  }
-  .aurora::before {
-    left: 12%;
-    top: -20%;
-    animation: aurora-a 22s ease-in-out infinite alternate;
-  }
-  .aurora::after {
-    right: 8%;
-    top: 5%;
-    opacity: 0.10;
-    animation: aurora-b 26s ease-in-out infinite alternate;
-  }
   .seal-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--color-gold); font-size: 12px; font-weight: 500; }
   .seal-ring { width: 18px; height: 18px; border: 1.5px solid var(--color-gold); border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
 
-  /* Ticker marquee */
-  .marquee {
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  }
-  .marquee-track {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    width: max-content;
-    animation: marquee 36s linear infinite;
-  }
-  .marquee:hover .marquee-track,
-  .marquee:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
+  /* Checker: errors read as errors (never success green), in both modes */
+  .form-error { color: var(--color-error); }
 
   /* Checker scan progress */
   .scan-bar {
@@ -404,7 +345,7 @@ html.dark {
   .scan-bar-fill {
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
+    background: var(--color-primary);
     transition: width 300ms ease;
   }
   .scan-lens {
@@ -504,40 +445,9 @@ html.dark {
     background-position: -200% 0;
   }
 }
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
-  }
-}
-@keyframes risk-pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.7;
-  }
-}
-@keyframes aurora-a {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(90px, 40px) scale(1.15);
-  }
-}
-@keyframes aurora-b {
-  from {
-    transform: translate(0, 0) scale(1.05);
-  }
-  to {
-    transform: translate(-70px, -30px) scale(0.95);
   }
 }
 
@@ -580,11 +490,6 @@ html.dark {
   .hero-in {
     opacity: 1 !important;
     transform: none !important;
-  }
-  .marquee-track {
-    animation: none !important;
-    flex-wrap: wrap;
-    width: auto;
   }
 }
 
