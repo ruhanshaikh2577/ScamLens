@@ -52,8 +52,31 @@ describe("vault discipline item 1 sweep", () => {
       (l) =>
         l.includes("CheckerIsland.tsx") ||
         l.includes("AboutReportBox.astro") ||
-        l.includes("QuizIsland.tsx"),
+        l.includes("QuizIsland.tsx:209"),
     );
     expect(lines.length - allowed.length).toBe(0);
+  });
+});
+
+describe("vault discipline item 3 verdict hierarchy", () => {
+  const src = () => readFileSync("src/components/checker/CheckerIsland.tsx", "utf8");
+  it("verdict and utility are separate panels with one report box", () => {
+    const s = src();
+    expect(s).toContain('id="checker-result"');
+    expect(s).toContain('id="checker-utility"');
+    const goldenBoxes = (s.match(/const goldenBox|goldenBox\}/g) ?? []).length;
+    expect(goldenBoxes).toBeLessThanOrEqual(2);
+    // report box rendered exactly once in JSX (not {urgent && goldenBox} + {!urgent && goldenBox})
+    const conditionalRenders = (s.match(/\{urgent && goldenBox\}|\{!urgent && goldenBox\}/g) ?? []).length;
+    expect(conditionalRenders).toBe(0);
+    expect(s).toContain("{goldenBox}");
+  });
+  it("demo badge is not a risk badge", () => {
+    const s = src();
+    expect(s).not.toContain('risk-badge risk-low">\n            <span class="risk-dot" />\n            DEMO');
+  });
+  it("evidence icons use vault gold, not emerald", () => {
+    const s = src();
+    expect(s).not.toMatch(/findings\.map[\s\S]{0,400}text-primary-hover/);
   });
 });
