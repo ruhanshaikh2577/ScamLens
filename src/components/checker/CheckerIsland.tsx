@@ -164,6 +164,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     setResult(null);
     setDemoNote(false);
     setShowScanUi(false);
+    setServedLocal(true);
     setPhase("idle");
   }
 
@@ -178,27 +179,36 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     if (tab === "image" && file) {
       // Real local OCR — progress follows the recognizer; engine assets download
       // once from CDN and are cached. Any failure falls back to the demo sample.
+      // Same 150ms debounce as the text path: the stepped UI appears only if
+      // the scan is slow enough to need it.
+      let settled = false;
+      const showTimer = setTimeout(() => { if (!settled) setShowScanUi(true); }, 150);
       const crawl = setInterval(() => setProgress((p) => Math.min(p + 2, 25)), 300);
-      let extracted = "";
       try {
-        extracted = await ocrFile(file, (p) => {
-          clearInterval(crawl);
-          setProgress(25 + Math.round(p * 70));
-          setStatusLine(Math.min(1 + Math.floor(p * (SCAN_STEPS.length - 1)), SCAN_STEPS.length - 1));
-        });
-      } catch (e) {
-        if (import.meta.env.DEV) console.warn("[ocr]", e);
+        let extracted = "";
+        try {
+          extracted = await ocrFile(file, (p) => {
+            clearInterval(crawl);
+            setProgress(25 + Math.round(p * 70));
+            setStatusLine(Math.min(1 + Math.floor(p * (SCAN_STEPS.length - 1)), SCAN_STEPS.length - 1));
+          });
+        } catch (e) {
+          if (import.meta.env.DEV) console.warn("[ocr]", e);
+        }
+        clearInterval(crawl);
+        const trimmed = extracted.trim();
+        const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
+        const ok = trimmed.length >= 24 && wordCount >= 4;
+        const { result, local } = await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message");
+        setResult(result);
+        setServedLocal(local);
+        setDemoNote(!ok);
+        setProgress(100);
+        setPhase("done");
+      } finally {
+        settled = true;
+        clearTimeout(showTimer);
       }
-      clearInterval(crawl);
-      const trimmed = extracted.trim();
-      const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
-      const ok = trimmed.length >= 24 && wordCount >= 4;
-      const { result, local } = await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message");
-      setResult(result);
-      setServedLocal(local);
-      setDemoNote(!ok);
-      setProgress(100);
-      setPhase("done");
       return;
     }
 

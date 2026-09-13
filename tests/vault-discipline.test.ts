@@ -67,15 +67,15 @@ describe("vault discipline item 1 sweep", () => {
     // Allowed — rg-verified line locks (evidence icons are vault gold
     // post-Task-3, so the old file-level CheckerIsland allow is dead; lock the
     // survivors to stop reintroduction):
-    // - CheckerIsland.tsx:446 file-error text (pre-existing error affordance)
-    // - CheckerIsland.tsx:473 scan-lens icon (active-scan affordance)
+    // - CheckerIsland.tsx:456 file-error text (pre-existing error affordance)
+    // - CheckerIsland.tsx:483 scan-lens icon (active-scan affordance)
     // AboutReportBox helpline links stay emerald per ruling (b) — genuine link
     // emphasis; QuizIsland incorrect-answer text is pre-existing HEAD content
     // outside this task's file list (Task 3 scope).
     const allowed = lines.filter(
       (l) =>
-        l.includes("CheckerIsland.tsx:446") ||
-        l.includes("CheckerIsland.tsx:473") ||
+        l.includes("CheckerIsland.tsx:456") ||
+        l.includes("CheckerIsland.tsx:483") ||
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
