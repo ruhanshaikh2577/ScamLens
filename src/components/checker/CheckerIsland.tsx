@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
 import { looksLikeUrl } from "../../lib/url";
-import { generateShareCard, saveHistory, loadHistory, clearHistory, removeHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
-import { reportHelplines, reportUrls } from "../../i18n/ui";
+import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
 import enDict from "../../i18n/translations/en";
 import type { Lang } from "../../i18n/ui";
 
@@ -25,9 +24,9 @@ function getT(lang: string) {
   return (key: string) => d[key] ?? fb[key] ?? key;
 }
 
-async function analyzeWithFallback(input: string, kind: "message" | "url", lang: string): Promise<AnalysisResult> {
+async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<AnalysisResult> {
   try {
-    const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : `/api/analyze?lang=${encodeURIComponent(lang)}`;
+    const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
     const res = await fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -37,7 +36,7 @@ async function analyzeWithFallback(input: string, kind: "message" | "url", lang:
   } catch (e) {
     if (import.meta.env.DEV) console.warn("[analyzeWithFallback]", e);
   }
-  return analyze(input, kind, lang);
+  return analyze(input, kind);
 }
 
 type Tab = "text" | "image" | "link";
@@ -66,7 +65,7 @@ async function ocrFile(file: File, onProgress: (p: number) => void): Promise<str
 // Fallback when OCR can't run (offline, engine failed): analyze a representative
 // sample so the flow still teaches the pattern — clearly labelled as demo output.
 const SAMPLE_OCR_TEXT =
-  "USPS: Your package is on hold due to an incomplete address. Pay a $1.99 redelivery fee within 24 hours or it will be returned: usps-postagehelp.com";
+  "Dear customer, your KYC has expired. Update Aadhaar within 24 hours or your account will be closed today. Pay Rs 99 processing fee via UPI: fastagpay@ybl bit.ly/kyc-upd";
 
 const RISK_CLASS: Record<RiskLevel, string> = {
   low: "risk-low",
@@ -82,42 +81,6 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       loaders[lang]().then(d => { dicts[lang] = d; forceUpdate(v => v + 1); });
     }
   }, [lang]);
-  useEffect(() => {
-    // Deep link (?check= in hash, e.g. from the browser extension context menu):
-    // pre-fills the checker with shared text. Runs before the sample path.
-    try {
-      const m = location.hash.match(/[?&]check=([^&]+)/);
-      if (m) {
-        const s = decodeURIComponent(m[1].replace(/\+/g, " ")).slice(0, 10000);
-        if (s.trim()) {
-          handleTextDrop(s);
-          try { sessionStorage.removeItem("scamlens:sample"); } catch {}
-          return;
-        }
-      }
-    } catch {}
-    // One-tap sample from ExampleAnalysis ("Try this example →"):
-    // sessionStorage covers mount-after-click, the event covers already-mounted.
-    try {
-      const s = sessionStorage.getItem("scamlens:sample");
-      if (s && s.trim()) {
-        sessionStorage.removeItem("scamlens:sample");
-        setText(s.slice(0, 10000));
-        setTab("text");
-        setFileError("");
-      }
-    } catch {}
-    const onSample = (e: Event) => {
-      const s = (e as CustomEvent<string>).detail;
-      if (s && s.trim()) {
-        setText(s.slice(0, 10000));
-        setTab("text");
-        setFileError("");
-      }
-    };
-    window.addEventListener("scamlens:sample", onSample);
-    return () => window.removeEventListener("scamlens:sample", onSample);
-  }, []);
   const t = getT(lang);
   const TABS: Array<{ id: Tab; label: string }> = [
     { id: "text", label: t("checker.tab.message") },
@@ -136,7 +99,6 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [fileError, setFileError] = useState("");
-  const [notice, setNotice] = useState("");
   // Fix stale closure: use ref for cleanup so all callers revoke via same ref (final-review Important #7)
   const previewUrlRef = useRef<string | null>(null);
   useEffect(() => { previewUrlRef.current = previewUrl; }, [previewUrl]);
@@ -155,25 +117,6 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     ((tab === "text" && text.trim().length > 3) ||
       (tab === "link" && url.trim().length > 3) ||
       (tab === "image" && !!file));
-
-  // Inline guidance instead of a dead button: short input, or a URL pasted into Message tab
-  const trimmedText = text.trim();
-  const trimmedUrl = url.trim();
-  const shortInput =
-    phase === "idle" &&
-    ((tab === "text" && trimmedText.length > 0 && trimmedText.length <= 3) ||
-      (tab === "link" && trimmedUrl.length > 0 && trimmedUrl.length <= 3));
-  const emptyInput =
-    phase === "idle" &&
-    ((tab === "text" && trimmedText.length === 0) ||
-      (tab === "link" && trimmedUrl.length === 0));
-  const urlInTextTab =
-    phase === "idle" &&
-    tab === "text" &&
-    trimmedText.length > 3 &&
-    looksLikeUrl(trimmedText) &&
-    !trimmedText.includes("\n") &&
-    trimmedText.length < 2048;
 
   function pickFile(f: File | undefined | null) {
     setFileError("");
@@ -197,11 +140,9 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     if (!trimmed) return;
     setFileError("");
     if (looksLikeUrl(trimmed) && trimmed.length < 2048 && !trimmed.includes("\n")) {
-      setNotice("");
       setUrl(trimmed);
       setTab("link");
     } else {
-      setNotice(trimmed.length > 10000 ? t("checker.hint.trimmed") : "");
       setText(trimmed.slice(0, 10000));
       setTab("text");
     }
@@ -214,8 +155,10 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     setFileError("");
   }
 
-  function backToEdit() {
-    // Keep the user's input: checking a second message costs one tap, not a re-paste
+  function reset() {
+    clearFile();
+    setText("");
+    setUrl("");
     setResult(null);
     setDemoNote(false);
     setPhase("idle");
@@ -246,7 +189,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       const trimmed = extracted.trim();
       const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
       const ok = trimmed.length >= 24 && wordCount >= 4;
-      setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message", lang));
+      setResult(await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message"));
       setDemoNote(!ok);
       setProgress(100);
       setPhase("done");
@@ -266,14 +209,14 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       setProgress(100);
       const input = tab === "text" ? text : url;
       const kind = tab === "link" || (tab === "text" && looksLikeUrl(text)) ? "url" : "message";
-      setResult(await analyzeWithFallback(input, kind, lang));
+      setResult(await analyzeWithFallback(input, kind));
       setPhase("done");
     }, delay);
   }
 
   if (phase === "done" && result) {
     return (
-      <ResultView result={result} demo={demoNote} onReset={backToEdit} lang={lang} />
+      <ResultView result={result} demo={demoNote} onReset={reset} lang={lang} />
     );
   }
 
@@ -356,7 +299,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     >
       {dragActive && (
         <div class="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 rounded-lg bg-canvas/85 backdrop-blur border-2 border-dashed border-primary-hover">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-primary-hover" aria-hidden="true"><path d="M12 16V4M8 8l4-4 4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4M8 8l4-4 4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
           <p class="text-sm font-medium text-ink">{t("checker.dropOverlay.title")}</p>
           <p class="text-caption text-ink-muted">{t("checker.dropOverlay.subtitle")}</p>
         </div>
@@ -373,7 +316,6 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
               onClick={() => {
                 setTab(t.id);
                 setFileError("");
-                setNotice("");
               }}
               onKeyDown={(e) => {
                 let next: typeof TABS[number] | null = null;
@@ -399,26 +341,31 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
         </div>
       </div>
 
-      <p class="mt-3 rounded-lg border border-hairline bg-surface-2 px-3 py-2 text-center text-[13px] leading-snug text-ink-muted">
-        {t("checker.warn")}{" "}
-        <a href={`${lang==="en" ? "" : `/${lang}`}/how-it-works#redaction`.replace("//","/")} class="underline decoration-hairline-strong underline-offset-4 hover:text-ink">{t("checker.trust.howLinkLong")}</a>
+      <div class="mt-3 flex flex-wrap items-center justify-center gap-2 text-[11px] font-mono tracking-wide text-ink-tertiary" aria-label="Trust signals">
+        <span class="inline-flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-success" aria-hidden="true" /> {t("checker.trust.clientSide")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span>
+        <span>{t("checker.trust.redacted")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span>
+        <span>{t("checker.trust.notStored")}</span>
+        <a href={`${lang==="en" ? "" : `/${lang}`}/how-it-works#redaction`.replace("//","/")} class="ml-1 underline decoration-hairline-strong underline-offset-4 hover:text-ink-muted">{t("checker.trust.howLink")}</a>
+      </div>
+
+      <p class="mt-4 rounded-lg border border-hairline bg-surface-2 px-3 py-2 text-center text-[13px] leading-snug text-ink-muted">
+        {t("checker.warn")}
       </p>
 
       <div id="panel-text" role="tabpanel" aria-labelledby="tab-text" hidden={tab !== "text"}>
         <textarea
           aria-label={t("checker.aria.message")}
           value={text}
-          onInput={(e) => { setText((e.target as HTMLTextAreaElement).value); setNotice(""); }}
+          onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
           onKeyDown={(e) => (e.key === "Enter" && (e.ctrlKey || e.metaKey)) && scan()}
           rows={7}
           maxlength={10000}
           placeholder={t("checker.placeholder.message")}
           class="mt-4 w-full resize-y rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-body leading-relaxed text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none focus-visible:outline-2 focus-visible:outline-primary-focus/50"
         />
-        <p class="mt-1 hidden text-caption text-ink-tertiary [@media(pointer:fine)]:block">{t("checker.tip")}</p>
-        {trimmedText.length > 0 && (
-          <p class="mt-1 tabular-nums text-caption text-ink-tertiary" aria-live="polite">{trimmedText.length.toLocaleString()} / 10,000 {t("checker.hint.chars")}</p>
-        )}
+        <p class="mt-1 text-caption text-ink-tertiary">{t("checker.tip")}</p>
       </div>
 
       <div id="panel-link" role="tabpanel" aria-labelledby="tab-link" hidden={tab !== "link"}>
@@ -426,7 +373,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
           type="text"
           aria-label={t("checker.aria.link")}
           value={url}
-          onInput={(e) => { setUrl((e.target as HTMLInputElement).value); setNotice(""); }}
+          onInput={(e) => setUrl((e.target as HTMLInputElement).value)}
           onKeyDown={(e) => e.key === "Enter" && scan()}
           placeholder={t("checker.placeholder.link")}
           class="mt-4 w-full rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-body text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none"
@@ -471,7 +418,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
             <div class="rounded-lg border border-hairline bg-surface-1 p-3">
               <div class="flex items-start gap-3">
                 {previewUrl && (
-                  <img src={previewUrl} alt={t("checker.aria.preview")} class="max-h-44 w-auto rounded-md border border-hairline" />
+                  <img src={previewUrl} alt="Uploaded screenshot preview" class="max-h-44 w-auto rounded-md border border-hairline" />
                 )}
                 <div class="min-w-0 flex-1">
                   <p class="truncate text-sm text-ink">{file.name}</p>
@@ -483,7 +430,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
               </div>
             </div>
           )}
-          {fileError && <p role="alert" class="form-error mt-2 text-[13px] font-medium">{fileError}</p>}
+          {fileError && <p class="mt-2 text-[13px] text-primary-hover">{fileError}</p>}
         </div>
       </div>
 
@@ -496,28 +443,6 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
         </button>
       </div>
 
-      {(shortInput || urlInTextTab || emptyInput || notice) && (
-        <p role="status" class="mt-3 text-[13px] leading-relaxed text-ink-muted">
-          {urlInTextTab ? (
-            <>
-              {t("checker.hint.url")}{" "}
-              <button
-                onClick={() => { setUrl(trimmedText); setText(""); setTab("link"); setFileError(""); setNotice(""); }}
-                class="font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover"
-              >
-                {t("checker.hint.switchToLink")}
-              </button>
-            </>
-          ) : shortInput ? (
-            t("checker.hint.short")
-          ) : notice ? (
-            notice
-          ) : (
-            t("checker.hint.empty")
-          )}
-        </p>
-      )}
-
       {phase === "scanning" && (
         <div class="mt-5" role="status" aria-live="polite">
           <div class="scan-bar">
@@ -527,7 +452,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
             {SCAN_STEPS.map((s, i) => (
               <li class="flex items-center gap-2.5">
                 {i < statusLine ? (
-                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 fade-in text-success" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="#27a644" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 fade-in" aria-hidden="true">
                     <path d="M3 8.5l3 3 7-7" />
                   </svg>
                 ) : i === statusLine ? (
@@ -548,7 +473,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
   );
 }
 
-function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisResult; demo: boolean; onReset: () => void; lang?: Lang }) {
+function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisResult; demo: boolean; onReset: () => void; lang?: string }) {
   const t = getT(lang);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -571,7 +496,7 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
   async function doShare() {
     setShareStatus("sharing");
     try {
-      const dataUrl = generateShareCard(result, lang);
+      const dataUrl = generateShareCard(result);
       if (!dataUrl) { setShareStatus("idle"); return; }
       const filename = `scamlens-${result.risk}-${Date.now()}.png`;
       const outcome = await shareCardDataUrl(dataUrl, filename, result.headline);
@@ -582,7 +507,7 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
     }
   }
   function doDownload() {
-    const dataUrl = generateShareCard(result, lang);
+    const dataUrl = generateShareCard(result);
     if (!dataUrl) return;
     const a = document.createElement("a");
     a.href = dataUrl;
@@ -597,17 +522,12 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
     setHistoryCleared(true);
     setTimeout(() => setHistoryCleared(false), 2000);
   }
-  // Reporting help follows the selected language, not a single country's helpline.
-  const helpline = reportHelplines[lang] ?? null;
-  const portal = reportUrls[lang] ?? reportUrls.en;
-  let portalHost = portal;
-  try { portalHost = new URL(portal).hostname.replace(/^www\./, ""); } catch {}
   const goldenBox = (
     <div class="mt-6 flex flex-col gap-2 rounded-lg border border-hairline bg-surface-2 p-4 sm:flex-row sm:items-center">
-      <p class="flex-1 text-sm text-ink-muted">{t("checker.result.golden")}</p>
-      {helpline && <a href={helpline} class="btn btn-secondary shrink-0"><span aria-hidden="true">✆ </span>{helpline.replace(/^tel:/, "")}</a>}
-      <a href={portal} target="_blank" rel="noopener noreferrer" class="btn btn-primary shrink-0">
-        {portalHost}
+      <p class="flex-1 text-sm text-ink-muted">Lost money or shared details? Act within the golden hour.</p>
+      <a href="tel:1930" class="btn btn-secondary shrink-0">Call 1930</a>
+      <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary shrink-0">
+        Report at cybercrime.gov.in
       </a>
     </div>
   );
@@ -615,30 +535,27 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
     <>
     <div id="checker-result" class="card panel-top-edge scale-in mx-auto w-full max-w-2xl p-5 sm:p-8">
       <div class="flex flex-wrap items-center justify-between gap-3">
-        {demo ? (
-          <span class="inline-flex items-center gap-2 rounded-full border border-hairline-strong bg-surface-2 px-3 py-1 text-xs font-medium tracking-wide text-ink-muted">
-            {t("checker.result.demoTitle")}
-          </span>
-        ) : (
-          <span class={`risk-badge ${RISK_CLASS[result.risk]}`}>
-            <span class="risk-dot" />
-            {RISK_LABEL[result.risk]}
-          </span>
+        <span class={`risk-badge ${RISK_CLASS[result.risk]}`}>
+          <span class="risk-dot" />
+          {RISK_LABEL[result.risk]}
+        </span>
+        {result.risk === "low" && (
+          <span class="seal-badge ml-1" aria-hidden="true"><span class="seal-ring"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 5.2 4 7.4 8.2 2.8"/></svg></span></span>
         )}
-        <button onClick={onReset} class="btn btn-secondary">
-          {t("checker.result.editAnother")}
+        <button onClick={onReset} class="btn btn-secondary !min-h-0 !px-3 !py-1.5 !text-xs">
+          Scan something else
         </button>
       </div>
-
-      {demo && (
-        <div role="status" class="mt-4 rounded-lg border border-hairline bg-surface-2 px-3 py-2">
-          <p class="mt-0.5 text-[13px] leading-relaxed text-ink-muted">{t("checker.result.demo")}</p>
-        </div>
-      )}
 
       <h3 ref={headingRef} tabIndex={-1} class="card-title mt-4 focus-visible:outline-none">
         {result.headline}
       </h3>
+
+      {demo && (
+        <p class="mt-2 rounded-lg border border-hairline bg-surface-2 px-3 py-2 text-[13px] text-ink-muted">
+          {t("checker.result.demo")}
+        </p>
+      )}
 
       {goldenBox}
 
@@ -662,8 +579,8 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
         </section>
       )}
 
-      <section class="mt-6 border-t border-hairline pt-6" aria-label={t("checker.result.next")}>
-        <h4 class="eyebrow">{t("checker.result.next")}</h4>
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="What you should do">
+        <h4 class="eyebrow">What you should do</h4>
         <ol class="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-ink-muted">
           {result.nextSteps.map((s) => (
             <li>{s}</li>
@@ -671,13 +588,13 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
         </ol>
       </section>
 
-      <p class="mt-6 border-t border-hairline pt-4 text-caption leading-relaxed text-ink-tertiary">{result.disclaimer}</p>
+      <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">{result.disclaimer}</p>
     </div>
 
     <div id="checker-utility" class="card mx-auto mt-4 w-full max-w-2xl p-5 sm:p-8">
       {result.similarScams.length > 0 && (
-        <section aria-label={t("checker.result.similar")}>
-          <h4 class="eyebrow">{t("checker.result.similar")}</h4>
+        <section class="mt-6 border-t border-hairline pt-6" aria-label="Similar scams">
+          <h4 class="eyebrow">Similar scams</h4>
           <div class="mt-3 flex flex-wrap gap-2">
             {result.similarScams.map((s) => (
               <a href={s.slug} class="rounded-full border border-hairline bg-canvas px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-tertiary hover:text-ink">
@@ -688,43 +605,40 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
         </section>
       )}
 
-      <section class="mt-6 border-t border-hairline pt-6" aria-label={t("checker.result.share")}>
-        <h4 class="eyebrow">{t("checker.result.share")}</h4>
-        <p class="mt-2 text-sm leading-relaxed text-ink-muted">{t("checker.result.shareDesc")}</p>
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="Share">
+        <h4 class="eyebrow">Share this check</h4>
+        <p class="mt-2 text-sm leading-relaxed text-ink-muted">Card shows the verdict and evidence summary with a verify link — no private numbers or raw message included.</p>
         <div class="mt-3 flex flex-wrap gap-2">
           <button onClick={doShare} disabled={shareStatus === "sharing"} class="btn btn-secondary">
-            {shareStatus === "sharing" ? t("checker.result.sharing") : shareStatus === "done" ? t("checker.result.shared") : t("checker.result.shareBtn")}
+            {shareStatus === "sharing" ? "Preparing…" : shareStatus === "done" ? "Shared ✓" : "Share card"}
           </button>
-          <button onClick={doDownload} class="btn btn-secondary">{t("checker.result.download")}</button>
+          <button onClick={doDownload} class="btn btn-secondary">Download PNG</button>
         </div>
-        <p class="mt-2 text-caption text-ink-tertiary">{t("checker.result.shareTech")} · {result.meta.analyzerVersion}</p>
+        <p class="mt-2 text-caption text-ink-tertiary">Uses canvas → navigator.share with file, falls back to download. Verify link: scamlens.in/how-it-works · {result.meta.analyzerVersion}</p>
       </section>
 
-      <section class="mt-6 border-t border-hairline pt-6" aria-label={t("checker.result.history")}>
+      <section class="mt-6 border-t border-hairline pt-6" aria-label="Local history">
         <div class="flex items-center justify-between gap-3">
-          <h4 class="eyebrow">{t("checker.result.history")}</h4>
-          <span class="rounded-full border border-hairline bg-canvas px-2.5 py-0.5 font-medium tracking-wide text-caption text-ink-tertiary">{t("checker.result.historyHint")}</span>
+          <h4 class="eyebrow">Recent checks</h4>
+          <span class="rounded-full border border-hairline bg-canvas px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-ink-tertiary">Stored locally on this device</span>
         </div>
-        <p class="mt-2 text-caption leading-relaxed text-ink-tertiary">{t("checker.result.historyDesc")}</p>
+        <p class="mt-2 text-caption leading-relaxed text-ink-tertiary">No cloud sync. History saves only the verdict and detector list — never your raw message — so you can revisit checks offline.</p>
         {history.length > 0 ? (
           <>
             <ul class="mt-3 space-y-2">
               {history.slice(0, 8).map((h) => (
                 <li key={h.id} class="flex items-center justify-between gap-3 rounded-md border border-hairline bg-canvas px-3 py-2">
                   <div class="min-w-0">
-                    <p class="truncate text-sm font-medium text-ink">{h.headline} <span class={`ml-1.5 rounded-full border px-1.5 py-0.5 text-caption ${RISK_CLASS[h.risk] ?? "risk-low"}`}>{h.risk}</span></p>
-                    <p class="truncate font-mono text-caption text-ink-tertiary">{new Date(h.timestamp).toLocaleDateString()} · {h.detectorIds.length} {t("checker.result.signals")}</p>
+                    <p class="truncate text-sm font-medium text-ink">{h.headline} <span class={`ml-1.5 rounded-full border px-1.5 py-0.5 text-[10px] ${RISK_CLASS[h.risk] ?? "risk-low"}`}>{h.risk}</span></p>
+                    <p class="truncate font-mono text-[11px] text-ink-tertiary">{new Date(h.timestamp).toLocaleString()} · {h.detectorIds.join(", ") || "no detectors"} · {h.analyzerVersion}</p>
                   </div>
-                  <button onClick={() => { removeHistory(h.id); setHistory(loadHistory()); }} aria-label={t("checker.result.deleteEntry")} class="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md text-xl leading-none text-ink-tertiary transition-colors hover:bg-surface-2 hover:text-ink">
-                    <span aria-hidden="true">×</span>
-                  </button>
                 </li>
               ))}
             </ul>
-            <button onClick={handleClear} class="btn btn-secondary mt-3 !min-h-0 !px-3 !py-1.5 !text-xs">{historyCleared ? t("checker.result.cleared") : t("checker.result.clearHistory")}</button>
+            <button onClick={handleClear} class="btn btn-secondary mt-3 !min-h-0 !px-3 !py-1.5 !text-xs">{historyCleared ? "Cleared ✓" : "Clear history"}</button>
           </>
         ) : (
-          <p class="mt-3 rounded-md border border-dashed border-hairline bg-canvas px-3 py-3 text-center text-sm text-ink-tertiary">{t("checker.result.historyEmpty")}</p>
+          <p class="mt-3 rounded-md border border-dashed border-hairline bg-canvas px-3 py-3 text-center text-sm text-ink-tertiary">No history yet — your next scan will appear here.</p>
         )}
       </section>
     </div>
