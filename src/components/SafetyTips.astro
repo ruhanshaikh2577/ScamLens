@@ -36,7 +36,7 @@ const heading = typeof limit === "number" ? t("safety.title.limit", { n: String(
           style={`--reveal-delay: ${Math.min(i, 6) * 60}ms`}
           class="flex gap-4 border-b border-hairline py-4 last:border-b-0 lg:[&:nth-last-child(2)]:border-b-0"
         >
-          <span class="mt-0.5 font-mono text-[13px] text-primary-hover">{String(i + 1).padStart(2, "0")}</span>
+          <span class="mt-0.5 font-mono text-[13px] text-ink-muted">{String(i + 1).padStart(2, "0")}</span>
           <p class="text-body leading-relaxed text-ink-muted">{r}</p>
         </li>
       ))}

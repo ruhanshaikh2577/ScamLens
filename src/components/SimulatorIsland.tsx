@@ -86,7 +86,7 @@ export default function SimulatorIsland({ lang = "en" as Lang }: { lang?: Lang }
           <button
             key={p.labelKey}
             onClick={() => setText(p.text)}
-            class={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${text === p.text ? "border-primary/40 bg-primary/10 text-ink" : "border-hairline bg-canvas text-ink-muted hover:border-hairline-strong hover:text-ink"}`}
+            class={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors min-h-[44px] inline-flex items-center ${text === p.text ? "border-hairline-strong bg-surface-2 text-ink" : "border-hairline bg-canvas text-ink-muted hover:border-hairline-strong hover:text-ink"}`}
           >
             {t(p.labelKey)}
           </button>

@@ -73,12 +73,12 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
             data-reveal
             style={`--reveal-delay: ${(i % 3) * 80}ms`}
             data-title={`${s.data.title} ${s.data.intro} ${s.data.tag}`.toLowerCase()}
-            class="card card-lift library-card group flex flex-col p-6"
+            class="card library-card group flex flex-col p-6"
           >
             <span class="status-badge w-fit rounded-full bg-surface-2 px-2 py-0.5 text-xs text-ink-muted">{s.data.tag}</span>
             <h3 class="card-title mt-4">{s.data.title}</h3>
             <p class="mt-2 line-clamp-3 flex-1 text-body-sm leading-relaxed text-ink-muted">{s.data.intro}</p>
-            <span class="mt-4 text-[13px] font-medium text-primary-hover">Read the breakdown <span class="arrow-nudge">→</span></span>
+            <span class="mt-4 text-[13px] font-medium text-ink">Read the breakdown →</span>
           </a>
         );
       })}
