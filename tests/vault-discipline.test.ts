@@ -79,7 +79,11 @@ describe("vault discipline item 1 sweep", () => {
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
-    expect(lines.length - allowed.length).toBe(0);
+    // hover-link emphasis is spec-allowed; bare hits still fail.
+    const violations = lines.filter(
+      (l) => !allowed.includes(l) && l.replaceAll("hover:text-primary-hover", "").includes("text-primary-hover"),
+    );
+    expect(violations).toEqual([]);
   });
 });
 
