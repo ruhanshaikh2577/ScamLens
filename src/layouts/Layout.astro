@@ -148,6 +148,9 @@ const isActive = (href: string) =>
             <span id="theme-icon" aria-hidden="true"></span>
           </button>
           <a href={reportUrls[lang] ?? reportUrls.en} target="_blank" rel="noopener noreferrer" class="btn btn-secondary hidden sm:inline-flex">{t("nav.report")}</a>
+          <a href={reportUrls[lang] ?? reportUrls.en} target="_blank" rel="noopener noreferrer" aria-label={t("nav.report")} title={t("nav.report")} class="btn btn-secondary sm:hidden !px-3">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7.5 8.5"/></svg>
+          </a>
           <a href={`${translatePath("/")}#checker`} class="btn btn-primary">{t("nav.checkNow")}</a>
         </div>
       </nav>

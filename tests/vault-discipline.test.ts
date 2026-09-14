@@ -67,15 +67,15 @@ describe("vault discipline item 1 sweep", () => {
     // Allowed — rg-verified line locks (evidence icons are vault gold
     // post-Task-3, so the old file-level CheckerIsland allow is dead; lock the
     // survivors to stop reintroduction):
-    // - CheckerIsland.tsx:456 file-error text (pre-existing error affordance)
-    // - CheckerIsland.tsx:483 scan-lens icon (active-scan affordance)
+    // - CheckerIsland.tsx:458 file-error text (pre-existing error affordance)
+    // - CheckerIsland.tsx:485 scan-lens icon (active-scan affordance)
     // AboutReportBox helpline links stay emerald per ruling (b) — genuine link
     // emphasis; QuizIsland incorrect-answer text is pre-existing HEAD content
     // outside this task's file list (Task 3 scope).
     const allowed = lines.filter(
       (l) =>
-        l.includes("CheckerIsland.tsx:456") ||
-        l.includes("CheckerIsland.tsx:483") ||
+        l.includes("CheckerIsland.tsx:458") ||
+        l.includes("CheckerIsland.tsx:485") ||
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
@@ -176,5 +176,29 @@ describe("vault type + button hierarchy", () => {
     const safety = read("src/components/SafetyTips.astro");
     expect(safety).toContain(quiet);
     expect(safety.split("btn btn-secondary").length - 1).toBe(1);
+  });
+});
+
+describe("vault header/cards/trust", () => {
+  const read = (p: string) => readFileSync(p, "utf8");
+  it("report action reachable on mobile without new copy", () => {
+    const s = read("src/layouts/Layout.astro");
+    expect(s).toContain("btn btn-secondary hidden sm:inline-flex");
+    expect(s).toContain("sm:hidden");
+    expect(s).toContain('aria-label={t("nav.report")}');
+  });
+  it("status-badge is a real token", () => {
+    expect(read("src/styles/global.css")).toMatch(/\.status-badge[^}]*background: var\(--color-surface-2\)/);
+  });
+  it("library + detail pages use the token, not utility chains", () => {
+    const files = ["src/components/ScamLibraryGrid.astro", "src/pages/scams/[slug].astro", "src/pages/es/estafas/[slug].astro", "src/pages/fr/arnaques/[slug].astro", "src/pages/de/betrugsmaschen/[slug].astro", "src/pages/pt-br/golpes/[slug].astro", "src/pages/it/truffe/[slug].astro", "src/pages/ja/scams/[slug].astro", "src/pages/ko/scams/[slug].astro"];
+    for (const f of files) {
+      expect(read(f)).not.toContain("bg-surface-2 px-2 py-0.5 text-xs text-ink-muted");
+    }
+  });
+  it("checker shows analyzer version without new copy", () => {
+    const s = read("src/components/checker/CheckerIsland.tsx");
+    expect(s).toContain("v{VERSION}");
+    expect(s).toContain("lib/version");
   });
 });

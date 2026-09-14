@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "preact/hooks";
 import { analyze, type AnalysisResult, type RiskLevel } from "../../lib/analyzer";
+import { VERSION } from "../../lib/version";
 import { looksLikeUrl } from "../../lib/url";
 import { generateShareCard, saveHistory, loadHistory, clearHistory, shareCardDataUrl, type HistoryEntry } from "../../lib/shareCard";
 import enDict from "../../i18n/translations/en";
@@ -370,6 +371,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
         <span>{t("checker.trust.redacted")}</span>
         <span class="text-hairline-strong" aria-hidden="true">·</span>
         <span>{t("checker.trust.notStored")}</span>
+        <span class="text-hairline-strong" aria-hidden="true">·</span><span>v{VERSION}</span>
         <a href={`${lang==="en" ? "" : `/${lang}`}/how-it-works#redaction`.replace("//","/")} class="ml-1 underline decoration-hairline-strong underline-offset-4 hover:text-ink-muted">{t("checker.trust.howLink")}</a>
       </div>
 
