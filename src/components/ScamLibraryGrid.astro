@@ -90,7 +90,7 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
 
     {typeof limit === "number" && (
       <div data-reveal class="mt-10 text-center">
-        <a href={translatePath("/scams")} class="btn btn-secondary">Browse all {all.length} breakdowns →</a>
+        <a href={translatePath("/scams")} class="text-sm font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover">Browse all {all.length} breakdowns →</a>
       </div>
     )}
   </div>

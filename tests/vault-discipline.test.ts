@@ -153,3 +153,24 @@ describe("vault rhythm: section tiers + static ticker", () => {
     expect(s).toContain("items.map((it)");
   });
 });
+
+describe("vault type + button hierarchy", () => {
+  const read = (p: string) => readFileSync(p, "utf8");
+  it("card titles are serif display", () => {
+    expect(read("src/styles/global.css")).toMatch(/\.card-title[^}]*font-family: var\(--font-display\)/);
+  });
+  it("no press-scale on buttons", () => {
+    expect(read("src/styles/global.css")).not.toContain("scale(0.98)");
+  });
+  it("navigational CTAs are quiet links", () => {
+    const quiet = "underline decoration-hairline-strong underline-offset-4";
+    for (const f of ["src/components/SEOContent.astro", "src/components/ScamLibraryGrid.astro", "src/components/WhatWeDetect.astro", "src/components/HowItWorks.astro"]) {
+      const s = read(f);
+      expect(s).toContain(quiet);
+      expect(s).not.toContain("btn btn-secondary");
+    }
+    const safety = read("src/components/SafetyTips.astro");
+    expect(safety).toContain(quiet);
+    expect(safety.split("btn btn-secondary").length - 1).toBe(1);
+  });
+});
