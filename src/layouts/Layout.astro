@@ -238,7 +238,6 @@ const isActive = (href: string) =>
           dark: '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M11.8 8A4.2 4.2 0 014.2 11.8 5.2 5.2 0 0011.8 8z"/><path d="M8 3a5.2 5.2 0 00-3.8 8.8A4.2 4.2 0 0111.8 8H8z" opacity="0"/></svg>',
         };
         const order = ["system", "light", "dark"];
-        const label = (v) => `Theme: ${v} (click to change)`;
         function current() {
           const h = document.documentElement;
           if (h.classList.contains("light")) return "light";
@@ -261,8 +260,6 @@ const isActive = (href: string) =>
           if (!btn || !icon) return;
           const v = current();
           icon.innerHTML = icons[v];
-          btn.setAttribute("aria-label", label(v));
-          btn.title = label(v);
           if (meta) {
             const sysLight = window.matchMedia("(prefers-color-scheme: light)").matches;
             meta.content = v === "light" || (v === "system" && sysLight) ? "#ffffff" : "#010102";

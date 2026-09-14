@@ -396,6 +396,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
       <div id="panel-link" role="tabpanel" aria-labelledby="tab-link" hidden={tab !== "link"}>
         <input
           type="text"
+          inputmode="url"
           aria-label={t("checker.aria.link")}
           value={url}
           onInput={(e) => setUrl((e.target as HTMLInputElement).value)}
@@ -410,7 +411,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
           {!file ? (
             <label
               class={
-                "flex min-h-40 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-dashed px-6 py-8 text-center transition-colors max-h-[55vh] " +
+                "flex min-h-40 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border border-dashed px-6 py-8 text-center transition-colors max-h-[55vh] focus-within:border-hairline-strong focus-within:outline-2 focus-within:outline-primary-focus/50 " +
                 (dragging ? "border-primary-hover bg-surface-2" : "border-hairline-strong bg-surface-1 hover:border-hairline-tertiary")
               }
               onDragOver={(e) => {
@@ -435,7 +436,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
                 type="file"
                 aria-label={t("checker.aria.upload")}
                 accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"
-                class="hidden"
+                class="sr-only"
                 onChange={(e) => pickFile((e.target as HTMLInputElement).files?.[0])}
               />
             </label>
@@ -455,7 +456,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
               </div>
             </div>
           )}
-          {fileError && <p class="mt-2 text-[13px] text-primary-hover">{fileError}</p>}
+          {fileError && <p class="mt-2 text-[13px] form-error">{fileError}</p>}
         </div>
       </div>
 

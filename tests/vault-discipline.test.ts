@@ -67,15 +67,15 @@ describe("vault discipline item 1 sweep", () => {
     // Allowed — rg-verified line locks (evidence icons are vault gold
     // post-Task-3, so the old file-level CheckerIsland allow is dead; lock the
     // survivors to stop reintroduction):
-    // - CheckerIsland.tsx:458 file-error text (pre-existing error affordance)
-    // - CheckerIsland.tsx:485 scan-lens icon (active-scan affordance)
+    // - CheckerIsland.tsx:486 scan-lens icon (active-scan affordance;
+    //   shifted +1 by Task 5 inputmode line; the old file-error :458
+    //   allowance is retired — file-error is form-error since Task 5)
     // AboutReportBox helpline links stay emerald per ruling (b) — genuine link
     // emphasis; QuizIsland incorrect-answer text is pre-existing HEAD content
     // outside this task's file list (Task 3 scope).
     const allowed = lines.filter(
       (l) =>
-        l.includes("CheckerIsland.tsx:458") ||
-        l.includes("CheckerIsland.tsx:485") ||
+        l.includes("CheckerIsland.tsx:486") ||
         l.includes("AboutReportBox.astro") ||
         l.includes("QuizIsland.tsx:209"),
     );
@@ -200,5 +200,32 @@ describe("vault header/cards/trust", () => {
     const s = read("src/components/checker/CheckerIsland.tsx");
     expect(s).toContain("v{VERSION}");
     expect(s).toContain("lib/version");
+  });
+});
+
+describe("vault labels/contrast/forms", () => {
+  const read = (p: string) => readFileSync(p, "utf8");
+  it("no hardcoded English theme labels in layout script", () => {
+    const s = read("src/layouts/Layout.astro");
+    expect(s).not.toContain("click to change");
+    expect(s).toContain('aria-label={t("a11y.theme.system")}');
+  });
+  it("tertiary text meets AA in both modes", () => {
+    const c = read("src/styles/global.css");
+    expect(c).toContain("--color-ink-tertiary: #79879E;");
+    expect(c).toContain("--light-ink-tertiary: #616C82;");
+  });
+  it("errors read as errors", () => {
+    const c = read("src/styles/global.css");
+    expect(c).toContain("--color-error: #F87171;");
+    expect(c).toContain("--light-error: #B91C1C;");
+    expect(c).toContain(".form-error");
+    expect(read("src/components/checker/CheckerIsland.tsx")).toContain("form-error");
+  });
+  it("link input uses URL keyboard; upload reachable by keyboard", () => {
+    const s = read("src/components/checker/CheckerIsland.tsx");
+    expect(s).toContain('inputmode="url"');
+    expect(s).not.toContain('class="hidden"');
+    expect(s).toContain("focus-within:");
   });
 });
