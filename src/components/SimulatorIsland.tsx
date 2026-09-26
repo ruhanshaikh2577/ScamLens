@@ -31,11 +31,11 @@ interface Preset {
 
 const PRESETS: Preset[] = [
   { labelKey: "sim.preset.legit", text: "Hi Ma, reaching home by 8pm. Send love to everyone." },
-  { labelKey: "sim.preset.courier", text: "DTDC: Your parcel is on hold. Pay Rs 99 to reschedule delivery today https://bit.ly/dtdc99" },
-  { labelKey: "sim.preset.otp", text: "SBI: Your account will be blocked today. Confirm your identity by sharing the OTP 551203 immediately." },
-  { labelKey: "sim.preset.family", text: "Hi Mum, my phone broke and this is my new number. I'm stuck at the airport, please send Rs 8000 urgently." },
-  { labelKey: "sim.preset.power", text: "BSES: Your electricity will be disconnected today at 8 PM for non-payment. Pay via UPI immediately or power will be cut." },
-  { labelKey: "sim.preset.investment", text: "VIP trading group: guaranteed returns, daily profit. Pay Rs 5000 registration fee to join and double your money in 7 days." },
+  { labelKey: "sim.preset.courier", text: "Courier: Your parcel is on hold. Pay a $1.99 redelivery fee today https://bit.ly/post99" },
+  { labelKey: "sim.preset.otp", text: "Bank: Your account will be blocked today. Confirm your identity by sharing the OTP 551203 immediately." },
+  { labelKey: "sim.preset.family", text: "Hi Mum, my phone broke and this is my new number. I'm stuck at the airport, please send $500 urgently." },
+  { labelKey: "sim.preset.power", text: "Power Co: Your electricity will be disconnected today at 8 PM for non-payment. Pay immediately or power will be cut." },
+  { labelKey: "sim.preset.investment", text: "VIP trading group: guaranteed returns, daily profit. Pay a $99 registration fee to join and double your money in 7 days." },
 ];
 
 const RISK_CLASS: Record<string, string> = {
@@ -70,8 +70,8 @@ export default function SimulatorIsland({ lang = "en" as Lang }: { lang?: Lang }
     if (t.length < 4) return null;
     // single-link input → url checks; otherwise message checks
     const isSingleUrl = !t.includes("\n") && t.length < 2048 && looksLikeUrl(t);
-    return analyze(text, isSingleUrl ? "url" : "message");
-  }, [text]);
+    return analyze(text, isSingleUrl ? "url" : "message", lang);
+  }, [text, lang]);
 
   return (
     <section class="mx-auto w-full max-w-3xl rounded-xl border border-hairline bg-surface-1 p-6 sm:p-8" aria-label={t("sim.eyebrow")}>

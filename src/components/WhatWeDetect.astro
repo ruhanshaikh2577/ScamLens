@@ -1,10 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import { getCollection } from "astro:content";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
 const folderMap = {es:"estafas", fr:"arnaques", de:"betrugsmaschen", "pt-br":"golpes", it:"truffe", ja:"scams", ko:"scams"};
-const localizedHref = (slug: string) => lang !== "en" ? `/${lang}/${folderMap[lang as keyof typeof folderMap] || "scams"}/${slug}` : `/scams/${slug}`;
+// New global slugs exist in EN only until translated — fall back to the EN page.
+const availableSlugs = new Set((await getCollection("scams")).map((s) => s.id));
+const localizedHref = (slug: string) => lang !== "en" && availableSlugs.has(`${lang}/${slug}`) ? `/${lang}/${folderMap[lang as keyof typeof folderMap] || "scams"}/${slug}` : `/scams/${slug}`;
 
 interface Props {
   /** Extended variant adds the newer pattern cards + signal checklist (used on /what-we-detect). */
@@ -18,37 +21,37 @@ const cards = [
     title: t("what.card.whatsapp.title"),
     body: t("what.card.whatsapp.body"),
     icon: "M8 2h8a6 6 0 016 6v5a6 6 0 01-6 6H9l-5 3v-3.5A6 6 0 012 13V8a6 6 0 016-6z",
-    href: localizedHref("fake-kyc-suspended"),
+    href: localizedHref("bank-otp-impersonation"),
   },
   {
     title: t("what.card.websites.title"),
     body: t("what.card.websites.body"),
     icon: "M10 14a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07L11.5 5.4 M14 10a5 5 0 00-7.07 0l-3 3A5 5 0 0011 19.6l1.5-1.47",
-    href: localizedHref("upi-refund-qr"),
+    href: localizedHref("parcel-delivery-fee"),
   },
   {
     title: t("what.card.screenshots.title"),
     body: t("what.card.screenshots.body"),
     icon: "M4 4h16v12H4z M8 20h8 M12 16v4",
-    href: localizedHref("delivery-rs99-reschedule"),
+    href: localizedHref("qr-payment-scam"),
   },
   {
     title: t("what.card.upi.title"),
     body: t("what.card.upi.body"),
     icon: "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h2v2h-2z M18 18h2v2h-2z M14 18h2 M18 14h2",
-    href: localizedHref("upi-refund-qr"),
+    href: localizedHref("toll-road-sms"),
   },
   {
     title: t("what.card.jobs.title"),
     body: t("what.card.jobs.body"),
     icon: "M4 8h16v12H4z M9 8V6a3 3 0 016 0v2",
-    href: localizedHref("job-offer-fee-499"),
+    href: localizedHref("job-task-scam"),
   },
   {
     title: t("what.card.indian.title"),
     body: t("what.card.indian.body"),
     icon: "M12 3l9 16H3l9-16z M12 10v4 M12 16.5v.5",
-    href: localizedHref("fastag-kyc-scam"),
+    href: localizedHref("tech-support-refund"),
   },
 ];
 
@@ -63,13 +66,13 @@ const extendedCards = [
     title: t("what.card.family.title"),
     body: t("what.card.family.body"),
     icon: "M12 21s-7-4.35-9.33-8.11C.9 9.75 2.58 6 6 6c1.9 0 3.13 1 4 2.09C10.87 7 12.1 6 14 6c3.42 0 5.1 3.75 3.33 6.89C15 16.65 12 21 12 21z",
-    href: localizedHref("whatsapp-family-emergency"),
+    href: localizedHref("family-emergency-message"),
   },
   {
     title: t("what.card.loan.title"),
     body: t("what.card.loan.body"),
     icon: "M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z",
-    href: localizedHref("electricity-bill-disconnection"),
+    href: localizedHref("advance-fee-loan"),
   },
 ];
 

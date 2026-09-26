@@ -1,21 +1,22 @@
 ---
-// Trending-patterns ticker — links straight into the library breakdowns.
+// Trending-patterns — static pill grid (static wins trust on low-end mobile)
 const items = [
-  { label: "Fake KYC suspension", href: "/scams/fake-kyc-suspended" },
-  { label: "Courier Rs 99 fee", href: "/scams/delivery-rs99-reschedule" },
-  { label: "UPI scan-to-refund", href: "/scams/upi-refund-qr" },
-  { label: "Digital arrest", href: "/scams/digital-arrest-video-call" },
-  { label: "Job offer Rs 499 fee", href: "/scams/job-offer-fee-499" },
-  { label: "FASTag & challan phishing", href: "/scams/fastag-kyc-scam" },
+  { label: "Parcel fee phishing", href: "/scams/parcel-delivery-fee" },
+  { label: "Bank OTP impersonation", href: "/scams/bank-otp-impersonation" },
+  { label: "Toll-road SMS", href: "/scams/toll-road-sms" },
+  { label: "QR payment trap", href: "/scams/qr-payment-scam" },
+  { label: "Job & task scams", href: "/scams/job-task-scam" },
+  { label: "Fake authority calls", href: "/scams/fake-authority-video-call" },
   { label: "Trading app 'guaranteed returns'", href: "/scams/trading-app-guaranteed-returns" },
-  { label: "Electricity disconnection threat", href: "/scams/electricity-bill-disconnection" },
-  { label: "'Hi Mum' WhatsApp emergency", href: "/scams/whatsapp-family-emergency" },
-  { label: "Wedding invite APK malware", href: "/scams/wedding-invite-apk" },
+  { label: "Family emergency message", href: "/scams/family-emergency-message" },
+  { label: "Romance scams", href: "/scams/romance-relationship-scam" },
+  { label: "Tech-support refund", href: "/scams/tech-support-refund" },
 ];
 ---
 
 <section aria-label="Trending scam patterns" class="border-y border-hairline bg-surface-1/60 px-4 py-4 sm:px-6">
   <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-2">
+    <span class="mr-1 text-xs font-medium uppercase tracking-widest text-ink-tertiary">Trending:</span>
     {items.map((it) => (
       <a href={it.href} class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-canvas px-3 py-1.5 text-[13px] text-ink-muted transition-colors hover:border-hairline-strong hover:text-ink">
         <span class="h-1.5 w-1.5 rounded-full bg-primary-hover" aria-hidden="true"></span>{it.label}

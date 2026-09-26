@@ -55,7 +55,7 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
         <input
           id="library-search"
           type="search"
-          placeholder={t("safety.rules").includes("OTP") ? "Search scams… e.g. UPI, courier, job" : "Search scams…"}
+          placeholder={t("safety.rules").includes("OTP") ? "Search scams… e.g. parcel, bank, job" : "Search scams…"}
           aria-controls="library-grid"
           class="w-full rounded-md border border-hairline bg-surface-1 px-3 py-2.5 text-sm text-ink placeholder:text-ink-tertiary focus:border-hairline-strong focus:outline-none min-h-[44px]"
         />
@@ -66,7 +66,8 @@ const scams = typeof limit === "number" ? all.slice(0, limit) : all;
       {scams.map((s, i) => {
         const rawSlug = s.id.replace(/^[a-z-]+\//,"");
         const folderMap = {es:"estafas", fr:"arnaques", de:"betrugsmaschen", "pt-br":"golpes", it:"truffe", ja:"scams", ko:"scams"};
-        const href = lang !== "en" ? `/${lang}/${folderMap[lang] || "scams"}/${rawSlug}` : `/scams/${rawSlug}`;
+        // Locale file deleted or never translated → link the EN page, never a 404.
+        const href = lang !== "en" && s.id.includes("/") ? `/${lang}/${folderMap[lang] || "scams"}/${rawSlug}` : `/scams/${rawSlug}`;
         return (
           <a
             href={href}

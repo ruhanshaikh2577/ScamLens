@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getLangFromUrl, useTranslations, useTranslatedPath } from "../../i18n/utils";
+import AboutReportBox from "../../components/AboutReportBox.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translatePath = useTranslatedPath(lang);
@@ -17,9 +18,7 @@ const translatePath = useTranslatedPath(lang);
       <p>{t("about.p1")}</p>
       <p>{t("about.p2")}</p>
       <p>{t("about.p3")}</p>
-      <p class="text-body">
-        {t("about.p4")} <a href="tel:1930" class="text-primary-hover hover:underline">1930</a> / <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="text-primary-hover hover:underline">cybercrime.gov.in</a>
-      </p>
+      <AboutReportBox />
     </div>
     <a href={`${translatePath("/")}#checker`} class="btn btn-primary mt-10 px-6">{t("about.cta")}</a>
   </section>

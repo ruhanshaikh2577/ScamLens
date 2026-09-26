@@ -2,28 +2,25 @@
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-// Global scale — FBI IC3 2023 + APWG, same for all locales (ponytail: one source, no per-language branching)
+// Global scale — FBI IC3 2024, same for all locales (ponytail: one source, no per-language branching)
 const stats = [
   {
-    value: "880",
-    decimals: 0,
+    value: "860",
     prefix: "",
     suffix: "k+",
     label: t("stats.label.complaints"),
   },
   {
-    value: "12.5",
-    decimals: 1,
+    value: "16.6",
     prefix: "$",
     suffix: "B+",
     label: t("stats.label.losses"),
   },
   {
-    value: "3.4",
-    decimals: 1,
+    value: "9",
     prefix: "",
-    suffix: "B+",
-    label: t("stats.label.phishing"),
+    suffix: "M+",
+    label: t("stats.label.total"),
   },
 ];
 ---
@@ -39,77 +36,14 @@ const stats = [
           class:list={["text-center sm:text-left", i > 0 ? "sm:border-l sm:border-hairline sm:pl-8" : ""]}
         >
           <p class="tabular-nums text-ink" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -1px;">
-            <span class="text-ink">{s.prefix}</span><span
-              data-count={s.value}
-              data-decimals={s.decimals}
-            >{s.value}</span><span class="text-ink">{s.suffix}</span>
+            <span class="text-ink">{s.prefix}</span>{s.value}<span class="text-ink">{s.suffix}</span>
           </p>
           <p class="mx-auto mt-3 max-w-xs text-body-sm leading-relaxed text-ink-muted sm:mx-0">{s.label}</p>
         </div>
       ))}
     </div>
     <p class="mt-10 text-caption leading-relaxed text-ink-tertiary" data-reveal>
-      {t("stats.footnote")} — <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3Report.pdf" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">FBI IC3 2023</a> / <a href="https://apwg.org" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">APWG</a>. {t("stats.help")} <a href="#footer-help" class="text-ink-muted hover:text-ink">{t("footer.help")}</a>.
+      {t("stats.footnote")} — <a href="https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf" target="_blank" rel="noopener noreferrer" class="text-ink-muted hover:text-ink">FBI IC3 2024</a>. {t("stats.help")} <a href="#footer-help" class="text-ink-muted hover:text-ink">{t("footer.help")}</a>.
     </p>
   </div>
 </section>
-
-<script>
-  // Count-up on first reveal — respects prefers-reduced-motion, survives view transitions.
-  function animateCount(el: HTMLElement) {
-    if (el.dataset.counted) return;
-    el.dataset.counted = "1";
-    const target = parseFloat(el.dataset.count || "0");
-    const decimals = parseInt(el.dataset.decimals || "0", 10);
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const locale = document.documentElement.lang || "en";
-    const fmt = (v: number) => {
-      try {
-        return new Intl.NumberFormat(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).format(v);
-      } catch {
-        return decimals > 0 ? v.toFixed(decimals) : Math.round(v).toString();
-      }
-    };
-    if (reduce) {
-      el.textContent = fmt(target);
-      return;
-    }
-    const duration = 1200;
-    const start = performance.now();
-    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-    function frame(now: number) {
-      const t = Math.min(1, (now - start) / duration);
-      el.textContent = fmt(target * easeOutCubic(t));
-      if (t < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-  const seen = new WeakSet<Element>();
-  function initCounts() {
-    const els = document.querySelectorAll<HTMLElement>("[data-count]:not([data-counted])");
-    if (!els.length) return;
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(animateCount);
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const en of entries) {
-          if (en.isIntersecting) {
-            animateCount(en.target as HTMLElement);
-            io.unobserve(en.target);
-          }
-        }
-      },
-      { threshold: 0.4 }
-    );
-    els.forEach((el) => {
-      if (!seen.has(el)) {
-        seen.add(el);
-        io.observe(el);
-      }
-    });
-  }
-  document.addEventListener("astro:page-load", initCounts);
-  initCounts();
-</script>

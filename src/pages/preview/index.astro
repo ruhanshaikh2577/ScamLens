@@ -1,0 +1,121 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const variants = [
+  {
+    id: "opt1",
+    label: "Option 1 — 1st picks",
+    title: "Heavy chrome trust",
+    badge: "1st of each",
+    desc: "Lamp + Financial Hero + Glass Fractal + Liquid Metal Button + Dot Pattern + Shine Border + Large Name Footer",
+    accent: "Most dramatic, heaviest GPU",
+    href: "/preview/opt1",
+    colors: "from-emerald-900/30 via-canvas to-canvas",
+  },
+  {
+    id: "opt2",
+    label: "Option 2 — 2nd picks",
+    title: "Warp & beams cinema",
+    badge: "2nd of each",
+    desc: "Shader Hero + Nexus + Warp Stripes + Liquid Metal Paper + Beams Collision + Oceanic Shimmer + Footer 7",
+    accent: "Cinematic motion, medium weight",
+    href: "/preview/opt2",
+    colors: "from-cyan-900/20 via-canvas to-canvas",
+  },
+  {
+    id: "opt3",
+    label: "Option 3 — 3rd picks",
+    title: "Airy editorial mesh",
+    badge: "3rd of each",
+    desc: "Aether Ribbon + Image Fan + Fluid Field + Metal Button + Warp Bg + Gradient Bg + Orbit Footer",
+    accent: "Lightest, editorial, image-forward",
+    href: "/preview/opt3",
+    colors: "from-violet-900/20 via-canvas to-canvas",
+  },
+  {
+    id: "recommended",
+    label: "★ My Recommendation",
+    title: "Sovereign Vault — tuned",
+    badge: "Curated best-of",
+    desc: "Lamp (emerald) + Financial (refined) + Warp Stripes (subtle) + Liquid Metal Button (CTA only) + Dot + Vignette + Shine Border + Large Name Hybrid",
+    accent: "Best trust / perf / vault compliance",
+    href: "/preview/recommended",
+    colors: "from-[#047857]/20 via-canvas to-canvas",
+    featured: true,
+  },
+];
+---
+
+<Layout title="Preview — ScamLens aesthetic options | ScamLens" description="Review 4 aesthetic directions for ScamLens—opt1/opt2/opt3 + recommended—each combining Animated Hero + Hero Section + Shader + Liquid Metal + Background + Gradient + Footer from 21st.dev." noindex ogImage="https://scamlens.in/og.png" ogType="website">
+  <div class="border-b border-hairline bg-surface-1/60 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-3 flex items-center gap-3 text-caption">
+      <span class="rounded-full bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 text-amber-300 font-medium">PREVIEW · noindex</span>
+      <span class="text-ink-muted">Mock URLs for review — not linked in nav/sitemap. Pick one to ship.</span>
+      <a href="/" class="ml-auto hidden sm:inline-flex btn btn-secondary !py-1.5 !text-xs">← Back to live site</a>
+    </div>
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pt-10 sm:pt-14 pb-8">
+    <p class="eyebrow">21st.dev · 7 categories</p>
+    <h1 class="display-hero mt-3 max-w-3xl">Choose the next <span class="text-ink-subtle">ScamLens</span> look.</h1>
+    <p class="mt-4 max-w-2xl text-body-lg text-ink-muted">Each option stitches the <b class="text-ink">1st / 2nd / 3rd</b> pick from all 7 categories — Animated Heroes, Hero Sections, Shaders, Liquid & Metal, Backgrounds, Gradients, Footers — plus a curated <b class="text-ink">Recommended</b> hybrid tuned for Sovereign Vault (#060B14 + emerald + gold, Fraunces + Inter).</p>
+    <div class="mt-6 flex flex-wrap gap-2 text-caption">
+      <span class="rounded-full border border-hairline bg-surface-1 px-3 py-1.5 text-ink-muted">Astro 5 · Tailwind 4 · shadcn</span>
+      <span class="rounded-full border border-hairline bg-surface-1 px-3 py-1.5 text-ink-muted">CheckerIsland stays untouched</span>
+      <span class="rounded-full border border-hairline bg-surface-1 px-3 py-1.5 text-ink-muted">All mocks dark-mode native</span>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
+    <div class="grid gap-6 md:grid-cols-2">
+      {variants.map(v => (
+        <a href={v.href} class:list={["group relative overflow-hidden rounded-xl border bg-gradient-to-br p-[1px]", v.featured ? "border-[#047857]/50 shadow-[0_0_40px_-20px_rgba(5,150,105,0.5)]" : "border-hairline hover:border-hairline-strong"]}>
+          <div class:list={["rounded-[11px] bg-surface-1 p-6 sm:p-7 h-full flex flex-col", v.featured ? "bg-surface-1" : ""]}>
+            {v.featured && <span class="absolute right-4 top-4 rounded-full bg-[#047857] px-2.5 py-1 text-[11px] font-semibold text-white tracking-wide">RECOMMENDED</span>}
+            <p class="text-[11px] font-semibold tracking-widest text-gold uppercase">{v.label}</p>
+            <h2 class="mt-2 text-xl font-semibold tracking-tight text-ink group-hover:text-white transition-colors">{v.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-ink-muted">{v.desc}</p>
+            <p class="mt-3 text-xs text-ink-tertiary">{v.accent}</p>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              {v.desc.split(" + ").slice(0,4).map(s => (
+                <span class="rounded-full border border-hairline bg-canvas px-2.5 py-1 text-[11px] text-ink-subtle">{s}</span>
+              ))}
+              <span class="rounded-full bg-surface-2 px-2.5 py-1 text-[11px] text-ink-tertiary">+3 more</span>
+            </div>
+            <span class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink group-hover:text-white">Open preview <span class="arrow-nudge">→</span></span>
+          </div>
+          <div class:list={["absolute inset-0 -z-10 bg-gradient-to-br opacity-60", v.colors]} aria-hidden="true"></div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-10 rounded-xl border border-hairline bg-canvas p-5 sm:p-6">
+      <h3 class="text-sm font-semibold text-ink">How to review</h3>
+      <ol class="mt-3 list-decimal pl-5 space-y-1.5 text-sm leading-relaxed text-ink-muted">
+        <li>Open each mock URL — scroll hero → checker → footer. All 4 share same real <code class="evidence-pill">CheckerIsland</code> logic.</li>
+        <li>Check mobile (≤480px) + light mode (toggle in nav) — vault ladder must hold.</li>
+        <li>Tell me <code class="evidence-pill">opt1</code> / <code class="evidence-pill">opt2</code> / <code class="evidence-pill">opt3</code> / <code class="evidence-pill">recommended</code> or “mix X hero + Y footer” — I’ll ship that exact combo to <code class="evidence-pill">src/pages/index.astro</code> + <code class="evidence-pill">src/layouts/Layout.astro</code>.</li>
+      </ol>
+      <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+        <code class="rounded bg-surface-1 border border-hairline px-2 py-2 text-ink-subtle">/preview/opt1</code>
+        <code class="rounded bg-surface-1 border border-hairline px-2 py-2 text-ink-subtle">/preview/opt2</code>
+        <code class="rounded bg-surface-1 border border-hairline px-2 py-2 text-ink-subtle">/preview/opt3</code>
+        <code class="rounded bg-surface-1 border border-hairline-strong px-2 py-2 text-ink">/preview/recommended ★</code>
+      </div>
+    </div>
+
+    <details class="mt-6 rounded-xl border border-hairline bg-surface-1 p-5 sm:p-6">
+      <summary class="cursor-pointer text-sm font-semibold text-ink">What each cell means (7 categories × 3 picks)</summary>
+      <div class="mt-4 grid gap-4 sm:grid-cols-2 text-sm leading-relaxed text-ink-muted">
+        <div><b class="text-ink">Animated Heroes</b>: <code class="text-xs">Lamp</code> / <code class="text-xs">Shader Hero</code> / <code class="text-xs">Aether Ribbon Mesh</code></div>
+        <div><b class="text-ink">Hero Sections</b>: <code class="text-xs">Financial</code> / <code class="text-xs">Nexus</code> / <code class="text-xs">Image Fan</code></div>
+        <div><b class="text-ink">Shaders</b>: <code class="text-xs">Glass Fractal</code> / <code class="text-xs">Warp Stripes</code> / <code class="text-xs">Fluid Field</code></div>
+        <div><b class="text-ink">Liquid & Metal</b>: <code class="text-xs">Liquid Metal Button</code> / <code class="text-xs">Liquid Metal Paper</code> / <code class="text-xs">Metal Button</code></div>
+        <div><b class="text-ink">Backgrounds</b>: <code class="text-xs">Dot Pattern</code> / <code class="text-xs">Beams Collision</code> / <code class="text-xs">Warp Background</code></div>
+        <div><b class="text-ink">Gradients</b>: <code class="text-xs">Shine Border</code> / <code class="text-xs">Oceanic Shimmer</code> / <code class="text-xs">Gradient Bg</code></div>
+        <div><b class="text-ink">Footers</b>: <code class="text-xs">Large Name</code> / <code class="text-xs">Footer 7</code> / <code class="text-xs">Orbit Footer</code></div>
+        <div><b class="text-gold">Recommended</b>: Lamp (emerald) + Financial + Warp Stripes subtle + Liquid Button CTA-only + Dot+Vignette + Shine+Oceanic halo + Large Name Hybrid</div>
+      </div>
+    </details>
+  </section>
+</Layout>

@@ -1,38 +1,39 @@
 ---
-title: "Golpe do app de trading com ‘retorno garantido’"
-longTitle: 'Este app de trading com retorno garantido é golpe? Como funciona a fraude de investimentos'
-description: 'O golpe de grupos de trading no WhatsApp/Telegram explicado: falsos professores, lucros diários garantidos, painéis caprichados — e saques que nunca chegam.'
+title: "App de trading com retornos garantidos"
+longTitle: 'Este app de trading com retornos garantidos é golpe? Sim — como funciona'
+description: "O golpe do falso app de trading explicado: painéis mostrando lucros crescentes, taxas de saque que nunca acabam e desaparecimento. Sinais de alerta e passos de verificação."
 tag: "Investimento"
-intro: "Adicionam você a um grupo de WhatsApp ou Telegram onde um “professor” ou analista posta trades vencedores. Um pequeno depósito parece crescer num painel de aparência profissional. Na hora de sacar um valor maior — ou se você hesita em “subir de nível” — aparecem taxas, impostos e bloqueios de conta. Nenhum consultor registrado na SEBI recruta por grupos de chat, e retorno garantido não existe em mercados reais."
+intro: "Um mentor, anúncio ou grupo convida você para um app de trading com lucros garantidos constantes, muitas vezes com endossos de celebridades ou capturas de vida de luxo. Pequenos depósitos parecem crescer no painel — mas cada saque precisa de outro depósito, imposto ou taxa primeiro. Os lucros são números falsos; os depósitos são reais e somem quando o app desaparece."
 looksLike:
-- '“Bem-vindo à VIP Trading Zone 📈 Professor Arjun dá calls 100% certeiras. Lucro diário 8-12%. Entre agora, vagas fechando.”'
-- Um app ou site elegante (muitas vezes imitando uma corretora real) mostrando seu saldo crescendo todo dia.
-- '“Para desbloquear o saque, pague antes 18% de GST / taxa de liberação / depósito de level-up.”'
-- Prints de membros “sacando lakhs” postados a cada poucos minutos pelos admins.
+  - "“Grupo VIP de cripto — sinais de mentor, 10% de lucro diário garantido. Baixe o app aqui e comece com US$ 200.”"
+  - "Um painel de app bem-feito mostrando seu saldo crescendo todo dia com notificações de trades vencedores"
+  - "“Para sacar, pague primeiro a taxa de liberação de 20% / imposto / upgrade VIP — depois os fundos liberam na hora.”"
 warningSigns:
-- “Garantido”, “tiro certo”, “sem risco” ou percentual fixo diário — impossível em mercados reais.
-- Recrutamento via WhatsApp/Telegram/apps de namoro em vez de plataforma registrada na SEBI.
-- Saques pequenos liberados no início (isca), maiores bloqueados até pagar “taxas” ou “impostos”.
-- Pressão para indicar amigos ou migrar para “mentoria premium”.
-- O app é um APK instalado por link em vez de página na loja oficial.
-whyItWorks: "O painel falso faz toda a persuasão — números subindo parecem prova. Os primeiros pagamentinhos saem dos depósitos de vítimas mais novas (a mesma mecânica de pirâmide), o que constrói confiança até o depósito grande. As perdas aqui estão entre as categorias de cibergolpe que mais crescem na Índia desde 2023."
+  - "Retornos garantidos, sem risco ou diários fixos — impossível em mercados reais."
+  - "Recrutamento por WhatsApp, Telegram, apps de namoro ou anúncios de celebridades em vez de corretora licenciada."
+  - "Saques pequenos funcionam no início, depois os grandes ficam bloqueados aguardando taxas ou upgrades."
+  - "O app é instalado por link ou APK em vez da página oficial na loja de apps."
+whyItWorks: "O painel subindo parece prova, e pequenos pagamentos iniciais — bancados por vítimas mais novas — constroem confiança até o grande depósito. Quando aparecem as taxas de saque, o custo afundado faz mais um pagamento parecer mais barato do que admitir a perda."
 whatToDo:
-- Pare de enviar dinheiro na hora — qualquer “última taxa para liberar” é o aperto final.
-- "Tire print de tudo: nome do app, dados UPI/conta usados, histórico do chat, IDs de transação."
-- Ligue para 1930 na primeira hora e registre em cybercrime.gov.in; peça ao banco para sinalizar as contas recebedoras.
-- Confira o registro de qualquer consultor no site da SEBI antes de investir uma rúpia.
-verify: "Confira o registro do consultor em sebi.gov.in e se a corretora está listada nos sites das bolsas NSE/BSE. Corretoras reais nunca recebem depósitos em chaves UPI pessoais — só em contas no nome registrado delas."
+  - "Pare de mandar dinheiro imediatamente — cada taxa de liberação ou upgrade é o aperto final."
+  - "Tire capturas do app, conversas, endereços de pagamento e IDs de transação antes que sumam."
+  - "Avise seu banco e denuncie ao serviço nacional de fraudes com as provas guardadas."
+verify: "Confira a corretora no registro do órgão regulador de valores mobiliários digitado por você — empresas licenciadas nunca recrutam por grupos de chat nem garantem retornos. Corretoras reais mantêm fundos em contas no nome registrado delas, nunca em carteiras pessoais. Denuncie ao FBI em ic3.gov ou ao serviço nacional de fraudes."
 faqs:
-- q: "Um app de trading pode garantir lucro diário?"
-  a: Não. Mercados não têm retorno garantido. Qualquer app prometendo 2-5% ao dia ou dobrar o dinheiro é um painel de pirâmide mostrando lucros falsos que você não saca.
-- q: "Por que o painel mostra os lucros subindo?"
-  a: É um número simulado para você depositar mais. Os saques são bloqueados com desculpas como ‘pague 10% de taxa de liberação’ ou ‘suba para VIP’ — aí está o roubo.
-- q: "Como confiro se um consultor é legítimo?"
-  a: Pesquise o nome dele na lista de intermediários registrados em sebi.gov.in. Nenhum consultor registrado na SEBI recruta por grupos de Telegram/WhatsApp nem garante retorno.
-- q: "Me colocaram num grupo de lucros no WhatsApp — é real?"
-  a: Esses grupos são cheios de contas falsas postando prints de lucro. Trading de verdade nunca acontece em grupos fechados de chat.
+  - q: "Algum app pode garantir lucros diários de trading?"
+    a: "Não. Mercados não têm retornos garantidos. Qualquer app prometendo percentuais diários fixos mostra números simulados que você não consegue sacar."
+  - q: "Por que meu saldo no painel continuava crescendo?"
+    a: "Esses números são falsos, feitos para você depositar mais. Saques são bloqueados com desculpas de taxas — esse é o roubo, não um saldo real."
+  - q: "Como confiro se uma corretora é legítima?"
+    a: "Pesquise você mesmo no registro do regulador e confirme o domínio oficial da corretora. Consultores licenciados nunca recrutam por grupos de Telegram nem exigem depósitos em cripto para carteiras pessoais."
 similar:
-- /scams/job-offer-fee-499
-- /scams/upi-refund-qr
-updated: 2026-08-26
+  - "/scams/romance-relationship-scam"
+  - "/scams/job-task-scam"
+region: global
+sources:
+  - label: "FBI IC3 2024 investment fraud"
+    href: "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf"
+  - label: "CAFC annual report 2024"
+    href: "https://www.antifraudcentre-centreantifraude.ca/annual-reports-2024-rapports-annuels-eng.htm"
+status: reviewed
 ---

@@ -7,7 +7,7 @@ const en: Faq[] = [
   { q: "What should I do before sending money?", a: "Say the request out loud to a family member, verify the recipient via a known number, and never pay a fee to receive a prize, refund, parcel or job. Scammers isolate; families catch what you miss." },
   { q: "How should I handle unexpected OTP or payment requests?", a: "No bank, RBI officer or wallet app ever asks for your OTP, PIN, CVV or password on any channel. If asked, stop and verify via the official app — it’s always a scam pattern." },
   { q: "What if I already clicked a suspicious link?", a: "Close it, don’t enter details, revoke any UPI mandate or app permissions you granted, change passwords on the official site, and monitor your bank. If you shared credentials, call 1930 and your bank immediately." },
-  { q: "How do I protect my personal information?", a: "Don’t share Aadhaar, PAN, OTP or photos of cards via links. Store scans only in official apps, enable app lock, and never grant contacts/photos access to instant-loan apps." },
+  { q: "How do I protect my personal information?", a: "Don’t share ID numbers, OTPs or photos of cards via links. Store scans only in official apps, enable app lock, and never grant contacts/photos access to instant-loan apps." },
   { q: "What to do after interacting with a suspicious site?", a: "Run ScamLens on the link/message again to see quoted evidence, report within the golden hour at 1930 and cybercrime.gov.in with screenshots and transaction IDs, and warn whoever forwarded it." },
 ];
 

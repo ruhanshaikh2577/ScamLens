@@ -25,3 +25,7 @@ src/content/scams/_template.md
 
 # jetbrains setting folder
 .idea/
+
+# vendored agent tooling + generated critique artifacts (not project source)
+.agent/
+.impeccable/

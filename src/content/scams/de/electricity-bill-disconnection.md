@@ -1,33 +1,39 @@
 ---
-title: Stromsperrung Drohung
-longTitle: Ist "Strom wird heute Nacht abgestellt" Betrug?
-description: 'Die Stromsperr-Drohung erklärt: SMS mit heutiger Frist und privatem UPI.'
-tag: Versorger
-intro: Eine SMS oder Robocall behauptet, Ihr Strom werde binnen Stunden wegen unbezahlter Rechnung abgestellt. Sie sollen sofort an ein UPI-Handle zahlen — oft privater Name wie „Ravi Kumar @ybl“ — oder App zur „Wiederherstellung“ laden. Echte Abschaltungen folgen mehreren schriftlichen Zyklen, nie mit Same-Day-Deadline und privatem Handle.
+title: "Stromrechnungs-Sperrdrohung"
+longTitle: 'Ist „Ihr Strom wird heute abgestellt“ Betrug? Ja — so funktioniert die Versorgerdrohung'
+description: "Der Versorger-Sperrbetrug erklärt: gefälschte Strom- oder Wassersperr-Drohungen drängen zu sofortiger Zahlung an Betrüger-Wallets oder Links. Warnzeichen und sichere Verifizierung."
+tag: "Versorger"
+intro: "Eine SMS oder ein Anruf behauptet, Ihr Strom oder Wasser werde heute wegen einer unbezahlten Rechnung abgestellt, und drängt Sie, sofort über einen Link oder an eine genannte Wallet zu zahlen. Echte Versorger senden wiederholt schriftliche Rechnungen mit Tagen zur Zahlung — sie verlangen niemals am selben Tag Zahlung auf ein persönliches Konto wegen einer einzigen Drohnachricht."
 looksLike:
-- '„Ihr Strom wird heute um 20:00 Uhr wegen Nichtzahlung abgestellt. Bitte sofort zahlen: [bit.ly-Link] — BSES Delhi“'
-- Ein Robocall auf Hindi angeblich aus „Rechnungsabteilung“ des Stromversorgers.
-- Zahlung an private UPI-ID (@ybl, @paytm) statt offiziellem Biller-Namen verlangt.
+  - "„Ihr Strom wird HEUTE um 20 Uhr wegen Nichtzahlung abgestellt. Jetzt zahlen zur Vermeidung der Sperre: [Link]“"
+  - "„Hier die Rechnungsabteilung des Stromversorgers. Ihre letzte Zahlung ist fehlgeschlagen — bestätigen Sie die Zahlung in diesem Anruf.“"
+  - "Zahlung an eine Wallet oder ein Konto auf einen Personennamen statt auf den offiziellen Versorgernamen verlangt"
 warningSigns:
-- Same-Day-Abschaltfrist mit Abend-Timing, um Panik zu erzeugen.
-- Private UPI-Handles oder Bankkonten statt offiziellem Biller in UPI-App.
-- Nachricht außerhalb Ihres echten Abrechnungszyklus oder für Objekt, das Sie nicht besitzen.
-- Aufforderung, App zu installieren oder Bildschirm zu teilen während „Zahlung“.
-whyItWorks: 'Strom ist nicht verhandelbarer Alltag, Drohung zielt auf Routine, nicht Gier. Beträge wirken plausibel (echte Rechnungshöhe), kaum jemand kennt echten Bescheid. Versorger warnen wiederholt: nie sofortige UPI-Zahlung per Anruf/SMS.'
+  - "Sperrfrist am selben Tag, die Sie in Panik zum Zahlen ohne Prüfung drängen soll."
+  - "Zahlung geht an eine persönliche Wallet, einen Namen oder Link statt an das offizielle Versorgerkonto."
+  - "Die Nachricht kommt außerhalb Ihres Abrechnungszyklus oder für eine Kontonummer, die Sie nicht kennen."
+  - "Jede Aufforderung, eine App zu installieren oder Ihren Bildschirm bei der Zahlung zu teilen."
+whyItWorks: "Strom- oder Wasserverlust fühlt sich unerträglich an, daher handeln Opfer aus Alltagsangst statt aus Gier. Der Betrag sieht wie eine normale Rechnung aus, und kaum jemand weiß, wie eine echte Sperrankündigung aussieht — daher genügt eine dringende Nachricht."
 whatToDo:
-- Offizielle App/Website des Versorgers selbst öffnen und Rechnungsstatus prüfen — Nachricht ignorieren.
-- Nur in offiziellen Kanälen zahlen, wo Empfänger als registrierter Versorger-Name erscheint.
-- Wenn an Fake-Handle gezahlt, sofort 1930 anrufen und bei cybercrime.gov.in mit UPI-Transaktions-ID melden.
-verify: Jeder Landesversorger (BSES, Adani Electricity, MSEB, TNEB, PSPCL u.a.) hat offizielle App/Portal mit Live-Saldo. Abschaltung folgt gedruckten Bescheiden über Abrechnungszyklen — nie per einzelner Abend-SMS.
+  - "Ignorieren Sie die Nachricht — öffnen Sie die offizielle App oder Website Ihres Versorgers, die Sie selbst eintippen, und prüfen Sie den Rechnungsstatus."
+  - "Zahlen Sie nur in offiziellen Kanälen, wo der Empfänger den registrierten Versorgernamen trägt."
+  - "Melden Sie Absendernummer und Link Ihrem nationalen Betrugsmeldedienst und blockieren Sie sie."
+verify: "Finden Sie Ihre Kundennummer auf einer alten Rechnung und tippen Sie dann die offizielle Seite Ihres Versorgers selbst ein, um Forderungen zu prüfen. Sperrungen folgen auf mehrere schriftliche Mahnungen über Abrechnungszyklen — niemals auf eine einzige Abend-SMS. Melden Sie Phishing bei der APWG unter apwg.org und Betrug bei Ihrem nationalen Cybercrime-Dienst."
 faqs:
-- q: Wird Strom heute Nacht wirklich abgestellt, wenn ich nicht per Link zahle?
-  a: Nein. Stromversorger (BSES, MSEDCL, TNEB etc.) stellen nie aufgrund einzelner SMS mit UPI-Link ab. Sie senden Schreiben und erlauben Zahlung nur via offizielle Portale/Apps.
-- q: Warum wirkt Nachricht so dringend?
-  a: Sie nutzt „heute 21:30 Uhr“ und Fake-Beamtennummer, um Prüfung zu verhindern. Echte Abschaltbescheide geben Tage und nennen verifizierbare Kundennummer in offizieller App.
-- q: Wie zahle ich echte Stromrechnung?
-  a: Offizielle App/Website des Versorgers selbst getippt öffnen (z. B. bsesdelhi, msedcl), Kundennummer eingeben und dort zahlen — nie via Link mit privatem UPI-Handle.
+  - q: "Wird mein Strom wirklich heute Nacht abgestellt, wenn ich die Nachricht ignoriere?"
+    a: "Nein. Versorger folgen schriftlichen Mahnzyklen mit Tagen zur Zahlung. Eine einzelne SMS, die sofortige Zahlung an eine Wallet verlangt, ist immer Betrug."
+  - q: "Wie zahle ich eine echte Versorgerrechnung?"
+    a: "Öffnen Sie die offizielle App oder Website des Versorgers, die Sie selbst eintippen, geben Sie Ihre Kundennummer ein und zahlen Sie dort, wo der Empfänger den registrierten Versorgernamen trägt — niemals über einen Link in einer Drohnachricht."
+  - q: "Ich habe bereits über den Link gezahlt — was nun?"
+    a: "Rufen Sie sofort Ihre Bank an, um die Transaktion zu melden, sichern Sie Nachricht und Beleg und melden Sie es Ihrem nationalen Betrugsdienst mit den Zahlungsdetails."
 similar:
-- /scams/fastag-kyc-scam
-- /scams/fake-kyc-suspended
-updated: '2026-08-26'
+  - "/scams/toll-road-sms"
+  - "/scams/tax-government-refund"
+region: global
+sources:
+  - label: "APWG trends Q3 2024"
+    href: "https://docs.apwg.org/reports/apwg%5Ftrends%5Freport%5Fq3%5F2024.pdf"
+  - label: "APWG trends Q4 2024"
+    href: "https://docs.apwg.org/reports/apwg_trends_report_q4_2024.pdf"
+status: reviewed
 ---

@@ -1,0 +1,250 @@
+---
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description: string;
+  variant: "opt1" | "opt2" | "opt3" | "recommended";
+}
+const { title, description, variant } = Astro.props;
+const isLight = variant === "opt3" || variant === "recommended";
+---
+
+<!doctype html>
+<html lang="en" data-variant={variant} class={isLight ? "light" : "dark"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- fresh fonts — zero overlap with sovereign-vault (Fraunces+Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Sora:wght@600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style is:global>
+      /* reset — global.css already imported, now override old vault tokens completely */
+      *,*::before,*::after{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+      img{max-width:100%}
+      a{color:inherit; text-decoration:none}
+      /* kill old aurora etc that leak from global.css into previews */
+      .aurora{display:none !important}
+      /* variant tokens — completely new palettes */
+      html[data-variant="opt1"]{
+        --bg:#08080A;
+        --surface:#121214;
+        --surface-2:#1A1A1E;
+        --surface-3:#222226;
+        --ink:#F5F5F3;
+        --muted:#A1A1AA;
+        --subtle:#71717A;
+        --border:#27272A;
+        --border-strong:#3F3F46;
+        --primary:#F4F4F5;
+        --primary-ink:#09090B;
+        --accent:#BEF264;
+        --accent-ink:#1A2E05;
+        --danger:#FB7185;
+        --radius:16px;
+        --radius-lg:20px;
+        --radius-pill:9999px;
+        --font-display:"Space Grotesk", system-ui, sans-serif;
+        --font-body:"DM Sans", system-ui, sans-serif;
+        --font-mono:"JetBrains Mono", ui-monospace, monospace;
+        --shadow:0 20px 60px -20px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.06) inset;
+        /* map old vault tokens → new obsidian chrome */
+        --color-canvas:var(--bg);
+        --color-surface-1:var(--surface);
+        --color-surface-2:var(--surface-2);
+        --color-surface-3:var(--surface-3);
+        --color-ink:var(--ink);
+        --color-ink-muted:var(--muted);
+        --color-ink-subtle:var(--subtle);
+        --color-ink-tertiary:var(--subtle);
+        --color-hairline:var(--border);
+        --color-hairline-strong:var(--border-strong);
+        --color-hairline-tertiary:var(--border-strong);
+        --color-primary:var(--primary);
+        --color-primary-hover:var(--primary);
+        --color-primary-focus:var(--accent);
+        --color-gold:var(--accent);
+        --color-gold-deep:var(--accent);
+        --color-error:var(--danger);
+        --font-display:var(--font-display);
+        --font-sans:var(--font-body);
+        --font-mono:var(--font-mono);
+        --radius-md:12px;
+        --radius-lg:var(--radius);
+        --radius-xl:var(--radius-lg);
+      }
+      html[data-variant="opt2"]{
+        --bg:#020617;
+        --surface:#0F172A;
+        --surface-2:#1E293B;
+        --surface-3:#334155;
+        --ink:#F1F5F9;
+        --muted:#94A3B8;
+        --subtle:#64748B;
+        --border:#1E293B;
+        --border-strong:#334155;
+        --primary:#06B6D4;
+        --primary-ink:#042f2e;
+        --accent:#8B5CF6;
+        --accent-ink:#fff;
+        --danger:#F43F5E;
+        --radius:14px;
+        --radius-lg:16px;
+        --radius-pill:9999px;
+        --font-display:"Sora", system-ui, sans-serif;
+        --font-body:"DM Sans", system-ui, sans-serif;
+        --font-mono:"JetBrains Mono", ui-monospace, monospace;
+        --shadow:0 16px 40px -16px rgba(6,182,214,0.25);
+        --color-canvas:var(--bg);
+        --color-surface-1:var(--surface);
+        --color-surface-2:var(--surface-2);
+        --color-surface-3:var(--surface-3);
+        --color-ink:var(--ink);
+        --color-ink-muted:var(--muted);
+        --color-ink-subtle:var(--subtle);
+        --color-ink-tertiary:var(--subtle);
+        --color-hairline:var(--border);
+        --color-hairline-strong:var(--border-strong);
+        --color-hairline-tertiary:var(--border-strong);
+        --color-primary:var(--primary);
+        --color-primary-hover:#0891B2;
+        --color-primary-focus:var(--accent);
+        --color-gold:var(--accent);
+        --color-gold-deep:var(--accent);
+        --color-error:var(--danger);
+        --font-display:var(--font-display);
+        --font-sans:var(--font-body);
+        --font-mono:var(--font-mono);
+        --radius-md:10px;
+        --radius-lg:var(--radius);
+        --radius-xl:var(--radius-lg);
+      }
+      html[data-variant="opt3"]{
+        --bg:#FFFCF8;
+        --surface:#FFFFFF;
+        --surface-2:#F8F4EF;
+        --surface-3:#F1E9DE;
+        --ink:#0A0A0A;
+        --muted:#44403C;
+        --subtle:#78716C;
+        --border:#E7E5E4;
+        --border-strong:#D6D3D1;
+        --primary:#0A0A0A;
+        --primary-ink:#FFFCF8;
+        --accent:#8B5CF6;
+        --accent-2:#EC4899;
+        --accent-ink:#fff;
+        --danger:#E11D48;
+        --radius:12px;
+        --radius-lg:16px;
+        --radius-pill:9999px;
+        --font-display:"Newsreader", Georgia, serif;
+        --font-display-2:"Instrument Serif", Georgia, serif;
+        --font-body:"DM Sans", system-ui, sans-serif;
+        --font-mono:"JetBrains Mono", ui-monospace, monospace;
+        --shadow:0 12px 32px -12px rgba(12,10,9,0.08), 0 1px 0 rgba(12,10,9,0.04) inset;
+        --color-canvas:var(--bg);
+        --color-surface-1:var(--surface);
+        --color-surface-2:var(--surface-2);
+        --color-surface-3:var(--surface-3);
+        --color-ink:var(--ink);
+        --color-ink-muted:var(--muted);
+        --color-ink-subtle:var(--subtle);
+        --color-ink-tertiary:var(--subtle);
+        --color-hairline:var(--border);
+        --color-hairline-strong:var(--border-strong);
+        --color-hairline-tertiary:var(--border-strong);
+        --color-primary:var(--primary);
+        --color-primary-hover:#1C1917;
+        --color-primary-focus:var(--accent);
+        --color-gold:var(--accent);
+        --color-gold-deep:var(--accent);
+        --color-error:var(--danger);
+        --font-display:var(--font-display);
+        --font-sans:var(--font-body);
+        --font-mono:var(--font-mono);
+        --radius-md:10px;
+        --radius-lg:var(--radius);
+        --radius-xl:var(--radius-lg);
+      }
+      html[data-variant="recommended"]{
+        --bg:#F8FAFC;
+        --surface:#FFFFFF;
+        --surface-2:#F1F5F9;
+        --surface-3:#E2E8F0;
+        --ink:#0F172A;
+        --muted:#334155;
+        --subtle:#64748B;
+        --border:#E2E8F0;
+        --border-strong:#CBD5E1;
+        --primary:#2563EB;
+        --primary-ink:#FFFFFF;
+        --accent:#0EA5E9;
+        --accent-ink:#fff;
+        --danger:#E11D48;
+        --success:#16A34A;
+        --radius:14px;
+        --radius-lg:18px;
+        --radius-pill:9999px;
+        --font-display:"Sora", system-ui, sans-serif;
+        --font-body:"IBM Plex Sans", system-ui, sans-serif;
+        --font-mono:"JetBrains Mono", ui-monospace, monospace;
+        --shadow:0 8px 24px -12px rgba(15,23,42,0.12), 0 1px 0 rgba(255,255,255,0.8) inset;
+        --color-canvas:var(--bg);
+        --color-surface-1:var(--surface);
+        --color-surface-2:var(--surface-2);
+        --color-surface-3:var(--surface-3);
+        --color-ink:var(--ink);
+        --color-ink-muted:var(--muted);
+        --color-ink-subtle:var(--subtle);
+        --color-ink-tertiary:var(--subtle);
+        --color-hairline:var(--border);
+        --color-hairline-strong:var(--border-strong);
+        --color-hairline-tertiary:var(--border-strong);
+        --color-primary:var(--primary);
+        --color-primary-hover:#1D4ED8;
+        --color-primary-focus:var(--accent);
+        --color-gold:var(--accent);
+        --color-gold-deep:var(--accent);
+        --color-error:var(--danger);
+        --font-display:var(--font-display);
+        --font-sans:var(--font-body);
+        --font-mono:var(--font-mono);
+        --radius-md:10px;
+        --radius-lg:var(--radius);
+        --radius-xl:var(--radius-lg);
+      }
+      body{
+        background:var(--bg);
+        color:var(--ink);
+        font-family:var(--font-body);
+        line-height:1.5;
+      }
+      /* shared utilities for redesign — no old .card/.btn */
+      .display{
+        font-family:var(--font-display);
+        font-weight:700;
+        letter-spacing:-0.04em;
+        line-height:0.95;
+      }
+      html[data-variant="opt3"] .display{ font-family:var(--font-display); font-weight:600; letter-spacing:-0.05em; line-height:0.96 }
+      html[data-variant="opt3"] .display em{ font-family:var(--font-display-2); font-style:italic; font-weight:400; letter-spacing:-0.03em }
+      .mono{ font-family:var(--font-mono); }
+    </style>
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      /* reduce motion */
+      @media (prefers-reduced-motion: reduce){
+        *,*::before,*::after{animation:none !important; transition:none !important}
+      }
+    </style>
+  </body>
+</html>

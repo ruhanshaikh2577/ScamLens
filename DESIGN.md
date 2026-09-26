@@ -14,7 +14,7 @@ colors:
   ink: "#F2F5F9"
   ink-muted: "#C3CEDD"
   ink-subtle: "#8B98AD"
-  ink-tertiary: "#5F6B80"
+  ink-tertiary: "#79879E"
   canvas: "#060B14"
   surface-1: "#0B1424"
   surface-2: "#0F1A2E"
@@ -28,6 +28,15 @@ colors:
   inverse-surface-2: "#f6f7f7"
   inverse-ink: "#000000"
   semantic-success: "#27a644"
+  semantic-error: "#F87171"
+  semantic-error-strong: "#B91C1C"
+  risk-medium: "#F59E0B"
+  risk-medium-text: "#FBBF24"
+  risk-high: "#EA580C"
+  risk-high-text: "#FB923C"
+  risk-critical: "#DC2626"
+  risk-medium-text-light: "#B45309"
+  risk-high-text-light: "#C2410C"
   semantic-overlay: "#000000"
 
 typography:
@@ -308,6 +317,8 @@ The page rhythm is **checker-first** — ScamLens leads with the working checker
 
 ### Semantic
 - **Success Green** ({colors.semantic-success}): Status pills, success indicators. The only semantic color on marketing.
+- **Error Red** ({colors.semantic-error}, strong {colors.semantic-error-strong} on light): Form and upload errors only — never success emerald. Text use meets AA on canvas/surface in both modes.
+- **Risk scale** (verdict badges only — neutral → amber → orange → red): medium {colors.risk-medium} / text {colors.risk-medium-text} (light {colors.risk-medium-text-light}); high {colors.risk-high} / text {colors.risk-high-text} (light {colors.risk-high-text-light}); critical {colors.risk-critical}.
 - **Overlay** ({colors.semantic-overlay}): Pure black overlay scrim for modals.
 
 ## Typography
@@ -546,6 +557,6 @@ Depth is carried by surface ladder + hairline borders. The brand resists drop sh
 
 - The four-step surface ladder above is the canonical spec for this theme.
 - Form-field error and validation styling is not visible on the inspected pages.
-- Light mode flips the canvas ladder to paper tones (canvas #F7F9FC, surfaces #FFFFFF/#EFF3F8/#E6ECF4/#DCE4EF, hairlines #DDE4EE/#C6D2E2/#B3C2D6, inks #0A1628/#33415C/#5B6B84/#7A879C) with a deepened primary (#047857); gold accents stay rationed in both modes.
+- Light mode flips the canvas ladder to paper tones (canvas #F7F9FC, surfaces #FFFFFF/#EFF3F8/#E6ECF4/#DCE4EF, hairlines #DDE4EE/#C6D2E2/#B3C2D6, inks #0A1628/#33415C/#5B6B84/#66748A) with a deepened primary (#047857); gold accents stay rationed in both modes.
 - Risk badges use the semantic scale (neutral → amber → orange → red); the old single-accent badge treatment is retired.
 - The custom display, text, and mono families are proprietary; an open-source substitute is acceptable.

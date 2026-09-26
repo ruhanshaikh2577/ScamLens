@@ -1,37 +1,39 @@
 ---
-title: "Ameaça de corte de energia"
-longTitle: 'É golpe o "sua luz será cortada hoje à noite"? Como funciona o golpe da conta de luz'
-description: 'Falsos avisos de corte de energia (BSES, Adani, MSEB, TNEB e outros) explicados: a ameaça "hoje às 20h", chaves UPI pessoais e como conferir sua conta real com segurança.'
+title: "Ameaça de corte por conta de luz"
+longTitle: 'É golpe o "sua luz será cortada hoje"? Sim — como funciona a ameaça de corte'
+description: "O golpe do corte de serviços explicado: falsas ameaças de corte de luz ou água empurrando pagamento instantâneo para carteiras de golpistas ou links. Sinais de alerta e verificação segura."
 tag: "Serviços"
-intro: "Um SMS ou ligação automática diz que sua energia será cortada em poucas horas por conta em atraso. Pedem pagamento imediato para uma chave UPI — muitas vezes em nome de pessoa física como “Ravi Kumar @ybl” — ou mandam baixar um app para “restabelecer a ligação”. Cortes reais seguem vários ciclos de aviso escrito, nunca um prazo para a mesma noite com chave de pessoa física."
+intro: "Uma mensagem ou ligação diz que sua luz ou água será cortada hoje por conta não paga, e pressiona você a pagar imediatamente por um link ou para uma carteira que informam. Serviços reais mandam contas escritas repetidas com dias para pagar — nunca exigem pagamento no mesmo dia para uma conta pessoal em uma única mensagem ameaçadora."
 looksLike:
-- '“Sua energia será cortada hoje às 20:00 por falta de pagamento. Pague já: [link bit.ly] — BSES Delhi”'
-- Ligação automática em hindi dizendo ser do “departamento de contas” da companhia elétrica.
-- Pagamento pedido para UPI em nome pessoal (@ybl, @paytm) em vez do nome oficial da companhia.
-- Instrução para instalar APK de compartilhamento de tela ou “suporte de contas” para “processar o estorno”.
+  - "“Sua luz será desligada HOJE às 20h por falta de pagamento. Pague agora para evitar o corte: [link]”"
+  - "“Aqui é do departamento de contas da companhia elétrica. Seu último pagamento falhou — confirme o pagamento nesta ligação.”"
+  - "Pagamento pedido para uma carteira ou conta em nome de pessoa física em vez do nome oficial da concessionária"
 warningSigns:
-- Prazo de corte para o mesmo dia, à noite, escolhido para causar pânico.
-- Chaves UPI ou contas bancárias pessoais em vez do recebedor oficial no seu app UPI.
-- Mensagem fora do seu ciclo real de fatura ou sobre imóvel que você não tem.
-- Qualquer pedido para instalar app ou compartilhar a tela durante o “pagamento”.
-whyItWorks: "Energia elétrica é item inegociável do dia a dia, então a ameaça mira a rotina, não a ganância. Os valores são plausíveis (parecem conta de verdade), e a maioria nunca viu um aviso oficial de verdade. As companhias já avisaram várias vezes que nunca exigem pagamentos UPI instantâneos por ligação ou SMS."
+  - "Prazo de corte no mesmo dia feito para fazer você pagar em pânico sem conferir."
+  - "O pagamento vai para uma carteira, nome ou link pessoal em vez da conta oficial do serviço."
+  - "A mensagem chega fora do seu ciclo de cobrança ou para um número de conta que você não reconhece."
+  - "Qualquer pedido para instalar um app ou compartilhar sua tela durante o pagamento."
+whyItWorks: "Ficar sem luz ou água parece insuportável, então as vítimas agem pelo medo de rotina em vez de ganância. O valor parece uma conta comum, e pouca gente sabe como é um aviso real de corte — então uma mensagem urgente basta."
 whatToDo:
-- Abra você mesmo o app ou site oficial da companhia do seu estado e confira a fatura — ignore a mensagem.
-- Pague só nos canais oficiais, onde o recebedor aparece com o nome registrado da companhia.
-- Se pagou para chave falsa, ligue para 1930 na hora e denuncie em cybercrime.gov.in com o ID da transação UPI.
-- Denuncie o remetente no WhatsApp/SMS e bloqueie o número.
-verify: "Toda companhia estadual (BSES, Adani Electricity, MSEB, TNEB, PSPCL e outras) tem app ou portal oficial com os débitos atualizados. O corte segue avisos impressos ao longo de vários ciclos — nunca um único SMS numa noite."
+  - "Ignore a mensagem — abra o app ou site oficial da concessionária digitado por você e confira o status da conta."
+  - "Pague apenas em canais oficiais onde o recebedor mostra o nome registrado da concessionária."
+  - "Denuncie o número e o link ao serviço nacional de denúncia de fraudes e bloqueie."
+verify: "Encontre seu número de cliente em uma conta antiga e digite você mesmo o site oficial da concessionária para conferir débitos. O corte segue múltiplos avisos escritos ao longo de ciclos de cobrança — nunca uma mensagem em uma noite. Denuncie phishing à APWG em apwg.org e fraudes ao serviço nacional de cibercrime."
 faqs:
-- q: "Minha luz vai mesmo ser cortada hoje à noite se eu não pagar pelo link?"
-  a: Não. Companhias como BSES, MSEDCL e TNEB nunca cortam energia com base num único SMS com link UPI. Elas enviam avisos escritos e só aceitam pagamento em portais/apps oficiais.
-- q: "Por que a mensagem parece tão urgente?"
-  a: Ela usa “hoje às 21:30” e um número falso de atendente para impedir que você confira. Avisos reais dão dias de prazo e citam seu número de cliente, verificável no app oficial.
-- q: "Como pago uma conta de luz de verdade?"
-  a: Abra o app ou site oficial da companhia do seu estado, digitado por você (ex. bsesdelhi, msedcl), informe seu número de cliente e pague lá — nunca por link com chave UPI pessoal.
-- q: "E se ameaçaram de um número parecido com o call center da companhia?"
-  a: Desligue e ligue para o número da sua última conta ou do site oficial da companhia — não o do SMS.
+  - q: "Minha luz vai ser cortada mesmo hoje à noite se eu ignorar a mensagem?"
+    a: "Não. Concessionárias seguem ciclos de aviso escrito com dias para pagar. Uma única mensagem exigindo pagamento instantâneo para uma carteira é sempre golpe."
+  - q: "Como devo pagar uma conta real de luz?"
+    a: "Abra o app ou site oficial da concessionária digitado por você, informe seu número de cliente e pague onde o recebedor mostra o nome registrado da concessionária — nunca via link em mensagem de ameaça."
+  - q: "Já paguei pelo link — e agora?"
+    a: "Ligue imediatamente para o banco para sinalizar a transação, guarde a mensagem e o comprovante, e denuncie ao serviço nacional de fraudes com os dados do pagamento."
 similar:
-- /scams/fastag-kyc-scam
-- /scams/fake-kyc-suspended
-updated: 2026-08-26
+  - "/scams/toll-road-sms"
+  - "/scams/tax-government-refund"
+region: global
+sources:
+  - label: "APWG trends Q3 2024"
+    href: "https://docs.apwg.org/reports/apwg%5Ftrends%5Freport%5Fq3%5F2024.pdf"
+  - label: "APWG trends Q4 2024"
+    href: "https://docs.apwg.org/reports/apwg_trends_report_q4_2024.pdf"
+status: reviewed
 ---

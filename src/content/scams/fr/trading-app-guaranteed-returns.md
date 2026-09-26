@@ -1,38 +1,39 @@
 ---
-title: "Arnaque appli trading à rendements garantis"
-longTitle: "Cette appli de trading avec rendements garantis est-elle une arnaque ? Comment fonctionne la fraude à l'investissement"
-description: "L'arnaque aux groupes de trading WhatsApp/Telegram expliquée : faux professeurs, profits quotidiens garantis, tableaux de bord soignés — et des retraits qui n'arrivent jamais. Signaux d'alerte et étapes de vérification."
+title: "Appli de trading à rendements garantis"
+longTitle: 'Cette appli de trading à rendements garantis est-elle une arnaque ? Oui — comment elle fonctionne'
+description: "L'arnaque à la fausse appli de trading expliquée : tableaux de bord affichant des profits croissants, frais de retrait sans fin, puis disparition. Signaux d'alerte et étapes de vérification."
 tag: "Investissement"
-intro: "Vous êtes ajouté à un groupe WhatsApp ou Telegram où un « professeur » ou analyste publie des trades gagnants. Un petit dépôt semble fructifier sur un tableau de bord d'allure professionnelle. Dès que vous tentez de retirer un montant supérieur — ou hésitez à « passer au niveau supérieur » — apparaissent frais, taxes et gels de compte. Aucun conseiller enregistré SEBI ne recrute via des groupes de chat, et les rendements garantis n'existent pas sur les vrais marchés."
+intro: "Un mentor, une pub ou un groupe vous invite sur une appli de trading affichant des profits garantis réguliers, souvent avec des soutiens de célébrités ou des captures de luxe. Les petits dépôts semblent fructifier sur le tableau de bord — mais chaque retrait exige d'abord un autre dépôt, une taxe ou des frais. Les profits sont des chiffres fictifs ; les dépôts sont réels et disparaissent avec l'appli."
 looksLike:
-  - "« Bienvenue dans la Zone Trading VIP. Le professeur Arjun sir donne des appels sûrs à 100 pourcent. Profit quotidien 8-12 pourcent. Rejoignez vite, places limitées. »"
-  - "Une appli ou un site élégant (souvent sosie d'un vrai courtier) montrant votre solde qui grandit chaque jour."
-  - "« Pour débloquer le retrait, payez d'abord 18 pourcent de GST / frais de dédouanement / dépôt de niveau. »"
-  - "Captures de membres « retirant des lakhs » postées toutes les quelques minutes par les admins du groupe."
+  - "« Groupe crypto VIP — signaux du mentor, 10 % de profit quotidien garanti. Téléchargez l'appli ici et commencez avec 200 $. »"
+  - "Un tableau de bord poli montrant votre solde qui augmente chaque jour avec des notifications de trades gagnants"
+  - "« Pour retirer, payez d'abord les 20 % de frais de déblocage / taxe / upgrade VIP — puis les fonds sont libérés instantanément. »"
 warningSigns:
-  - "« Garanti », « sûr à 100 pourcent », « sans risque » ou rendements quotidiens fixes en pourcentage — impossible sur les vrais marchés."
-  - "Recrutement via WhatsApp/Telegram/applis de rencontre plutôt qu'une plateforme enregistrée SEBI."
-  - "Petits retraits autorisés d'abord (appât), les plus gros bloqués en attente de « frais » ou « taxes »."
-  - "Pression pour recruter des amis ou passer à un niveau « mentorat premium »."
-  - "L'appli est un APK sideloadé depuis un lien au lieu d'une fiche de store."
-whyItWorks: "Le faux tableau de bord fait toute la conviction — des chiffres qui montent semblent une preuve. Les premiers petits paiements sont financés par les dépôts des victimes plus récentes (même mécanique qu'un Ponzi), ce qui instaure la confiance jusqu'au gros dépôt. Les pertes ici comptent parmi les catégories de cyber-fraude à la croissance la plus rapide signalées en Inde depuis 2023."
+  - "Rendements garantis, sans risque ou quotidiens fixes — impossibles sur les vrais marchés."
+  - "Recrutement via WhatsApp, Telegram, applis de rencontre ou pubs de célébrités au lieu d'un courtier agréé."
+  - "Les petits retraits marchent d'abord, puis les gros sont bloqués en attente de frais ou d'upgrades."
+  - "L'appli est installée depuis un lien ou un APK au lieu d'une fiche officielle de boutique d'applis."
+whyItWorks: "Le tableau de bord qui monte semble une preuve, et les premiers petits versements — financés par des victimes plus récentes — bâtissent la confiance jusqu'au gros dépôt. Quand les frais de retrait apparaissent, le coût irrécupérable rend un paiement de plus moins cher à accepter que d'admettre la perte."
 whatToDo:
-  - "Arrêtez d'envoyer de l'argent immédiatement — tout « dernier frais pour libérer les fonds » est la pression finale."
-  - "Capturez tout : nom de l'appli, coordonnées UPI/compte utilisées, historique de chat, IDs de transaction."
-  - "Appelez le 1930 dans l'heure dorée et déposez sur cybercrime.gov.in ; demandez à votre banque de signaler les comptes destinataires."
-  - "Vérifiez l'enregistrement de tout conseiller sur le site SEBI avant d'investir une seule roupie."
-verify: "Vérifiez l'enregistrement du conseiller sur sebi.gov.in et confirmez que le courtier est listé sur les sites des bourses NSE/BSE. Les vrais courtiers ne prennent jamais de dépôts vers des handles UPI personnels — uniquement vers des comptes à leur nom enregistré."
+  - "Arrêtez immédiatement d'envoyer de l'argent — chaque frais de déblocage ou upgrade est la dernière pression."
+  - "Capturez l'appli, les conversations, adresses de paiement et identifiants de transaction avant qu'ils ne disparaissent."
+  - "Prévenez votre banque et signalez à votre service antifraude national avec les preuves gardées."
+verify: "Vérifiez le courtier sur le registre de votre régulateur financier, tapé par vous — les firmes agréées ne recrutent jamais via des groupes de discussion et ne garantissent jamais de rendements. Les vrais courtiers détiennent les fonds sur des comptes à leur nom enregistré, jamais sur des portefeuilles personnels. Signalez au FBI sur ic3.gov ou à votre service antifraude national."
 faqs:
-  - q: "Une appli de trading peut-elle garantir des rendements quotidiens ?"
-    a: "Non. Les marchés n'ont pas de rendements garantis. Toute appli promettant 2-5 pourcent quotidien ou de doubler l'argent est un tableau Ponzi affichant de faux profits que vous ne pouvez pas retirer."
-  - q: "Pourquoi le tableau de bord montre-t-il des profits croissants ?"
-    a: "C'est un chiffre simulé pour vous faire déposer plus. Les retraits sont bloqués avec des excuses comme « payez 10 pourcent de frais de libération » ou « passez VIP » — c'est le vol."
-  - q: "Comment vérifier si un conseiller est légitime ?"
-    a: "Cherchez le nom du conseiller dans la liste des intermédiaires enregistrés sebi.gov.in. Aucun conseiller enregistré SEBI ne recrute via des groupes Telegram/WhatsApp ni ne garantit des rendements."
-  - q: "On m'a ajouté à un groupe WhatsApp de profits — est-ce réel ?"
-    a: "Ces groupes sont remplis de faux comptes postant des captures de profits. Le vrai trading n'a jamais lieu dans des groupes de chat fermés."
+  - q: "Une appli peut-elle garantir des profits de trading quotidiens ?"
+    a: "Non. Les marchés n'offrent aucun rendement garanti. Toute appli promettant des pourcentages quotidiens fixes affiche des chiffres simulés que vous ne pourrez pas retirer."
+  - q: "Pourquoi mon solde affiché augmentait-il ?"
+    a: "Ces chiffres sont fictifs, conçus pour vous faire déposer plus. Les retraits sont bloqués avec des excuses de frais — c'est là le vol, pas un vrai solde."
+  - q: "Comment vérifier qu'un courtier est légitime ?"
+    a: "Cherchez vous-même dans le registre du régulateur et confirmez le domaine officiel du courtier. Les conseillers agréés ne recrutent jamais via des groupes Telegram et n'exigent jamais de dépôts crypto vers des portefeuilles personnels."
 similar:
-  - /scams/job-offer-fee-499
-  - /scams/upi-refund-qr
-updated: 2026-08-26
+  - "/scams/romance-relationship-scam"
+  - "/scams/job-task-scam"
+region: global
+sources:
+  - label: "FBI IC3 2024 investment fraud"
+    href: "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf"
+  - label: "CAFC annual report 2024"
+    href: "https://www.antifraudcentre-centreantifraude.ca/annual-reports-2024-rapports-annuels-eng.htm"
+status: reviewed
 ---

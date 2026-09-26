@@ -6,7 +6,7 @@ import type { Lang } from "./ui";
 export const ready: Record<Lang, boolean> = {
   en: true,
   es: true, // Phase 1 human-reviewed reference, 16/16 2026-09-04
-  fr: true, // 16/16, upi-refund-qr intro fixed 2026-09-04
+  fr: true, // 16/16, global library slugs verified 2026-09
   de: true, // Task2 complete — 16/16 human-reviewed 2026-09-02
   "pt-br": true, // 16/16 translated 2026-09-04
   it: true, // 16/16 translated 2026-09-04

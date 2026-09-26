@@ -1,37 +1,39 @@
 ---
-title: "Minaccia di distacco della luce"
-longTitle: '“La tua luce sarà staccata stasera” è una truffa? Come funziona il trucco'
-description: 'False notifiche di distacco luce (BSES, Adani, MSEB, TNEB e altri) spiegate: la minaccia delle 20:00, gli handle UPI personali e come verificare la bolletta vera.'
+title: "Minaccia di distacco per bolletta luce"
+longTitle: '“La corrente verrà staccata oggi” è una truffa? Sì — ecco come funziona la minaccia utenze'
+description: "La truffa del distacco utenze spiegata: false minacce di taglio luce o acqua che spingono pagamenti istantanei a wallet truffaldini o link. Segnali di allarme e verifica sicura."
 tag: "Utenze"
-intro: "Un SMS o una chiamata automatica dice che la luce sarà staccata entro poche ore per una bolletta non pagata. Ti chiedono di pagare subito a un handle UPI — spesso un nome privato tipo “Ravi Kumar @ybl” — o di scaricare un’app per “ripristinare”. I distacchi veri seguono più solleciti scritti, mai una scadenza la sera stessa con un handle personale."
+intro: "Un SMS o una chiamata sostiene che luce o acqua verranno staccate oggi per una bolletta non pagata, e ti spinge a pagare subito tramite un link o a un wallet indicato da loro. Le vere utility inviano bollette scritte ripetute con giorni per pagare — non esigono mai pagamenti in giornata su un conto personale con un unico messaggio minaccioso."
 looksLike:
-- '“La tua elettricità sarà staccata oggi alle 20:00 per mancato pagamento. Paga subito: [link bit.ly] — BSES Delhi”'
-- Una chiamata automatica in hindi dal presunto “ufficio bollette” dell’ente elettrico.
-- Pagamento richiesto a un ID UPI personale (@ybl, @paytm) invece del nome ufficiale dell’ente.
-- Istruzioni per installare un APK di condivisione schermo o “assistenza bollette” per “elaborare il rimborso”.
+  - "\"La corrente verrà staccata OGGI alle 20 per mancato pagamento. Paga ora per evitare il distacco: [link]\""
+  - "\"Qui ufficio bollette elettriche. Il tuo ultimo pagamento non è andato — conferma il pagamento in questa chiamata.\""
+  - "Pagamento richiesto a un wallet o conto a nome personale invece del nome ufficiale della utility"
 warningSigns:
-- Scadenza di distacco in giornata con orario serale scelto per farti prendere dal panico.
-- Handle UPI personali o conti bancari invece del beneficiario ufficiale nella tua app UPI.
-- Messaggio fuori dal tuo ciclo di fatturazione o per un immobile che non possiedi.
-- Qualsiasi richiesta di installare un’app o condividere lo schermo durante il “pagamento”.
-whyItWorks: "La luce è vita quotidiana irrinunciabile, quindi la minaccia colpisce l’abitudine, non l’avidità. Gli importi sono plausibili (come una vera bolletta) e quasi nessuno ha mai visto una notifica ufficiale vera. Gli enti hanno ripetuto che non chiedono mai pagamenti UPI immediati via chiamate o SMS."
+  - "Scadenza di distacco in giornata fatta per farti pagare in panico senza controllare."
+  - "Il pagamento va a un wallet, nome o link personale invece del conto ufficiale della utility."
+  - "Il messaggio arriva fuori dal tuo ciclo di fatturazione o per un numero cliente che non riconosci."
+  - "Qualsiasi richiesta di installare un’app o condividere lo schermo durante il pagamento."
+whyItWorks: "Restare senza luce o acqua sembra insopportabile, così le vittime agiscono per paura ordinaria più che per avidità. L’importo sembra una normale bolletta, e pochi sanno com’è un vero avviso di distacco — basta un messaggio urgente."
 whatToDo:
-- Apri da solo app o sito ufficiale dell’ente e controlla lo stato — ignora del tutto il messaggio.
-- Paga solo nei canali ufficiali dove il beneficiario risulta col nome registrato dell’ente.
-- Se hai pagato un handle falso, chiama subito il 1930 e segnala su cybercrime.gov.in con l’ID transazione UPI.
-- Segnala il mittente in WhatsApp/SMS e blocca il numero.
-verify: "Ogni ente (BSES, Adani Electricity, MSEB, TNEB, PSPCL e altri) ha app o portale ufficiale con i debiti live. Il distacco segue avvisi cartacei lungo più cicli — mai un solo SMS serale."
+  - "Ignora il messaggio — apri l’app o il sito ufficiale della utility digitato da te e controlla lo stato della bolletta."
+  - "Paga solo nei canali ufficiali dove il beneficiario mostra il nome registrato della utility."
+  - "Segnala numero mittente e link al tuo servizio nazionale antifrode e bloccalo."
+verify: "Trova il tuo numero cliente su una vecchia bolletta, poi digita tu stesso il sito ufficiale della utility per controllare i dovuti. Il distacco segue molteplici avvisi scritti lungo i cicli di fatturazione — mai un unico SMS serale. Segnala il phishing all’APWG su apwg.org e le frodi al tuo servizio nazionale cybercrimine."
 faqs:
-- q: "La luce sarà davvero staccata stasera se non pago dal link?"
-  a: No. Gli enti (BSES, MSEDCL, TNEB ecc.) non staccano mai per un solo SMS con link UPI. Mandano avvisi scritti e accettano pagamenti solo su portali/app ufficiali.
-- q: "Perché il messaggio sembra urgente?"
-  a: Usa “stasera ore 21:30” e un falso numero di funzionario per impedirti di verificare. Gli avvisi veri danno giorni di tempo e citano il tuo numero cliente verificabile nell’app ufficiale.
-- q: "Come pago una vera bolletta della luce?"
-  a: Apri da solo app o sito ufficiale dell’ente (es. bsesdelhi, msedcl), inserisci il numero cliente e paga lì — mai da un link con handle UPI personale.
-- q: "E se minacciano da un numero del call center luce?"
-  a: Riattacca e chiama il numero sull’ultima bolletta o sul sito ufficiale — non quello nell’SMS.
+  - q: "La corrente verrà davvero staccata stanotte se ignoro il messaggio?"
+    a: "No. Le utility seguono cicli di avvisi scritti con giorni per pagare. Un unico SMS che esige pagamento istantaneo a un wallet è sempre una truffa."
+  - q: "Come pago una vera bolletta utenze?"
+    a: "Apri l’app o il sito ufficiale della utility digitato da te, inserisci il numero cliente e paga dove il beneficiario mostra il nome registrato — mai via link in un messaggio minaccioso."
+  - q: "Ho già pagato tramite il link — e ora?"
+    a: "Chiama subito la banca per segnalare la transazione, salva messaggio e ricevuta e segnala al tuo servizio nazionale antifrode con i dettagli del pagamento."
 similar:
-- /scams/fastag-kyc-scam
-- /scams/fake-kyc-suspended
-updated: 2026-08-26
+  - "/scams/toll-road-sms"
+  - "/scams/tax-government-refund"
+region: global
+sources:
+  - label: "APWG trends Q3 2024"
+    href: "https://docs.apwg.org/reports/apwg%5Ftrends%5Freport%5Fq3%5F2024.pdf"
+  - label: "APWG trends Q4 2024"
+    href: "https://docs.apwg.org/reports/apwg_trends_report_q4_2024.pdf"
+status: reviewed
 ---

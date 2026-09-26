@@ -35,41 +35,48 @@ interface Scenario {
 
 const SCENARIOS: Scenario[] = [
   {
-    text: "DTDC: Your parcel is on hold. Pay Rs 99 to reschedule delivery today https://bit.ly/dtdc99",
+    text: "Courier: Your parcel is on hold. Pay a $1.99 redelivery fee today https://bit.ly/post99",
     answer: "scam",
     detector: "payment-request",
     explainKey: "quiz.s1.explain",
     contextKey: "quiz.s1.context",
   },
   {
-    text: "SBI: Your account will be blocked today. Confirm your identity by sharing the OTP 551203 immediately.",
+    text: "Bank: Your account will be blocked today. Confirm your identity by sharing the OTP 551203 immediately.",
     answer: "scam",
     detector: "otp-pin",
     explainKey: "quiz.s2.explain",
     contextKey: "quiz.s2.context",
   },
   {
-    text: "Hi Mum, my phone broke and this is my new number. I'm stuck at the airport, please send Rs 8000 urgently.",
+    text: "Hi Mum, my phone broke and this is my new number. I'm stuck at the airport, please send $500 urgently.",
     answer: "scam",
     detector: "family-emergency",
     explainKey: "quiz.s3.explain",
     contextKey: "quiz.s3.context",
   },
   {
-    text: "BSES: Your electricity will be disconnected today at 8 PM for non-payment. Pay via UPI immediately or power will be cut.",
+    text: "Power Co: Your electricity will be disconnected today at 8 PM for non-payment. Pay immediately or power will be cut.",
     answer: "scam",
     detector: "utility-disconnection",
     explainKey: "quiz.s4.explain",
     contextKey: "quiz.s4.context",
   },
   {
-    text: "VIP trading group: guaranteed returns, daily profit. Pay Rs 5000 registration fee to join and double your money in 7 days.",
+    text: "VIP trading group: guaranteed returns, daily profit. Pay a $99 registration fee to join and double your money in 7 days.",
     answer: "scam",
     detector: "investment-bait",
     explainKey: "quiz.s5.explain",
     contextKey: "quiz.s5.context",
   },
 ];
+
+const RISK_KEY: Record<string, string> = {
+  low: "checker.result.risk.low",
+  medium: "checker.result.risk.medium",
+  high: "checker.result.risk.high",
+  critical: "checker.result.risk.critical",
+};
 
 export default function QuizIsland({ lang = "en" as Lang }: { lang?: Lang }) {
   const [, forceUpdate] = useState(0);
@@ -86,7 +93,7 @@ export default function QuizIsland({ lang = "en" as Lang }: { lang?: Lang }) {
   const [finished, setFinished] = useState(false);
 
   const scenario = SCENARIOS[idx];
-  const result = useMemo(() => analyze(scenario.text, "message"), [scenario.text]);
+  const result = useMemo(() => analyze(scenario.text, "message", lang), [scenario.text, lang]);
   const matched = useMemo(
     () => result.findings.find((f) => f.id === scenario.detector) ?? result.findings[0] ?? null,
     [result.findings, scenario.detector]
@@ -209,7 +216,7 @@ export default function QuizIsland({ lang = "en" as Lang }: { lang?: Lang }) {
               <p class="mt-2 text-caption text-ink-tertiary">
                 Detector: <span class="font-mono text-ink-muted">{matched.id}</span> · {t("quiz.detectorWhy")}
               </p>
-              <p class="mt-1 text-caption text-ink-tertiary">{t("quiz.fullRisk")} <span class="font-medium text-ink-subtle">{result.risk}</span> · {result.headline}</p>
+              <p class="mt-1 text-caption text-ink-tertiary">{t("quiz.fullRisk")} <span class="font-medium text-ink-subtle">{t(RISK_KEY[result.risk] ?? "checker.result.risk.low")}</span> · {result.headline}</p>
             </div>
           ) : (
             <p class="mt-2 text-sm text-ink-muted">{t(scenario.explainKey)}</p>

@@ -11,7 +11,6 @@ interface Props {
   description: string;
   keywords?: string;
   noindex?: boolean;
-  showAnchorAd?: boolean;
   ogImage?: string;
   ogType?: string;
   lang?: string;
@@ -22,7 +21,6 @@ const {
   description,
   keywords = "scam detector, scam checker, fake website checker, phishing link checker, URL scam checker, verify website safety, report a scam",
   noindex = false,
-  showAnchorAd = false,
   ogImage = "https://scamlens.in/og.png",
   ogType = "website",
 } = Astro.props;
@@ -216,18 +214,6 @@ const isActive = (href: string) =>
         </div>
       </div>
     </footer>
-
-    {showAnchorAd && (
-      <aside id="anchor-ad" class="fixed inset-x-0 bottom-0 z-30 border-t border-hairline bg-surface-1/95 backdrop-blur" aria-label="Advertisement">
-        <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
-          <button
-            class="rounded-md px-2 py-1 text-caption text-ink-subtle hover:bg-surface-2 hover:text-ink"
-            onclick="document.getElementById('anchor-ad').remove()"
-          >Close</button>
-        </div>
-      </aside>
-    )}
 
     <script is:inline>
       (() => {

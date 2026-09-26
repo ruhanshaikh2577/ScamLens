@@ -1,4 +1,5 @@
 import type { AnalysisResult, RiskLevel } from "./analyzer";
+import { analyzerStrings } from "./analyzer-i18n";
 
 export const HISTORY_KEY = "scamlens:history";
 const MAX_HISTORY = 20;
@@ -45,17 +46,17 @@ function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): st
   return lines.slice(0, 4);
 }
 
-export function generateShareCard(r: AnalysisResult): string {
+export function generateShareCard(r: AnalysisResult, lang = "en"): string {
+  const S = analyzerStrings(lang);
   if (typeof document === "undefined") return "";
   const c = document.createElement("canvas");
   c.width = 1080;
   c.height = 600;
   const ctx = c.getContext("2d")!;
-  // bg
+  // bg — DESIGN.md canvas #060B14
   ctx.fillStyle = "#060B14";
   ctx.fillRect(0, 0, c.width, c.height);
-  // top hairline
-  ctx.fillStyle = "#1E2D47";
+  // top hairline — DESIGN.md hairline #1E2D47 (canvas can't use CSS var)
   ctx.fillRect(0, 0, c.width, 1);
   // brand
   ctx.fillStyle = "#8a8f98";
@@ -126,17 +127,17 @@ export function generateShareCard(r: AnalysisResult): string {
   if (r.findings.length === 0) {
     ctx.fillStyle = "#8a8f98";
     ctx.font = '400 14px "Inter Variable", Inter, system-ui, sans-serif';
-    ctx.fillText("No common scam markers found — still verify via official channels.", 40, y);
+    ctx.fillText(S.shareNoMarkers, 40, y);
     y += 28;
   }
 
   // footer
   ctx.fillStyle = "#8a8f98";
   ctx.font = '400 13px "Inter Variable", Inter, system-ui, sans-serif';
-  ctx.fillText(`Verify: scamlens.in/how-it-works  —  analyzer ${r.meta.analyzerVersion}`, 40, 560);
+  ctx.fillText(`${S.shareFooter}  —  analyzer ${r.meta.analyzerVersion}`, 40, 560);
   ctx.fillStyle = "#62666d";
   ctx.font = '400 11px "Inter Variable", Inter, system-ui, sans-serif';
-  ctx.fillText("Decision support, not a guarantee. Verify via official channels.", 40, 580);
+  ctx.fillText(S.shareDisclaimer, 40, 580);
   // scamlens.in mark bottom-right
   ctx.fillStyle = "#62666d";
   ctx.textAlign = "right";
@@ -180,6 +181,17 @@ export function clearHistory(): void {
   if (typeof window === "undefined" || !window.localStorage) return;
   try {
     localStorage.removeItem(HISTORY_KEY);
+  } catch {}
+}
+
+export function removeHistory(id: number): void {
+  if (typeof window === "undefined" || !window.localStorage) return;
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    if (!raw) return;
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return;
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(parsed.filter((e: HistoryEntry) => e.id !== id)));
   } catch {}
 }
 

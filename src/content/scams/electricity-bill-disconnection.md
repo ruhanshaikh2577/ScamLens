@@ -1,39 +1,39 @@
 ---
 title: "Electricity bill disconnection threat"
-longTitle: "Is \u201Cyour power will be disconnected tonight\u201D a scam? How the electricity-board trick works"
-description: "Fake electricity-board disconnection notices (BSES, Adani, MSEB, TNEB and others) explained: the tonight-at-8pm threat, personal UPI handles, and how to verify your actual bill safely."
+longTitle: 'Is "your power will be cut today" a scam? Yes — how the utility threat works'
+description: "The utility disconnection scam explained: fake power or water cut threats pushing instant payment to scammer wallets or links. Warning signs and safe verification."
 tag: "Utilities"
-intro: "An SMS or robocall claims your electricity will be disconnected within hours for an unpaid bill. You're asked to pay immediately to a UPI handle — often a personal name like \u201CRavi Kumar @ybl\u201D — or download an app to \u201Crestore connection\u201D. Real disconnections follow multiple written cycles, never a same-evening deadline with a personal payment handle."
+intro: "A text or call claims your power or water will be cut today for an unpaid bill, and pushes you to pay immediately through a link or to a wallet they provide. Real utilities send repeated written bills with days to pay — they never demand same-day payment to a personal account over one threatening message."
 looksLike:
-  - "\u201CYour electricity will be disconnected today at 8:00 PM due to non-payment. Kindly pay immediately: [bit.ly link] — BSES Delhi\u201D"
-  - "A robocall in Hindi claiming to be from the electricity board's \u201Cbill department\u201D."
-  - "Payment requested to a personal-name UPI ID (@ybl, @paytm) rather than the board's biller name."
-  - "Instructions to install a screen-sharing or \u201Cbill support\u201D APK to \u201Cprocess the reversal\u201D."
+  - "\"Your power will be disconnected TODAY at 8pm for non-payment. Pay now to avoid cutoff: [link]\""
+  - "\"This is the electricity board bill department. Your last payment failed — confirm payment on this call.\""
+  - "Payment requested to a personal-name wallet or account instead of the official utility biller name"
 warningSigns:
-  - "Same-day disconnection deadline with evening timing chosen to panic you."
-  - "Personal UPI handles or bank accounts instead of the official biller on your UPI app."
-  - "Message arrives outside your actual billing cycle or for a property you don't own."
-  - "Any request to install an app or share screen during the \u201Cpayment\u201D."
-whyItWorks:
-  "Electricity is non-negotiable daily life, so the threat targets routine, not greed. The amounts are plausible (a real bill-sized figure), and most people have never seen what an official notice actually looks like. Boards have repeatedly warned that they never demand instant UPI payments over calls or texts."
+  - "Same-day cutoff deadline designed to panic you into paying without checking."
+  - "Payment goes to a personal wallet, name, or link instead of the official utility account."
+  - "The message arrives outside your billing cycle or for an account number you do not recognise."
+  - "Any request to install an app or share your screen during payment."
+whyItWorks: "Losing power or water feels unbearable, so victims act on routine fear rather than greed. The amount looks like an ordinary bill, and few people know what a genuine disconnection notice looks like — so one urgent message is enough."
 whatToDo:
-  - "Open your state board's official app or website yourself and check the bill status — ignore the message entirely."
-  - "Pay only inside official channels where the payee shows as the registered board name."
-  - "If you paid a fake handle, call 1930 immediately and report to cybercrime.gov.in with the UPI transaction ID."
-  - "Report the sender in WhatsApp/SMS and block the number."
-verify:
-  "Every state board (BSES, Adani Electricity, MSEB, TNEB, PSPCL and others) has an official app or portal showing live dues. Disconnection follows printed notices across billing cycles — never a single evening SMS."
+  - "Ignore the message — open your utility's official app or website typed yourself and check the bill status."
+  - "Pay only inside official channels where the payee shows the registered utility name."
+  - "Report the sender number and link to your national fraud reporting service and block it."
+verify: "Find your consumer number on a past bill, then type your utility's official site yourself to check dues. Disconnection follows multiple written notices across billing cycles — never one evening text. Report phishing to the APWG at apwg.org and fraud to your national cybercrime service."
 faqs:
-  - q: "Will my power really be cut tonight if I don’t pay via link?"
-    a: "No. Electricity boards (BSES, MSEDCL, TNEB etc.) never cut power based on a single SMS with a UPI link. They send written notices and allow payment only via official portals/apps."
-  - q: "Why does the message feel urgent?"
-    a: "It uses ‘tonight 9:30 PM’ and a fake officer number to stop you from checking. Real disconnection notices give days and reference your consumer number verifiable in the official app."
-  - q: "How should I pay a real electricity bill?"
-    a: "Open your state board’s official app or website typed yourself (e.g. bsesdelhi, msedcl), enter your consumer number, and pay there — never via a link with a personal UPI handle."
-  - q: "What if they threatened from an electricity call centre number?"
-    a: "Hang up and call the number on your last bill or the board’s official website — not the number in the SMS."
+  - q: "Will my power really be cut tonight if I ignore the message?"
+    a: "No. Utilities follow written notice cycles with days to pay. A single text demanding instant payment to a wallet is always a scam."
+  - q: "How should I pay a real utility bill?"
+    a: "Open the utility's official app or website typed yourself, enter your consumer number, and pay where the payee shows the registered utility name — never via a link in a threat message."
+  - q: "I already paid through the link — what now?"
+    a: "Call your bank immediately to flag the transaction, save the message and receipt, and report to your national fraud service with the payment details."
 similar:
-  - "/scams/fastag-kyc-scam"
-  - "/scams/fake-kyc-suspended"
-updated: 2026-08-26
+  - "/scams/toll-road-sms"
+  - "/scams/tax-government-refund"
+region: global
+sources:
+  - label: "APWG trends Q3 2024"
+    href: "https://docs.apwg.org/reports/apwg%5Ftrends%5Freport%5Fq3%5F2024.pdf"
+  - label: "APWG trends Q4 2024"
+    href: "https://docs.apwg.org/reports/apwg_trends_report_q4_2024.pdf"
+status: reviewed
 ---
