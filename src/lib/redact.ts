@@ -7,12 +7,27 @@
 // 16-digit nor the 12-digit rule and was stored verbatim in KV via report.ts redactedInput.
 // Grouped (space/dash) forms need a REQUIRED separator so that "9876543210 492813" — a
 // phone plus an OTP — is not glued into one 16-digit run and mistaken for a card.
-type Replacer = string | ((match: string) => string);
+// A replacer may be a plain mask string, or a function receiving the full
+// String.replace replacer signature — the credential rule needs a capture group
+// (match, prefix, ...groups, offset, whole). astro check enforces this; vitest
+// does not typecheck, so a wrong signature here only surfaces in CI.
+type Replacer = string | ((substring: string, ...args: any[]) => string);
 
 const CARD_MASK = "**** **** **** ****";
 const AADHAAR_MASK = "**** **** ****";
 
 const PATTERNS: Array<[RegExp, Replacer]> = [
+  // Credential values carried in a URL query string, e.g. "?password=TopSecret123".
+  // This runs FIRST so the value is masked whatever else it looks like. The parameter
+  // NAME is preserved deliberately: the `url-credentials` detector keys off
+  // `[?&](password|token|...)=`, so replacing the whole pair would blind the detector
+  // that exists to flag the URL. Scoped to query params on purpose — masking the word
+  // "password" in prose would gut the evidence snippet without protecting anything,
+  // since a scammer asking for a password is not the user supplying one.
+  [
+    /([?&](?:password|passwd|pwd|pass|secret|token|api[_-]?key|access[_-]?token|auth|session[_-]?id)=)([^&#\s]*)/gi,
+    (_m: string, prefix: string) => `${prefix}***`,
+  ],
   // 12/15/16/19 digits, contiguous... or in 4-digit groups separated by space/dash.
   // 13/14 are deliberately NOT matched: a 14-digit run is far more often an epoch-ms
   // timestamp than a card, and redacted input is persisted to KV, so a false mask
