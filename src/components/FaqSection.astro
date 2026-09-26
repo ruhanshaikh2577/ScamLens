@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+
+interface Props {
+  faqs: Array<{ q: string; a: string }>;
+  eyebrow?: string;
+  title?: string;
+  id?: string;
+}
+
+const { faqs, eyebrow = "FAQ", title = "Frequently asked questions", id = "faq" } = Astro.props as Props;
+
+// Only emit FAQPage if visible content qualifies (at least 1 QA, all visible)
+const ld = faqs.length >= 1 ? JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: lang,
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+}) : null;
+---
+
+<section id={id} class="border-t border-hairline px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-2xl">
+    <div data-reveal>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="display-section mt-4">{title}</h2>
+    </div>
+    <div data-reveal style="--reveal-delay: 80ms" class="mt-10 divide-y divide-hairline border-y border-hairline">
+      {faqs.map((f) => (
+        <details class="group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-body font-medium text-ink [&::-webkit-details-marker]:hidden">
+            {f.q}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="shrink-0 text-ink-subtle transition-transform group-open:rotate-45" aria-hidden="true">
+              <path d="M8 3v10M3 8h10" />
+            </svg>
+          </summary>
+          <p class="mt-3 pr-8 text-body-sm leading-relaxed text-ink-muted">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+  {ld && <script is:inline type="application/ld+json" set:html={ld} />}
+</section>

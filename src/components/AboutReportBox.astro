@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { reportHelplines, reportUrls } from "../i18n/ui";
+
+// "Been defrauded" report box with per-locale helpline + portal.
+// Replaces the old hardcoded 1930/cybercrime.gov.in box on all about pages.
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const helpline = reportHelplines[lang] ?? null;
+const portal = reportUrls[lang] ?? reportUrls.en;
+let portalHost = portal;
+try { portalHost = new URL(portal).hostname.replace(/^www\./, ""); } catch {}
+---
+
+<p class="text-body">
+  {t("about.p4")}{" "}
+  {helpline && <><a href={helpline} class="text-primary-hover hover:underline">✆ {helpline.replace(/^tel:/, "")}</a> / </>}
+  <a href={portal} target="_blank" rel="noopener noreferrer" class="text-primary-hover hover:underline">{portalHost}</a>
+</p>

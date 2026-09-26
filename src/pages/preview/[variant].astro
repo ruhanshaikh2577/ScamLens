@@ -1,0 +1,440 @@
+---
+import PreviewShell from "../../layouts/PreviewShell.astro";
+import CheckerIsland from "../../components/checker/CheckerIsland";
+
+export function getStaticPaths() {
+  return [
+    { params: { variant: "opt1" } },
+    { params: { variant: "opt2" } },
+    { params: { variant: "opt3" } },
+    { params: { variant: "recommended" } },
+  ];
+}
+const { variant } = Astro.params as { variant: string };
+type V = "opt1" | "opt2" | "opt3" | "recommended";
+const v = (variant as V) || "opt1";
+
+// content — same as live site, English source
+const hero = {
+  opt1: { eyebrow: "CHROME · LAMP · GLASS FRACTAL", title: "Spot every", title2: "scam.", sub: "Lamp-lit chrome meets obsidian. Paste a message, link or screenshot — get quoted evidence, not a mystery score.", cta: "Check now — free" },
+  opt2: { eyebrow: "SHADER HERO · WARP STRIPES · BEAMS", title: "Verify in", title2: "seconds.", sub: "Beams collide, warp stripes drift. Cyber-cinema for a trust tool — still on-device, still explainable.", cta: "Scan a message" },
+  opt3: { eyebrow: "AETHER RIBBON · FLUID FIELD · IMAGE FAN", title: "Your lens", title2: "for the noise.", sub: "Editorial paper, ribbon mesh, fluid contours. For the reader who learns by seeing patterns, not scores.", cta: "Try the checker" },
+  recommended: { eyebrow: "RECOMMENDED · SOVEREIGN SIGNAL", title: "Check the", title2: "message.", sub: "Keep the money. The tuned vault — dot grid + warps 8% + shine halo, paper clarity, trust-blue signal. Light, fast, AA.", cta: "Check now — takes 10s" },
+}[v];
+
+const stats = [
+  { v: "880k+", l: "complaints filed with FBI IC3 in 2023" },
+  { v: "$12.5B+", l: "reported losses to cyber fraud" },
+  { v: "3.4B+", l: "phishing emails sent daily" },
+];
+const steps = [
+  { n: "01", t: "Pick your input", d: "Message, screenshot or link — one checker handles all three. Drop anything." },
+  { n: "02", t: "Redacted first", d: "OTPs, card numbers, mobiles masked locally before any pattern scan." },
+  { n: "03", t: "Pattern scan", d: "Urgency, payment asks, impersonation, shorteners, punycode, APK tricks — quoted evidence." },
+  { n: "04", t: "Reasons, not score", d: "Every flag shows the exact quote + why it matters + safe next step. You stay the judge." },
+];
+const detectCards = [
+  { t: "Messages & calls", d: "OTP theft, urgency, bank / courier impersonation in SMS, forwards, calls." },
+  { t: "Fake links", d: "Shorteners, look-alike domains, punycode, raw IPs, @-tricks, APK downloads." },
+  { t: "Screenshots & QR", d: "Edited payment proofs, fake success screens, scan-to-receive QR traps." },
+  { t: "Toll & transit", d: "Unpaid toll / FASTag / E-ZPass clones harvesting cards via brand spoof." },
+  { t: "Job offers", d: "Work-from-home with registration fees, like-and-earn task kits." },
+  { t: "Authority fear", d: "Digital arrest, police / tax threats over video call or transfer demand." },
+];
+const safety = [
+  "Never pay to receive money — prizes, refunds, parcels, jobs.",
+  "No bank or wallet ever asks for OTP / PIN / CVV — on any channel.",
+  "Urgency is the tell — today / 24h / final warning exist to stop thinking.",
+  "Verify via official app, not the number in the message.",
+  "Type URLs yourself; check the domain character by character.",
+  "Screenshot ≠ proof — check your bank, not their image.",
+];
+---
+
+<PreviewShell title={`${hero.title} ${hero.title2} — Preview ${v} | ScamLens`} description={hero.sub} variant={v}>
+  <!-- top switcher -->
+  <div style="position:sticky;top:0;z-index:40;backdrop-filter:blur(12px);background:color-mix(in srgb, var(--bg) 84%, transparent);border-bottom:1px solid var(--border)">
+    <div style="max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px">
+      <span style="background:var(--ink);color:var(--bg);padding:5px 10px;border-radius:9999px;font-weight:700;letter-spacing:0.06em">PREVIEW · {v.toUpperCase()}</span>
+      <span style="color:var(--subtle)" class="hide-sm">Full redesign — no old colors, fonts, radii — same content</span>
+      <span style="margin-left:auto;display:flex;gap:6px;align-items:center">
+        <a href="/preview" style="border:1px solid var(--border);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:9999px;font-weight:500">← Hub</a>
+        <a href="/" style="border:1px solid var(--border);background:var(--surface);color:var(--subtle);padding:6px 12px;border-radius:9999px" class="hide-sm">Live site →</a>
+      </span>
+      <div style="display:flex;gap:6px;width:100%;margin-top:2px">
+        <a href="/preview/opt1" style={`flex:1;text-align:center;padding:7px 8px;border-radius:9999px;font-weight:600;border:1px solid ${v==="opt1"?"var(--ink)":"var(--border)"};background:${v==="opt1"?"var(--ink)":"var(--surface)"};color:${v==="opt1"?"var(--bg)":"var(--subtle)"}`}>opt1 chrome</a>
+        <a href="/preview/opt2" style={`flex:1;text-align:center;padding:7px 8px;border-radius:9999px;font-weight:600;border:1px solid ${v==="opt2"?"var(--ink)":"var(--border)"};background:${v==="opt2"?"var(--ink)":"var(--surface)"};color:${v==="opt2"?"var(--bg)":"var(--subtle)"}`}>opt2 nebula</a>
+        <a href="/preview/opt3" style={`flex:1;text-align:center;padding:7px 8px;border-radius:9999px;font-weight:600;border:1px solid ${v==="opt3"?"var(--ink)":"var(--border)"};background:${v==="opt3"?"var(--ink)":"var(--surface)"};color:${v==="opt3"?"var(--bg)":"var(--subtle)"}`}>opt3 paper</a>
+        <a href="/preview/recommended" style={`flex:1;text-align:center;padding:7px 8px;border-radius:9999px;font-weight:700;border:1px solid ${v==="recommended"?"var(--primary)":"var(--border)"};background:${v==="recommended"?"var(--primary)":"var(--surface)"};color:${v==="recommended"?"var(--primary-ink)":"var(--subtle)"}`}>★ rec</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV — new, not old navy+emerald -->
+  <header style="max-width:1120px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:16px">
+    <a href={`/preview/${v}`} style="display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-0.04em;font-family:var(--font-display);font-size:18px">
+      <span style="width:28px;height:28px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:13px">◈</span>
+      ScamLens <span style="font-weight:500;color:var(--subtle);font-family:var(--font-body);font-size:13px;letter-spacing:0">/ preview</span>
+    </a>
+    <nav style="display:none;gap:18px;margin-left:24px;font-size:14px;color:var(--muted)" class="nav-desktop">
+      <a href="#how" style="hover:color:var(--ink)">How it works</a><a href="#detect">What we detect</a><a href="#example">Example</a><a href="#faq">FAQ</a>
+    </nav>
+    <span style="margin-left:auto;display:flex;gap:8px;align-items:center">
+      <span style="display:none;gap:6px;font-size:12px;color:var(--subtle)" class="hide-sm"><span style="width:7px;height:7px;border-radius:9999px;background:var(--accent)"></span> On-device</span>
+      <a href="#checker" style="background:var(--primary);color:var(--primary-ink);padding:10px 18px;border-radius:9999px;font-weight:600;font-size:14px;box-shadow:var(--shadow)">Check now →</a>
+    </span>
+  </header>
+
+  <!-- HERO — variant-specific 21st treatments, full-bleed -->
+  {v==="opt1" && (
+    <section style="position:relative;overflow:hidden;padding:36px 16px 28px">
+      <div style="position:absolute;inset:0;z-index:-1;background:var(--bg)">
+        <div style="position:absolute;inset:0;opacity:0.45;background-image:radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--border-strong) 60%, transparent) 1px, transparent 0);background-size:22px 22px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 55%, transparent 90%)"></div>
+        <div style="position:absolute;left:50%;top:-6%;width:880px;height:520px;transform:translateX(-50%);background:linear-gradient(to bottom, color-mix(in srgb, var(--accent) 18%, transparent), transparent);clip-path:polygon(38% 0,62% 0,78% 100%,22% 100%);filter:blur(0.5px)"></div>
+        <div style="position:absolute;left:50%;top:0;width:680px;height:1px;transform:translateX(-50%);background:linear-gradient(to right, transparent, color-mix(in srgb, var(--accent) 55%, transparent), transparent)"></div>
+        <div style="position:absolute;left:50%;top:0;width:320px;height:1px;transform:translateX(-50%);background:var(--accent);filter:blur(6px);opacity:0.5"></div>
+        <div style="position:absolute;left:-60px;top:40px;width:420px;height:420px;border-radius:9999px;background:color-mix(in srgb, var(--accent) 14%, transparent);filter:blur(70px)"></div>
+        <div style="position:absolute;right:-40px;top:80px;width:360px;height:360px;border-radius:9999px;background:var(--surface-2);filter:blur(70px);opacity:0.6"></div>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;text-align:center">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--accent);font-weight:600">{hero.eyebrow}</p>
+        <h1 class="display" style="font-size:clamp(36px,7vw,64px);margin:14px auto 0;max-width:720px">{hero.title}<br/><span style="color:var(--subtle);font-weight:600">{hero.title2}</span></h1>
+        <p style="margin:16px auto 0;max-width:560px;color:var(--muted);font-size:18px;line-height:1.5">{hero.sub}</p>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-size:12px">
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">21st: <a href="https://21st.dev/@manuarora700/components/lamp" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Lamp</a> · <a href="https://21st.dev/@vgpu/components/glass-fractal" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Glass Fractal</a></span>
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">Financial hero stats →</span>
+        </div>
+      </div>
+      <div style="max-width:720px;margin:28px auto 0;position:relative;padding:1.5px;border-radius:22px;background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent), transparent);background-size:200% 100%">
+        <div style="background:var(--surface);border-radius:20px;padding:6px;box-shadow:var(--shadow);border:1px solid var(--border)">
+          <CheckerIsland client:visible lang="en" />
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--subtle)">DOT PATTERN · SHINE BORDER · LARGE NAME — CHROME OBSIDIAN</p>
+      <div style="max-width:720px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">~2s</p><p style="font-size:12px;color:var(--subtle)">to verdict</p></div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">100%</p><p style="font-size:12px;color:var(--subtle)">on-device</p></div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">8</p><p style="font-size:12px;color:var(--subtle)">locales</p></div>
+      </div>
+    </section>
+  )}
+  {v==="opt2" && (
+    <section style="position:relative;overflow:hidden;padding:36px 16px 28px">
+      <div style="position:absolute;inset:0;z-index:-1;background:var(--bg)">
+        <div style="position:absolute;inset:0;opacity:0.22;background:linear-gradient(100deg, transparent 40%, color-mix(in srgb, var(--primary) 18%, transparent) 50%, transparent 60%), linear-gradient(80deg, transparent 30%, color-mix(in srgb, var(--accent) 14%, transparent) 50%, transparent 70%)"></div>
+        <div style="position:absolute;left:0;right:0;top:38%;height:1px;background:linear-gradient(to right, transparent, color-mix(in srgb, var(--primary) 60%, transparent), transparent)"></div>
+        <div style="position:absolute;left:18%;top:36%;width:8px;height:8px;border-radius:9999px;background:var(--primary);box-shadow:0 0 20px var(--primary)"></div>
+        <div style="position:absolute;right:18%;top:36%;width:8px;height:8px;border-radius:9999px;background:var(--accent);box-shadow:0 0 20px var(--accent)"></div>
+        <div style="position:absolute;inset:0;opacity:0.06;background:repeating-linear-gradient(105deg, var(--primary) 0 1px, transparent 1px 14px)"></div>
+        <div style="position:absolute;left:50%;bottom:-80px;width:900px;height:420px;transform:translateX(-50%);border-radius:9999px;background:radial-gradient(ellipse at center, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%);filter:blur(30px)"></div>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;text-align:center">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--primary);font-weight:600">{hero.eyebrow}</p>
+        <h1 class="display" style="font-size:clamp(36px,7vw,64px);margin:14px auto 0;max-width:720px">{hero.title}<br/><span style="color:var(--subtle);font-weight:600">{hero.title2}</span></h1>
+        <p style="margin:16px auto 0;max-width:560px;color:var(--muted);font-size:18px;line-height:1.5">{hero.sub}</p>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-size:12px">
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">21st: Shader Hero · Warp Stripes</span>
+          <span style="border:1px solid color-mix(in srgb, var(--primary) 30%, transparent);background:color-mix(in srgb, var(--primary) 10%, transparent);color:var(--primary);padding:6px 10px;border-radius:9999px">Live shader · 60fps</span>
+        </div>
+      </div>
+      <div style="max-width:720px;margin:28px auto 0;position:relative;border-radius:20px;overflow:hidden;border:1px solid color-mix(in srgb, var(--primary) 20%, transparent);background:var(--surface);box-shadow:var(--shadow);padding:6px">
+        <div style="position:absolute;inset:0;pointer-events:none;opacity:0.5;background:radial-gradient(400px 120px at 50% 0%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 70%)"></div>
+        <CheckerIsland client:visible lang="en" />
+      </div>
+      <p style="text-align:center;margin-top:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--subtle)">BEAMS COLLISION · OCEANIC SHIMMER · NEXUS DOCS</p>
+    </section>
+  )}
+  {v==="opt3" && (
+    <section style="position:relative;overflow:hidden;padding:36px 16px 28px">
+      <div style="position:absolute;inset:0;z-index:-1;background:var(--bg)">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.16" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-100 180 C 220 80, 480 320, 700 180 S 1000 420, 1300 220" fill="none" stroke="#8B5CF6" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M-100 260 C 280 140, 520 380, 740 240 S 1050 460, 1300 300" fill="none" stroke="#A78BFA" stroke-width="1" opacity="0.7"/>
+          <path d="M-100 340 C 320 200, 560 440, 780 300 S 1100 500, 1300 380" fill="none" stroke="#C4B5FD" stroke-width="0.9" opacity="0.5"/>
+        </svg>
+        <div style="position:absolute;left:-40px;top:40px;width:360px;height:360px;border-radius:9999px;background:#8B5CF6;opacity:0.09;filter:blur(60px)"></div>
+        <div style="position:absolute;right:-20px;top:20px;width:320px;height:320px;border-radius:9999px;background:#EC4899;opacity:0.08;filter:blur(60px)"></div>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;text-align:center">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--accent);font-weight:600">{hero.eyebrow}</p>
+        <h1 class="display" style="font-size:clamp(36px,7vw,62px);margin:14px auto 0;max-width:720px">{hero.title} <em style="font-family:var(--font-display-2);font-style:italic;font-weight:400">{hero.title2}</em></h1>
+        <p style="margin:16px auto 0;max-width:560px;color:var(--muted);font-size:18px;line-height:1.5">{hero.sub}</p>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-size:12px">
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">21st: Aether Ribbon · Fluid Field</span>
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">Image Fan preview ↓</span>
+        </div>
+      </div>
+      <div style="max-width:720px;margin:28px auto 0;border-radius:18px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow);padding:6px">
+        <CheckerIsland client:visible lang="en" />
+      </div>
+      <div style="max-width:760px;margin:22px auto 0">
+        <p style="text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--subtle);margin-bottom:10px">CENTERED HERO WITH IMAGE FAN</p>
+        <div style="display:flex;justify-content:center;gap:10px">
+          <div style="width:160px;height:112px;transform:rotate(-3deg);border-radius:14px;border:1px solid var(--border);background:var(--surface-2);overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(135deg, #ddd6fe, #fbcfe8)"></div></div>
+          <div style="width:160px;height:112px;transform:rotate(1deg) translateY(-8px);border-radius:14px;border:1px solid var(--border-strong);background:var(--surface);box-shadow:var(--shadow);display:grid;place-items:center;font-family:var(--font-mono);font-size:11px;color:var(--subtle)">Checker UI</div>
+          <div style="width:160px;height:112px;transform:rotate(3deg);border-radius:14px;border:1px solid var(--border);background:var(--surface-2);overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(135deg, #a5f3fc, #ddd6fe)"></div></div>
+        </div>
+      </div>
+    </section>
+  )}
+  {v==="recommended" && (
+    <section style="position:relative;overflow:hidden;padding:36px 16px 28px">
+      <div style="position:absolute;inset:0;z-index:-1;background:var(--bg)">
+        <div style="position:absolute;inset:0;opacity:0.35;background-image:radial-gradient(circle at 1px 1px, #cbd5e1 1px, transparent 0);background-size:20px 20px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%, black 60%, transparent 92%)"></div>
+        <div style="position:absolute;inset:0;background:radial-gradient(900px 420px at 50% 0%, transparent 60%, color-mix(in srgb, var(--bg) 70%, transparent) 100%)"></div>
+        <div style="position:absolute;inset:0;opacity:0.04;background:repeating-linear-gradient(115deg, var(--primary) 0 1px, transparent 1px 12px)"></div>
+        <div style="position:absolute;left:50%;top:-4%;width:880px;height:520px;transform:translateX(-50%);background:linear-gradient(to bottom, color-mix(in srgb, var(--primary) 7%, transparent), transparent);clip-path:polygon(41% 0,59% 0,73% 100%,27% 100%)"></div>
+        <div style="position:absolute;left:50%;top:0;width:640px;height:1px;transform:translateX(-50%);background:linear-gradient(to right, transparent, var(--border-strong), transparent)"></div>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;text-align:center">
+        <p style="display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in srgb, var(--primary) 18%, transparent);background:color-mix(in srgb, var(--primary) 7%, transparent);color:var(--primary);padding:5px 10px;border-radius:9999px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;font-weight:600"><span style="width:7px;height:7px;border-radius:9999px;background:var(--primary);display:inline-block"></span> RECOMMENDED · TUNED</p>
+        <h1 class="display" style="font-size:clamp(38px,7vw,64px);margin:14px auto 0;max-width:720px">{hero.title}<br/><span style="color:var(--subtle);font-weight:600">{hero.title2}</span></h1>
+        <p style="margin:16px auto 0;max-width:560px;color:var(--muted);font-size:18px;line-height:1.5">{hero.sub}</p>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-size:12px">
+          <span style="border:1px solid color-mix(in srgb, var(--primary) 22%, transparent);background:color-mix(in srgb, var(--primary) 8%, transparent);color:var(--primary);padding:6px 10px;border-radius:9999px;font-weight:600">21st: Lamp · Warp Stripes 8%</span>
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">Dot + Vignette · Shine halo</span>
+          <span style="border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:6px 10px;border-radius:9999px">Signal Trust — paper clarity</span>
+        </div>
+      </div>
+      <div style="max-width:720px;margin:28px auto 0;position:relative;padding:1.4px;border-radius:20px;background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 22%, transparent), transparent)">
+        <div style="background:var(--surface);border-radius:19px;padding:6px;border:1px solid var(--border);box-shadow:var(--shadow)">
+          <CheckerIsland client:visible lang="en" />
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--subtle)">SHINE BORDER (hover) · DOT GRID · TRUST BLUE #2563EB</p>
+      <div style="max-width:720px;margin:16px auto 0;display:flex;justify-content:center">
+        <a href="#checker" style="background:var(--primary);color:var(--primary-ink);padding:11px 18px;border-radius:9999px;font-weight:600;font-size:14px;display:inline-flex;gap:8px;align-items:center;box-shadow:var(--shadow)">{hero.cta} <span style="opacity:0.8">→</span></a>
+      </div>
+      <div style="max-width:720px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">~2s</p><p style="font-size:12px;color:var(--subtle)">to verdict</p></div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">100%</p><p style="font-size:12px;color:var(--subtle)">on-device</p></div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px"><p style="font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.03em">AA</p><p style="font-size:12px;color:var(--subtle)">contrast</p></div>
+      </div>
+    </section>
+  )}
+
+  <!-- STATS — new, not old navy ladder -->
+  <section style="max-width:1120px;margin:0 auto;padding:28px 16px">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 18px;box-shadow:var(--shadow);display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div style="grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:2px">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--subtle);font-weight:600">THE SCALE — FBI IC3 2023 · APWG</p>
+        <span style="font-size:12px;color:var(--subtle)">Global, not per-locale</span>
+      </div>
+      {stats.map(s => (
+        <div style="text-align:left;border-left:1px solid var(--border);padding-left:16px">
+          <p style="font-family:var(--font-display);font-size:34px;font-weight:700;letter-spacing:-0.04em;line-height:1">{s.v}</p>
+          <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.4">{s.l}</p>
+        </div>
+      ))}
+    </div>
+    <p style="text-align:center;margin-top:10px;font-size:12px;color:var(--subtle)">Figures per FBI IC3 — treat as scale. If defrauded, report via <a href="#help" style="text-decoration:underline;text-underline-offset:3px;color:var(--muted)">Get help</a>.</p>
+  </section>
+
+  <!-- HOW IT WORKS — redesigned steps -->
+  <section id="how" style="max-width:1120px;margin:0 auto;padding:22px 16px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--subtle);font-weight:600">HOW IT WORKS</p>
+        <h2 class="display" style="font-size:clamp(26px,4vw,34px);margin-top:8px">From doubt to decision<br/><span style="color:var(--subtle)">in four steps.</span></h2>
+      </div>
+      <a href="/how-it-works" style="border:1px solid var(--border);background:var(--surface);color:var(--ink);padding:10px 14px;border-radius:9999px;font-size:13px;font-weight:600">Read methodology →</a>
+    </div>
+    <ol style="margin-top:18px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+      {steps.map(s => (
+        <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);position:relative">
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--subtle);border:1px solid var(--border);padding:4px 7px;border-radius:9999px;background:var(--surface-2)">{s.n}</span>
+          <h3 style="font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.02em;margin-top:10px">{s.t}</h3>
+          <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.5">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- WHAT WE DETECT — 6 cards, new surface -->
+  <section id="detect" style="max-width:1120px;margin:0 auto;padding:22px 16px">
+    <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--subtle);font-weight:600">WHAT WE DETECT</p>
+    <h2 class="display" style="font-size:clamp(26px,4vw,34px);margin-top:8px">Every signal,<br/><span style="color:var(--subtle)">in plain language.</span></h2>
+    <div style="margin-top:16px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      {detectCards.map(c => (
+        <a href="/scams" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:block;transition:border-color 0.15s, transform 0.15s;box-shadow:var(--shadow)">
+          <div style="width:32px;height:32px;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center;font-size:14px">◈</div>
+          <h3 style="font-weight:700;margin-top:10px;letter-spacing:-0.02em">{c.t}</h3>
+          <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.5">{c.d}</p>
+          <span style="margin-top:10px;display:inline-flex;font-size:12px;font-weight:600;color:var(--subtle);gap:4px">Learn <span>→</span></span>
+        </a>
+      ))}
+    </div>
+    <div style="margin-top:12px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px">
+        <h3 style="font-weight:700;letter-spacing:-0.02em">Message signals</h3>
+        <ul style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6;list-style:none;padding:0">
+          <li>• Urgency windows (“within 24h”, “today only”)</li><li>• Payment requests $1.99 / $499 odd amounts</li><li>• OTP / PIN / CVV asks</li><li>• Bank / courier / gov impersonation</li>
+        </ul>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px">
+        <h3 style="font-weight:700;letter-spacing:-0.02em">URL signals</h3>
+        <ul style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6;list-style:none;padding:0">
+          <li>• Shorteners hiding destination</li><li>• Look-alike domains (mybank-secure…)</li><li>• Punycode / raw IP / http / @ trick / .apk</li><li>• High-abuse TLDs .zip .top .click</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAMPLE ANALYSIS — redesigned evidence card -->
+  <section id="example" style="max-width:1120px;margin:0 auto;padding:22px 16px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:start;justify-content:space-between">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--subtle);font-weight:600">EXAMPLE ANALYSIS</p>
+        <h2 class="display" style="font-size:clamp(26px,4vw,34px);margin-top:8px">Evidence quoted,<br/><span style="color:var(--subtle)">not a mystery score.</span></h2>
+      </div>
+      <span style="border:1px solid var(--border);background:var(--surface);padding:6px 10px;border-radius:9999px;font-family:var(--font-mono);font-size:11px;color:var(--subtle)">input: Message · HIGH RISK</span>
+    </div>
+    <div style="margin-top:14px;max-width:720px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow)">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="background:color-mix(in srgb, var(--danger) 14%, transparent);color:var(--danger);border:1px solid color-mix(in srgb, var(--danger) 22%, transparent);padding:5px 10px;border-radius:9999px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.08em">HIGH RISK</span>
+        <span style="margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--subtle);border:1px solid var(--border);padding:4px 8px;border-radius:9999px;background:var(--surface-2)">Courier: ON HOLD [TRK-88213]</span>
+      </div>
+      <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-top:12px">Strong scam warning signs</h3>
+      <blockquote style="margin-top:12px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px;font-family:var(--font-mono);font-size:13px;line-height:1.5;color:var(--muted)">Courier: Your parcel ON HOLD [TRK-88213]. Pay a $1.99 redelivery fee today, else it will be returned to the depot within 24 hours. bit.ly/post-redeliver</blockquote>
+      <div style="margin-top:14px;display:grid;gap:10px">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--subtle);font-weight:600">WHY WE FLAGGED IT</p>
+        <div style="font-size:13px;line-height:1.5"><b>Payment request</b> · <span style="font-family:var(--font-mono);background:var(--surface-2);border:1px solid var(--border);padding:2px 6px;border-radius:6px">Pay a $1.99 redelivery fee</span></div>
+        <div style="font-size:13px;line-height:1.5"><b>Artificial urgency</b> · <span style="font-family:var(--font-mono);background:var(--surface-2);border:1px solid var(--border);padding:2px 6px;border-radius:6px">within 24 hours</span></div>
+        <div style="font-size:13px;line-height:1.5"><b>Impersonates courier</b> · <span style="font-family:var(--font-mono);background:var(--surface-2);border:1px solid var(--border);padding:2px 6px;border-radius:6px">Courier: ON HOLD [TRK-88213]</span></div>
+        <div style="font-size:13px;line-height:1.5"><b>Shortened link</b> · <span style="font-family:var(--font-mono);background:var(--surface-2);border:1px solid var(--border);padding:2px 6px;border-radius:6px">bit.ly/post-redeliver</span></div>
+      </div>
+      <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--subtle);font-weight:600">WHAT YOU SHOULD DO</p>
+        <ol style="margin:8px 0 0 18px;font-size:13px;color:var(--muted);line-height:1.6"><li>Never pay a fee to receive a parcel.</li><li>Track via official courier app.</li><li>Report, block, warn the forwarder.</li></ol>
+      </div>
+      <p style="margin-top:12px;font-size:12px;color:var(--subtle)">Decision support, not a guarantee — verify via official channels.</p>
+    </div>
+    <div style="text-align:center;margin-top:12px"><a href="#checker" style="background:var(--primary);color:var(--primary-ink);padding:10px 16px;border-radius:9999px;font-weight:600;font-size:13px;display:inline-block">Try this example in the checker →</a></div>
+  </section>
+
+  <!-- LIBRARY + TIPS + FAQ teaser — compact -->
+  <section style="max-width:1120px;margin:0 auto;padding:22px 16px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)">
+      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--subtle);font-weight:600">SCAM LIBRARY · 16 PATTERNS</p>
+      <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-top:6px">Know the pattern before it reaches you</h3>
+      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;font-size:12px">
+        <span style="border:1px solid var(--border);background:var(--surface-2);padding:6px 10px;border-radius:9999px">Parcel fee</span><span style="border:1px solid var(--border);background:var(--surface-2);padding:6px 10px;border-radius:9999px">Bank OTP</span><span style="border:1px solid var(--border);background:var(--surface-2);padding:6px 10px;border-radius:9999px">QR trap</span><span style="border:1px solid var(--border);background:var(--surface-2);padding:6px 10px;border-radius:9999px">Job fee</span>
+      </div>
+      <a href="/scams" style="margin-top:12px;display:inline-block;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);padding:8px 12px;border-radius:9999px;font-size:13px;font-weight:600">Browse library →</a>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)">
+      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--subtle);font-weight:600">SAFETY TIPS · 13 RULES</p>
+      <h3 style="font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-top:6px">The checklist that beats the tricks</h3>
+      <ul style="margin-top:10px;font-size:13px;color:var(--muted);line-height:1.6;list-style:none;padding:0">
+        {safety.slice(0,4).map(s => <li>• {s}</li>)}
+      </ul>
+      <a href="/safety-tips" style="margin-top:12px;display:inline-block;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);padding:8px 12px;border-radius:9999px;font-size:13px;font-weight:600">All rules →</a>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width:760px;margin:0 auto;padding:22px 16px">
+    <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--subtle);font-weight:600">FAQ</p>
+    <h2 class="display" style="font-size:26px;margin-top:8px">Straight answers.</h2>
+    <div style="margin-top:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)">
+      <details style="padding:16px;border-bottom:1px solid var(--border)" open><summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px">Does ScamLens store what I paste? <span style="color:var(--subtle)">+</span></summary><p style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6">No. Stays in your browser. Screenshots processed locally, never uploaded.</p></details>
+      <details style="padding:16px;border-bottom:1px solid var(--border)"><summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px">Is Low Risk a guarantee? <span style="color:var(--subtle)">+</span></summary><p style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6">No. Means no common markers found — always verify via official channels.</p></details>
+      <details style="padding:16px"><summary style="font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px">I lost money — what now? <span style="color:var(--subtle)">+</span></summary><p style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.6">Act within the golden hour. Report via cybercrime.gov.in / 1930, reportfraud.ftc.gov, Action Fraud with IDs.</p></details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1120px;margin:0 auto;padding:18px 16px 28px">
+    <div style="background:var(--ink);color:var(--bg);border-radius:var(--radius-lg);padding:28px 18px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;opacity:0.08;background:radial-gradient(600px 300px at 50% 0%, var(--bg), transparent 70%)"></div>
+      <h2 class="display" style="font-size:clamp(24px,4vw,32px);position:relative">Before you click.<br/>Check it.</h2>
+      <p style="margin-top:8px;color:color-mix(in srgb, var(--bg) 72%, transparent);position:relative">Ten seconds beats weeks of recovering money. Free, no signup, no storage.</p>
+      <a href="#checker" style="margin-top:14px;display:inline-block;background:var(--bg);color:var(--ink);padding:11px 18px;border-radius:9999px;font-weight:700;position:relative">Open the checker →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER — variant-specific, zero old vault -->
+  {v==="opt1" && (
+    <footer style="border-top:1px solid var(--border);padding:28px 16px;background:var(--bg)">
+      <div style="max-width:1120px;margin:0 auto">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--accent);font-weight:700">OPT1 · LARGE NAME — OBSIDIAN CHROME</p>
+        <h2 style="font-family:var(--font-display);font-size:clamp(48px,12vw,96px);font-weight:800;letter-spacing:-0.06em;line-height:0.9;margin-top:8px">SCAMLENS</h2>
+        <p style="color:var(--subtle);font-size:14px;margin-top:6px">Chrome + lime on obsidian. Liquid metal for the primary CTA only.</p>
+        <div style="margin-top:18px;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));font-size:13px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px">
+          <div><b style="color:var(--ink)">Product</b><br/>Scam Checker · How it works · What we detect</div>
+          <div><b style="color:var(--ink)">Trust</b><br/>On-device · Explainable · No data leaves</div>
+          <div><b style="color:var(--ink)">Help</b><br/>cybercrime.gov.in · 1930 · reportfraud.ftc.gov</div>
+          <div><b style="color:var(--ink)">Source</b><br/><a href="https://21st.dev/@arihantcodes_1f7b8c4d/components/large-name-footer" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">21st Large Name</a> · Dot+Shine</div>
+        </div>
+        <p style="margin-top:18px;font-family:var(--font-mono);font-size:11px;color:var(--subtle)">© 2026 ScamLens · Obsidian #08080A · Chrome silver · Lime #BEF264 · Space Grotesk + JetBrains Mono</p>
+      </div>
+    </footer>
+  )}
+  {v==="opt2" && (
+    <footer style="border-top:1px solid var(--border);padding:28px 16px;background:var(--surface)">
+      <div style="max-width:1120px;margin:0 auto">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--primary);font-weight:700">OPT2 · FOOTER 7 — NEBULA NIGHT</p>
+        <div style="margin-top:14px;display:grid;gap:18px;grid-template-columns:1.4fr 1fr 1fr 1fr">
+          <div>
+            <p style="font-weight:800;letter-spacing:-0.03em;display:flex;gap:8px;align-items:center"><span style="width:8px;height:8px;border-radius:9999px;background:var(--primary)"></span> ScamLens</p>
+            <p style="margin-top:8px;font-size:13px;color:var(--muted);line-height:1.5">Beams + oceanic shimmer. Cyan #06B6D4 on slate-950. <a href="https://21st.dev/@shadcnblockscom/components/footer-7" target="_blank" rel="noopener" style="text-decoration:underline">Footer 7</a>.</p>
+            <div style="margin-top:12px;display:flex;gap:8px"><span style="width:32px;height:32px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-2)"></span><span style="width:32px;height:32px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-2)"></span><span style="width:32px;height:32px;border-radius:9999px;border:1px solid var(--border);background:var(--surface-2)"></span></div>
+          </div>
+          <div style="font-size:13px;color:var(--muted)"><b style="color:var(--ink)">Product</b><br/>Scam Checker<br/>How it works<br/>Pricing</div>
+          <div style="font-size:13px;color:var(--muted)"><b style="color:var(--ink)">Resources</b><br/>Scams library<br/>Safety tips<br/>API</div>
+          <div>
+            <b style="color:var(--ink);font-size:13px">Stay safe</b>
+            <div style="margin-top:8px;display:flex;gap:6px"><input placeholder="Email" style="flex:1;background:var(--surface-2);border:1px solid var(--border);border-radius:9999px;padding:8px 12px;font-size:13px;color:var(--ink)"/><button style="background:var(--primary);color:var(--primary-ink);border-radius:9999px;padding:8px 12px;font-size:13px;font-weight:600">Join</button></div>
+            <p style="margin-top:6px;font-size:11px;color:var(--subtle)">Newsletter demo — not wired</p>
+          </div>
+        </div>
+        <p style="margin-top:18px;border-top:1px solid var(--border);padding-top:12px;font-family:var(--font-mono);font-size:11px;color:var(--subtle);display:flex;justify-content:space-between"><span>© 2026 Nebula · Warp Stripes · Beams Collision</span><span>Sora + DM Sans</span></p>
+      </div>
+    </footer>
+  )}
+  {v==="opt3" && (
+    <footer style="border-top:1px solid var(--border);padding:28px 16px;background:var(--surface);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(600px 300px at 50% 0%, #8B5CF6, transparent 70%)"></div>
+      <div style="max-width:1120px;margin:0 auto;position:relative;display:flex;gap:24px;align-items:start;flex-wrap:wrap">
+        <div style="width:112px;height:112px;border-radius:9999px;border:1px solid var(--border);display:grid;place-items:center;position:relative;flex:none;background:var(--surface-2)">
+          <span style="position:absolute;inset:8px;border-radius:9999px;border:1px solid color-mix(in srgb, var(--accent) 18%, transparent)"></span>
+          <span style="font-family:var(--font-display);font-weight:700;letter-spacing:-0.04em;text-align:center;line-height:1">SCAM<br/>LENS</span>
+          <span style="position:absolute;right:10px;top:50%;width:8px;height:8px;border-radius:9999px;background:var(--accent);box-shadow:0 0 12px var(--accent);transform:translateY(-50%)"></span>
+        </div>
+        <div style="flex:1;min-width:260px">
+          <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--accent);font-weight:700">OPT3 · ORBIT — PAPER EDITORIAL</p>
+          <div style="margin-top:10px;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));font-size:13px;color:var(--muted)">
+            <div><b style="color:var(--ink)">Product</b><br/>Checker · Library · Tips</div>
+            <div><b style="color:var(--ink)">Legal</b><br/>Privacy · Terms · About</div>
+            <div><b style="color:var(--ink)">Orbit</b><br/><a href="https://21st.dev/@nexus-ui/components/orbit-footer" target="_blank" rel="noopener" style="text-decoration:underline">Orbit Footer</a> · Ribbon · Fluid</div>
+          </div>
+        </div>
+      </div>
+      <p style="max-width:1120px;margin:18px auto 0;border-top:1px solid var(--border);padding-top:12px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--subtle)">© 2026 Paper · #FFFCF8 · Newsreader + DM Sans · Ink #0A0A0A</p>
+    </footer>
+  )}
+  {v==="recommended" && (
+    <footer id="help" style="border-top:1px solid var(--border);padding:28px 16px;background:var(--surface)">
+      <div style="max-width:1120px;margin:0 auto">
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--primary);font-weight:700">RECOMMENDED · SIGNAL TRUST — PAPER CLARITY</p>
+        <h2 style="font-family:var(--font-display);font-size:clamp(42px,10vw,84px);font-weight:800;letter-spacing:-0.05em;line-height:0.9;margin-top:8px">SCAMLENS</h2>
+        <p style="color:var(--subtle);margin-top:6px">Privacy-first · Explainable · On-device · <span style="color:var(--primary);font-weight:600">Trust blue #2563EB · Paper #F8FAFC · Sora + IBM Plex Sans</span></p>
+        <div style="margin-top:18px;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));font-size:13px;color:var(--muted);border-top:1px solid var(--border);padding-top:18px">
+          <div><span style="display:flex;gap:8px;align-items:center;font-weight:800;color:var(--ink);letter-spacing:-0.02em"><span style="width:22px;height:22px;border-radius:8px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:12px">◈</span> ScamLens</span><p style="margin-top:8px;line-height:1.5">Checker-first. No data leaves. Every verdict shows evidence + next step.</p></div>
+          <div><b style="color:var(--ink)">Product</b><br/><a href="#checker" style="text-decoration:underline;text-underline-offset:3px">Scam Checker</a><br/><a href="#how">How it works</a><br/><a href="#detect">What we detect</a><br/><a href="/scams">Scams library</a></div>
+          <div><b style="color:var(--ink)">Company</b><br/>About<br/>Privacy<br/>Terms</div>
+          <div><b style="color:var(--ink)">Get help — do not pay</b><br/>India: <a href="https://cybercrime.gov.in" style="text-decoration:underline">cybercrime.gov.in</a> · 1930<br/>US: reportfraud.ftc.gov<br/>UK: actionfraud.police.uk</div>
+        </div>
+        <p style="margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:12px;font-family:var(--font-mono);font-size:11px;color:var(--subtle)"><span>© 2026 Signal Trust · AA contrast · Warp 8% · Dot+Vignette · Halo hover only</span><span>Ship → reply “ship recommended”</span></p>
+      </div>
+    </footer>
+  )}
+
+  <div style="max-width:1120px;margin:0 auto;padding:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+    <a href="/preview" style="border:1px solid var(--border);background:var(--surface);color:var(--ink);padding:10px 14px;border-radius:9999px;font-weight:600">← All 4</a>
+    <a href={`/preview/${v==="opt1"?"opt2":v==="opt2"?"opt3":v==="opt3"?"recommended":"opt1"}`} style="background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:9999px;font-weight:700">Next → {v==="opt1"?"opt2 nebula":v==="opt2"?"opt3 paper":v==="opt3"?"recommended ★":"opt1 chrome"}</a>
+  </div>
+
+  <style>
+    @media (min-width: 860px){ .nav-desktop{display:flex !important} .hide-sm{display:inline-flex !important} }
+  </style>
+</PreviewShell>

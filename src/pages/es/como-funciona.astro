@@ -1,0 +1,204 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CTA from "../../components/CTA.astro";
+import FaqSection from "../../components/FaqSection.astro";
+import howFaqsMap from "../../content/faqs/how-it-works";
+import { VERSION } from "../../lib/version";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const { lastUpdated } = Astro.props as { lastUpdated?: string | Date };
+const displayDate = lastUpdated
+  ? new Date(lastUpdated).toLocaleDateString(lang === "es" ? "es-ES" : "en", { year: "numeric", month: "long", day: "numeric" })
+  : lang === "es" ? "28 de agosto de 2026" : "28 August 2026";
+
+const title = t("seo.how.title");
+const description = t("seo.how.description");
+const howFaqs = (howFaqsMap as Record<string, typeof howFaqsMap.en>)[lang] ?? howFaqsMap.en;
+
+const steps = [
+  {
+    n: "1",
+    title: t("how.step.1.title"),
+    body: t("how.step.1.body"),
+  },
+  {
+    n: "2",
+    title: t("how.step.2.title"),
+    body: t("how.step.2.body"),
+  },
+  {
+    n: "3",
+    title: t("how.step.3.title"),
+    body: t("how.step.3.body"),
+  },
+  {
+    n: "4",
+    title: t("how.step.4.title"),
+    body: t("how.step.4.body"),
+  },
+];
+
+const redactionDemo = [
+  { raw: "OTP is 492813", masked: "OTP is ******", note: t("how.redaction.note.otp") },
+  { raw: "call 9876543210", masked: "call **********", note: t("how.redaction.note.mobile") },
+  { raw: "card 4111 1111 1111 1111", masked: "card **** **** **** ****", note: t("how.redaction.note.card") },
+];
+
+const detectorIds = ["payment-request", "otp-pin", "urgency", "fear-threat", "impersonation", "reward-bait", "job-fee", "qr-upi", "investment-bait", "family-emergency", "utility-disconnection", "loan-app", "text-shortener"];
+const detectors = detectorIds.map((id) => ({ id, label: t(`how.detectors.${id}.label`), purpose: t(`how.detectors.${id}.purpose`) }));
+
+const urlSignalIds = ["url-shortener", "url-punycode", "url-ip", "url-insecure-http", "url-userinfo", "url-apk", "url-tld", "url-credentials", "url-brand-mismatch"];
+const urlSignals = urlSignalIds.map((id) => ({ id, label: t(`how.urlSignals.${id}.label`), purpose: t(`how.urlSignals.${id}.purpose`) }));
+---
+
+<Layout title={title} description={description} ogType="article">
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <nav class="text-caption text-ink-subtle" aria-label={t("a11y.breadcrumb")}>
+      <a href={translatePath("/")} class="hover:text-ink">{t("nav.breadcrumb.home")}</a>
+      <span class="mx-2">/</span>
+      <span class="text-ink-muted">{t("nav.how")}</span>
+    </nav>
+
+    <header class="mt-6" data-reveal>
+      <p class="eyebrow">{t("how.eyebrow")}</p>
+      <h1 class="display-section mt-4">{t("how.title")}</h1>
+      <p class="mt-4 max-w-2xl text-body-lg leading-relaxed text-ink-muted">
+        {t("how.subtitle")}
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-2 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-caption leading-relaxed">
+        <span class="inline-flex items-center rounded-full border border-hairline-strong bg-surface-2 px-2.5 py-0.5 font-mono text-[11px] tracking-wide text-ink-muted">{t("how.version", { version: VERSION })}</span>
+        <span class="text-ink-tertiary">{t("how.methodology", { date: displayDate })}</span>
+        <span class="hidden text-ink-tertiary sm:inline">·</span>
+        <span class="text-ink-subtle">{t("how.static")}</span>
+      </div>
+    </header>
+
+    <ol class="mt-12 space-y-4">
+      {steps.map((s, i) => (
+        <li data-reveal style={`--reveal-delay: ${i * 70}ms`} class="card p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-hairline bg-canvas font-mono text-[13px] text-ink-muted">{s.n}</span>
+            <h2 class="card-title">{s.title}</h2>
+          </div>
+          <p class="mt-3 text-body leading-relaxed text-ink-muted">{s.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <section data-reveal class="mt-14 rounded-lg border border-hairline bg-surface-1 p-6">
+      <h2 class="headline">{t("how.redaction.title")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        {t("how.redaction.body")}
+      </p>
+      <dl class="mt-4 divide-y divide-hairline">
+        {redactionDemo.map((r) => (
+          <div class="grid gap-1 py-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-3">
+            <dt class="font-mono text-[13px] text-ink-muted">{r.raw}</dt>
+            <span class="hidden text-ink-tertiary sm:block" aria-hidden="true">→</span>
+            <dd class="font-mono text-[13px] text-ink">{r.masked}<span class="ml-2 font-sans text-caption text-ink-tertiary">({r.note})</span></dd>
+          </div>
+        ))}
+      </dl>
+      <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
+        {t("how.redaction.note")}
+      </p>
+    </section>
+
+    <section data-reveal class="mt-12" id="detectors">
+      <h2 class="headline">{t("how.detectors.title")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        {t("how.detectors.body")}
+      </p>
+      <div class="mt-6 overflow-x-auto rounded-lg border border-hairline">
+        <table class="w-full min-w-[520px] text-left text-sm">
+          <thead class="bg-surface-1 text-caption uppercase tracking-wide text-ink-subtle">
+            <tr><th class="px-4 py-3 font-medium">ID</th><th class="px-4 py-3 font-medium">Detector</th><th class="px-4 py-3 font-medium">Purpose</th></tr>
+          </thead>
+          <tbody class="divide-y divide-hairline text-body-sm leading-relaxed text-ink-muted">
+            {detectors.map((d) => (
+              <tr class="bg-canvas"><td class="px-4 py-2.5 font-mono text-[12px] text-ink-subtle">{d.id}</td><td class="px-4 py-2.5 text-ink">{d.label}</td><td class="px-4 py-2.5">{d.purpose}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-caption leading-relaxed text-ink-tertiary">
+        {t("how.detectors.footer").replace("What we detect", t("nav.what"))} <a href={translatePath("/what-we-detect")} class="text-ink underline decoration-hairline-strong underline-offset-4">{t("nav.what")}</a>.
+      </p>
+    </section>
+
+    <section data-reveal class="mt-12" id="url-signals">
+      <h2 class="headline">{t("how.urlSignals.title")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        {t("how.urlSignals.body")}
+      </p>
+      <div class="mt-6 overflow-x-auto rounded-lg border border-hairline">
+        <table class="w-full min-w-[520px] text-left text-sm">
+          <thead class="bg-surface-1 text-caption uppercase tracking-wide text-ink-subtle">
+            <tr><th class="px-4 py-3 font-medium">ID</th><th class="px-4 py-3 font-medium">Signal</th><th class="px-4 py-3 font-medium">Purpose</th></tr>
+          </thead>
+          <tbody class="divide-y divide-hairline text-body-sm leading-relaxed text-ink-muted">
+            {urlSignals.map((u) => (
+              <tr class="bg-canvas"><td class="px-4 py-2.5 font-mono text-[12px] text-ink-subtle">{u.id}</td><td class="px-4 py-2.5 text-ink">{u.label}</td><td class="px-4 py-2.5">{u.purpose}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6">
+      <h2 class="headline">{t("how.risk.title")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        {t("how.risk.body")}
+      </p>
+      <ul class="mt-4 space-y-2 text-body-sm leading-relaxed text-ink-muted">
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.low")}</strong> — {t("how.risk.low")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.medium")}</strong> — {t("how.risk.medium")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.high")}</strong> — {t("how.risk.high")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">{t("how.risk.level.critical")}</strong> — {t("how.risk.critical")}</li>
+      </ul>
+      <p class="mt-4 text-caption leading-relaxed text-ink-tertiary">
+        {t("how.risk.note")}
+      </p>
+    </section>
+
+    <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="evaluation">
+      <h2 class="headline">{t("how.eval.title")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">
+        {t("how.eval.body")}
+      </p>
+      <p class="mt-3 text-caption leading-relaxed text-ink-tertiary">
+        {t("how.eval.note")}
+      </p>
+    </section>
+
+    <section data-reveal class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6" id="limitations">
+      <h2 class="headline">{t("how.limitations.title")}</h2>
+      <ul class="mt-4 space-y-2.5 text-body leading-relaxed text-ink-muted">
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Rule-based:</strong> {t("how.limitations.ruleBased")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">False negatives &amp; positives:</strong> {t("how.limitations.false")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Low ≠ safe:</strong> {t("how.limitations.low")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not a recovery service:</strong> {t("how.limitations.recovery")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span><strong class="text-ink">Not affiliated:</strong> {t("how.limitations.affiliated")}</li>
+      </ul>
+    </section>
+
+    <section data-reveal class="mt-12 border-t border-hairline pt-8">
+      <h2 class="headline">{t("how.not.title")}</h2>
+      <ul class="mt-4 space-y-2.5 text-body leading-relaxed text-ink-muted">
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.1")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.2")}</li>
+        <li class="flex gap-2.5"><span class="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-hover" aria-hidden="true"></span>{t("how.not.3")}</li>
+      </ul>
+      <div class="mt-8 flex flex-col gap-2 sm:flex-row">
+        <a href={`${translatePath("/")}#checker`} class="btn btn-primary flex-1">{t("about.cta")}</a>
+        <a href={translatePath("/what-we-detect")} class="btn btn-secondary flex-1">{t("nav.what")}</a>
+      </div>
+    </section>
+  </article>
+
+  <FaqSection faqs={howFaqs} eyebrow="FAQ" title={lang==="es"?"Preguntas sobre cómo funciona": lang==="fr"?"Questions sur le fonctionnement": lang==="de"?"Fragen zur Funktionsweise": lang==="pt-br"?"Perguntas sobre como funciona": lang==="it"?"Domande su come funziona": lang==="ja"?"仕組みに関するFAQ": lang==="ko"?"작동 방식 FAQ": "How it works — FAQ"} id="faq-how" />
+
+  <CTA />
+</Layout>

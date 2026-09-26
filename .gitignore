@@ -20,5 +20,16 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# scam template — reference only, not a real entry
+src/content/scams/_template.md
+
 # jetbrains setting folder
 .idea/
+
+# vendored agent tooling + generated critique artifacts (not project source)
+.agent/
+.impeccable/
+.superpowers/
+
+# local agent planning docs — working material, not project source
+docs/superpowers/

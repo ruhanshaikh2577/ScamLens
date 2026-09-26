@@ -1,4 +1,6 @@
 import { redact } from "./redact";
+import { VERSION } from "./version";
+import { analyzerStrings, fill, type AnalyzerStrings } from "./analyzer-i18n";
 
 export type RiskLevel = "low" | "medium" | "high" | "critical";
 
@@ -20,10 +22,15 @@ export interface AnalysisResult {
   nextSteps: string[];
   similarScams: SimilarScam[];
   disclaimer: string;
+  meta: AnalysisMeta;
 }
 
-const DISCLAIMER =
-  "Decision support, not a guarantee. Language patterns alone never prove a scam — verify via official channels.";
+export interface AnalysisMeta {
+  analyzerVersion: string;
+  timestamp: string;
+  detectorIds: string[];
+  sources: Array<{ label: string; href: string }>;
+}
 
 interface Detector {
   id: string;
@@ -35,26 +42,28 @@ interface Detector {
 }
 
 export const SIMILAR: Record<string, SimilarScam> = {
-  kyc: { slug: "/scams/fake-kyc-suspended", title: "Fake KYC / account suspension" },
-  delivery: { slug: "/scams/delivery-rs99-reschedule", title: "Courier fee scam (Rs 99 reschedule)" },
-  upiRefund: { slug: "/scams/upi-refund-qr", title: "UPI refund / QR request scam" },
-  jobFee: { slug: "/scams/job-offer-fee-499", title: "Fake job offer with registration fee" },
-  digitalArrest: { slug: "/scams/digital-arrest-video-call", title: "Digital arrest video-call scam" },
-  fastag: { slug: "/scams/fastag-kyc-scam", title: "FASTag / traffic challan phishing" },
-  usps: { slug: "/scams/usps-postage-due-199", title: "USPS postage due ($1.99)" },
-  royalMail: { slug: "/scams/royal-mail-redelivery-099", title: "Royal Mail redelivery (£0.99)" },
-  hmrc: { slug: "/scams/hmrc-tax-refund", title: "HMRC tax refund" },
-  ssa: { slug: "/scams/ssa-suspension", title: "SSA account suspension" },
-  invest: { slug: "/scams/trading-app-guaranteed-returns", title: "Trading app 'guaranteed returns'" },
-  utility: { slug: "/scams/electricity-bill-disconnection", title: "Electricity disconnection threat" },
-  familyEmg: { slug: "/scams/whatsapp-family-emergency", title: "'Hi Mum' WhatsApp emergency" },
-  taskPay: { slug: "/scams/telegram-task-likes", title: "Telegram task & like-share scam" },
-  loanApp: { slug: "/scams/instant-loan-app", title: "Instant loan app trap" },
+  kyc: { slug: "/scams/bank-otp-impersonation", title: "Bank / OTP impersonation" },
+  delivery: { slug: "/scams/parcel-delivery-fee", title: "Parcel delivery fee phishing" },
+  upiRefund: { slug: "/scams/qr-payment-scam", title: "QR / payment request scam" },
+  jobFee: { slug: "/scams/job-task-scam", title: "Job & task-earning scam" },
+  digitalArrest: { slug: "/scams/fake-authority-video-call", title: "Fake authority call" },
+  toll: { slug: "/scams/toll-road-sms", title: "Toll-road SMS phishing" },
+  invest: { slug: "/scams/trading-app-guaranteed-returns", title: "Investment & crypto scam" },
+  utility: { slug: "/scams/electricity-bill-disconnection", title: "Utility disconnection scam" },
+  familyEmg: { slug: "/scams/family-emergency-message", title: "Family emergency message" },
+  loanApp: { slug: "/scams/advance-fee-loan", title: "Advance-fee loan trap" },
+  taskPay: { slug: "/scams/job-task-scam", title: "Job & task-earning scam" },
+  romance: { slug: "/scams/romance-relationship-scam", title: "Romance & relationship scam" },
+  techSupport: { slug: "/scams/tech-support-refund", title: "Tech-support refund scam" },
+  lottery: { slug: "/scams/lottery-prize-scam", title: "Lottery & prize scam" },
+  apk: { slug: "/scams/malicious-apk-attachment", title: "Malicious app attachment" },
+  taxGovt: { slug: "/scams/tax-government-refund", title: "Tax & government refund scam" },
 };
 
-const SHORTENERS = [
+export const SHORTENERS = [
   "bit.ly", "tinyurl.com", "t.co", "goo.gl", "cutt.ly", "rb.gy", "is.gd",
   "shorturl.at", "rebrand.ly", "tiny.cc", "ow.ly", "buff.ly", "lnkd.in", "s.id",
+  "t.ly", "bitly.com", "tiny.one", "short.gy", "lc.chat",
 ];
 
 const DETECTORS: Detector[] = [
@@ -63,11 +72,10 @@ const DETECTORS: Detector[] = [
     label: "Payment request",
     weight: 3,
     patterns: [
-      /\b(?:pay|send|transfer)\s*(?:rs\.?|₹|inr|\$|£|\d)/i,
-      /(?:rs\.?|₹|inr|\$|£)\s*\d+(?:,\d{3})*(?:\.\d{1,2})?/i,
-      /\$\s*\d+(?:,\d{3})*(?:\.\d{1,2})?/,
-      /£\s*\d+(?:,\d{3})*(?:\.\d{1,2})?/,
-      /\b(?:registration|processing|reschedule|delivery|verification|customs|release)\s+fee\b/i,
+      /\b(?:pay|send|transfer)\s*(?:rs\.?|₹|inr|\$|£|€|\d)/i,
+      /(?:rs\.?|₹|inr|\$|£|€)\s*\d+(?:[.,]\d{3})*(?:[.,]\d{1,2})?/i,
+      /[$£€]\s*\d+(?:[.,]\d{3})*(?:[.,]\d{1,2})?/,
+      /\b(?:registration|processing|reschedule|delivery|verification|customs|release|redelivery|customs clearance)\s+fee\b/i,
       /\b(?:advance\s*fee|security\s+deposit)\b/i,
     ],
     step: "Never pay a fee to receive money, a prize, a refund, a parcel or a job offer. Legitimate organisations don't work this way.",
@@ -82,6 +90,27 @@ const DETECTORS: Detector[] = [
       /\b(?:share|send|enter|confirm)[^.?!]*(?:code|otp|pin)\b/i,
     ],
     step: "No bank, wallet or government agency ever asks for your OTP, PIN or password — not by call, SMS or email.",
+  },
+  {
+    // Non-Indian agencies ask for national ID numbers, not OTPs. "Send your national
+    // insurance number", "verify your SSN", "enter your Aadhaar" all fit here. Without
+    // this, a UK/US/EU credential-harvest message only matched on brand names.
+    id: "credential-request",
+    label: "Asks for a personal ID or account credential",
+    weight: 4,
+    patterns: [
+      // An imperative to TRANSMIT an identifier: "send your national insurance number".
+      // Deliberately excludes otp/pin/cvv — otp-pin already owns those, and listing them
+      // here would double-count their weight in the score.
+      /\b(?:send|share|forward|email|text|message|whatsapp|post|upload)\b[^.?!]{0,30}\b(?:national insurance|national id|social security|ssn|tax id|tin|nino|aadhaar|pan card|passport|driving licen[cs]e|bank account|sort code|iban|routing number|account number)\b/i,
+      // "verify your <id> at <link>". The negative lookahead is load-bearing: it rejects
+      // legitimate self-service wording ("update your Aadhaar in the official app",
+      // "confirm my account number with my own bank"), which is the main false-positive
+      // risk for a pattern this broad.
+      /\b(?:verify|confirm|validate|update|re-?enter)\b[^.?!]{0,30}\b(?:ssn|social security|nino|national insurance|aadhaar|pan card|passport|account number|sort code|iban)\b(?![^.?!]{0,40}\b(?:official|my own|our own|your own|on file)\b)/i,
+    ],
+    step: "No agency, bank or employer asks you to send an ID or account number over SMS, chat or email. Open the official app or site yourself and check there.",
+    similar: SIMILAR.kyc,
   },
   {
     id: "urgency",
@@ -138,7 +167,7 @@ const DETECTORS: Detector[] = [
       /\b(?:work[- ]from[- ]home|part[- ]time job|earn (?:rs|₹|\d|daily)|daily payout|registration fee)\b/i,
       /\b(?:prepaid task|telegram (?:task|job)|like videos and earn)\b/i,
     ],
-    step: "Real employers never charge you to apply or start. Any 'task pay' that arrives as a UPI deposit is bait for a bigger loss.",
+    step: "Real employers never charge you to apply or start. Any 'task pay' that arrives as an instant mobile deposit is bait for a bigger loss.",
     similar: SIMILAR.jobFee,
   },
   {
@@ -164,7 +193,7 @@ const DETECTORS: Detector[] = [
       /\b(?:trading|forex|crypto) (?:signals?|group|tips|mentor|professor)\b/i,
       /\b(?:daily payout of \d+%|vip trading)\b/i,
     ],
-    step: "Guaranteed returns don't exist in real markets, and no SEBI-registered adviser recruits via chat groups. Verify any adviser on sebi.gov.in before sending a rupee.",
+    step: "Guaranteed returns don't exist in real markets, and no registered adviser recruits via chat groups. Verify any adviser with your country's securities regulator before sending money.",
     similar: SIMILAR.invest,
   },
   {
@@ -189,7 +218,7 @@ const DETECTORS: Detector[] = [
       /\b(?:power|electricity) will be (?:cut|disconnected)\b/i,
       /\b(?:bses|adani electricity|mseb|msedcl|tneb|torrent power|bescom|pspcl)\b/i,
     ],
-    step: "Boards never demand instant UPI payments over calls or texts. Open your state board's official app and check the bill yourself.",
+    step: "Utilities never demand instant payment over calls or texts. Open your provider's official app and check the bill yourself.",
     similar: SIMILAR.utility,
   },
   {
@@ -201,7 +230,7 @@ const DETECTORS: Detector[] = [
       /\bloan (?:approved?|offer|pre-?approved?)[^.\n]{0,30}(?:5 minutes|zero documents|no documents)\b/i,
       /\b(?:processing|insurance) fee[^.\n]{0,40}(?:release|disburse)/i,
     ],
-    step: "Real lenders deduct fees at disbursal — they never ask for pre-payment over UPI. Check RBI's registered NBFC list before touching such an app.",
+    step: "Real lenders deduct fees at disbursal — they never ask for pre-payment to release funds. Check your country's registered-lender list before touching such an app.",
     similar: SIMILAR.loanApp,
   },
   {
@@ -239,6 +268,13 @@ const BRANDS: Array<{ brand: string; official: string[] }> = [
   { brand: "ssa", official: ["ssa.gov"] },
 ];
 
+// Characters that can sit INSIDE an identifier: digits plus the space/dash grouping
+// separators. Snapping a slice boundary to whitespace is NOT safe here, because a
+// space can be internal to a credential ("1234 5678 9012") — a slice starting at
+// "5678 9012" matches no mask rule and would leak 8 digits of an Aadhaar. Boundaries
+// are therefore pushed outward to the nearest character outside this class.
+const IDENT_CHARS = /[\w\s.\-+@]/;
+
 function evidenceAround(text: string, index: number, length: number): string {
   const max = 90;
   let start = Math.max(0, index - 30);
@@ -249,23 +285,32 @@ function evidenceAround(text: string, index: number, length: number): string {
     start += Math.floor(overflow / 2);
     end -= overflow - Math.floor(overflow / 2);
   }
-  while (start > 0 && !/\s/.test(text[start - 1]) && text[start - 1] !== undefined) start--;
+  // Widen BOTH boundaries until they land outside an identifier run, so redaction
+  // always sees the credential whole. Bounded to 30 chars so the snippet stays readable.
+  let guardStart = 0;
+  while (start > 0 && guardStart++ < 30 && IDENT_CHARS.test(text[start - 1] ?? "") && IDENT_CHARS.test(text[start] ?? "")) start--;
+  let guardEnd = 0;
+  while (end < text.length && guardEnd++ < 30 && IDENT_CHARS.test(text[end] ?? "") && IDENT_CHARS.test(text[end - 1] ?? "")) end++;
   const slice = text.slice(start, end).trim();
   return `${start > 0 ? "…" : ""}${slice}${end < text.length ? "…" : ""}`;
 }
 
-function collectFindings(text: string, skipIds: string[] = []): Finding[] {
+function collectFindings(text: string, skipIds: string[] = [], S: AnalyzerStrings): Finding[] {
   const findings: Finding[] = [];
-  const clean = redact(text);
+  // Match against the RAW text and redact only the emitted evidence snippet.
+  // Redacting first masks UPI handles to "***@***" — the exact string the qr-upi
+  // detector matches on — so a textbook "UPI id scammer@paytm" QR refund scam used
+  // to score low with zero findings. Detection needs the signal; only the
+  // human-facing snippet needs masking.
   for (const d of DETECTORS) {
     if (skipIds.includes(d.id)) continue;
     for (const p of d.patterns) {
-      const m = clean.match(p);
+      const m = text.match(p);
       if (m && m.index !== undefined) {
         findings.push({
           id: d.id,
-          label: d.label,
-          evidence: evidenceAround(clean, m.index, m[0].length),
+          label: S.labels[d.id] ?? d.label,
+          evidence: redact(evidenceAround(text, m.index, m[0].length)),
         });
         break;
       }
@@ -276,7 +321,7 @@ function collectFindings(text: string, skipIds: string[] = []): Finding[] {
 
 const HIGH_ABUSE_TLDS = ["zip", "top", "xyz", "icu", "click", "rest", "lol", "monster", "cam", "quest"];
 
-function urlFindings(raw: string): Finding[] {
+function urlFindings(raw: string, S: AnalyzerStrings): Finding[] {
   const findings: Finding[] = [];
   const trimmed = raw.trim();
   // Only flag insecure http when the user actually typed http:// (we prefix http:// for parsing).
@@ -293,38 +338,38 @@ function urlFindings(raw: string): Finding[] {
   if (SHORTENERS.includes(host)) {
     findings.push({
       id: "url-shortener",
-      label: "Shortened link hides the real destination",
+      label: S.labels["url-shortener"] ?? "Shortened link hides the real destination",
       evidence: host,
     });
   }
   if (host.startsWith("xn--") || host.includes(".xn--")) {
     findings.push({
       id: "url-punycode",
-      label: "Look-alike characters in domain (possible spoof)",
+      label: S.labels["url-punycode"] ?? "Look-alike characters in domain (possible spoof)",
       evidence: host,
     });
   }
   if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)) {
-    findings.push({ id: "url-ip", label: "Raw IP address instead of a domain", evidence: host });
+    findings.push({ id: "url-ip", label: S.labels["url-ip"] ?? "Raw IP address instead of a domain", evidence: host });
   }
   if (explicitlyInsecure) {
     findings.push({
       id: "url-insecure-http",
-      label: "Insecure http:// link — no encryption for whatever you type next",
+      label: S.labels["url-insecure-http"] ?? "Insecure http:// link — no encryption for whatever you type next",
       evidence: host,
     });
   }
   if (url.username) {
     findings.push({
       id: "url-userinfo",
-      label: "\u201C@\u201D trick — the real destination hides before the @",
+      label: S.labels["url-userinfo"] ?? "\u201C@\u201D trick — the real destination hides before the @",
       evidence: host,
     });
   }
   if (/\.apk$/i.test(url.pathname)) {
     findings.push({
       id: "url-apk",
-      label: "Direct APK download — a common way to install SMS-stealing malware",
+      label: S.labels["url-apk"] ?? "Direct APK download — a common way to install SMS-stealing malware",
       evidence: url.pathname.split("/").pop() || url.pathname,
     });
   }
@@ -332,28 +377,36 @@ function urlFindings(raw: string): Finding[] {
   if (HIGH_ABUSE_TLDS.includes(tld)) {
     findings.push({
       id: "url-tld",
-      label: `High-abuse domain ending (.${tld}) — heavily used by phishing kits`,
+      label: fill(S.labels["url-tld"] ?? "High-abuse domain ending (.{tld}) — heavily used by phishing kits", { tld }),
       evidence: host,
     });
   }
   if (/[?&](?:password|passwd|otp|pin|cvv|card|token)=/i.test(url.search)) {
     findings.push({
       id: "url-credentials",
-      label: "Sensitive fields in the link itself — never enter details on a pre-filled page",
+      label: S.labels["url-credentials"] ?? "Sensitive fields in the link itself — never enter details on a pre-filled page",
       evidence: url.search.slice(0, 60),
     });
   }
+  // Brand-mismatch: host + path both checked (bit.ly/hdfcbank-... should flag), hyphens stripped so hdfc-bank still hits.
+  // Legit article example.com/hdfcbank-review would also flag — acceptable false positive tradeoff for phishing; user can verify.
   for (const { brand, official } of BRANDS) {
-    if (full.includes(brand) && !official.some((d) => host === d || host.endsWith(`.${d}`))) {
+    const brandInUrl = full.includes(brand) || full.replace(/-/g, "").includes(brand);
+    const isOfficial = official.some((d) => host === d || host.endsWith(`.${d}`));
+    if (brandInUrl && !isOfficial) {
       findings.push({
         id: "url-brand-mismatch",
-        label: `Domain pretends to be ${brand} but isn't the official site`,
-        evidence: full.replace(/\/$/, ""),
+        label: fill(S.labels["url-brand-mismatch"] ?? "Domain pretends to be {brand} but isn't the official site", { brand }),
+        evidence: full.replace(/\/$/, "") || host,
       });
       break;
     }
   }
-  return findings;
+  // Match against the raw URL (so masking can never corrupt host parsing) but redact the
+  // human-facing evidence snippet. collectFindings() redacts its input at :268; without
+  // this, a URL carrying ?password=/otp=/token= emits live credentials into evidence
+  // that reaches the share card and the webhook replies.
+  return findings.map((f) => ({ ...f, evidence: redact(f.evidence) }));
 }
 
 function riskFor(score: number): RiskLevel {
@@ -363,19 +416,13 @@ function riskFor(score: number): RiskLevel {
   return "low";
 }
 
-const HEADLINES: Record<RiskLevel, string> = {
-  low: "No common scam markers found",
-  medium: "Some warning signs present",
-  high: "Strong scam warning signs",
-  critical: "Classic scam pattern detected",
-};
-
-export function analyze(input: string, kind: "message" | "url"): AnalysisResult {
+export function analyze(input: string, kind: "message" | "url", lang = "en"): AnalysisResult {
+  const S = analyzerStrings(lang);
   const isUrl = kind === "url";
   const findings = isUrl
     ? // URL scans skip the text-shortener detector — urlFindings covers it without duplicating.
-      [...collectFindings(input, ["text-shortener"]), ...urlFindings(input)]
-    : collectFindings(input);
+      [...collectFindings(input, ["text-shortener"], S), ...urlFindings(input, S)]
+    : collectFindings(input, [], S);
 
   const weights: Record<string, number> = {};
   for (const d of DETECTORS) weights[d.id] = d.weight;
@@ -385,17 +432,20 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
   weights["url-brand-mismatch"] = 3;
   weights["url-insecure-http"] = 1;
   weights["url-userinfo"] = 3;
-  weights["url-apk"] = 4;
+  weights["url-apk"] = 5;
   weights["url-tld"] = 1;
   weights["url-credentials"] = 2;
 
   const score = findings.reduce((sum, f) => sum + (weights[f.id] ?? 1), 0);
-  const risk = riskFor(score);
+  // APK alone should be at least high (malware vector)
+  const hasApk = findings.some((f) => f.id === "url-apk");
+  let risk = riskFor(score);
+  if (hasApk && risk === "medium") risk = "high";
 
   const stepsByWeight = new Map<string, string>();
   for (const f of findings) {
     const d = DETECTORS.find((x) => x.id === f.id);
-    if (d && !stepsByWeight.has(f.id)) stepsByWeight.set(f.id, d.step);
+    if (d && !stepsByWeight.has(f.id)) stepsByWeight.set(f.id, S.steps[f.id] ?? d.step);
   }
   const ordered = [...stepsByWeight.entries()].sort(
     (a, b) => (weights[b[0]] ?? 0) - (weights[a[0]] ?? 0)
@@ -403,13 +453,10 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
 
   const nextSteps =
     risk === "low"
-      ? [
-          "Stay cautious anyway: don't click links in unexpected messages.",
-          "If it claims to be from a company, open their official app or website yourself instead of trusting this message.",
-        ]
+      ? [...S.lowSteps]
       : [
           ...ordered.slice(0, 3).map(([, step]) => step),
-          "Verify by contacting the organisation using the number on their official website or app — never the one in this message.",
+          S.verifyLine,
         ];
 
   const similarSlugs = new Map<string, SimilarScam>();
@@ -418,12 +465,29 @@ export function analyze(input: string, kind: "message" | "url"): AnalysisResult 
     if (d?.similar) similarSlugs.set(d.similar.slug, d.similar);
   }
 
+  const detectorIds = [...new Set(findings.map((f) => f.id))];
+  const sourceFor = (id: string) =>
+    id.startsWith("url-")
+      ? { label: "ScamLens URL checks", href: "/how-it-works#url-signals" }
+      : { label: "ScamLens detectors", href: "/how-it-works#detectors" };
+  let sources = [...new Map(detectorIds.map((id) => {
+    const s = sourceFor(id);
+    return [`${s.label}|${s.href}`, s] as const;
+  })).values()];
+  if (sources.length === 0) sources = [{ label: "ScamLens detectors", href: "/how-it-works#detectors" }];
+  if (risk === "critical") {
+    const cyber = { label: "Report at cybercrime.gov.in", href: "https://cybercrime.gov.in" };
+    if (!sources.some((s) => s.href === cyber.href)) sources.push(cyber);
+  }
+  sources = sources.slice(0, 3);
+
   return {
     risk,
-    headline: HEADLINES[risk],
+    headline: S.headlines[risk],
     findings,
     nextSteps: nextSteps.slice(0, 4),
     similarScams: [...similarSlugs.values()].slice(0, 3),
-    disclaimer: DISCLAIMER,
+    disclaimer: S.disclaimer,
+    meta: { analyzerVersion: VERSION, timestamp: new Date().toISOString(), detectorIds, sources },
   };
 }

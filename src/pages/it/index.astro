@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Ticker from "../../components/Ticker.astro";
+import StatsBand from "../../components/StatsBand.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
+import WhatWeDetect from "../../components/WhatWeDetect.astro";
+import ExampleAnalysis from "../../components/ExampleAnalysis.astro";
+import ScamLibraryGrid from "../../components/ScamLibraryGrid.astro";
+import SafetyTips from "../../components/SafetyTips.astro";
+import FAQ from "../../components/FAQ.astro";
+import SEOContent from "../../components/SEOContent.astro";
+import CTA from "../../components/CTA.astro";
+import { getLangFromUrl, useTranslations, getCanonicalUrl } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const homepageTitle = t("seo.home.title");
+const homepageDescription = t("seo.home.description");
+const homepageKeywords = t("seo.home.keywords");
+const canonicalSelf = getCanonicalUrl(Astro.url);
+const softwareLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "ScamLens",
+  alternateName: "ScamLens Scam Detector",
+  applicationCategory: "SecurityApplication",
+  operatingSystem: "Any",
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+  description: homepageDescription,
+  url: canonicalSelf,
+  image: "https://scamlens.in/og.png",
+  author: { "@type": "Organization", name: "ScamLens", url: "https://scamlens.in" },
+  featureList: [
+    "rule-based scam detector",
+    "scam checker",
+    "fake website checker",
+    "phishing link checker",
+    "phishing URL detector",
+    "malicious link detector",
+    "link safety checker",
+    "URL scam checker",
+    "scam image detector",
+    "fake screenshot detector",
+    "real-time scam detection",
+    "online fraud checker",
+    "cyber scam detector",
+    "fraud detection tool",
+  ],
+};
+---
+
+<Layout
+  title={homepageTitle}
+  description={homepageDescription}
+  keywords={homepageKeywords}
+  ogImage="https://scamlens.in/og.png"
+  ogType="website"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareLd)} />
+  <Hero />
+  <Ticker />
+  <StatsBand />
+  <HowItWorks />
+  <WhatWeDetect />
+  <ExampleAnalysis />
+  <ScamLibraryGrid limit={6} />
+  <SafetyTips limit={6} />
+  <FAQ />
+  <SEOContent />
+  <CTA />
+</Layout>

@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: check + test + build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Gates, in the order AGENTS.md documents: types, then unit tests, then the
+      # production build. `npm run build` also runs scripts/check-seo-integrity.mjs,
+      # which fails when the sitemap lists a noindex page, a page _redirects 301s
+      # away, or an hreflang alternate that 404s.
+      - name: astro check
+        run: npm run check
+
+      - name: vitest
+        run: npm test
+
+      - name: build + sitemap integrity
+        run: npm run build
+
+      - name: i18n audit
+        run: node scripts/audit-i18n.mjs

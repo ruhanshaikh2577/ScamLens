@@ -1,45 +1,57 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 const steps = [
   {
     n: "1",
-    title: "Pick your input",
-    body: "A message, a screenshot of the chat, or a suspicious link — one checker handles all three.",
+    title: t("how.step.1.title"),
+    body: t("how.step.1.body"),
   },
   {
     n: "2",
-    title: "Paste or drop it in",
-    body: "Nothing is stored. OTPs, card numbers and phone numbers are redacted automatically before analysis.",
+    title: t("how.step.2.title"),
+    body: t("how.step.2.body"),
   },
   {
     n: "3",
-    title: "Scan in seconds",
-    body: "We check urgency cues, payment requests, impersonation patterns, UPI handles and link safety signals.",
+    title: t("how.step.3.title"),
+    body: t("how.step.3.body"),
   },
   {
     n: "4",
-    title: "Get reasons, not a score",
-    body: "Every flag shows the exact quote we matched, why it matters, and the safe next steps you can take.",
+    title: t("how.step.4.title"),
+    body: t("how.step.4.body"),
   },
 ];
 ---
 
-<section id="how-it-works" class="border-t border-hairline px-4 py-24 sm:px-6">
+<section id="how-it-works" class="border-t border-hairline px-4 py-20 sm:px-6">
   <div class="mx-auto max-w-6xl">
     <div data-reveal>
-      <p class="eyebrow">How it works</p>
-      <h2 class="display-section mt-4 max-w-xl">Four steps between doubt and a decision</h2>
+      <p class="eyebrow">{t("how.eyebrow")}</p>
+      <h2 class="display-section mt-4 max-w-xl">{t("how.title")}</h2>
     </div>
-    <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <ol class="mt-12 flex flex-col md:flex-row gap-8 md:gap-6">
       {steps.map((s, i) => (
-        <li data-reveal style={`--reveal-delay: ${i * 80}ms`} class="card card-lift p-6">
-          <span class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-primary/40 bg-primary/10 font-mono text-[13px] text-primary-hover">{s.n}</span>
-          <h3 class="card-title mt-4">{s.title}</h3>
-          <p class="mt-2 text-body-sm leading-relaxed text-ink-muted">{s.body}</p>
+        <li data-reveal style={`--reveal-delay: ${i * 80}ms`} class="relative flex flex-1 gap-4 md:flex-col md:gap-4">
+          <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-hairline bg-canvas font-mono text-[13px] text-ink-muted">{String(s.n).padStart(2, "0")}</span>
+          {i < steps.length - 1 && (
+            <>
+              <span aria-hidden="true" class="absolute left-[14px] top-7 bottom-[-32px] w-px bg-hairline md:hidden"></span>
+              <span aria-hidden="true" class="hidden md:block absolute left-8 top-[14px] right-[-12px] h-px bg-hairline"></span>
+            </>
+          )}
+          <div class="min-w-0 pt-0.5 md:pt-0">
+            <h3 class="card-title !text-[18px]">{s.title}</h3>
+            <p class="mt-2 text-body-sm leading-relaxed text-ink-muted">{s.body}</p>
+          </div>
         </li>
       ))}
     </ol>
     <div data-reveal class="mt-10">
-      <a href="/how-it-works" class="btn btn-secondary">How the analysis works in detail →</a>
+      <a href={translatePath("/how-it-works")} class="text-sm font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover">{t("seoContent.btn.methodology")}</a>
     </div>
   </div>
 </section>

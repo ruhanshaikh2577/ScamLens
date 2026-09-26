@@ -1,69 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout
-  title="Privacy — nothing stored, files auto-deleted | ScamLens"
-  description="ScamLens privacy: no storage by default, screenshots processed locally and deleted after scan, OTPs and card numbers redacted before analysis."
+  title={t("seo.privacy.title")}
+  description={t("seo.privacy.description")}
 >
   <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-    <p class="eyebrow">Privacy</p>
-    <h1 class="display-section mt-4">What we see, what we keep (almost nothing)</h1>
+    <p class="eyebrow">{t("privacy.eyebrow")}</p>
+    <h1 class="display-section mt-4">{t("privacy.title")}</h1>
 
     <div class="mt-10 space-y-10">
       <div>
-        <h2 class="headline">Nothing is stored</h2>
+        <h2 class="headline">{t("privacy.h2.1")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p1")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.2")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p2")}</p>
+      </div>
+
+      <div>
+        <h2 class="headline">{t("privacy.h2.3")}</h2>
         <p class="mt-3 text-body leading-relaxed text-ink-muted">
-          Your pasted text and uploaded screenshots stay in your browser during the scan.
-          We don't write messages, images or results to a database. When you close or reset
-          the page, your input is gone.
+          {t("privacy.p3")}
         </p>
       </div>
 
       <div>
-        <h2 class="headline">Files are auto-deleted</h2>
-        <p class="mt-3 text-body leading-relaxed text-ink-muted">
-          Uploaded images exist only in memory for the duration of the scan and are
-          discarded automatically afterwards. There is no gallery of user uploads.
-        </p>
+        <h2 class="headline">{t("privacy.h2.4")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p4")}</p>
       </div>
 
       <div>
-        <h2 class="headline">Sensitive data is redacted first</h2>
-        <p class="mt-3 text-body leading-relaxed text-ink-muted">
-          Before any analysis runs, patterns for OTPs, card numbers and phone numbers are
-          replaced with masked characters (<code class="font-mono text-[13px] text-ink">••••••</code>).
-          The analysis only ever sees the redacted version — even if you accidentally paste an OTP,
-          it never leaves readable form.
-        </p>
+        <h2 class="headline">{t("privacy.h2.5")}</h2>
+        <p class="mt-3 text-body leading-relaxed text-ink-muted">{t("privacy.p5")}</p>
       </div>
 
       <div>
-        <h2 class="headline">What the analysis sees</h2>
-        <p class="mt-3 text-body leading-relaxed text-ink-muted">
-          Only the redacted text. In this version, screenshot analysis also happens locally
-          in your browser — the image itself is never transmitted to any server.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="headline">Cookies &amp; advertising</h2>
-        <p class="mt-3 text-body leading-relaxed text-ink-muted">
-          The checker shows at most one unobtrusive anchor ad; library pages show in-article ads.
-          Ad partners may use cookies per their own policies — we never attach your input to them.
-        </p>
-      </div>
-
-      <div>
-        <h2 class="headline">What we ask of you</h2>
+        <h2 class="headline">{t("privacy.h2.6")}</h2>
         <p class="mt-3 rounded-lg border border-hairline bg-surface-1 p-4 text-body leading-relaxed text-ink">
-          Avoid pasting OTPs, PINs and passwords anyway. We redact them automatically — but the safest
-          secret is one that was never shared.
+          {t("privacy.p6")}
         </p>
       </div>
 
       <div class="border-t border-hairline pt-8 text-caption leading-relaxed text-ink-tertiary">
-        Questions about this policy? Reach us via scamlens.in. Last updated August 2026.
+        {t("privacy.footer")}
       </div>
     </div>
   </section>

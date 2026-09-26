@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "ScamLens",
+  "version": "0.1.1",
+  "description": "ScamLens scam checker — thin wrapper reusing CheckerIsland + ResultView. Calls /api/analyze when online, falls back to local analyzer offline. No second UI, no auth.",
+  "action": {
+    "default_title": "ScamLens — Check before you click",
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://scamlens.in/*"
+  ],
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "context-menu.js"
+  }
+}

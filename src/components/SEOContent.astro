@@ -1,68 +1,67 @@
 ---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<section id="about-scamlens" class="border-t border-hairline px-4 py-20 sm:px-6">
+<section id="about-scamlens" class="border-t border-hairline px-4 py-16 sm:px-6">
   <div class="mx-auto max-w-3xl">
-    <p class="eyebrow">About ScamLens</p>
-    <h2 class="display-section mt-4">ScamLens — AI Scam Detector & Scam Checker for Real-Time Scam Detection</h2>
-
-    <div class="prose prose-invert mt-8 max-w-none space-y-6 text-body leading-relaxed text-ink-muted prose-headings:font-semibold prose-headings:text-ink prose-strong:text-ink prose-a:text-primary-hover prose-a:no-underline hover:prose-a:underline">
-      <p>
-        <strong>ScamLens</strong> is a free, India-first <strong>AI scam detector</strong> and <strong>scam checker</strong> built to help you <strong>verify website safety</strong> before you click, pay, or share personal data. As a powerful <strong>fraud detection tool</strong> and <strong>online fraud checker</strong>, ScamLens acts as your <strong>cyber scam detector</strong> for everyday messages — whether it is a suspicious WhatsApp forward, a fake delivery SMS, a phishing email, or a QR code asking for money. Instead of a mysterious risk score, we show you the exact evidence quotes that triggered each warning, so you learn how to spot scams yourself.
-      </p>
-
-      <p>
-        Every day, millions of Indians ask the same question: <em>how to check if a website is a scam</em>? Scammers hide behind shortened links, look-alike domains, and urgent language like “Your account will be blocked today. Pay Rs 99 to reschedule.” ScamLens was built specifically for these patterns. Unlike generic global checkers, our <strong>link safety checker</strong> and <strong>malicious link detector</strong> understand Indian contexts — UPI IDs, KYC/Aadhaar expiry threats, DTDC/Delhivery courier fees, FASTag recharge traps, digital arrest video calls, and work-from-home fees — while still catching global threats like HMRC, USPS, and Royal Mail impersonations.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">How Our Scam Checker and Fraud Detection Tool Works</h3>
-      <p>
-        ScamLens is a unified <strong>scam detector</strong> with one checker that auto-detects what you paste. Choose <strong>Message</strong> for copied text, <strong>Screenshot</strong> for PNG/JPG/WEBP images (up to 10MB), or <strong>Link</strong> for any URL. The checker analyses the input in seconds — text and links instantly, screenshots with local processing — looking for proven fraud signals: urgency, fear, reward bait, payment requests, OTP/PIN/password requests, impersonation of banks/couriers/government, suspicious shorteners, and social-engineering cues. Each finding is tied to an evidence quote from your input, for example <code class="evidence-pill">“Pay Rs 99 to reschedule”</code> flagged as a payment request. The final verdict is Low, Medium, High, or Critical — always explained, never invented.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">Fake Website Checker — Verify Website Safety Instantly</h3>
-      <p>
-        Wondering <strong>how to check if a website is a scam</strong> before you enter card details? Use ScamLens as your <strong>fake website checker</strong>. Paste any suspicious URL and our <strong>URL scam checker</strong> inspects its structure locally without opening it in your browser. It flags shorteners that hide destinations, look-alike domains like <code class="evidence-pill">hdfcbank-secure-login.xyz</code> versus the real <code class="evidence-pill">hdfcbank.com</code>, punycode spoofs, raw IP hosts, insecure http links, hidden “@”-style credential tricks and direct APK downloads. This is the safest way to <strong>verify website safety</strong> for shopping, banking, or government portals — you never risk loading a malicious site yourself.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">Phishing Link Checker, Phishing URL Detector & Malicious Link Detector</h3>
-      <p>
-        Phishing is the most common way to steal OTPs. ScamLens works as a dedicated <strong>phishing link checker</strong>, <strong>phishing URL detector</strong>, <strong>malicious link detector</strong>, and <strong>link safety checker</strong> in one. It detects URL shorteners (bit.ly, tinyurl, cutt.ly), HTTP insecure links, IP-based hosts, punycode spoofs, and brand impersonation where the domain contains “hdfcbank” but is not the official site. Whether you call it a <strong>URL scam checker</strong> or <strong>link safety checker</strong>, the job is the same: scan before you click and get “Why we flagged” bullets with the exact suspicious domain quoted.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">Scam Image Detector & Fake Screenshot Detector</h3>
-      <p>
-        Fraudsters now send edited payment proof. Our <strong>scam image detector</strong> and <strong>fake screenshot detector</strong> analyse screenshots locally in your browser — the image itself never leaves your device — and run the same evidence-based analysis on text extracted by local OCR. It catches font mismatches, fake UPI success screens, edited timestamps, and templated receipts — common in marketplace and rental scams. OTP/card/phone numbers are redacted before analysis, so privacy comes first.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">Why ScamLens Is the Fraud Detection Tool India Trusts</h3>
-      <ul class="list-disc space-y-2 pl-6">
-        <li><strong>Real-time scam detection:</strong> Paste, scan, and get a verdict in seconds — no app install, no signup, no storage.</li>
-        <li><strong>AI scam detector with evidence:</strong> Every flag shows the quote, not just a score. You learn the pattern for next time.</li>
-        <li><strong>Online fraud checker for India:</strong> Built for UPI/QR tricks, Rs 99 courier fees, FASTag, and digital arrest — patterns global tools miss, plus full US/UK coverage.</li>
-        <li><strong>Privacy-first cyber scam detector:</strong> No storage by default, files auto-deleted, sensitive data redacted before AI sees it.</li>
-        <li><strong>Actionable next steps:</strong> Each result tells you what to do — verify via official app, revoke UPI mandates, and where to <strong>report a scam</strong> at cybercrime.gov.in or 1930.</li>
-      </ul>
-
-      <h3 class="headline mt-10 !text-ink">How to Check If a Website Is a Scam — With ScamLens</h3>
-      <ol class="list-decimal space-y-2 pl-6">
-        <li>Copy the suspicious link — do not open it. On WhatsApp, long-press the message and tap copy link.</li>
-        <li>Open <a href="https://scamlens.in/#checker">ScamLens scam checker</a> and select the <strong>Link</strong> tab.</li>
-        <li>Paste the URL and click Scan. Our <strong>fake website checker</strong> and <strong>phishing URL detector</strong> inspect it locally — the site itself is never opened.</li>
-        <li>Review the Risk Level, “Why we flagged” evidence, and “What you should do” steps. If in doubt, type the real website address manually in your browser.</li>
-      </ol>
-      <p>
-        The same flow works for messages and images: paste text into our <strong>scam checker</strong>, or upload a screenshot to the <strong>scam image detector</strong>. For broader learning, explore our <a href="/scams">Scam Library</a> — searchable breakdowns of Fake KYC suspension, <a href="/scams/delivery-rs99-reschedule">courier Rs 99 fee</a>, <a href="/scams/upi-refund-qr">UPI refund QR</a>, <a href="/scams/job-offer-fee-499">job offer fee</a>, <a href="/scams/digital-arrest-video-call">digital arrest</a>, and <a href="/scams/fastag-kyc-scam">FASTag phishing</a>.
-      </p>
-
-      <h3 class="headline mt-10 !text-ink">Report a Scam and Stay Safe Online</h3>
-      <p>
-        If you lost money or shared OTP/PIN, use ScamLens to <strong>report a scam</strong> quickly: every result links directly to <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a> and the national helpline <a href="tel:1930">1930</a> — filing within the golden hour helps freeze stolen funds. As a free <strong>fraud detection tool</strong> and <strong>online fraud checker</strong>, ScamLens does not claim absolute truth; it gives you decision support with reasons you can verify via official channels. Bookmark <strong>ScamLens</strong> as your everyday <strong>scam detector</strong>, <strong>link safety checker</strong>, and <strong>malicious link detector</strong> — before you click, check it.
-      </p>
-
-      <p class="text-caption text-ink-tertiary">
-        ScamLens · scamlens.in — your AI scam detector for fake websites, phishing links, and scam screenshots. Free scam checker trusted for real-time scam detection in India.
-      </p>
+    <p class="eyebrow">{t("seoContent.eyebrow")}</p>
+    <h2 class="display-section mt-4">{t("seoContent.title")}</h2>
+    <p class="mt-4 max-w-2xl text-body leading-relaxed text-ink-muted">
+      {t("seoContent.subtitle")}
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a href={translatePath("/how-it-works")} class="text-sm font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover">{t("seoContent.btn.methodology")}</a>
+      <a href={translatePath("/what-we-detect")} class="text-sm font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover">{t("seoContent.btn.what")}</a>
+      <a href={translatePath("/scams")} class="text-sm font-medium text-ink underline decoration-hairline-strong underline-offset-4 hover:text-primary-hover">{t("seoContent.btn.library")}</a>
     </div>
+
+    <details class="group mt-10 rounded-lg border border-hairline bg-surface-1">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-medium text-ink [&::-webkit-details-marker]:hidden">
+        <span>{t("seoContent.detailsToggle")}</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="shrink-0 text-ink-subtle transition-transform group-open:rotate-45" aria-hidden="true">
+          <path d="M8 3v10M3 8h10" />
+        </svg>
+      </summary>
+      <div class="border-t border-hairline px-5 pb-6 pt-6">
+        <h3 class="display-section !text-2xl">{t("seo.home.title")}</h3>
+        <div class="prose prose-invert mt-6 max-w-none space-y-6 text-body leading-relaxed text-ink-muted prose-headings:font-semibold prose-headings:text-ink prose-strong:text-ink prose-a:text-ink prose-a:underline">
+          <p set:html={t("seoBody.p1")} />
+          <p set:html={t("seoBody.p2")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.how")}</h3>
+          <p set:html={t("seoBody.p.how")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.fake")}</h3>
+          <p set:html={t("seoBody.p.fake")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.phishing")}</h3>
+          <p set:html={t("seoBody.p.phishing")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.image")}</h3>
+          <p set:html={t("seoBody.p.image")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.trust")}</h3>
+          <ul class="list-disc space-y-2 pl-6">
+            {t("seoBody.trustItems").split("|").map((li) => <li set:html={li.trim()} />)}
+          </ul>
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.howto")}</h3>
+          <ol class="list-decimal space-y-2 pl-6">
+            {t("seoBody.howtoSteps").split("|").map((s) => <li set:html={s.trim()} />)}
+          </ol>
+          <p set:html={t("seoBody.p.flow")} />
+
+          <h3 class="headline mt-10 !text-ink">{t("seoBody.h.report")}</h3>
+          <p set:html={t("seoBody.p.report")} />
+
+          <p class="text-caption text-ink-tertiary">
+            {t("seoBody.footer")}
+          </p>
+        </div>
+      </div>
+    </details>
   </div>
 </section>

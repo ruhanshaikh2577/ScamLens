@@ -1,0 +1,157 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import FaqSection from "../../../components/FaqSection.astro";
+import { getCollection } from "astro:content";
+import { getLangFromUrl, getCanonicalUrl, useTranslations, useTranslatedPath } from "../../../i18n/utils";
+import { isScamReady } from "../../../i18n/scamReadiness";
+import { reportUrls, reportHelplines } from "../../../i18n/ui";
+
+export async function getStaticPaths() {
+  const scams = await getCollection("scams");
+  const spanish = scams.filter((s) => s.id.startsWith("ko/"));
+  const titleMap = new Map(scams.map((s) => [s.id, s.data.title]));
+  return spanish.map((entry) => {
+    const slug = entry.id.replace(/^ko\//, "");
+    return {
+      params: { slug },
+      props: { entry, titleMap, slug },
+    };
+  });
+}
+
+const { entry, titleMap, slug } = Astro.props;
+const d = entry.data;
+const canonical = getCanonicalUrl(Astro.url);
+const updatedIso = (d.updated ?? new Date("2026-08-25")).toISOString();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+const isReady = isScamReady(lang, slug);
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: t("nav.breadcrumb.home"), item: "https://scamlens.in/" + (lang === "en" ? "" : lang + "/") },
+    { "@type": "ListItem", position: 2, name: t("footer.scams"), item: canonical.split("/").slice(0,4).join("/") + "/" },
+    { "@type": "ListItem", position: 3, name: d.title, item: canonical },
+  ],
+};
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: d.longTitle,
+  description: d.description,
+  image: "https://scamlens.in/og.png",
+  author: { "@type": "Organization", name: "ScamLens", url: "https://scamlens.in" },
+  publisher: { "@type": "Organization", name: "ScamLens", logo: { "@type": "ImageObject", url: "https://scamlens.in/favicon.svg" } },
+  datePublished: updatedIso,
+  dateModified: updatedIso,
+  mainEntityOfPage: canonical,
+  inLanguage: lang === "pt-br" ? "pt-BR" : lang,
+};
+---
+
+<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article" noindex={!isReady}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <nav class="text-caption text-ink-subtle" aria-label="Breadcrumb">
+      <a href={translatePath("/scams")} class="hover:text-ink">{t("footer.scams")}</a>
+      <span class="mx-2">/</span>
+      <span class="text-ink-muted">{d.title}</span>
+    </nav>
+
+    <header class="mt-6">
+      <span class="status-badge">{d.tag}</span>
+      <h1 class="display-section mt-4">{d.longTitle}</h1>
+      <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">{d.intro}</p>
+    </header>
+
+    <aside class="mt-8 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-center" aria-label="Advertisement">
+      <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
+    </aside>
+
+    <section class="mt-12">
+      <h2 class="headline">{t("scam.detail.looksLike")}</h2>
+      <ul class="mt-4 space-y-3">
+        {d.looksLike.map((x) => (
+          <li class="rounded-lg border border-hairline bg-surface-1 p-4 font-mono text-[13px] leading-relaxed text-ink-muted">{x}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="headline">{t("scam.detail.warningSigns")}</h2>
+      <ul class="mt-4 space-y-3">
+        {d.warningSigns.map((x) => (
+          <li class="flex gap-3 text-body leading-relaxed text-ink-muted">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-1.5 shrink-0 text-gold" aria-hidden="true">
+              <path d="M8 1l7 13H1L8 1z" stroke="currentColor" stroke-width="1.3" />
+              <path d="M8 6v3.5M8 11.6v.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+            </svg>
+            <span>{x}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <aside class="mt-8 rounded-lg border border-hairline bg-surface-1 px-4 py-3 text-center" aria-label="Advertisement">
+      <span class="text-xs uppercase tracking-widest text-ink-tertiary">Advertisement</span>
+    </aside>
+
+    <section class="mt-12">
+      <h2 class="headline">{t("scam.detail.whyItWorks")}</h2>
+      <p class="mt-4 text-body leading-relaxed text-ink-muted">{d.whyItWorks}</p>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="headline">{t("scam.detail.whatToDo")}</h2>
+      <ol class="mt-4 list-decimal space-y-2 pl-5 text-body leading-relaxed text-ink-muted">
+        {d.whatToDo.map((x) => <li>{x}</li>)}
+      </ol>
+    </section>
+
+    <section class="mt-12 rounded-lg border border-hairline bg-surface-1 p-6">
+      <h2 class="headline">{t("scam.detail.verify")}</h2>
+      <p class="mt-3 text-body leading-relaxed text-ink-muted">{d.verify}</p>
+    </section>
+
+    {d.faqs && d.faqs.length > 0 && (
+      <FaqSection faqs={d.faqs} eyebrow="FAQ" title={`Sobre esta estafa — FAQ`} id="faq-scam" />
+    )}
+
+    <section class="mt-12 border-t border-hairline pt-8">
+      <p class="eyebrow">{t("scam.detail.beenTargeted")}</p>
+      <div class="mt-3 flex flex-col gap-2 sm:flex-row">
+        {reportHelplines[lang] && <a href={reportHelplines[lang] as string} class="btn btn-secondary flex-1">{t("scam.detail.callHelpline")}</a>}
+        <a href={reportUrls[lang]} target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">{t("scam.detail.fileReport")}</a>
+      </div>
+    </section>
+
+    {d.similar.length > 0 && (
+      <section class="mt-12 border-t border-hairline pt-8">
+        <h2 class="headline">{t("scam.detail.similar")}</h2>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {d.similar.map((path) => {
+            const id = path.replace("/scams/", "");
+            const href = translatePath(`/scams/${id}`);
+            return (
+              <a href={href} class="card p-4">
+                <p class="text-sm font-medium text-ink">{titleMap.get(`${lang}/${id}`) ?? titleMap.get(id) ?? id.replaceAll("-", " ")}</p>
+                <span class="mt-1 block text-caption text-ink-muted">{t("scam.detail.readMore")} →</span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    <footer class="mt-12 border-t border-hairline pt-6 text-caption leading-relaxed text-ink-tertiary">
+      {t("scam.detail.footer")}
+    </footer>
+
+    <div class="mt-10">
+      <a href={`${translatePath("/")}#checker`} class="btn btn-primary w-full sm:w-auto">{t("scam.detail.checkNow")}</a>
+    </div>
+  </article>
+</Layout>

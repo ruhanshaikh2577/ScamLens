@@ -1,11 +1,15 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import { getCollection } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
+import { isScamReady } from "../../i18n/scamReadiness";
 
 export async function getStaticPaths() {
   const scams = await getCollection("scams");
+  const english = scams.filter((s) => !s.id.includes("/"));
   const titleMap = new Map(scams.map((s) => [s.id, s.data.title]));
-  return scams.map((entry) => ({
+  return english.map((entry) => ({
     params: { slug: entry.id },
     props: { entry, titleMap },
   }));
@@ -15,6 +19,8 @@ const { entry, titleMap } = Astro.props;
 const d = entry.data;
 const slug = entry.id;
 const canonical = `https://scamlens.in/scams/${slug}`;
+const lang = getLangFromUrl(Astro.url);
+const isReady = isScamReady(lang, slug);
 const updatedIso = (d.updated ?? new Date("2026-08-25")).toISOString();
 const breadcrumbLd = {
   "@context": "https://schema.org",
@@ -40,7 +46,7 @@ const articleLd = {
 };
 ---
 
-<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article">
+<Layout title={`${d.longTitle} | ScamLens`} description={d.description} ogType="article" noindex={!isReady}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
@@ -51,7 +57,7 @@ const articleLd = {
     </nav>
 
     <header class="mt-6">
-      <span class="status-badge rounded-full bg-surface-2 px-2 py-0.5 text-xs text-ink-muted">{d.tag}</span>
+      <span class="status-badge">{d.tag}</span>
       <h1 class="display-section mt-4">{d.longTitle}</h1>
       <p class="mt-4 text-body-lg leading-relaxed text-ink-muted">{d.intro}</p>
     </header>
@@ -74,7 +80,7 @@ const articleLd = {
       <ul class="mt-4 space-y-3">
         {d.warningSigns.map((x) => (
           <li class="flex gap-3 text-body leading-relaxed text-ink-muted">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-1.5 shrink-0 text-primary-hover" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-1.5 shrink-0 text-gold" aria-hidden="true">
               <path d="M8 1l7 13H1L8 1z" stroke="currentColor" stroke-width="1.3" />
               <path d="M8 6v3.5M8 11.6v.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
             </svg>
@@ -105,11 +111,17 @@ const articleLd = {
       <p class="mt-3 text-body leading-relaxed text-ink-muted">{d.verify}</p>
     </section>
 
+    {d.faqs && d.faqs.length > 0 && (
+      <FaqSection faqs={d.faqs} eyebrow="FAQ" title={`About this scam — FAQ`} id="faq-scam" />
+    )}
+
     <section class="mt-12 border-t border-hairline pt-8">
       <p class="eyebrow">Been targeted?</p>
+      <p class="mt-3 text-body-sm leading-relaxed text-ink-muted">Report it where you live — filing quickly helps freeze stolen funds.</p>
       <div class="mt-3 flex flex-col gap-2 sm:flex-row">
-        <a href="tel:1930" class="btn btn-secondary flex-1">Call 1930 helpline</a>
-        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">File at cybercrime.gov.in</a>
+        <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener noreferrer" class="btn btn-secondary flex-1">US: reportfraud.ftc.gov</a>
+        <a href="https://www.actionfraud.police.uk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary flex-1">UK: Action Fraud</a>
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-1">India: 1930 / cybercrime.gov.in</a>
       </div>
     </section>
 
@@ -120,9 +132,9 @@ const articleLd = {
           {d.similar.map((path) => {
             const id = path.replace("/scams/", "");
             return (
-              <a href={`/scams/${id}`} class="card card-lift p-4">
+              <a href={`/scams/${id}`} class="card p-4">
                 <p class="text-sm font-medium text-ink">{titleMap.get(id) ?? id.replaceAll("-", " ")}</p>
-                <span class="mt-1 block text-caption text-primary-hover">Read the breakdown <span class="arrow-nudge inline-block">→</span></span>
+                <span class="mt-1 block text-caption text-ink-muted">Read the breakdown →</span>
               </a>
             );
           })}

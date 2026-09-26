@@ -1,35 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations, useTranslatedPath } from "../i18n/utils";
+import AboutReportBox from "../components/AboutReportBox.astro";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
 <Layout
-  title="About ScamLens — decision support against scams"
-  description="Why we built ScamLens: explain warning signs with evidence instead of pretending certainty. India-first scam intelligence."
+  title={t("seo.about.title")}
+  description={t("seo.about.description")}
 >
   <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6">
-    <p class="eyebrow">About</p>
-    <h1 class="display-section mt-4">A calm second opinion, not an antivirus scare</h1>
+    <p class="eyebrow">{t("about.eyebrow")}</p>
+    <h1 class="display-section mt-4">{t("about.title")}</h1>
     <div class="mt-8 space-y-6 text-body-lg leading-relaxed text-ink-muted">
-      <p>
-        ScamLens exists because the moment of doubt — <em>"is this message real?"</em> —
-        deserves better than a scary red warning or a meaningless score out of 100.
-      </p>
-      <p>
-        We show our work: every flag comes with the exact quote that triggered it, why it
-        matters, and what to do next. Language patterns alone never prove a scam, so we
-        never pretend they do. You stay the judge; we're just the lens.
-      </p>
-      <p>
-        We're India-first because that's where global tools fall short — UPI QR tricks,
-        Rs 99 courier fees, FASTag phishing and digital arrest don't appear in Western
-        pattern libraries. Our scam library documents these patterns openly, for everyone.
-      </p>
-      <p class="text-body">
-        If you've been defrauded: call <a href="tel:1930" class="text-primary-hover hover:underline">1930</a> immediately
-        and file at <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="text-primary-hover hover:underline">cybercrime.gov.in</a>.
-        The first hour matters.
-      </p>
+      <p>{t("about.p1")}</p>
+      <p>{t("about.p2")}</p>
+      <p>{t("about.p3")}</p>
+      <AboutReportBox />
     </div>
-    <a href="/#checker" class="btn btn-primary mt-10 px-6">Try the checker</a>
+    <a href={`${translatePath("/")}#checker`} class="btn btn-primary mt-10 px-6">{t("about.cta")}</a>
   </section>
 </Layout>
