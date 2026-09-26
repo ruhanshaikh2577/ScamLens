@@ -7,7 +7,11 @@
 // 16-digit nor the 12-digit rule and was stored verbatim in KV via report.ts redactedInput.
 // Grouped (space/dash) forms need a REQUIRED separator so that "9876543210 492813" — a
 // phone plus an OTP — is not glued into one 16-digit run and mistaken for a card.
-type Replacer = string | ((match: string) => string);
+// A replacer may be a plain mask string, or a function receiving the full
+// String.replace replacer signature — the credential rule needs a capture group
+// (match, prefix, ...groups, offset, whole). astro check enforces this; vitest
+// does not typecheck, so a wrong signature here only surfaces in CI.
+type Replacer = string | ((substring: string, ...args: any[]) => string);
 
 const CARD_MASK = "**** **** **** ****";
 const AADHAAR_MASK = "**** **** ****";
