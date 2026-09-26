@@ -111,7 +111,7 @@ describe("SSRF guard — /api/analyze link expansion", () => {
   }
 
   it("still expands a legitimate public redirect (no false negative)", async () => {
-    const calls = mockShortenerRedirect("https://phishy-bank.top/verify?otp=123456");
+    mockShortenerRedirect("https://phishy-bank.top/verify?otp=123456");
     const req = new Request("http://x/api/analyze", {
       method: "POST",
       body: JSON.stringify({ input: "https://bit.ly/x", kind: "url" }),
@@ -138,9 +138,8 @@ describe("SSRF guard — /api/analyze link expansion", () => {
   });
 
   it("never asks the runtime to follow redirects itself", async () => {
-    const calls = mockShortenerRedirect("https://phishy-bank.top/");
     const seen: string[] = [];
-    const spy = vi.fn(async (href: string, opts: any) => {
+    const spy = vi.fn(async (_href: string, opts: any) => {
       seen.push(opts?.redirect);
       return { status: 302, headers: { get: () => null }, url: "", body: { cancel: async () => {} } } as any;
     });
