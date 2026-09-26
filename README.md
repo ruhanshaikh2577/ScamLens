@@ -2,11 +2,35 @@
 
 > Verify website safety. Check fake websites, phishing links, malicious URLs and scam screenshots with real-time fraud detection.
 
-Live: **https://scamlens.in** · Astro + Preact + Tailwind · Client-side analysis (nothing leaves your device)
+**Status: not deployed.** This is a personal project; there is no live URL yet. The
+static build is fully functional locally — see [Getting started](#getting-started).
+Everything below describes code that exists and is tested, not a running service.
 
-i18n: 8 locales (`en`/`es`/`fr`/`de`/`pt-br`/`it`/`ja`/`ko`), 38/128 scams indexable (en 16 + de 16 + es/fr 3 each) → 128 when review done
+Astro + Preact + Tailwind · analysis runs in the browser (nothing leaves your device)
 
-> **API & distribution (Cloudflare Pages Functions, KV-only — static core preserved):** `POST /api/analyze` → validate→redact→`analyze()` returns same `AnalysisResult`+`meta` {analyzerVersion, timestamp, detectorIds, sources} as client (`src/lib/analyzer.ts:29 VERSION 0.1.1`, `src/lib/analyzer.ts:373` canonical); `POST /api/report` → validate kind allowlist (`message`/`url`, legacy `text`→`message`, `link`→`url`) + 10k limit → redact→KV `reports:<id>` `{id,kind,redactedInput,detectorIds,analyzerVersion,timestamp}` `201 {id}` (never raw input, `functions/_shared/validate.ts`, `functions/api/report.ts`). Webhooks `POST /webhook/whatsapp` & `POST /webhook/telegram` verify `hub.verify_token`/`VERIFY_TOKEN` → validate→redact→`analyze()` direct (not via fetch) → reply `Risk — headline + 1–2 evidence + nextStep + Verify: scamlens.in/how-it-works + disclaimer`, anonymized KV log only, no sessions (`functions/webhook/whatsapp.ts`, `functions/webhook/telegram.ts`). Interactive `QuizIsland`+`SimulatorIsland` on `/what-we-detect` & `/safety-tips` (5 scenarios, detector provenance, weights hidden — `src/components/QuizIsland.tsx`, `src/components/SimulatorIsland.tsx`). Share card canvas + local history `scamlens:history` labeled “Stored locally on this device” (`src/lib/shareCard.ts`, `src/components/checker/CheckerIsland.tsx:422`). Extension reuses `CheckerIsland`+`ResultView` via `src/standalone-checker.tsx` → `fetch /api/analyze` with local fallback. Provenance `AnalysisResult.meta` + methodology/limitations/detector & URL-signal tables on `/how-it-works` (`src/content.config.ts` `lastUpdated`/`sources`/`status`).
+i18n: 8 locales (`en`/`es`/`fr`/`de`/`pt-br`/`it`/`ja`/`ko`), 15 scam entries × 8 locales = **120** translated scam pages, all indexable.
+
+### Optional: server-side distribution (Cloudflare Pages Functions)
+
+The static site is self-contained. These Functions are an *optional* add-on that moves
+analysis to the server for integrations; the client falls back to in-browser analysis
+when they are absent. KV-only, no database, no sessions.
+
+| Endpoint | Behaviour |
+|---|---|
+| `POST /api/analyze` | validate → redact → `analyze()` → same `AnalysisResult` + `meta` as the client. Expands one shortener hop, guarded against internal targets. |
+| `POST /api/report` | kind allowlist (`message`/`url`; legacy `text`→`message`, `link`→`url`) + 10k cap → redact → KV `reports:<id>`, 30-day TTL. **Redacted input only — never raw.** |
+| `POST /webhook/whatsapp` | verifies the HMAC signature when `WHATSAPP_APP_SECRET` is set, then replies via the Cloud API. Anonymized KV log, no user id stored. |
+| `POST /webhook/telegram` | verifies `X-Telegram-Bot-Api-Secret-Token` when set, then replies via the Bot API. Same logging. |
+
+Rate limiting is KV-backed and **fails open** if the `RATE_LIMIT` binding is absent —
+configure the binding or the limits are inert.
+
+Also included: `QuizIsland` + `SimulatorIsland` (detector provenance, weights hidden),
+a canvas share card, and local-only history under `scamlens:history`, labelled
+"Stored locally on this device". Provenance (`AnalysisResult.meta`) plus
+methodology/limitations tables live on `/how-it-works`.
+
 
 ## What it does
 
@@ -24,13 +48,17 @@ Each finding shows the matched evidence snippet and tailored next steps. Results
 
 Screenshot uploads are OCR'd with `tesseract.js` on-device (`src/components/checker/CheckerIsland.tsx:1`, `src/standalone-checker.tsx:1`).
 
-> **Disclaimer:** Decision support, not a guarantee. Language patterns alone never prove a scam — always verify via official channels. See `src/lib/analyzer.ts:25`.
+> **Disclaimer:** Decision support, not a guarantee. Language patterns alone never prove a scam — always verify via official channels. See `src/lib/analyzer-i18n.ts` (`disclaimer`).
 
 ## Scam library
 
-16 curated examples under `src/content/scams/` (rendered at `/scams`):
+15 curated entries under `src/content/scams/` (rendered at `/scams`), each translated
+into all 8 locales:
 
-delivery, fake KYC, UPI refund/QR, job fee, digital arrest, FASTag, USPS, Royal Mail, HMRC, SSA, trading-app guaranteed returns, electricity disconnection, WhatsApp family emergency, Telegram task likes, instant loan apps, wedding-invite APK.
+parcel delivery fee · bank/OTP impersonation · toll-road SMS · QR & payment request ·
+family emergency · job & task-earning · fake authority video call · advance-fee loan ·
+electricity disconnection · trading-app guaranteed returns · tax/government refund ·
+romance & relationship · tech-support refund · lottery & prize · malicious APK.
 
 ## Tech stack
 
@@ -76,13 +104,36 @@ scripts/build-standalone.mjs
 ```
 
 Key logic:
-- `src/lib/analyzer.ts:60` — `DETECTORS` (regex + weight + next step)
-- `src/lib/analyzer.ts:279` — `urlFindings()` (shortener, punycode, IP, APK, TLD, brand mismatch)
-- `src/lib/analyzer.ts:373` — `analyze(input, kind)` entry point
+- `src/lib/analyzer.ts:69` — `DETECTORS` (regex + weight + next step)
+- `src/lib/analyzer.ts:324` — `urlFindings()` (shortener, punycode, IP, APK, TLD, brand mismatch)
+- `src/lib/analyzer.ts:419` — `analyze(input, kind, lang)` entry point
+- `src/lib/redact.ts` — PII masking applied to every emitted evidence snippet
+- `src/lib/version.ts` — `VERSION`, kept in sync with `package.json` and the extension manifest
 
 ## Deployment
 
-Static output in `dist/`. Any static host works (Cloudflare Pages, Netlify, Vercel, GitHub Pages). Set `site` in `astro.config.mjs` for correct sitemap/canonical URLs.
+Not currently deployed. `npm run build` emits a static `dist/` that any static host
+serves (Cloudflare Pages, Netlify, Vercel, GitHub Pages). Before publishing:
+
+- set `site` in `astro.config.mjs` — it drives canonical URLs, hreflang and the sitemap
+- the footer, share card and legal copy reference `scamlens.in` by name; update the
+  `scamlens.in` strings in `src/i18n/translations/*.ts` if you host it elsewhere
+- for the optional Functions, bind `REPORTS` and `RATE_LIMIT` KV namespaces and set
+  `VERIFY_TOKEN` / `TELEGRAM_BOT_TOKEN` / `WHATSAPP_*` — absent bindings fail open
+- `npm run build` runs `scripts/check-seo-integrity.mjs`, which fails the build if the
+  sitemap lists a `noindex` page, a page `_redirects` sends away, or a dead hreflang
+
+## Known limitations
+
+- Short-link expansion resolves DNS before fetching and rejects any internal answer,
+  but it is still resolve-then-fetch: a host that answers public for the lookup and
+  private for the subsequent request (DNS rebinding) is not covered. Workers exposes
+  no connect-to-IP control that would close it.
+- `redact()` has no rule for passwords, so `?password=…` in a URL reaches the
+  evidence snippet, the share card and webhook replies. OTP, PAN, phone and UPI
+  handles are masked.
+- The detector set is weighted heuristics tuned on a synthetic corpus, not on
+  labelled real-world traffic.
 
 ## Contributing
 
@@ -90,4 +141,4 @@ PRs welcome. Keep the analyzer explainable — every detector must have a patter
 
 ## License
 
-No license file yet. Add one (e.g. MIT) if you want to open-source. Until then, all rights reserved.
+MIT — see [`LICENSE`](LICENSE).

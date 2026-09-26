@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Astro 5 static site + Preact islands + Tailwind 4 (Vite plugin) + `tesseract.js` (on-device OCR). Live at `https://scamlens.in`. Node 18+.
+Astro 5 static site + Preact islands + Tailwind 4 (Vite plugin) + `tesseract.js` (on-device OCR). NOT currently deployed (personal project); `scamlens.in` is referenced in copy only. Node 18+.
 
 ## Commands
 

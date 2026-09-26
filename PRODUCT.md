@@ -51,7 +51,7 @@ Terminology: detector, evidence snippet, next step, risk level (`low`/`medium`/`
 
 ## Brand Commitments
 
-Name ScamLens, live at scamlens.in. Voice: direct, protective, non-alarmist — states risk, shows evidence, gives one next step. Existing visual system in `DESIGN.md` (`sovereign-vault-theme`, navy-ink + emerald + rationed gold, Fraunces + Inter) is incumbent authority for refinement; init records no new visual direction.
+Name ScamLens (not yet deployed; scamlens.in appears in copy only). Voice: direct, protective, non-alarmist — states risk, shows evidence, gives one next step. Existing visual system in `DESIGN.md` (`sovereign-vault-theme`, navy-ink + emerald + rationed gold, Fraunces + Inter) is incumbent authority for refinement; init records no new visual direction.
 
 ## Evidence on Hand
 
