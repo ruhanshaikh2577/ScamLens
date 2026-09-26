@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
 import { analyze as clientAnalyze } from "../src/lib/analyzer";
-import { onRequestPost } from "../functions/api/analyze";
+import { onRequestPost, resolvesToInternal } from "../functions/api/analyze";
 
 afterEach(() => vi.restoreAllMocks());
 
@@ -24,6 +24,58 @@ function mockShortenerRedirect(target: string) {
   );
   return calls;
 }
+
+describe("SSRF guard — DNS resolution (a hostname is not an address)", () => {
+  // isPrivateHost() alone cannot see that `localtest.me` resolves to 127.0.0.1.
+  // These use an injected resolver, so they need no network and are deterministic.
+  it("flags a name that resolves to loopback", async () => {
+    expect(await resolvesToInternal("localtest.me", async () => ["127.0.0.1"])).toBe(true);
+  });
+  it("flags a nip.io-style name resolving to 127.0.0.1", async () => {
+    expect(await resolvesToInternal("127.0.0.1.nip.io", async () => ["127.0.0.1"])).toBe(true);
+  });
+  it("flags a name resolving to cloud metadata", async () => {
+    expect(await resolvesToInternal("metadata.example", async () => ["169.254.169.254"])).toBe(true);
+  });
+  it("flags a name resolving to RFC1918", async () => {
+    expect(await resolvesToInternal("internal.example", async () => ["10.0.0.5"])).toBe(true);
+  });
+  it("flags when ANY resolved address is internal (mixed A record)", async () => {
+    expect(await resolvesToInternal("mixed.example", async () => ["93.184.216.34", "127.0.0.1"])).toBe(true);
+  });
+  it("flags when a v4 and v6 answer disagree", async () => {
+    expect(await resolvesToInternal("dual.example", async () => ["8.8.8.8", "::1"])).toBe(true);
+  });
+  it("allows a name that resolves only to public addresses", async () => {
+    expect(await resolvesToInternal("phishy-bank.top", async () => ["104.21.7.168"])).toBe(false);
+  });
+  it("allows a name with no DNS records (the fetch would fail anyway)", async () => {
+    expect(await resolvesToInternal("nx.example", async () => [])).toBe(false);
+  });
+  it("still rejects literal IPs without consulting DNS", async () => {
+    let called = false;
+    expect(await resolvesToInternal("127.0.0.1", async () => { called = true; return []; })).toBe(true);
+    expect(await resolvesToInternal("[::1]", async () => { called = true; return []; })).toBe(true);
+    expect(called).toBe(false);
+  });
+  it("degrades to the string check when DNS is unavailable", async () => {
+    // resolver === null models node:dns being absent (no nodejs_compat).
+    expect(await resolvesToInternal("phishy-bank.top", null)).toBe(false);
+    expect(await resolvesToInternal("10.0.0.1", null)).toBe(true);
+  });
+
+  // Live DNS, matching the Workers runtime's own resolve4/resolve6 path. Node has a
+  // working node:dns, so this exercises the real resolver rather than a fake.
+  it("resolves localtest.me to loopback with the real resolver", async () => {
+    const mod: any = await import("node:dns");
+    const dns = mod?.default ?? mod;
+    const addrs: string[] = [];
+    try { addrs.push(...(await dns.promises.resolve4("localtest.me"))); } catch { /* offline */ }
+    if (addrs.length === 0) return; // no network here — the injected cases above cover the logic
+    expect(addrs.some((a: string) => a.startsWith("127."))).toBe(true);
+    expect(await resolvesToInternal("localtest.me")).toBe(true);
+  });
+});
 
 describe("SSRF guard — /api/analyze link expansion", () => {
   // Every one of these was previously classified "public" and fetched. new URL().hostname

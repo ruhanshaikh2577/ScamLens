@@ -120,7 +120,9 @@ async function expandShortUrl(urlStr: string): Promise<string | null> {
     return null;
   }
   if (!/^https?:$/.test(current.protocol)) return null;
-  if (isPrivateHost(current.hostname)) return null;
+  // Resolve-then-validate, not string-only: a short link can 302 to `localtest.me`,
+  // which passes isPrivateHost() but resolves to 127.0.0.1.
+  if (await resolvesToInternal(current.hostname)) return null;
 
   let expanded = false;
   for (let hop = 0; hop < MAX_HOPS; hop++) {
@@ -135,11 +137,66 @@ async function expandShortUrl(urlStr: string): Promise<string | null> {
       break;
     }
     if (!/^https?:$/.test(next.protocol)) break;
-    if (isPrivateHost(next.hostname)) break; // validate BEFORE the next request goes out
+    // validate BEFORE the next request goes out
+    if (await resolvesToInternal(next.hostname)) break;
     current = next;
     expanded = true;
   }
   return expanded ? truncate(current.href) : null;
+}
+
+// A hostname is not an address. `localtest.me` and `127.0.0.1.nip.io` are ordinary
+// public names whose A/AAAA records point at loopback, so isPrivateHost() alone cannot
+// see them. Resolve first, then re-run the same range checks over the answers.
+//
+// node:dns is available in Workers (DoH via 1.1.1.1) but needs nodejs_compat, and
+// `dns.resolve`/`lookup` are not implemented there — only resolve4/resolve6. It is
+// imported dynamically and memoised: if it is unavailable we degrade to the existing
+// string check rather than failing the request.
+export type AddrResolver = (hostname: string) => Promise<string[]>;
+
+let resolverPromise: Promise<AddrResolver | null> | undefined;
+
+async function loadResolver(): Promise<AddrResolver | null> {
+  if (!resolverPromise) {
+    resolverPromise = (async () => {
+      try {
+        const mod: any = await import("node:dns");
+        const dns = mod?.default ?? mod;
+        return async (hostname: string): Promise<string[]> => {
+          const addrs: string[] = [];
+          // One family failing is normal (AAAA-less hosts), so collect from both.
+          for (const fn of [dns.promises?.resolve4, dns.promises?.resolve6]) {
+            if (typeof fn !== "function") continue;
+            try {
+              const r = await fn.call(dns.promises, hostname);
+              if (Array.isArray(r)) addrs.push(...r.map(String));
+            } catch {}
+          }
+          return addrs;
+        };
+      } catch {
+        return null;
+      }
+    })();
+  }
+  return resolverPromise;
+}
+
+// True when the name is internal, or when it resolves to an internal address.
+// `resolver` is injectable so the logic can be tested without live DNS.
+export async function resolvesToInternal(hostname: string, resolver?: AddrResolver | null): Promise<boolean> {
+  if (isPrivateHost(hostname)) return true; // literal IP / IPv6 literal — no DNS needed
+  const resolve = resolver !== undefined ? resolver : await loadResolver();
+  if (!resolve) return false; // degraded: the string check above already passed
+  let addrs: string[];
+  try {
+    addrs = await resolve(bareHost(hostname));
+  } catch {
+    return false;
+  }
+  if (addrs.length === 0) return false; // no records; the fetch would fail anyway
+  return addrs.some((ip) => isPrivateHost(ip));
 }
 
 export async function onRequestPost({ request, env }: any) {
