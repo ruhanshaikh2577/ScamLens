@@ -25,19 +25,37 @@ function getT(lang: string) {
   return (key: string) => d[key] ?? fb[key] ?? key;
 }
 
-async function analyzeWithFallback(input: string, kind: "message" | "url"): Promise<{ result: AnalysisResult; local: boolean }> {
+// `lang` must reach BOTH the server and the local fallback: the server reads it from
+// the query string only, so omitting it silently returned English verdicts on every
+// locale even though all 8 translated tables exist.
+async function analyzeWithFallback(input: string, kind: "message" | "url", lang: string): Promise<{ result: AnalysisResult; local: boolean }> {
   try {
-    const url = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ input, kind }),
-    });
-    if (res.ok) return { result: (await res.json()) as AnalysisResult, local: false };
+    const base = typeof location !== "undefined" && location.protocol === "chrome-extension:" ? "https://scamlens.in/api/analyze" : "/api/analyze";
+    const url = `${base}?lang=${encodeURIComponent(lang)}`;
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 8000);
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ input, kind }),
+        signal: ctrl.signal,
+      });
+      if (res.ok) {
+        const j = await res.json();
+        // Guard the cast: a 200 JSON error body would otherwise throw inside the
+        // caller and leave the island stuck on a blank result view.
+        if (j && typeof j.risk === "string" && Array.isArray(j.meta?.detectorIds)) {
+          return { result: j as AnalysisResult, local: false };
+        }
+      }
+    } finally {
+      clearTimeout(timer);
+    }
   } catch (e) {
     if (import.meta.env.DEV) console.warn("[analyzeWithFallback]", e);
   }
-  return { result: analyze(input, kind), local: true };
+  return { result: analyze(input, kind, lang), local: true };
 }
 
 type Tab = "text" | "image" | "link";
@@ -200,7 +218,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
         const trimmed = extracted.trim();
         const wordCount = trimmed ? trimmed.split(/\s+/).length : 0;
         const ok = trimmed.length >= 24 && wordCount >= 4;
-        const { result, local } = await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message");
+        const { result, local } = await analyzeWithFallback(ok ? extracted : SAMPLE_OCR_TEXT, "message", lang);
         setResult(result);
         setServedLocal(local);
         setDemoNote(!ok);
@@ -225,7 +243,7 @@ export default function CheckerIsland({ lang = "en" as Lang }: { lang?: Lang }) 
     try {
       const input = tab === "text" ? text : url;
       const kind = tab === "link" || (tab === "text" && looksLikeUrl(text)) ? "url" : "message";
-      const { result, local } = await analyzeWithFallback(input, kind);
+      const { result, local } = await analyzeWithFallback(input, kind, lang);
       setResult(result);
       setServedLocal(local);
       setProgress(100);
@@ -523,7 +541,7 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
   async function doShare() {
     setShareStatus("sharing");
     try {
-      const dataUrl = generateShareCard(result);
+      const dataUrl = generateShareCard(result, lang);
       if (!dataUrl) { setShareStatus("idle"); return; }
       const filename = `scamlens-${result.risk}-${Date.now()}.png`;
       const outcome = await shareCardDataUrl(dataUrl, filename, result.headline);
@@ -534,7 +552,7 @@ function ResultView({ result, demo, onReset, lang = "en" }: { result: AnalysisRe
     }
   }
   function doDownload() {
-    const dataUrl = generateShareCard(result);
+    const dataUrl = generateShareCard(result, lang);
     if (!dataUrl) return;
     const a = document.createElement("a");
     a.href = dataUrl;

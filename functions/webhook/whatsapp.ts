@@ -56,15 +56,37 @@ export async function onRequestPost({ request, env }: any) {
     body?.message?.body ??
     "";
   if (!text || !String(text).trim()) return new Response("ok", { status: 200 });
-  const str = String(text);
+  const str = String(text).slice(0, 10000);
   const kind = str.trim().startsWith("http") ? "url" : "message";
   const r = analyze(str, kind as any);
   const evidenceLines = r.findings.slice(0, 2).map((f) => `• ${f.label}: "${f.evidence}"`).join("\n");
   const reply = `Risk: ${r.risk.toUpperCase()} — ${r.headline}${evidenceLines ? "\n" + evidenceLines : ""}\n→ ${r.nextSteps[0]}\nVerify: https://scamlens.in/how-it-works\n${r.disclaimer}`;
-  // anonymized operational log only, no raw input, 30d TTL
+
+  // Actually deliver the reply via the WhatsApp Cloud API. Previously it was only
+  // returned as the HTTP body, so the integration computed a verdict and dropped it.
+  // The sender's number addresses the reply and is never stored (no sessions).
+  const to = body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.from;
+  let delivered = false;
+  let deliveryError: string | undefined;
+  if (env?.WHATSAPP_PHONE_NUMBER_ID && env?.WHATSAPP_ACCESS_TOKEN && to) {
+    try {
+      const res = await fetch(`https://graph.facebook.com/v21.0/${env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
+        method: "POST",
+        headers: { "content-type": "application/json", authorization: `Bearer ${env.WHATSAPP_ACCESS_TOKEN}` },
+        body: JSON.stringify({ messaging_product: "whatsapp", to, type: "text", text: { body: reply } }),
+      });
+      delivered = res.ok;
+      if (!res.ok) deliveryError = `whatsapp cloud api ${res.status}`;
+    } catch (e) {
+      deliveryError = e instanceof Error ? e.message : "whatsapp fetch failed";
+    }
+  } else {
+    deliveryError = "WHATSAPP_PHONE_NUMBER_ID/ACCESS_TOKEN or sender missing — reply not delivered";
+  }
+
+  // anonymized operational log only, no raw input, no user id, 30d TTL
   try {
-    await env?.REPORTS?.put?.(`webhook:${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, JSON.stringify({ kind, risk: r.risk, version: r.meta.analyzerVersion }), { expirationTtl: 2592000 } as any);
+    await env?.REPORTS?.put?.(`webhook:${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, JSON.stringify({ kind, risk: r.risk, version: r.meta.analyzerVersion, delivered }), { expirationTtl: 2592000 } as any);
   } catch {}
-  // no sessions, do not store user id
-  return new Response(JSON.stringify({ reply }), { status: 200, headers: { "content-type": "application/json" } });
+  return new Response(JSON.stringify({ reply, delivered, ...(deliveryError ? { deliveryError } : {}) }), { status: 200, headers: { "content-type": "application/json" } });
 }

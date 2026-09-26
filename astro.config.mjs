@@ -34,6 +34,10 @@ export default defineConfig({
         try {
           const url = new URL(page);
           const pathname = url.pathname.replace(/\/+$/, "") || "/";
+          // Dev-only preview routes. The filter only receives a URL (not the page's
+          // noindex meta), so these must be listed explicitly or they ship in the
+          // sitemap as indexable AND advertise hreflang alternates that 404.
+          if (pathname === "/preview" || pathname.startsWith("/preview/")) return false;
           const scamDetailMatch = pathname.match(/^\/(?:(es|fr|de|pt-br|it|ja|ko)\/(?:estafas|arnaques|betrugsmaschen|golpes|truffe|scams)\/|scams\/)([^/]+)\/?$/);
           if (scamDetailMatch) {
             const lang = pathname.split("/").filter(Boolean)[0] && ["es","fr","de","pt-br","it","ja","ko"].includes(pathname.split("/").filter(Boolean)[0].toLowerCase()) ? pathname.split("/").filter(Boolean)[0].toLowerCase() : "en";

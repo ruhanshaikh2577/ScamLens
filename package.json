@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "astro dev --open",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-seo-integrity.mjs",
     "build:single": "astro build && node scripts/build-standalone.mjs",
+    "check:seo": "node scripts/check-seo-integrity.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "test": "vitest run"

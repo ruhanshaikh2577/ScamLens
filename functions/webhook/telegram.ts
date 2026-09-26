@@ -34,13 +34,36 @@ export async function onRequestPost({ request, env }: any) {
     body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0]?.text?.body ??
     "";
   if (!text || !String(text).trim()) return new Response("ok", { status: 200 });
-  const str = String(text);
+  const str = String(text).slice(0, 10000);
   const kind = str.trim().startsWith("http") ? "url" : "message";
   const r = analyze(str, kind as any);
   const evidenceLines = r.findings.slice(0, 2).map((f) => `• ${f.label}: "${f.evidence}"`).join("\n");
   const reply = `Risk: ${r.risk.toUpperCase()} — ${r.headline}${evidenceLines ? "\n" + evidenceLines : ""}\n→ ${r.nextSteps[0]}\nVerify: https://scamlens.in/how-it-works\n${r.disclaimer}`;
+
+  // Actually deliver the reply. Previously it was only returned as the HTTP body,
+  // so the bot computed a verdict and then silently dropped it — no user ever saw it.
+  // Chat id is used transiently to address the reply and is never stored.
+  const chatId = body?.message?.chat?.id ?? body?.edited_message?.chat?.id ?? body?.channel_post?.chat?.id;
+  let delivered = false;
+  let deliveryError: string | undefined;
+  if (env?.TELEGRAM_BOT_TOKEN && chatId) {
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text: reply, disable_web_page_preview: true }),
+      });
+      delivered = res.ok;
+      if (!res.ok) deliveryError = `telegram api ${res.status}`;
+    } catch (e) {
+      deliveryError = e instanceof Error ? e.message : "telegram fetch failed";
+    }
+  } else {
+    deliveryError = "TELEGRAM_BOT_TOKEN or chat id missing — reply not delivered";
+  }
+
   try {
-    await env?.REPORTS?.put?.(`webhook:${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, JSON.stringify({ kind, risk: r.risk, version: r.meta.analyzerVersion }), { expirationTtl: 2592000 } as any);
+    await env?.REPORTS?.put?.(`webhook:${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, JSON.stringify({ kind, risk: r.risk, version: r.meta.analyzerVersion, delivered }), { expirationTtl: 2592000 } as any);
   } catch {}
-  return new Response(JSON.stringify({ reply }), { status: 200, headers: { "content-type": "application/json" } });
+  return new Response(JSON.stringify({ reply, delivered, ...(deliveryError ? { deliveryError } : {}) }), { status: 200, headers: { "content-type": "application/json" } });
 }
