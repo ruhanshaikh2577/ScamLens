@@ -13,6 +13,17 @@ const CARD_MASK = "**** **** **** ****";
 const AADHAAR_MASK = "**** **** ****";
 
 const PATTERNS: Array<[RegExp, Replacer]> = [
+  // Credential values carried in a URL query string, e.g. "?password=TopSecret123".
+  // This runs FIRST so the value is masked whatever else it looks like. The parameter
+  // NAME is preserved deliberately: the `url-credentials` detector keys off
+  // `[?&](password|token|...)=`, so replacing the whole pair would blind the detector
+  // that exists to flag the URL. Scoped to query params on purpose — masking the word
+  // "password" in prose would gut the evidence snippet without protecting anything,
+  // since a scammer asking for a password is not the user supplying one.
+  [
+    /([?&](?:password|passwd|pwd|pass|secret|token|api[_-]?key|access[_-]?token|auth|session[_-]?id)=)([^&#\s]*)/gi,
+    (_m: string, prefix: string) => `${prefix}***`,
+  ],
   // 12/15/16/19 digits, contiguous... or in 4-digit groups separated by space/dash.
   // 13/14 are deliberately NOT matched: a 14-digit run is far more often an epoch-ms
   // timestamp than a card, and redacted input is persisted to KV, so a false mask

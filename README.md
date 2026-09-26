@@ -129,9 +129,11 @@ serves (Cloudflare Pages, Netlify, Vercel, GitHub Pages). Before publishing:
   but it is still resolve-then-fetch: a host that answers public for the lookup and
   private for the subsequent request (DNS rebinding) is not covered. Workers exposes
   no connect-to-IP control that would close it.
-- `redact()` has no rule for passwords, so `?password=…` in a URL reaches the
-  evidence snippet, the share card and webhook replies. OTP, PAN, phone and UPI
-  handles are masked.
+- `redact()` masks credential values that appear in a URL query string
+  (`?password=…`, `?token=…`, `?api_key=…`), alongside OTP, PAN, phone and UPI handles.
+  It does not mask credentials written in plain prose — a scammer asking for a
+  password is not the user handing one over, so masking the word would only degrade
+  the evidence.
 - The detector set is weighted heuristics tuned on a synthetic corpus, not on
   labelled real-world traffic.
 

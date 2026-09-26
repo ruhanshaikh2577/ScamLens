@@ -61,6 +61,54 @@ describe("redact — PAN lengths", () => {
   });
 });
 
+describe("redact — URL credential parameters", () => {
+  // A password pasted in a URL query string used to survive redaction intact, so it
+  // reached the evidence snippet, the share-card PNG and the webhook replies.
+  it("masks a password query value", () => {
+    expect(redact("https://evil.top/login?password=TopSecret123&user=bob")).toBe(
+      "https://evil.top/login?password=***&user=bob"
+    );
+  });
+  it("preserves the parameter NAME so the url-credentials detector still fires", () => {
+    const r = analyze("https://somesite.io/login?password=TopSecret123", "url");
+    expect(r.findings.map((f) => f.id)).toContain("url-credentials");
+    const cred = r.findings.find((f) => f.id === "url-credentials");
+    expect(cred!.evidence).not.toContain("TopSecret123");
+    expect(cred!.evidence).toContain("password=");
+  });
+  it.each([
+    ["token", "https://x.io/?token=abc123"],
+    ["secret", "https://x.io/?a=1&secret=s3cr3t&b=2"],
+    ["api_key", "https://x.io/?api_key=k1"],
+    ["api-key", "https://x.io/?api-key=k1"],
+    ["access_token", "https://x.io/?access_token=zzz"],
+    ["sessionid", "https://x.io/?sessionid=deadbeef"],
+    ["pwd", "https://x.io/?pwd=hunter2"],
+  ])("masks %s values", (name, url) => {
+    expect(redact(url)).not.toMatch(new RegExp(`(${name})=([^&*])`, "i"));
+  });
+  it("masks several credential params in one URL", () => {
+    const out = redact("https://x.io/?token=aaa&user=bob&password=ccc&ref=1");
+    expect(out).toBe("https://x.io/?token=***&user=bob&password=***&ref=1");
+  });
+  it("does not touch non-credential params", () => {
+    expect(redact("https://z.io/?ok=1&q=search+term&page=2")).toBe("https://z.io/?ok=1&q=search+term&page=2");
+  });
+  it("stops at a fragment delimiter so it cannot eat the rest of the URL", () => {
+    expect(redact("https://x.io/?token=abc#section")).toBe("https://x.io/?token=***#section");
+  });
+  it("does not mask the word password in ordinary prose", () => {
+    // A scammer asking for a password is not the user handing one over; masking the
+    // word would gut the evidence snippet and protect nothing.
+    const out = redact("They asked for your password, do not share it");
+    expect(out).toContain("password");
+  });
+  it("masks a credential that is also PAN-shaped, exactly once", () => {
+    const out = redact("https://x.io/?password=4111111111111111");
+    expect(out).toBe("https://x.io/?password=***");
+  });
+});
+
 describe("evidence snippets never expose a partial credential", () => {
   // Regression: evidenceAround() snapped slice boundaries to WHITESPACE, but a space can
   // sit INSIDE a grouped credential. A slice starting at "5678 9012" of "1234 5678 9012"
